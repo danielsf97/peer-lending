@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+message LoginReq {
+  required string name = 1;
+  required string password = 2;
+}
+
+message LoginRep {
+
+  enum ClientType{
+    COMPANY = 0;
+    INVESTOR = 1;
+  }
+
+  enum Status {
+    INVALID = 0;
+    SUCCESS = 1;
+  }
+
+  optional ClientType cType = 1;
+  required Status status = 2;
+}
