@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+option java_outer_classname = "EmpresasProtos";
+
+message Empresa {
+    required int32 id = 1;
+    required string nome = 2;
+}
+
+message EmpresasRep {
+    repeated Empresa empresa = 1;
+}
