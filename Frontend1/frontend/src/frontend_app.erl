@@ -6,6 +6,7 @@
 -module(frontend_app).
 
 -behaviour(application).
+-include("protos_pb.hrl").
 
 %% Application callbacks
 -export([start/2, stop/1, server/1]).
@@ -92,7 +93,7 @@ authenticate(Sock) ->
 	io:fwrite("Received Authentication Msg ~n",[]),
 	{'LoginReq', User, Pass} = protos_pb:decode_msg(Bin, 'LoginReq'),
 	io:fwrite("Decoded msg ~n",[]),
-	case login_manager:login(User, Pass) of
+	case login_manager:login(binary_to_list(User), binary_to_list(Pass)) of
 		{ok, company} ->
 			Resp = protos_pb:encode_msg(#'LoginResp'{cType='COMPANY', status='SUCCESS'}),
 			gen_tcp:send(Sock, Resp),
