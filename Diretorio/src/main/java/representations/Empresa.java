@@ -11,5 +11,10 @@ public class Empresa {
         this.id = id;
         this.nome = nome;
     }
+
+    public long getId() {
+        return this.id;
+    }
+
 }
 

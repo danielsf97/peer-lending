@@ -1,34 +1,43 @@
 package resources;
 
+import exceptions.RestException;
 import representations.Empresa;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @Path("/empresas")
 @Produces(MediaType.APPLICATION_JSON)
 public class EmpresasResource {
-    private final String template;
-    private volatile String defaultName;
+    Map<Long, Empresa> empresas;
 
-    public EmpresasResource(String template, String defaultName) {
-        this.template = template;
-        this.defaultName = defaultName;
+    public EmpresasResource(Map<Long, Empresa> empresas) {
+        this.empresas = empresas;
     }
 
     @GET
-    public Response getEmpresas() {
-        List<Empresa> empresas = new ArrayList<>();
-        empresas.add(new Empresa(1, "empresa1"));
-        empresas.add(new Empresa(2, "empresa2"));
-        empresas.add(new Empresa(3, "empresa3"));
-        return Response.ok(empresas).build();
+    public Response get() {
+        return Response.ok(empresas.values()).build();
     }
 
+    @POST
+    public Response post(Empresa e) {
+        if(empresas.containsKey(e.getId())) {
+            final String msg = String.format("ID already exists!\n");
+            throw new RestException(msg, Response.Status.NOT_FOUND);
+        }
+        empresas.put(e.getId(), e);
+        return Response.ok().build();
+    }
+
+    @PUT
+    public Response put(Empresa e) {
+        empresas.put(e.getId(), e);
+        return Response.ok().build();
+    }
 }
