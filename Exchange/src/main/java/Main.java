@@ -1,39 +1,75 @@
-import org.zeromq.ZMQ;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Scanner;
+
 
 public class Main {
 
-    static EmpresasProtos.Empresa createEmpresa(int id, String nome) {
-        return EmpresasProtos.Empresa.newBuilder()
-                                     .setId(id)
-                                     .setNome(nome)
-                                     .build();
+
+    public static String empresasToString(JsonArray jarray) {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("LISTA DE EMPRESAS:").append("\n");
+        sb.append("==================").append("\n");
+        for(JsonElement e: jarray) {
+            JsonObject o = e.getAsJsonObject();
+            sb.append("ID: ").append(o.get("id")).append("\n");
+            sb.append("NOME: ").append(o.get("nome")).append("\n");
+            sb.append("------------------").append("\n");
+        }
+
+        return sb.toString();
     }
 
-    public static void main(String[] args) {
-        EmpresasProtos.Empresa e1 = createEmpresa(1, "empresa1");
-        EmpresasProtos.Empresa e2 = createEmpresa(2, "empresa2");
-        EmpresasProtos.Empresa e3 = createEmpresa(3, "empresa3");
-        EmpresasProtos.EmpresasRep ep = EmpresasProtos.EmpresasRep.newBuilder()
-                                                      .addEmpresa(e1)
-                                                      .addEmpresa(e2)
-                                                      .addEmpresa(e3)
-                                                      .build();
+    public static void main(String[] args) throws Exception {
+        URL url = new URL("http://localhost:12345/empresas");
 
-        ZMQ.Context context = ZMQ.context(1);
-        ZMQ.Socket socket = context.socket(ZMQ.SUB);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
-        socket.connect("tcp://localhost" + args[0]);
+        conn.setRequestMethod("GET");
 
-        socket.subscribe("".getBytes());
+        conn.connect();
 
-        while(true) {
-            byte[] b = socket.recv();
-            String req = new String(b);
-            if(req.equals("EmpresasReq")) {
-                System.out.println("Received request!");
+        int rc = conn.getResponseCode();
+
+        String json_str = null;
+        StringBuilder sb = new StringBuilder();
+
+
+        if(rc != 200)
+            throw new RuntimeException("HttpResponseCode: " + rc);
+        else {
+            Scanner sc = new Scanner(url.openStream());
+            while(sc.hasNext())
+            {
+                sb.append(sc.nextLine());
             }
 
+            json_str = sb.toString();
+            sc.close();
         }
+
+        JsonParser jp = new JsonParser();
+
+        JsonElement tree = jp.parse(json_str);
+
+        JsonArray jo = tree.getAsJsonArray();
+
+        // -------------------------------------------------------
+
+
+
+
+        // -------------------------------------------------------
+
+        System.out.println(empresasToString(jo));
 
     }
 }

@@ -1,3 +1,8 @@
+import org.apache.commons.lang3.StringUtils;
+import utils.Menu;
+import utils.NetClient;
+import utils.Utils;
+
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.nio.channels.SocketChannel;
@@ -6,16 +11,17 @@ public class Client {
     private SocketChannel socket;
     private BufferedReader br;
 
-    public Client(SocketChannel socket) throws Exception{
+    public Client(SocketChannel socket) {
         this.socket = socket;
         this.br = new BufferedReader(new InputStreamReader(System.in));
     }
 
     private void authenticate() throws IOException {
-        System.out.println("=== LOGIN ===");
-        System.out.println("Username:");
+        int w = 79;
+        System.out.println(StringUtils.rightPad("LOGIN ", w - 1, "-"));
+        System.out.print("Username: ");
         String user = br.readLine();
-        System.out.println("Password:");
+        System.out.print("Password: ");
         String pass = br.readLine();
 
         Protos.LoginReq req = createLoginReq(user, pass);
@@ -24,7 +30,7 @@ public class Client {
         byte[] resp = Utils.recv_msg(socket);
         Protos.LoginResp rep = Protos.LoginResp.parseFrom(resp);
 
-        if(rep.getStatus() == Protos.LoginResp.Status.SUCCESS){
+        if(rep.getStatus() == Protos.LoginResp.Status.SUCCESS) {
             switch(rep.getCType()){
                 case COMPANY:
                     company();
@@ -33,16 +39,27 @@ public class Client {
                     investor();
                     break;
             }
-        }else{
-            System.out.println("Invalid Credentials!!");
+        }
+        else {
+            System.out.println("Credenciais inválidas!");
             authenticate();
         }
     }
 
     private void investor() {
-        Object [] res;
-        print_investor_menu();
-        int option = get_opt(3); // 3 options
+        Object[] res;
+        Menu m = new Menu("utils.Menu Investidor");
+        m.adiciona("Licitar em leilão");
+        m.adiciona("Subscrever empréstimo a taxa fixa");
+        m.adiciona("Subscrever notificação");
+        m.adiciona("Ver lista de empresas");
+        m.adiciona("Ver leilões ativos");
+        m.adiciona("Ver emissões ativas");
+        m.adiciona("Ver histórico de leilões de empresa");
+        m.adiciona("Ver histórico de emissões de empresa");
+        m.executa();
+        int option = m.getOpcao();
+
         switch(option) {
             case 1:
                 res = bid_on_auction_form();
@@ -52,6 +69,105 @@ public class Client {
                 break;
             case 3:
                 break;
+            case 4:
+                // Ver lista de empresas
+                try {
+                    System.out.println(NetClient.getEmpresas());
+                }
+                catch(RuntimeException e ) {
+                    System.out.println(e.getMessage());
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+                try {
+                    System.in.read();
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+                investor();
+                break;
+            case 5:
+                // Ver leilões ativos
+                try {
+                    System.out.println(NetClient.getLeiloesAtivos());
+                }
+                catch(RuntimeException e ) {
+                    System.out.println(e.getMessage());
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+                try {
+                    System.in.read();
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+                investor();
+                break;
+            case 6:
+                // Ver emissões ativas
+                try {
+                    System.out.println(NetClient.getEmissoesAtivas());
+                }
+                catch(RuntimeException e ) {
+                    System.out.println(e.getMessage());
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+                try {
+                    System.in.read();
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+                investor();
+                break;
+            case 7:
+                // Ver histórico de leilões para empresa
+                try {
+                    System.out.print("ID da empresa: ");
+                    long emp = Long.parseLong(br.readLine());
+                    System.out.println(NetClient.getHistoricoLeiloes(emp));
+                }
+                catch(RuntimeException e) {
+                    System.out.println(e.getMessage());
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+                try {
+                    System.in.read();
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+                investor();
+                break;
+            case 8:
+                // Ver histórico de emissões para empresa
+                try {
+                    System.out.print("Empresa: ");
+                    long emp = Long.parseLong(br.readLine());
+                    System.out.println(NetClient.getHistoricoEmissoes(emp));
+                }
+                catch(RuntimeException e) {
+                    System.out.println(e.getMessage());
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+                try {
+                    System.in.read();
+                }
+                catch(Exception e) {
+                    e.printStackTrace();
+                }
+                investor();
+                break;
             default:
                 investor();
                 break;
@@ -60,20 +176,23 @@ public class Client {
 
     private Object[] bid_on_auction_form() {
 
-        Object [] res = new Object [2];
+        Object[] res = new Object[2];
 
         try {
-            System.out.println("=========== Licitar em Leilão ===========");
+            int w = 79;
+            System.out.println(StringUtils.rightPad("LICITAR EM LEILÃO ", w - 1, "-"));
             System.out.print("Empresa:");
             res[0] = br.readLine();
             System.out.print("Valor:");
             res[1] = Float.parseFloat(br.readLine());
             System.out.print("Taxa:");
             res[2] = Float.parseFloat(br.readLine());
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
             return bid_on_auction_form();
-        } catch (NumberFormatException e){
+        }
+        catch (NumberFormatException e){
             System.out.println("Valor Inválido!");
             return bid_on_auction_form();
         }
@@ -81,29 +200,13 @@ public class Client {
         return res;
     }
 
-    private int get_opt(int n) {
-        int i = -1;
-
-        try {
-
-            do{
-                i = Integer.parseInt(br.readLine());
-                if (i > n) System.out.print("Opção inválida!!\nOpção: ");
-            }while(i > n);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return i;
-    }
-
-
-
     private void company() {
-        print_company_menu();
-        int option = get_opt(2); // 2 options
-        float [] res;
+        Menu m = new Menu("utils.Menu Empresa");
+        m.adiciona("Criar leilão");
+        m.adiciona("Criar emissão");
+        m.executa();
+        int option = m.getOpcao();
+        float[] res;
         switch(option) {
             case 1:
                 res = create_auction_form();
@@ -126,16 +229,19 @@ public class Client {
         float [] res = new float [2];
 
         try {
-            System.out.println("============== Leilão ==============");
+            int w = 79;
+            System.out.println(StringUtils.rightPad("CRIAR LEILÃO ", w - 1, "-"));
             System.out.print("Valor:");
             res[0] = Float.parseFloat(br.readLine());
             System.out.print("Taxa máxima:");
             res[1] = Float.parseFloat(br.readLine());
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
             return create_auction_form();
-        } catch (NumberFormatException e){
-            System.out.println("Valor Inválido!");
+        }
+        catch (NumberFormatException e){
+            System.out.println("Valor inválido!");
             return create_auction_form();
         }
 
@@ -144,47 +250,30 @@ public class Client {
 
     private float[] create_emission_form() {
 
-        float [] res = new float [1];
+        float[] res = new float[1];
 
         try {
-            System.out.println("========== Emissão a taxa fixa ==========");
-            System.out.print("Valor:");
+            int w = 79;
+            System.out.println(StringUtils.rightPad("CRIAR EMISSÃO", w - 1, "-"));
+            System.out.print("Valor: ");
             res[0] = Float.parseFloat(br.readLine());
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
             return create_emission_form();
-        } catch (NumberFormatException e){
-            System.out.println("Valor Inválido!");
+        }
+        catch (NumberFormatException e){
+            System.out.println("Valor inválido!");
             return create_emission_form();
         }
         return res;
     }
 
-    private void print_investor_menu() {
-        StringBuilder builder = new StringBuilder("================= Menu ==============\n")
-                .append("1 - Licitar em leilão\n")
-                .append("2 - Subscrever empréstimo a taxa fixa\n")
-                .append("3 - Subscrever notificação\n")
-                .append("======================================\n")
-                .append("Opção: ");
-        System.out.println(builder.toString());
-    }
-
-    public void print_company_menu() {
-        StringBuilder builder = new StringBuilder("================= Menu ==============\n")
-                .append("1 - Criar leilão\n")
-                .append("2 - Criar emissão a taxa fixa\n")
-                .append("======================================\n")
-                .append("Opção: ");
-        System.out.print(builder.toString());
-    }
-
     public static Protos.LoginReq createLoginReq(String user, String pass) {
-        return
-            Protos.LoginReq.newBuilder()
-                    .setName(user)
-                    .setPassword(pass)
-                    .build();
+        return Protos.LoginReq.newBuilder()
+                              .setName(user)
+                              .setPassword(pass)
+                              .build();
     }
 
     public static void main(String[] args) throws Exception{
@@ -193,6 +282,4 @@ public class Client {
         Client c = new Client(socket);
         c.authenticate();
     }
-
-
 }
