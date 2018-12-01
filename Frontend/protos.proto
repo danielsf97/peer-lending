@@ -20,3 +20,62 @@ message LoginResp {
   optional ClientType cType = 1;
   required Status status = 2;
 }
+
+message AuctionReq{
+    required float value = 1;
+    required float max_rate = 2;
+}
+
+message AuctionResp{
+
+    enum Status {
+        SUCCESS = 0;
+        ONGOING_AUCTION = 1;
+    }
+
+    required Status status = 1;
+}
+
+//message InvestorActionReq{
+//    required float value = 1;
+//    required string company = 2;
+
+//    message BidOnAuction{
+//        required float rate = 1;
+//    }
+
+//    message SubsFixedRate{
+
+//    }
+
+//    oneof msg{
+//        BidOnAuction m1 = 3;
+//        BidOnAuction m2 = 4;
+//    }
+//}
+
+
+
+
+message InvestorActionReq{
+    enum RequestType {
+        AUCTION = 0;
+        EMISSION = 1;
+    }
+
+    required string company = 1;
+    required RequestType req_type = 2;
+    required float value = 3;
+    optional float rate = 4;
+}
+
+message InvestorActionResp{
+    enum Status {
+        CONFIRMED = 0;
+        REPLACED = 1;   //apenas no caso dos leilões
+        ENDED = 2;      //se o leilão ou a emissão terminaram
+        INVALID = 3;    //dados inválidos
+    }
+
+    required Status status = 1;
+}

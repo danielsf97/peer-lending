@@ -15,11 +15,43 @@
         }).
 -endif.
 
--ifndef('LOGINREP_PB_H').
--define('LOGINREP_PB_H', true).
--record('LoginRep',
-        {cType                  :: 'COMPANY' | 'INVESTOR' | integer() | undefined, % = 1, enum LoginRep.ClientType
-         status                 :: 'INVALID' | 'SUCCESS' | integer() % = 2, enum LoginRep.Status
+-ifndef('LOGINRESP_PB_H').
+-define('LOGINRESP_PB_H', true).
+-record('LoginResp',
+        {cType                  :: 'COMPANY' | 'INVESTOR' | integer() | undefined, % = 1, enum LoginResp.ClientType
+         status                 :: 'INVALID' | 'SUCCESS' | integer() % = 2, enum LoginResp.Status
+        }).
+-endif.
+
+-ifndef('AUCTIONREQ_PB_H').
+-define('AUCTIONREQ_PB_H', true).
+-record('AuctionReq',
+        {value                  :: float() | integer() | infinity | '-infinity' | nan, % = 1
+         max_rate               :: float() | integer() | infinity | '-infinity' | nan % = 2
+        }).
+-endif.
+
+-ifndef('AUCTIONRESP_PB_H').
+-define('AUCTIONRESP_PB_H', true).
+-record('AuctionResp',
+        {status                 :: 'SUCCESS' | 'ONGOING_AUCTION' | integer() % = 1, enum AuctionResp.Status
+        }).
+-endif.
+
+-ifndef('INVESTORACTIONREQ_PB_H').
+-define('INVESTORACTIONREQ_PB_H', true).
+-record('InvestorActionReq',
+        {company                :: iolist(),        % = 1
+         req_type               :: 'AUCTION' | 'EMISSION' | integer(), % = 2, enum InvestorActionReq.RequestType
+         value                  :: float() | integer() | infinity | '-infinity' | nan, % = 3
+         rate                   :: float() | integer() | infinity | '-infinity' | nan | undefined % = 4
+        }).
+-endif.
+
+-ifndef('INVESTORACTIONRESP_PB_H').
+-define('INVESTORACTIONRESP_PB_H', true).
+-record('InvestorActionResp',
+        {status                 :: 'CONFIRMED' | 'REPLACED' | 'ENDED' | 'INVALID' | integer() % = 1, enum InvestorActionResp.Status
         }).
 -endif.
 

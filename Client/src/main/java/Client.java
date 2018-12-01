@@ -85,12 +85,11 @@ public class Client {
         int i = -1;
 
         try {
-            i = br.read();
 
-            while(i > n){
-                System.out.println("Opção inválida!!\nOpção: ");
-                i = br.read();
-            }
+            do{
+                i = Integer.parseInt(br.readLine());
+                if (i > n) System.out.print("Opção inválida!!\nOpção: ");
+            }while(i > n);
 
         } catch (IOException e) {
             e.printStackTrace();
