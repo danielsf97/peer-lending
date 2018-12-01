@@ -1,13 +1,6 @@
-import com.google.protobuf.CodedOutputStream;
-
 import java.io.*;
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.nio.channels.SocketChannel;
-import java.util.Scanner;
 
 public class Client {
     private SocketChannel socket;
@@ -26,9 +19,9 @@ public class Client {
         String pass = br.readLine();
 
         Protos.LoginReq req = createLoginReq(user, pass);
-        send_msg(req.toByteArray());
+        Utils.send_msg(req.toByteArray(), socket);
 
-        byte[] resp = recv_msg();
+        byte[] resp = Utils.recv_msg(socket);
         Protos.LoginRep rep = Protos.LoginRep.parseFrom(resp);
 
         if(rep.getStatus() == Protos.LoginRep.Status.SUCCESS){
@@ -46,25 +39,145 @@ public class Client {
         }
     }
 
-    private void send_msg(byte[] ba) throws IOException{
-
-        ByteBuffer buffer = ByteBuffer.allocate(4 + ba.length);
-        buffer.order(ByteOrder.BIG_ENDIAN);
-        buffer.putInt(ba.length);
-        buffer.put(ba);
-        buffer.flip();
-
-        this.socket.write(buffer);
+    private void investor() {
+        Object [] res;
+        print_investor_menu();
+        int option = get_opt(3); // 3 options
+        switch(option) {
+            case 1:
+                res = bid_on_auction_form();
+                Investor.bid_on_auction(res, socket);
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                investor();
+                break;
+        }
     }
 
-    private byte[] recv_msg() throws  IOException{
-        ByteBuffer buffer = ByteBuffer.allocate(512);
-        this.socket.read(buffer);
-        buffer.flip();
-        int len = buffer.getInt();
-        byte[] resp = new byte[len];
-        buffer.get(resp, 0, len);
-        return resp;
+    private Object[] bid_on_auction_form() {
+
+        Object [] res = new Object [2];
+
+        try {
+            System.out.println("=========== Licitar em Leilão ===========");
+            System.out.print("Empresa:");
+            res[0] = br.readLine();
+            System.out.print("Valor:");
+            res[1] = Float.parseFloat(br.readLine());
+            System.out.print("Taxa:");
+            res[2] = Float.parseFloat(br.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return bid_on_auction_form();
+        } catch (NumberFormatException e){
+            System.out.println("Valor Inválido!");
+            return bid_on_auction_form();
+        }
+
+        return res;
+    }
+
+    private int get_opt(int n) {
+        int i = -1;
+
+        try {
+            i = br.read();
+
+            while(i > n){
+                System.out.println("Opção inválida!!\nOpção: ");
+                i = br.read();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return i;
+    }
+
+
+
+    private void company() {
+        print_company_menu();
+        int option = get_opt(2); // 2 options
+        float [] res;
+        switch(option) {
+            case 1:
+                res = create_auction_form();
+                Company.create_auction(res, socket);
+                company();
+                break;
+            case 2:
+                res = create_emission_form();
+                Company.create_emission(res, socket);
+                company();
+                break;
+            default:
+                company();
+                break;
+        }
+    }
+
+    private float[] create_auction_form() {
+
+        float [] res = new float [2];
+
+        try {
+            System.out.println("============== Leilão ==============");
+            System.out.print("Valor:");
+            res[0] = Float.parseFloat(br.readLine());
+            System.out.print("Taxa máxima:");
+            res[1] = Float.parseFloat(br.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return create_auction_form();
+        } catch (NumberFormatException e){
+            System.out.println("Valor Inválido!");
+            return create_auction_form();
+        }
+
+        return res;
+    }
+
+    private float[] create_emission_form() {
+
+        float [] res = new float [1];
+
+        try {
+            System.out.println("========== Emissão a taxa fixa ==========");
+            System.out.print("Valor:");
+            res[0] = Float.parseFloat(br.readLine());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return create_emission_form();
+        } catch (NumberFormatException e){
+            System.out.println("Valor Inválido!");
+            return create_emission_form();
+        }
+        return res;
+    }
+
+    private void print_investor_menu() {
+        StringBuilder builder = new StringBuilder("================= Menu ==============\n")
+                .append("1 - Licitar em leilão\n")
+                .append("2 - Subscrever empréstimo a taxa fixa\n")
+                .append("3 - Subscrever notificação\n")
+                .append("======================================\n")
+                .append("Opção: ");
+        System.out.println(builder.toString());
+    }
+
+    public void print_company_menu() {
+        StringBuilder builder = new StringBuilder("================= Menu ==============\n")
+                .append("1 - Criar leilão\n")
+                .append("2 - Criar emissão a taxa fixa\n")
+                .append("======================================\n")
+                .append("Opção: ");
+        System.out.print(builder.toString());
     }
 
     public static Protos.LoginReq createLoginReq(String user, String pass) {
