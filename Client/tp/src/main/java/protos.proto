@@ -63,18 +63,19 @@ message InvestorActionReq{
         EMISSION = 1;
     }
 
-    required RequestType req_type = 1;
-    required float value = 2;
-    optional float rate = 3;
+    required string company = 1;
+    required RequestType req_type = 2;
+    required float value = 3;
+    optional float rate = 4;
 }
 
 message InvestorActionResp{
-    enum Auction_Status {
+    enum Status {
         CONFIRMED = 0;
         REPLACED = 1;   //apenas no caso dos leilões
         ENDED = 2;      //se o leilão ou a emissão terminaram
         INVALID = 3;    //dados inválidos
     }
 
-    required Auction_Status status = 1;
+    required Status status = 1;
 }

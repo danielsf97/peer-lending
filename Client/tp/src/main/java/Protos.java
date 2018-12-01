@@ -23,7 +23,7 @@ public final class Protos {
     /**
      * <code>required string name = 1;</code>
      */
-    String getName();
+    java.lang.String getName();
     /**
      * <code>required string name = 1;</code>
      */
@@ -37,7 +37,7 @@ public final class Protos {
     /**
      * <code>required string password = 2;</code>
      */
-    String getPassword();
+    java.lang.String getPassword();
     /**
      * <code>required string password = 2;</code>
      */
@@ -60,7 +60,7 @@ public final class Protos {
       password_ = "";
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -117,16 +117,16 @@ public final class Protos {
       return Protos.internal_static_LoginReq_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return Protos.internal_static_LoginReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              LoginReq.class, Builder.class);
+              Protos.LoginReq.class, Protos.LoginReq.Builder.class);
     }
 
     private int bitField0_;
     public static final int NAME_FIELD_NUMBER = 1;
-    private volatile Object name_;
+    private volatile java.lang.Object name_;
     /**
      * <code>required string name = 1;</code>
      */
@@ -136,14 +136,14 @@ public final class Protos {
     /**
      * <code>required string name = 1;</code>
      */
-    public String getName() {
-      Object ref = name_;
-      if (ref instanceof String) {
-        return (String) ref;
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           name_ = s;
         }
@@ -155,11 +155,11 @@ public final class Protos {
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
-      Object ref = name_;
-      if (ref instanceof String) {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         name_ = b;
         return b;
       } else {
@@ -168,7 +168,7 @@ public final class Protos {
     }
 
     public static final int PASSWORD_FIELD_NUMBER = 2;
-    private volatile Object password_;
+    private volatile java.lang.Object password_;
     /**
      * <code>required string password = 2;</code>
      */
@@ -178,14 +178,14 @@ public final class Protos {
     /**
      * <code>required string password = 2;</code>
      */
-    public String getPassword() {
-      Object ref = password_;
-      if (ref instanceof String) {
-        return (String) ref;
+    public java.lang.String getPassword() {
+      java.lang.Object ref = password_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
+        java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
           password_ = s;
         }
@@ -197,11 +197,11 @@ public final class Protos {
      */
     public com.google.protobuf.ByteString
         getPasswordBytes() {
-      Object ref = password_;
-      if (ref instanceof String) {
+      java.lang.Object ref = password_;
+      if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
-                (String) ref);
+                (java.lang.String) ref);
         password_ = b;
         return b;
       } else {
@@ -255,15 +255,15 @@ public final class Protos {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof LoginReq)) {
+      if (!(obj instanceof Protos.LoginReq)) {
         return super.equals(obj);
       }
-      LoginReq other = (LoginReq) obj;
+      Protos.LoginReq other = (Protos.LoginReq) obj;
 
       boolean result = true;
       result = result && (hasName() == other.hasName());
@@ -280,7 +280,7 @@ public final class Protos {
       return result;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -300,58 +300,58 @@ public final class Protos {
       return hash;
     }
 
-    public static LoginReq parseFrom(
+    public static Protos.LoginReq parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static LoginReq parseFrom(
+    public static Protos.LoginReq parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static LoginReq parseFrom(byte[] data)
+    public static Protos.LoginReq parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static LoginReq parseFrom(
+    public static Protos.LoginReq parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static LoginReq parseFrom(java.io.InputStream input)
+    public static Protos.LoginReq parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static LoginReq parseFrom(
+    public static Protos.LoginReq parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static LoginReq parseDelimitedFrom(java.io.InputStream input)
+    public static Protos.LoginReq parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static LoginReq parseDelimitedFrom(
+    public static Protos.LoginReq parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static LoginReq parseFrom(
+    public static Protos.LoginReq parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static LoginReq parseFrom(
+    public static Protos.LoginReq parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -363,7 +363,7 @@ public final class Protos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(LoginReq prototype) {
+    public static Builder newBuilder(Protos.LoginReq prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -371,9 +371,9 @@ public final class Protos {
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -383,17 +383,17 @@ public final class Protos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:LoginReq)
-        LoginReqOrBuilder {
+        Protos.LoginReqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return Protos.internal_static_LoginReq_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return Protos.internal_static_LoginReq_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                LoginReq.class, Builder.class);
+                Protos.LoginReq.class, Protos.LoginReq.Builder.class);
       }
 
       // Construct using Protos.LoginReq.newBuilder()
@@ -402,7 +402,7 @@ public final class Protos {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -425,20 +425,20 @@ public final class Protos {
         return Protos.internal_static_LoginReq_descriptor;
       }
 
-      public LoginReq getDefaultInstanceForType() {
-        return LoginReq.getDefaultInstance();
+      public Protos.LoginReq getDefaultInstanceForType() {
+        return Protos.LoginReq.getDefaultInstance();
       }
 
-      public LoginReq build() {
-        LoginReq result = buildPartial();
+      public Protos.LoginReq build() {
+        Protos.LoginReq result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public LoginReq buildPartial() {
-        LoginReq result = new LoginReq(this);
+      public Protos.LoginReq buildPartial() {
+        Protos.LoginReq result = new Protos.LoginReq(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -481,16 +481,16 @@ public final class Protos {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof LoginReq) {
-          return mergeFrom((LoginReq)other);
+        if (other instanceof Protos.LoginReq) {
+          return mergeFrom((Protos.LoginReq)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(LoginReq other) {
-        if (other == LoginReq.getDefaultInstance()) return this;
+      public Builder mergeFrom(Protos.LoginReq other) {
+        if (other == Protos.LoginReq.getDefaultInstance()) return this;
         if (other.hasName()) {
           bitField0_ |= 0x00000001;
           name_ = other.name_;
@@ -520,11 +520,11 @@ public final class Protos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        LoginReq parsedMessage = null;
+        Protos.LoginReq parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (LoginReq) e.getUnfinishedMessage();
+          parsedMessage = (Protos.LoginReq) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -535,7 +535,7 @@ public final class Protos {
       }
       private int bitField0_;
 
-      private Object name_ = "";
+      private java.lang.Object name_ = "";
       /**
        * <code>required string name = 1;</code>
        */
@@ -545,18 +545,18 @@ public final class Protos {
       /**
        * <code>required string name = 1;</code>
        */
-      public String getName() {
-        Object ref = name_;
-        if (!(ref instanceof String)) {
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+          java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             name_ = s;
           }
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -564,11 +564,11 @@ public final class Protos {
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
-        Object ref = name_;
+        java.lang.Object ref = name_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           name_ = b;
           return b;
         } else {
@@ -579,7 +579,7 @@ public final class Protos {
        * <code>required string name = 1;</code>
        */
       public Builder setName(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -611,7 +611,7 @@ public final class Protos {
         return this;
       }
 
-      private Object password_ = "";
+      private java.lang.Object password_ = "";
       /**
        * <code>required string password = 2;</code>
        */
@@ -621,18 +621,18 @@ public final class Protos {
       /**
        * <code>required string password = 2;</code>
        */
-      public String getPassword() {
-        Object ref = password_;
-        if (!(ref instanceof String)) {
+      public java.lang.String getPassword() {
+        java.lang.Object ref = password_;
+        if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+          java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
             password_ = s;
           }
           return s;
         } else {
-          return (String) ref;
+          return (java.lang.String) ref;
         }
       }
       /**
@@ -640,11 +640,11 @@ public final class Protos {
        */
       public com.google.protobuf.ByteString
           getPasswordBytes() {
-        Object ref = password_;
+        java.lang.Object ref = password_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           password_ = b;
           return b;
         } else {
@@ -655,7 +655,7 @@ public final class Protos {
        * <code>required string password = 2;</code>
        */
       public Builder setPassword(
-          String value) {
+          java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
@@ -701,16 +701,16 @@ public final class Protos {
     }
 
     // @@protoc_insertion_point(class_scope:LoginReq)
-    private static final LoginReq DEFAULT_INSTANCE;
+    private static final Protos.LoginReq DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new LoginReq();
+      DEFAULT_INSTANCE = new Protos.LoginReq();
     }
 
-    public static LoginReq getDefaultInstance() {
+    public static Protos.LoginReq getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @Deprecated public static final com.google.protobuf.Parser<LoginReq>
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<LoginReq>
         PARSER = new com.google.protobuf.AbstractParser<LoginReq>() {
       public LoginReq parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
@@ -724,12 +724,12 @@ public final class Protos {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<LoginReq> getParserForType() {
       return PARSER;
     }
 
-    public LoginReq getDefaultInstanceForType() {
+    public Protos.LoginReq getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -746,7 +746,7 @@ public final class Protos {
     /**
      * <code>optional .LoginRep.ClientType cType = 1;</code>
      */
-    LoginRep.ClientType getCType();
+    Protos.LoginRep.ClientType getCType();
 
     /**
      * <code>required .LoginRep.Status status = 2;</code>
@@ -755,7 +755,7 @@ public final class Protos {
     /**
      * <code>required .LoginRep.Status status = 2;</code>
      */
-    LoginRep.Status getStatus();
+    Protos.LoginRep.Status getStatus();
   }
   /**
    * Protobuf type {@code LoginRep}
@@ -773,7 +773,7 @@ public final class Protos {
       status_ = 0;
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -803,7 +803,7 @@ public final class Protos {
             }
             case 8: {
               int rawValue = input.readEnum();
-              ClientType value = ClientType.valueOf(rawValue);
+              Protos.LoginRep.ClientType value = Protos.LoginRep.ClientType.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
@@ -814,7 +814,7 @@ public final class Protos {
             }
             case 16: {
               int rawValue = input.readEnum();
-              Status value = Status.valueOf(rawValue);
+              Protos.LoginRep.Status value = Protos.LoginRep.Status.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(2, rawValue);
               } else {
@@ -840,11 +840,11 @@ public final class Protos {
       return Protos.internal_static_LoginRep_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return Protos.internal_static_LoginRep_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              LoginRep.class, Builder.class);
+              Protos.LoginRep.class, Protos.LoginRep.Builder.class);
     }
 
     /**
@@ -879,7 +879,7 @@ public final class Protos {
       /**
        * @deprecated Use {@link #forNumber(int)} instead.
        */
-      @Deprecated
+      @java.lang.Deprecated
       public static ClientType valueOf(int value) {
         return forNumber(value);
       }
@@ -914,7 +914,7 @@ public final class Protos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return LoginRep.getDescriptor().getEnumTypes().get(0);
+        return Protos.LoginRep.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final ClientType[] VALUES = values();
@@ -922,7 +922,7 @@ public final class Protos {
       public static ClientType valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
-          throw new IllegalArgumentException(
+          throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
         return VALUES[desc.getIndex()];
@@ -969,7 +969,7 @@ public final class Protos {
       /**
        * @deprecated Use {@link #forNumber(int)} instead.
        */
-      @Deprecated
+      @java.lang.Deprecated
       public static Status valueOf(int value) {
         return forNumber(value);
       }
@@ -1004,7 +1004,7 @@ public final class Protos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return LoginRep.getDescriptor().getEnumTypes().get(1);
+        return Protos.LoginRep.getDescriptor().getEnumTypes().get(1);
       }
 
       private static final Status[] VALUES = values();
@@ -1012,7 +1012,7 @@ public final class Protos {
       public static Status valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
-          throw new IllegalArgumentException(
+          throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
         return VALUES[desc.getIndex()];
@@ -1039,9 +1039,9 @@ public final class Protos {
     /**
      * <code>optional .LoginRep.ClientType cType = 1;</code>
      */
-    public ClientType getCType() {
-      ClientType result = ClientType.valueOf(cType_);
-      return result == null ? ClientType.COMPANY : result;
+    public Protos.LoginRep.ClientType getCType() {
+      Protos.LoginRep.ClientType result = Protos.LoginRep.ClientType.valueOf(cType_);
+      return result == null ? Protos.LoginRep.ClientType.COMPANY : result;
     }
 
     public static final int STATUS_FIELD_NUMBER = 2;
@@ -1055,9 +1055,9 @@ public final class Protos {
     /**
      * <code>required .LoginRep.Status status = 2;</code>
      */
-    public Status getStatus() {
-      Status result = Status.valueOf(status_);
-      return result == null ? Status.INVALID : result;
+    public Protos.LoginRep.Status getStatus() {
+      Protos.LoginRep.Status result = Protos.LoginRep.Status.valueOf(status_);
+      return result == null ? Protos.LoginRep.Status.INVALID : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1104,15 +1104,15 @@ public final class Protos {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof LoginRep)) {
+      if (!(obj instanceof Protos.LoginRep)) {
         return super.equals(obj);
       }
-      LoginRep other = (LoginRep) obj;
+      Protos.LoginRep other = (Protos.LoginRep) obj;
 
       boolean result = true;
       result = result && (hasCType() == other.hasCType());
@@ -1127,7 +1127,7 @@ public final class Protos {
       return result;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -1147,58 +1147,58 @@ public final class Protos {
       return hash;
     }
 
-    public static LoginRep parseFrom(
+    public static Protos.LoginRep parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static LoginRep parseFrom(
+    public static Protos.LoginRep parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static LoginRep parseFrom(byte[] data)
+    public static Protos.LoginRep parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static LoginRep parseFrom(
+    public static Protos.LoginRep parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static LoginRep parseFrom(java.io.InputStream input)
+    public static Protos.LoginRep parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static LoginRep parseFrom(
+    public static Protos.LoginRep parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static LoginRep parseDelimitedFrom(java.io.InputStream input)
+    public static Protos.LoginRep parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static LoginRep parseDelimitedFrom(
+    public static Protos.LoginRep parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static LoginRep parseFrom(
+    public static Protos.LoginRep parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static LoginRep parseFrom(
+    public static Protos.LoginRep parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1210,7 +1210,7 @@ public final class Protos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(LoginRep prototype) {
+    public static Builder newBuilder(Protos.LoginRep prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -1218,9 +1218,9 @@ public final class Protos {
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1230,17 +1230,17 @@ public final class Protos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:LoginRep)
-        LoginRepOrBuilder {
+        Protos.LoginRepOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return Protos.internal_static_LoginRep_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return Protos.internal_static_LoginRep_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                LoginRep.class, Builder.class);
+                Protos.LoginRep.class, Protos.LoginRep.Builder.class);
       }
 
       // Construct using Protos.LoginRep.newBuilder()
@@ -1249,7 +1249,7 @@ public final class Protos {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1272,20 +1272,20 @@ public final class Protos {
         return Protos.internal_static_LoginRep_descriptor;
       }
 
-      public LoginRep getDefaultInstanceForType() {
-        return LoginRep.getDefaultInstance();
+      public Protos.LoginRep getDefaultInstanceForType() {
+        return Protos.LoginRep.getDefaultInstance();
       }
 
-      public LoginRep build() {
-        LoginRep result = buildPartial();
+      public Protos.LoginRep build() {
+        Protos.LoginRep result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public LoginRep buildPartial() {
-        LoginRep result = new LoginRep(this);
+      public Protos.LoginRep buildPartial() {
+        Protos.LoginRep result = new Protos.LoginRep(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1328,16 +1328,16 @@ public final class Protos {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof LoginRep) {
-          return mergeFrom((LoginRep)other);
+        if (other instanceof Protos.LoginRep) {
+          return mergeFrom((Protos.LoginRep)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(LoginRep other) {
-        if (other == LoginRep.getDefaultInstance()) return this;
+      public Builder mergeFrom(Protos.LoginRep other) {
+        if (other == Protos.LoginRep.getDefaultInstance()) return this;
         if (other.hasCType()) {
           setCType(other.getCType());
         }
@@ -1360,11 +1360,11 @@ public final class Protos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        LoginRep parsedMessage = null;
+        Protos.LoginRep parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (LoginRep) e.getUnfinishedMessage();
+          parsedMessage = (Protos.LoginRep) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1385,14 +1385,14 @@ public final class Protos {
       /**
        * <code>optional .LoginRep.ClientType cType = 1;</code>
        */
-      public ClientType getCType() {
-        ClientType result = ClientType.valueOf(cType_);
-        return result == null ? ClientType.COMPANY : result;
+      public Protos.LoginRep.ClientType getCType() {
+        Protos.LoginRep.ClientType result = Protos.LoginRep.ClientType.valueOf(cType_);
+        return result == null ? Protos.LoginRep.ClientType.COMPANY : result;
       }
       /**
        * <code>optional .LoginRep.ClientType cType = 1;</code>
        */
-      public Builder setCType(ClientType value) {
+      public Builder setCType(Protos.LoginRep.ClientType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -1421,14 +1421,14 @@ public final class Protos {
       /**
        * <code>required .LoginRep.Status status = 2;</code>
        */
-      public Status getStatus() {
-        Status result = Status.valueOf(status_);
-        return result == null ? Status.INVALID : result;
+      public Protos.LoginRep.Status getStatus() {
+        Protos.LoginRep.Status result = Protos.LoginRep.Status.valueOf(status_);
+        return result == null ? Protos.LoginRep.Status.INVALID : result;
       }
       /**
        * <code>required .LoginRep.Status status = 2;</code>
        */
-      public Builder setStatus(Status value) {
+      public Builder setStatus(Protos.LoginRep.Status value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -1461,16 +1461,16 @@ public final class Protos {
     }
 
     // @@protoc_insertion_point(class_scope:LoginRep)
-    private static final LoginRep DEFAULT_INSTANCE;
+    private static final Protos.LoginRep DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new LoginRep();
+      DEFAULT_INSTANCE = new Protos.LoginRep();
     }
 
-    public static LoginRep getDefaultInstance() {
+    public static Protos.LoginRep getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @Deprecated public static final com.google.protobuf.Parser<LoginRep>
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<LoginRep>
         PARSER = new com.google.protobuf.AbstractParser<LoginRep>() {
       public LoginRep parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
@@ -1484,12 +1484,12 @@ public final class Protos {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<LoginRep> getParserForType() {
       return PARSER;
     }
 
-    public LoginRep getDefaultInstanceForType() {
+    public Protos.LoginRep getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1533,7 +1533,7 @@ public final class Protos {
       maxRate_ = 0F;
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -1588,11 +1588,11 @@ public final class Protos {
       return Protos.internal_static_AuctionReq_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return Protos.internal_static_AuctionReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              AuctionReq.class, Builder.class);
+              Protos.AuctionReq.class, Protos.AuctionReq.Builder.class);
     }
 
     private int bitField0_;
@@ -1674,36 +1674,36 @@ public final class Protos {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof AuctionReq)) {
+      if (!(obj instanceof Protos.AuctionReq)) {
         return super.equals(obj);
       }
-      AuctionReq other = (AuctionReq) obj;
+      Protos.AuctionReq other = (Protos.AuctionReq) obj;
 
       boolean result = true;
       result = result && (hasValue() == other.hasValue());
       if (hasValue()) {
         result = result && (
-            Float.floatToIntBits(getValue())
-            == Float.floatToIntBits(
+            java.lang.Float.floatToIntBits(getValue())
+            == java.lang.Float.floatToIntBits(
                 other.getValue()));
       }
       result = result && (hasMaxRate() == other.hasMaxRate());
       if (hasMaxRate()) {
         result = result && (
-            Float.floatToIntBits(getMaxRate())
-            == Float.floatToIntBits(
+            java.lang.Float.floatToIntBits(getMaxRate())
+            == java.lang.Float.floatToIntBits(
                 other.getMaxRate()));
       }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -1712,12 +1712,12 @@ public final class Protos {
       hash = (19 * hash) + getDescriptorForType().hashCode();
       if (hasValue()) {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
-        hash = (53 * hash) + Float.floatToIntBits(
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getValue());
       }
       if (hasMaxRate()) {
         hash = (37 * hash) + MAX_RATE_FIELD_NUMBER;
-        hash = (53 * hash) + Float.floatToIntBits(
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getMaxRate());
       }
       hash = (29 * hash) + unknownFields.hashCode();
@@ -1725,58 +1725,58 @@ public final class Protos {
       return hash;
     }
 
-    public static AuctionReq parseFrom(
+    public static Protos.AuctionReq parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static AuctionReq parseFrom(
+    public static Protos.AuctionReq parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static AuctionReq parseFrom(byte[] data)
+    public static Protos.AuctionReq parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static AuctionReq parseFrom(
+    public static Protos.AuctionReq parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static AuctionReq parseFrom(java.io.InputStream input)
+    public static Protos.AuctionReq parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static AuctionReq parseFrom(
+    public static Protos.AuctionReq parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static AuctionReq parseDelimitedFrom(java.io.InputStream input)
+    public static Protos.AuctionReq parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static AuctionReq parseDelimitedFrom(
+    public static Protos.AuctionReq parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static AuctionReq parseFrom(
+    public static Protos.AuctionReq parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static AuctionReq parseFrom(
+    public static Protos.AuctionReq parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1788,7 +1788,7 @@ public final class Protos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(AuctionReq prototype) {
+    public static Builder newBuilder(Protos.AuctionReq prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -1796,9 +1796,9 @@ public final class Protos {
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1808,17 +1808,17 @@ public final class Protos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:AuctionReq)
-        AuctionReqOrBuilder {
+        Protos.AuctionReqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return Protos.internal_static_AuctionReq_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return Protos.internal_static_AuctionReq_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                AuctionReq.class, Builder.class);
+                Protos.AuctionReq.class, Protos.AuctionReq.Builder.class);
       }
 
       // Construct using Protos.AuctionReq.newBuilder()
@@ -1827,7 +1827,7 @@ public final class Protos {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -1850,20 +1850,20 @@ public final class Protos {
         return Protos.internal_static_AuctionReq_descriptor;
       }
 
-      public AuctionReq getDefaultInstanceForType() {
-        return AuctionReq.getDefaultInstance();
+      public Protos.AuctionReq getDefaultInstanceForType() {
+        return Protos.AuctionReq.getDefaultInstance();
       }
 
-      public AuctionReq build() {
-        AuctionReq result = buildPartial();
+      public Protos.AuctionReq build() {
+        Protos.AuctionReq result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public AuctionReq buildPartial() {
-        AuctionReq result = new AuctionReq(this);
+      public Protos.AuctionReq buildPartial() {
+        Protos.AuctionReq result = new Protos.AuctionReq(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1906,16 +1906,16 @@ public final class Protos {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof AuctionReq) {
-          return mergeFrom((AuctionReq)other);
+        if (other instanceof Protos.AuctionReq) {
+          return mergeFrom((Protos.AuctionReq)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(AuctionReq other) {
-        if (other == AuctionReq.getDefaultInstance()) return this;
+      public Builder mergeFrom(Protos.AuctionReq other) {
+        if (other == Protos.AuctionReq.getDefaultInstance()) return this;
         if (other.hasValue()) {
           setValue(other.getValue());
         }
@@ -1941,11 +1941,11 @@ public final class Protos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        AuctionReq parsedMessage = null;
+        Protos.AuctionReq parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (AuctionReq) e.getUnfinishedMessage();
+          parsedMessage = (Protos.AuctionReq) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2034,16 +2034,16 @@ public final class Protos {
     }
 
     // @@protoc_insertion_point(class_scope:AuctionReq)
-    private static final AuctionReq DEFAULT_INSTANCE;
+    private static final Protos.AuctionReq DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new AuctionReq();
+      DEFAULT_INSTANCE = new Protos.AuctionReq();
     }
 
-    public static AuctionReq getDefaultInstance() {
+    public static Protos.AuctionReq getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @Deprecated public static final com.google.protobuf.Parser<AuctionReq>
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<AuctionReq>
         PARSER = new com.google.protobuf.AbstractParser<AuctionReq>() {
       public AuctionReq parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
@@ -2057,12 +2057,12 @@ public final class Protos {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<AuctionReq> getParserForType() {
       return PARSER;
     }
 
-    public AuctionReq getDefaultInstanceForType() {
+    public Protos.AuctionReq getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2079,7 +2079,7 @@ public final class Protos {
     /**
      * <code>required .AuctionResp.Status status = 1;</code>
      */
-    AuctionResp.Status getStatus();
+    Protos.AuctionResp.Status getStatus();
   }
   /**
    * Protobuf type {@code AuctionResp}
@@ -2096,7 +2096,7 @@ public final class Protos {
       status_ = 0;
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -2126,7 +2126,7 @@ public final class Protos {
             }
             case 8: {
               int rawValue = input.readEnum();
-              Status value = Status.valueOf(rawValue);
+              Protos.AuctionResp.Status value = Protos.AuctionResp.Status.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
@@ -2152,11 +2152,11 @@ public final class Protos {
       return Protos.internal_static_AuctionResp_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return Protos.internal_static_AuctionResp_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              AuctionResp.class, Builder.class);
+              Protos.AuctionResp.class, Protos.AuctionResp.Builder.class);
     }
 
     /**
@@ -2191,7 +2191,7 @@ public final class Protos {
       /**
        * @deprecated Use {@link #forNumber(int)} instead.
        */
-      @Deprecated
+      @java.lang.Deprecated
       public static Status valueOf(int value) {
         return forNumber(value);
       }
@@ -2226,7 +2226,7 @@ public final class Protos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return AuctionResp.getDescriptor().getEnumTypes().get(0);
+        return Protos.AuctionResp.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final Status[] VALUES = values();
@@ -2234,7 +2234,7 @@ public final class Protos {
       public static Status valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
-          throw new IllegalArgumentException(
+          throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
         return VALUES[desc.getIndex()];
@@ -2261,9 +2261,9 @@ public final class Protos {
     /**
      * <code>required .AuctionResp.Status status = 1;</code>
      */
-    public Status getStatus() {
-      Status result = Status.valueOf(status_);
-      return result == null ? Status.SUCCESS : result;
+    public Protos.AuctionResp.Status getStatus() {
+      Protos.AuctionResp.Status result = Protos.AuctionResp.Status.valueOf(status_);
+      return result == null ? Protos.AuctionResp.Status.SUCCESS : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2303,15 +2303,15 @@ public final class Protos {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof AuctionResp)) {
+      if (!(obj instanceof Protos.AuctionResp)) {
         return super.equals(obj);
       }
-      AuctionResp other = (AuctionResp) obj;
+      Protos.AuctionResp other = (Protos.AuctionResp) obj;
 
       boolean result = true;
       result = result && (hasStatus() == other.hasStatus());
@@ -2322,7 +2322,7 @@ public final class Protos {
       return result;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -2338,58 +2338,58 @@ public final class Protos {
       return hash;
     }
 
-    public static AuctionResp parseFrom(
+    public static Protos.AuctionResp parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static AuctionResp parseFrom(
+    public static Protos.AuctionResp parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static AuctionResp parseFrom(byte[] data)
+    public static Protos.AuctionResp parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static AuctionResp parseFrom(
+    public static Protos.AuctionResp parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static AuctionResp parseFrom(java.io.InputStream input)
+    public static Protos.AuctionResp parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static AuctionResp parseFrom(
+    public static Protos.AuctionResp parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static AuctionResp parseDelimitedFrom(java.io.InputStream input)
+    public static Protos.AuctionResp parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static AuctionResp parseDelimitedFrom(
+    public static Protos.AuctionResp parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static AuctionResp parseFrom(
+    public static Protos.AuctionResp parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static AuctionResp parseFrom(
+    public static Protos.AuctionResp parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -2401,7 +2401,7 @@ public final class Protos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(AuctionResp prototype) {
+    public static Builder newBuilder(Protos.AuctionResp prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -2409,9 +2409,9 @@ public final class Protos {
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -2421,17 +2421,17 @@ public final class Protos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:AuctionResp)
-        AuctionRespOrBuilder {
+        Protos.AuctionRespOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return Protos.internal_static_AuctionResp_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return Protos.internal_static_AuctionResp_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                AuctionResp.class, Builder.class);
+                Protos.AuctionResp.class, Protos.AuctionResp.Builder.class);
       }
 
       // Construct using Protos.AuctionResp.newBuilder()
@@ -2440,7 +2440,7 @@ public final class Protos {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -2461,20 +2461,20 @@ public final class Protos {
         return Protos.internal_static_AuctionResp_descriptor;
       }
 
-      public AuctionResp getDefaultInstanceForType() {
-        return AuctionResp.getDefaultInstance();
+      public Protos.AuctionResp getDefaultInstanceForType() {
+        return Protos.AuctionResp.getDefaultInstance();
       }
 
-      public AuctionResp build() {
-        AuctionResp result = buildPartial();
+      public Protos.AuctionResp build() {
+        Protos.AuctionResp result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public AuctionResp buildPartial() {
-        AuctionResp result = new AuctionResp(this);
+      public Protos.AuctionResp buildPartial() {
+        Protos.AuctionResp result = new Protos.AuctionResp(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -2513,16 +2513,16 @@ public final class Protos {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof AuctionResp) {
-          return mergeFrom((AuctionResp)other);
+        if (other instanceof Protos.AuctionResp) {
+          return mergeFrom((Protos.AuctionResp)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(AuctionResp other) {
-        if (other == AuctionResp.getDefaultInstance()) return this;
+      public Builder mergeFrom(Protos.AuctionResp other) {
+        if (other == Protos.AuctionResp.getDefaultInstance()) return this;
         if (other.hasStatus()) {
           setStatus(other.getStatus());
         }
@@ -2542,11 +2542,11 @@ public final class Protos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        AuctionResp parsedMessage = null;
+        Protos.AuctionResp parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (AuctionResp) e.getUnfinishedMessage();
+          parsedMessage = (Protos.AuctionResp) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2567,14 +2567,14 @@ public final class Protos {
       /**
        * <code>required .AuctionResp.Status status = 1;</code>
        */
-      public Status getStatus() {
-        Status result = Status.valueOf(status_);
-        return result == null ? Status.SUCCESS : result;
+      public Protos.AuctionResp.Status getStatus() {
+        Protos.AuctionResp.Status result = Protos.AuctionResp.Status.valueOf(status_);
+        return result == null ? Protos.AuctionResp.Status.SUCCESS : result;
       }
       /**
        * <code>required .AuctionResp.Status status = 1;</code>
        */
-      public Builder setStatus(Status value) {
+      public Builder setStatus(Protos.AuctionResp.Status value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -2607,16 +2607,16 @@ public final class Protos {
     }
 
     // @@protoc_insertion_point(class_scope:AuctionResp)
-    private static final AuctionResp DEFAULT_INSTANCE;
+    private static final Protos.AuctionResp DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new AuctionResp();
+      DEFAULT_INSTANCE = new Protos.AuctionResp();
     }
 
-    public static AuctionResp getDefaultInstance() {
+    public static Protos.AuctionResp getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @Deprecated public static final com.google.protobuf.Parser<AuctionResp>
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<AuctionResp>
         PARSER = new com.google.protobuf.AbstractParser<AuctionResp>() {
       public AuctionResp parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
@@ -2630,12 +2630,12 @@ public final class Protos {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<AuctionResp> getParserForType() {
       return PARSER;
     }
 
-    public AuctionResp getDefaultInstanceForType() {
+    public Protos.AuctionResp getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2646,29 +2646,43 @@ public final class Protos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .InvestorActionReq.RequestType req_type = 1;</code>
+     * <code>required string company = 1;</code>
+     */
+    boolean hasCompany();
+    /**
+     * <code>required string company = 1;</code>
+     */
+    java.lang.String getCompany();
+    /**
+     * <code>required string company = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getCompanyBytes();
+
+    /**
+     * <code>required .InvestorActionReq.RequestType req_type = 2;</code>
      */
     boolean hasReqType();
     /**
-     * <code>required .InvestorActionReq.RequestType req_type = 1;</code>
+     * <code>required .InvestorActionReq.RequestType req_type = 2;</code>
      */
-    InvestorActionReq.RequestType getReqType();
+    Protos.InvestorActionReq.RequestType getReqType();
 
     /**
-     * <code>required float value = 2;</code>
+     * <code>required float value = 3;</code>
      */
     boolean hasValue();
     /**
-     * <code>required float value = 2;</code>
+     * <code>required float value = 3;</code>
      */
     float getValue();
 
     /**
-     * <code>optional float rate = 3;</code>
+     * <code>optional float rate = 4;</code>
      */
     boolean hasRate();
     /**
-     * <code>optional float rate = 3;</code>
+     * <code>optional float rate = 4;</code>
      */
     float getRate();
   }
@@ -2684,12 +2698,13 @@ public final class Protos {
       super(builder);
     }
     private InvestorActionReq() {
+      company_ = "";
       reqType_ = 0;
       value_ = 0F;
       rate_ = 0F;
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -2717,24 +2732,30 @@ public final class Protos {
               }
               break;
             }
-            case 8: {
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              company_ = bs;
+              break;
+            }
+            case 16: {
               int rawValue = input.readEnum();
-              RequestType value = RequestType.valueOf(rawValue);
+              Protos.InvestorActionReq.RequestType value = Protos.InvestorActionReq.RequestType.valueOf(rawValue);
               if (value == null) {
-                unknownFields.mergeVarintField(1, rawValue);
+                unknownFields.mergeVarintField(2, rawValue);
               } else {
-                bitField0_ |= 0x00000001;
+                bitField0_ |= 0x00000002;
                 reqType_ = rawValue;
               }
               break;
             }
-            case 21: {
-              bitField0_ |= 0x00000002;
+            case 29: {
+              bitField0_ |= 0x00000004;
               value_ = input.readFloat();
               break;
             }
-            case 29: {
-              bitField0_ |= 0x00000004;
+            case 37: {
+              bitField0_ |= 0x00000008;
               rate_ = input.readFloat();
               break;
             }
@@ -2755,11 +2776,11 @@ public final class Protos {
       return Protos.internal_static_InvestorActionReq_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return Protos.internal_static_InvestorActionReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              InvestorActionReq.class, Builder.class);
+              Protos.InvestorActionReq.class, Protos.InvestorActionReq.Builder.class);
     }
 
     /**
@@ -2794,7 +2815,7 @@ public final class Protos {
       /**
        * @deprecated Use {@link #forNumber(int)} instead.
        */
-      @Deprecated
+      @java.lang.Deprecated
       public static RequestType valueOf(int value) {
         return forNumber(value);
       }
@@ -2829,7 +2850,7 @@ public final class Protos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return InvestorActionReq.getDescriptor().getEnumTypes().get(0);
+        return Protos.InvestorActionReq.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final RequestType[] VALUES = values();
@@ -2837,7 +2858,7 @@ public final class Protos {
       public static RequestType valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
-          throw new IllegalArgumentException(
+          throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
         return VALUES[desc.getIndex()];
@@ -2853,47 +2874,89 @@ public final class Protos {
     }
 
     private int bitField0_;
-    public static final int REQ_TYPE_FIELD_NUMBER = 1;
-    private int reqType_;
+    public static final int COMPANY_FIELD_NUMBER = 1;
+    private volatile java.lang.Object company_;
     /**
-     * <code>required .InvestorActionReq.RequestType req_type = 1;</code>
+     * <code>required string company = 1;</code>
      */
-    public boolean hasReqType() {
+    public boolean hasCompany() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .InvestorActionReq.RequestType req_type = 1;</code>
+     * <code>required string company = 1;</code>
      */
-    public RequestType getReqType() {
-      RequestType result = RequestType.valueOf(reqType_);
-      return result == null ? RequestType.AUCTION : result;
+    public java.lang.String getCompany() {
+      java.lang.Object ref = company_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          company_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string company = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCompanyBytes() {
+      java.lang.Object ref = company_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        company_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
-    public static final int VALUE_FIELD_NUMBER = 2;
-    private float value_;
+    public static final int REQ_TYPE_FIELD_NUMBER = 2;
+    private int reqType_;
     /**
-     * <code>required float value = 2;</code>
+     * <code>required .InvestorActionReq.RequestType req_type = 2;</code>
      */
-    public boolean hasValue() {
+    public boolean hasReqType() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required float value = 2;</code>
+     * <code>required .InvestorActionReq.RequestType req_type = 2;</code>
+     */
+    public Protos.InvestorActionReq.RequestType getReqType() {
+      Protos.InvestorActionReq.RequestType result = Protos.InvestorActionReq.RequestType.valueOf(reqType_);
+      return result == null ? Protos.InvestorActionReq.RequestType.AUCTION : result;
+    }
+
+    public static final int VALUE_FIELD_NUMBER = 3;
+    private float value_;
+    /**
+     * <code>required float value = 3;</code>
+     */
+    public boolean hasValue() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required float value = 3;</code>
      */
     public float getValue() {
       return value_;
     }
 
-    public static final int RATE_FIELD_NUMBER = 3;
+    public static final int RATE_FIELD_NUMBER = 4;
     private float rate_;
     /**
-     * <code>optional float rate = 3;</code>
+     * <code>optional float rate = 4;</code>
      */
     public boolean hasRate() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional float rate = 3;</code>
+     * <code>optional float rate = 4;</code>
      */
     public float getRate() {
       return rate_;
@@ -2905,6 +2968,10 @@ public final class Protos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasCompany()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!hasReqType()) {
         memoizedIsInitialized = 0;
         return false;
@@ -2920,13 +2987,16 @@ public final class Protos {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(1, reqType_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, company_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeFloat(2, value_);
+        output.writeEnum(2, reqType_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeFloat(3, rate_);
+        output.writeFloat(3, value_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeFloat(4, rate_);
       }
       unknownFields.writeTo(output);
     }
@@ -2937,16 +3007,19 @@ public final class Protos {
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, reqType_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, company_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(2, value_);
+          .computeEnumSize(2, reqType_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(3, rate_);
+          .computeFloatSize(3, value_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(4, rate_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2954,17 +3027,22 @@ public final class Protos {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof InvestorActionReq)) {
+      if (!(obj instanceof Protos.InvestorActionReq)) {
         return super.equals(obj);
       }
-      InvestorActionReq other = (InvestorActionReq) obj;
+      Protos.InvestorActionReq other = (Protos.InvestorActionReq) obj;
 
       boolean result = true;
+      result = result && (hasCompany() == other.hasCompany());
+      if (hasCompany()) {
+        result = result && getCompany()
+            .equals(other.getCompany());
+      }
       result = result && (hasReqType() == other.hasReqType());
       if (hasReqType()) {
         result = result && reqType_ == other.reqType_;
@@ -2972,40 +3050,44 @@ public final class Protos {
       result = result && (hasValue() == other.hasValue());
       if (hasValue()) {
         result = result && (
-            Float.floatToIntBits(getValue())
-            == Float.floatToIntBits(
+            java.lang.Float.floatToIntBits(getValue())
+            == java.lang.Float.floatToIntBits(
                 other.getValue()));
       }
       result = result && (hasRate() == other.hasRate());
       if (hasRate()) {
         result = result && (
-            Float.floatToIntBits(getRate())
-            == Float.floatToIntBits(
+            java.lang.Float.floatToIntBits(getRate())
+            == java.lang.Float.floatToIntBits(
                 other.getRate()));
       }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasCompany()) {
+        hash = (37 * hash) + COMPANY_FIELD_NUMBER;
+        hash = (53 * hash) + getCompany().hashCode();
+      }
       if (hasReqType()) {
         hash = (37 * hash) + REQ_TYPE_FIELD_NUMBER;
         hash = (53 * hash) + reqType_;
       }
       if (hasValue()) {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
-        hash = (53 * hash) + Float.floatToIntBits(
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getValue());
       }
       if (hasRate()) {
         hash = (37 * hash) + RATE_FIELD_NUMBER;
-        hash = (53 * hash) + Float.floatToIntBits(
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getRate());
       }
       hash = (29 * hash) + unknownFields.hashCode();
@@ -3013,58 +3095,58 @@ public final class Protos {
       return hash;
     }
 
-    public static InvestorActionReq parseFrom(
+    public static Protos.InvestorActionReq parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static InvestorActionReq parseFrom(
+    public static Protos.InvestorActionReq parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static InvestorActionReq parseFrom(byte[] data)
+    public static Protos.InvestorActionReq parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static InvestorActionReq parseFrom(
+    public static Protos.InvestorActionReq parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static InvestorActionReq parseFrom(java.io.InputStream input)
+    public static Protos.InvestorActionReq parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static InvestorActionReq parseFrom(
+    public static Protos.InvestorActionReq parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static InvestorActionReq parseDelimitedFrom(java.io.InputStream input)
+    public static Protos.InvestorActionReq parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static InvestorActionReq parseDelimitedFrom(
+    public static Protos.InvestorActionReq parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static InvestorActionReq parseFrom(
+    public static Protos.InvestorActionReq parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static InvestorActionReq parseFrom(
+    public static Protos.InvestorActionReq parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3076,7 +3158,7 @@ public final class Protos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(InvestorActionReq prototype) {
+    public static Builder newBuilder(Protos.InvestorActionReq prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -3084,9 +3166,9 @@ public final class Protos {
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -3096,17 +3178,17 @@ public final class Protos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:InvestorActionReq)
-        InvestorActionReqOrBuilder {
+        Protos.InvestorActionReqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return Protos.internal_static_InvestorActionReq_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return Protos.internal_static_InvestorActionReq_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                InvestorActionReq.class, Builder.class);
+                Protos.InvestorActionReq.class, Protos.InvestorActionReq.Builder.class);
       }
 
       // Construct using Protos.InvestorActionReq.newBuilder()
@@ -3115,7 +3197,7 @@ public final class Protos {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -3126,12 +3208,14 @@ public final class Protos {
       }
       public Builder clear() {
         super.clear();
-        reqType_ = 0;
+        company_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        value_ = 0F;
+        reqType_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        rate_ = 0F;
+        value_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000004);
+        rate_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -3140,32 +3224,36 @@ public final class Protos {
         return Protos.internal_static_InvestorActionReq_descriptor;
       }
 
-      public InvestorActionReq getDefaultInstanceForType() {
-        return InvestorActionReq.getDefaultInstance();
+      public Protos.InvestorActionReq getDefaultInstanceForType() {
+        return Protos.InvestorActionReq.getDefaultInstance();
       }
 
-      public InvestorActionReq build() {
-        InvestorActionReq result = buildPartial();
+      public Protos.InvestorActionReq build() {
+        Protos.InvestorActionReq result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public InvestorActionReq buildPartial() {
-        InvestorActionReq result = new InvestorActionReq(this);
+      public Protos.InvestorActionReq buildPartial() {
+        Protos.InvestorActionReq result = new Protos.InvestorActionReq(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.reqType_ = reqType_;
+        result.company_ = company_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.value_ = value_;
+        result.reqType_ = reqType_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
+        }
+        result.value_ = value_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
         }
         result.rate_ = rate_;
         result.bitField0_ = to_bitField0_;
@@ -3200,16 +3288,21 @@ public final class Protos {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof InvestorActionReq) {
-          return mergeFrom((InvestorActionReq)other);
+        if (other instanceof Protos.InvestorActionReq) {
+          return mergeFrom((Protos.InvestorActionReq)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(InvestorActionReq other) {
-        if (other == InvestorActionReq.getDefaultInstance()) return this;
+      public Builder mergeFrom(Protos.InvestorActionReq other) {
+        if (other == Protos.InvestorActionReq.getDefaultInstance()) return this;
+        if (other.hasCompany()) {
+          bitField0_ |= 0x00000001;
+          company_ = other.company_;
+          onChanged();
+        }
         if (other.hasReqType()) {
           setReqType(other.getReqType());
         }
@@ -3225,6 +3318,9 @@ public final class Protos {
       }
 
       public final boolean isInitialized() {
+        if (!hasCompany()) {
+          return false;
+        }
         if (!hasReqType()) {
           return false;
         }
@@ -3238,11 +3334,11 @@ public final class Protos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        InvestorActionReq parsedMessage = null;
+        Protos.InvestorActionReq parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (InvestorActionReq) e.getUnfinishedMessage();
+          parsedMessage = (Protos.InvestorActionReq) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3253,37 +3349,113 @@ public final class Protos {
       }
       private int bitField0_;
 
-      private int reqType_ = 0;
+      private java.lang.Object company_ = "";
       /**
-       * <code>required .InvestorActionReq.RequestType req_type = 1;</code>
+       * <code>required string company = 1;</code>
        */
-      public boolean hasReqType() {
+      public boolean hasCompany() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .InvestorActionReq.RequestType req_type = 1;</code>
+       * <code>required string company = 1;</code>
        */
-      public RequestType getReqType() {
-        RequestType result = RequestType.valueOf(reqType_);
-        return result == null ? RequestType.AUCTION : result;
+      public java.lang.String getCompany() {
+        java.lang.Object ref = company_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            company_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required .InvestorActionReq.RequestType req_type = 1;</code>
+       * <code>required string company = 1;</code>
        */
-      public Builder setReqType(RequestType value) {
+      public com.google.protobuf.ByteString
+          getCompanyBytes() {
+        java.lang.Object ref = company_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          company_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string company = 1;</code>
+       */
+      public Builder setCompany(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        company_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string company = 1;</code>
+       */
+      public Builder clearCompany() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        company_ = getDefaultInstance().getCompany();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string company = 1;</code>
+       */
+      public Builder setCompanyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        company_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int reqType_ = 0;
+      /**
+       * <code>required .InvestorActionReq.RequestType req_type = 2;</code>
+       */
+      public boolean hasReqType() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .InvestorActionReq.RequestType req_type = 2;</code>
+       */
+      public Protos.InvestorActionReq.RequestType getReqType() {
+        Protos.InvestorActionReq.RequestType result = Protos.InvestorActionReq.RequestType.valueOf(reqType_);
+        return result == null ? Protos.InvestorActionReq.RequestType.AUCTION : result;
+      }
+      /**
+       * <code>required .InvestorActionReq.RequestType req_type = 2;</code>
+       */
+      public Builder setReqType(Protos.InvestorActionReq.RequestType value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         reqType_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
-       * <code>required .InvestorActionReq.RequestType req_type = 1;</code>
+       * <code>required .InvestorActionReq.RequestType req_type = 2;</code>
        */
       public Builder clearReqType() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         reqType_ = 0;
         onChanged();
         return this;
@@ -3291,31 +3463,31 @@ public final class Protos {
 
       private float value_ ;
       /**
-       * <code>required float value = 2;</code>
+       * <code>required float value = 3;</code>
        */
       public boolean hasValue() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required float value = 2;</code>
+       * <code>required float value = 3;</code>
        */
       public float getValue() {
         return value_;
       }
       /**
-       * <code>required float value = 2;</code>
+       * <code>required float value = 3;</code>
        */
       public Builder setValue(float value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         value_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required float value = 2;</code>
+       * <code>required float value = 3;</code>
        */
       public Builder clearValue() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         value_ = 0F;
         onChanged();
         return this;
@@ -3323,31 +3495,31 @@ public final class Protos {
 
       private float rate_ ;
       /**
-       * <code>optional float rate = 3;</code>
+       * <code>optional float rate = 4;</code>
        */
       public boolean hasRate() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional float rate = 3;</code>
+       * <code>optional float rate = 4;</code>
        */
       public float getRate() {
         return rate_;
       }
       /**
-       * <code>optional float rate = 3;</code>
+       * <code>optional float rate = 4;</code>
        */
       public Builder setRate(float value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         rate_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional float rate = 3;</code>
+       * <code>optional float rate = 4;</code>
        */
       public Builder clearRate() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         rate_ = 0F;
         onChanged();
         return this;
@@ -3367,16 +3539,16 @@ public final class Protos {
     }
 
     // @@protoc_insertion_point(class_scope:InvestorActionReq)
-    private static final InvestorActionReq DEFAULT_INSTANCE;
+    private static final Protos.InvestorActionReq DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new InvestorActionReq();
+      DEFAULT_INSTANCE = new Protos.InvestorActionReq();
     }
 
-    public static InvestorActionReq getDefaultInstance() {
+    public static Protos.InvestorActionReq getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @Deprecated public static final com.google.protobuf.Parser<InvestorActionReq>
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<InvestorActionReq>
         PARSER = new com.google.protobuf.AbstractParser<InvestorActionReq>() {
       public InvestorActionReq parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
@@ -3390,12 +3562,12 @@ public final class Protos {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<InvestorActionReq> getParserForType() {
       return PARSER;
     }
 
-    public InvestorActionReq getDefaultInstanceForType() {
+    public Protos.InvestorActionReq getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3406,13 +3578,13 @@ public final class Protos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .InvestorActionResp.Auction_Status status = 1;</code>
+     * <code>required .InvestorActionResp.Status status = 1;</code>
      */
     boolean hasStatus();
     /**
-     * <code>required .InvestorActionResp.Auction_Status status = 1;</code>
+     * <code>required .InvestorActionResp.Status status = 1;</code>
      */
-    InvestorActionResp.Auction_Status getStatus();
+    Protos.InvestorActionResp.Status getStatus();
   }
   /**
    * Protobuf type {@code InvestorActionResp}
@@ -3429,7 +3601,7 @@ public final class Protos {
       status_ = 0;
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return this.unknownFields;
@@ -3459,7 +3631,7 @@ public final class Protos {
             }
             case 8: {
               int rawValue = input.readEnum();
-              Auction_Status value = Auction_Status.valueOf(rawValue);
+              Protos.InvestorActionResp.Status value = Protos.InvestorActionResp.Status.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
@@ -3485,17 +3657,17 @@ public final class Protos {
       return Protos.internal_static_InvestorActionResp_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return Protos.internal_static_InvestorActionResp_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              InvestorActionResp.class, Builder.class);
+              Protos.InvestorActionResp.class, Protos.InvestorActionResp.Builder.class);
     }
 
     /**
-     * Protobuf enum {@code InvestorActionResp.Auction_Status}
+     * Protobuf enum {@code InvestorActionResp.Status}
      */
-    public enum Auction_Status
+    public enum Status
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
        * <code>CONFIRMED = 0;</code>
@@ -3564,12 +3736,12 @@ public final class Protos {
       /**
        * @deprecated Use {@link #forNumber(int)} instead.
        */
-      @Deprecated
-      public static Auction_Status valueOf(int value) {
+      @java.lang.Deprecated
+      public static Status valueOf(int value) {
         return forNumber(value);
       }
 
-      public static Auction_Status forNumber(int value) {
+      public static Status forNumber(int value) {
         switch (value) {
           case 0: return CONFIRMED;
           case 1: return REPLACED;
@@ -3579,15 +3751,15 @@ public final class Protos {
         }
       }
 
-      public static com.google.protobuf.Internal.EnumLiteMap<Auction_Status>
+      public static com.google.protobuf.Internal.EnumLiteMap<Status>
           internalGetValueMap() {
         return internalValueMap;
       }
       private static final com.google.protobuf.Internal.EnumLiteMap<
-          Auction_Status> internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<Auction_Status>() {
-              public Auction_Status findValueByNumber(int number) {
-                return Auction_Status.forNumber(number);
+          Status> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<Status>() {
+              public Status findValueByNumber(int number) {
+                return Status.forNumber(number);
               }
             };
 
@@ -3601,15 +3773,15 @@ public final class Protos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return InvestorActionResp.getDescriptor().getEnumTypes().get(0);
+        return Protos.InvestorActionResp.getDescriptor().getEnumTypes().get(0);
       }
 
-      private static final Auction_Status[] VALUES = values();
+      private static final Status[] VALUES = values();
 
-      public static Auction_Status valueOf(
+      public static Status valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
-          throw new IllegalArgumentException(
+          throw new java.lang.IllegalArgumentException(
             "EnumValueDescriptor is not for this type.");
         }
         return VALUES[desc.getIndex()];
@@ -3617,28 +3789,28 @@ public final class Protos {
 
       private final int value;
 
-      private Auction_Status(int value) {
+      private Status(int value) {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:InvestorActionResp.Auction_Status)
+      // @@protoc_insertion_point(enum_scope:InvestorActionResp.Status)
     }
 
     private int bitField0_;
     public static final int STATUS_FIELD_NUMBER = 1;
     private int status_;
     /**
-     * <code>required .InvestorActionResp.Auction_Status status = 1;</code>
+     * <code>required .InvestorActionResp.Status status = 1;</code>
      */
     public boolean hasStatus() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .InvestorActionResp.Auction_Status status = 1;</code>
+     * <code>required .InvestorActionResp.Status status = 1;</code>
      */
-    public Auction_Status getStatus() {
-      Auction_Status result = Auction_Status.valueOf(status_);
-      return result == null ? Auction_Status.CONFIRMED : result;
+    public Protos.InvestorActionResp.Status getStatus() {
+      Protos.InvestorActionResp.Status result = Protos.InvestorActionResp.Status.valueOf(status_);
+      return result == null ? Protos.InvestorActionResp.Status.CONFIRMED : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3678,15 +3850,15 @@ public final class Protos {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof InvestorActionResp)) {
+      if (!(obj instanceof Protos.InvestorActionResp)) {
         return super.equals(obj);
       }
-      InvestorActionResp other = (InvestorActionResp) obj;
+      Protos.InvestorActionResp other = (Protos.InvestorActionResp) obj;
 
       boolean result = true;
       result = result && (hasStatus() == other.hasStatus());
@@ -3697,7 +3869,7 @@ public final class Protos {
       return result;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -3713,58 +3885,58 @@ public final class Protos {
       return hash;
     }
 
-    public static InvestorActionResp parseFrom(
+    public static Protos.InvestorActionResp parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static InvestorActionResp parseFrom(
+    public static Protos.InvestorActionResp parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static InvestorActionResp parseFrom(byte[] data)
+    public static Protos.InvestorActionResp parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static InvestorActionResp parseFrom(
+    public static Protos.InvestorActionResp parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static InvestorActionResp parseFrom(java.io.InputStream input)
+    public static Protos.InvestorActionResp parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static InvestorActionResp parseFrom(
+    public static Protos.InvestorActionResp parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static InvestorActionResp parseDelimitedFrom(java.io.InputStream input)
+    public static Protos.InvestorActionResp parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static InvestorActionResp parseDelimitedFrom(
+    public static Protos.InvestorActionResp parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static InvestorActionResp parseFrom(
+    public static Protos.InvestorActionResp parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static InvestorActionResp parseFrom(
+    public static Protos.InvestorActionResp parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3776,7 +3948,7 @@ public final class Protos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(InvestorActionResp prototype) {
+    public static Builder newBuilder(Protos.InvestorActionResp prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -3784,9 +3956,9 @@ public final class Protos {
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -3796,17 +3968,17 @@ public final class Protos {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:InvestorActionResp)
-        InvestorActionRespOrBuilder {
+        Protos.InvestorActionRespOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return Protos.internal_static_InvestorActionResp_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return Protos.internal_static_InvestorActionResp_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                InvestorActionResp.class, Builder.class);
+                Protos.InvestorActionResp.class, Protos.InvestorActionResp.Builder.class);
       }
 
       // Construct using Protos.InvestorActionResp.newBuilder()
@@ -3815,7 +3987,7 @@ public final class Protos {
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -3836,20 +4008,20 @@ public final class Protos {
         return Protos.internal_static_InvestorActionResp_descriptor;
       }
 
-      public InvestorActionResp getDefaultInstanceForType() {
-        return InvestorActionResp.getDefaultInstance();
+      public Protos.InvestorActionResp getDefaultInstanceForType() {
+        return Protos.InvestorActionResp.getDefaultInstance();
       }
 
-      public InvestorActionResp build() {
-        InvestorActionResp result = buildPartial();
+      public Protos.InvestorActionResp build() {
+        Protos.InvestorActionResp result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public InvestorActionResp buildPartial() {
-        InvestorActionResp result = new InvestorActionResp(this);
+      public Protos.InvestorActionResp buildPartial() {
+        Protos.InvestorActionResp result = new Protos.InvestorActionResp(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -3888,16 +4060,16 @@ public final class Protos {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof InvestorActionResp) {
-          return mergeFrom((InvestorActionResp)other);
+        if (other instanceof Protos.InvestorActionResp) {
+          return mergeFrom((Protos.InvestorActionResp)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(InvestorActionResp other) {
-        if (other == InvestorActionResp.getDefaultInstance()) return this;
+      public Builder mergeFrom(Protos.InvestorActionResp other) {
+        if (other == Protos.InvestorActionResp.getDefaultInstance()) return this;
         if (other.hasStatus()) {
           setStatus(other.getStatus());
         }
@@ -3917,11 +4089,11 @@ public final class Protos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        InvestorActionResp parsedMessage = null;
+        Protos.InvestorActionResp parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (InvestorActionResp) e.getUnfinishedMessage();
+          parsedMessage = (Protos.InvestorActionResp) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -3934,22 +4106,22 @@ public final class Protos {
 
       private int status_ = 0;
       /**
-       * <code>required .InvestorActionResp.Auction_Status status = 1;</code>
+       * <code>required .InvestorActionResp.Status status = 1;</code>
        */
       public boolean hasStatus() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .InvestorActionResp.Auction_Status status = 1;</code>
+       * <code>required .InvestorActionResp.Status status = 1;</code>
        */
-      public Auction_Status getStatus() {
-        Auction_Status result = Auction_Status.valueOf(status_);
-        return result == null ? Auction_Status.CONFIRMED : result;
+      public Protos.InvestorActionResp.Status getStatus() {
+        Protos.InvestorActionResp.Status result = Protos.InvestorActionResp.Status.valueOf(status_);
+        return result == null ? Protos.InvestorActionResp.Status.CONFIRMED : result;
       }
       /**
-       * <code>required .InvestorActionResp.Auction_Status status = 1;</code>
+       * <code>required .InvestorActionResp.Status status = 1;</code>
        */
-      public Builder setStatus(Auction_Status value) {
+      public Builder setStatus(Protos.InvestorActionResp.Status value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -3959,7 +4131,7 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>required .InvestorActionResp.Auction_Status status = 1;</code>
+       * <code>required .InvestorActionResp.Status status = 1;</code>
        */
       public Builder clearStatus() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -3982,16 +4154,16 @@ public final class Protos {
     }
 
     // @@protoc_insertion_point(class_scope:InvestorActionResp)
-    private static final InvestorActionResp DEFAULT_INSTANCE;
+    private static final Protos.InvestorActionResp DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new InvestorActionResp();
+      DEFAULT_INSTANCE = new Protos.InvestorActionResp();
     }
 
-    public static InvestorActionResp getDefaultInstance() {
+    public static Protos.InvestorActionResp getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @Deprecated public static final com.google.protobuf.Parser<InvestorActionResp>
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<InvestorActionResp>
         PARSER = new com.google.protobuf.AbstractParser<InvestorActionResp>() {
       public InvestorActionResp parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
@@ -4005,12 +4177,12 @@ public final class Protos {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<InvestorActionResp> getParserForType() {
       return PARSER;
     }
 
-    public InvestorActionResp getDefaultInstanceForType() {
+    public Protos.InvestorActionResp getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4054,7 +4226,7 @@ public final class Protos {
   private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    String[] descriptorData = {
+    java.lang.String[] descriptorData = {
       "\n\014protos.proto\"*\n\010LoginReq\022\014\n\004name\030\001 \002(\t" +
       "\022\020\n\010password\030\002 \002(\t\"\236\001\n\010LoginRep\022#\n\005cType" +
       "\030\001 \001(\0162\024.LoginRep.ClientType\022 \n\006status\030\002" +
@@ -4064,12 +4236,12 @@ public final class Protos {
       "ue\030\001 \002(\002\022\020\n\010max_rate\030\002 \002(\002\"^\n\013AuctionRes" +
       "p\022#\n\006status\030\001 \002(\0162\023.AuctionResp.Status\"*" +
       "\n\006Status\022\013\n\007SUCCESS\020\000\022\023\n\017ONGOING_AUCTION" +
-      "\020\001\"\214\001\n\021InvestorActionReq\0220\n\010req_type\030\001 \002",
-      "(\0162\036.InvestorActionReq.RequestType\022\r\n\005va" +
-      "lue\030\002 \002(\002\022\014\n\004rate\030\003 \001(\002\"(\n\013RequestType\022\013" +
-      "\n\007AUCTION\020\000\022\014\n\010EMISSION\020\001\"\217\001\n\022InvestorAc" +
-      "tionResp\0222\n\006status\030\001 \002(\0162\".InvestorActio" +
-      "nResp.Auction_Status\"E\n\016Auction_Status\022\r" +
+      "\020\001\"\235\001\n\021InvestorActionReq\022\017\n\007company\030\001 \002(",
+      "\t\0220\n\010req_type\030\002 \002(\0162\036.InvestorActionReq." +
+      "RequestType\022\r\n\005value\030\003 \002(\002\022\014\n\004rate\030\004 \001(\002" +
+      "\"(\n\013RequestType\022\013\n\007AUCTION\020\000\022\014\n\010EMISSION" +
+      "\020\001\"\177\n\022InvestorActionResp\022*\n\006status\030\001 \002(\016" +
+      "2\032.InvestorActionResp.Status\"=\n\006Status\022\r" +
       "\n\tCONFIRMED\020\000\022\014\n\010REPLACED\020\001\022\t\n\005ENDED\020\002\022\013" +
       "\n\007INVALID\020\003"
     };
@@ -4090,37 +4262,37 @@ public final class Protos {
     internal_static_LoginReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LoginReq_descriptor,
-        new String[] { "Name", "Password", });
+        new java.lang.String[] { "Name", "Password", });
     internal_static_LoginRep_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_LoginRep_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LoginRep_descriptor,
-        new String[] { "CType", "Status", });
+        new java.lang.String[] { "CType", "Status", });
     internal_static_AuctionReq_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_AuctionReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AuctionReq_descriptor,
-        new String[] { "Value", "MaxRate", });
+        new java.lang.String[] { "Value", "MaxRate", });
     internal_static_AuctionResp_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_AuctionResp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AuctionResp_descriptor,
-        new String[] { "Status", });
+        new java.lang.String[] { "Status", });
     internal_static_InvestorActionReq_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_InvestorActionReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InvestorActionReq_descriptor,
-        new String[] { "ReqType", "Value", "Rate", });
+        new java.lang.String[] { "Company", "ReqType", "Value", "Rate", });
     internal_static_InvestorActionResp_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_InvestorActionResp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InvestorActionResp_descriptor,
-        new String[] { "Status", });
+        new java.lang.String[] { "Status", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
