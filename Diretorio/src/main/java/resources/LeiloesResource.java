@@ -1,35 +1,40 @@
 package resources;
 
-import representations.Emissao;
-import representations.Leilao;
+import exceptions.RestException;
+import representations.LeilaoAtivo;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 @Path("/leiloes")
 @Produces(MediaType.APPLICATION_JSON)
 public class LeiloesResource {
-    private final String template;
-    private volatile String defaultName;
+    private Map<Long, LeilaoAtivo> leiloesAtivos;
 
-    public LeiloesResource(String template, String defaultName) {
-        this.template = template;
-        this.defaultName = defaultName;
+    public LeiloesResource(Map<Long, LeilaoAtivo> leiloesAtivos) {
+        this.leiloesAtivos = leiloesAtivos;
     }
 
     @GET
-    public Response getLeiloes() {
-        List<Leilao> leiloes = new ArrayList<>();
-        leiloes.add(new Leilao(10000, (long) 0.2, LocalDateTime.now(), 10, "empresa1"));
-        leiloes.add(new Leilao(10000, (long) 0.2, LocalDateTime.now(), 10, "empresa2"));
-        leiloes.add(new Leilao(10000, (long) 0.2, LocalDateTime.now(), 10, "empresa3"));
+    public Response get() {
+        return Response.ok(leiloesAtivos.values()).build();
+    }
 
-        return Response.ok(leiloes).build();
+    @POST
+    public Response post(LeilaoAtivo l) {
+        if(leiloesAtivos.containsKey(l.getId())) {
+            final String msg = String.format("ID already exists!\n");
+            throw new RestException(msg, Response.Status.NOT_FOUND);
+        }
+        leiloesAtivos.put(l.getId(), l);
+        return Response.ok().build();
+    }
+
+    @PUT
+    public Response put(LeilaoAtivo l) {
+        leiloesAtivos.put(l.getId(), l);
+        return Response.ok().build();
     }
 }
