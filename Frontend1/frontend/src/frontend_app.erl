@@ -52,9 +52,9 @@ investor(Sock) ->
 get_exchanges() ->
 	CompExchangeMap = #{
 	%	empresa -> exchange port
-		"empA" => { 1241, 1251},
-		"empB" => { 1242, 1252},
-		"empC" => { 1243, 1253}
+		"empA" => { "1241", "1251"},
+		"empB" => { "1242", "1252"},
+		"empC" => { "1243", "1253"}
 	},
 	CompExchangeMap.
 
