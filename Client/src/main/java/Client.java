@@ -22,9 +22,9 @@ public class Client {
         Utils.send_msg(req.toByteArray(), socket);
 
         byte[] resp = Utils.recv_msg(socket);
-        Protos.LoginRep rep = Protos.LoginRep.parseFrom(resp);
+        Protos.LoginResp rep = Protos.LoginResp.parseFrom(resp);
 
-        if(rep.getStatus() == Protos.LoginRep.Status.SUCCESS){
+        if(rep.getStatus() == Protos.LoginResp.Status.SUCCESS){
             switch(rep.getCType()){
                 case COMPANY:
                     company();

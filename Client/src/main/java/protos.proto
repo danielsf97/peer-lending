@@ -5,7 +5,7 @@ message LoginReq {
   required string password = 2;
 }
 
-message LoginRep {
+message LoginResp {
 
   enum ClientType{
     COMPANY = 0;

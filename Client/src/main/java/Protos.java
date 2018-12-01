@@ -735,40 +735,40 @@ public final class Protos {
 
   }
 
-  public interface LoginRepOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:LoginRep)
+  public interface LoginRespOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:LoginResp)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional .LoginRep.ClientType cType = 1;</code>
+     * <code>optional .LoginResp.ClientType cType = 1;</code>
      */
     boolean hasCType();
     /**
-     * <code>optional .LoginRep.ClientType cType = 1;</code>
+     * <code>optional .LoginResp.ClientType cType = 1;</code>
      */
-    Protos.LoginRep.ClientType getCType();
+    Protos.LoginResp.ClientType getCType();
 
     /**
-     * <code>required .LoginRep.Status status = 2;</code>
+     * <code>required .LoginResp.Status status = 2;</code>
      */
     boolean hasStatus();
     /**
-     * <code>required .LoginRep.Status status = 2;</code>
+     * <code>required .LoginResp.Status status = 2;</code>
      */
-    Protos.LoginRep.Status getStatus();
+    Protos.LoginResp.Status getStatus();
   }
   /**
-   * Protobuf type {@code LoginRep}
+   * Protobuf type {@code LoginResp}
    */
-  public  static final class LoginRep extends
+  public  static final class LoginResp extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:LoginRep)
-      LoginRepOrBuilder {
-    // Use LoginRep.newBuilder() to construct.
-    private LoginRep(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:LoginResp)
+      LoginRespOrBuilder {
+    // Use LoginResp.newBuilder() to construct.
+    private LoginResp(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private LoginRep() {
+    private LoginResp() {
       cType_ = 0;
       status_ = 0;
     }
@@ -778,7 +778,7 @@ public final class Protos {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private LoginRep(
+    private LoginResp(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -803,7 +803,7 @@ public final class Protos {
             }
             case 8: {
               int rawValue = input.readEnum();
-              Protos.LoginRep.ClientType value = Protos.LoginRep.ClientType.valueOf(rawValue);
+              Protos.LoginResp.ClientType value = Protos.LoginResp.ClientType.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
@@ -814,7 +814,7 @@ public final class Protos {
             }
             case 16: {
               int rawValue = input.readEnum();
-              Protos.LoginRep.Status value = Protos.LoginRep.Status.valueOf(rawValue);
+              Protos.LoginResp.Status value = Protos.LoginResp.Status.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(2, rawValue);
               } else {
@@ -837,18 +837,18 @@ public final class Protos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Protos.internal_static_LoginRep_descriptor;
+      return Protos.internal_static_LoginResp_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Protos.internal_static_LoginRep_fieldAccessorTable
+      return Protos.internal_static_LoginResp_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Protos.LoginRep.class, Protos.LoginRep.Builder.class);
+              Protos.LoginResp.class, Protos.LoginResp.Builder.class);
     }
 
     /**
-     * Protobuf enum {@code LoginRep.ClientType}
+     * Protobuf enum {@code LoginResp.ClientType}
      */
     public enum ClientType
         implements com.google.protobuf.ProtocolMessageEnum {
@@ -914,7 +914,7 @@ public final class Protos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return Protos.LoginRep.getDescriptor().getEnumTypes().get(0);
+        return Protos.LoginResp.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final ClientType[] VALUES = values();
@@ -934,11 +934,11 @@ public final class Protos {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:LoginRep.ClientType)
+      // @@protoc_insertion_point(enum_scope:LoginResp.ClientType)
     }
 
     /**
-     * Protobuf enum {@code LoginRep.Status}
+     * Protobuf enum {@code LoginResp.Status}
      */
     public enum Status
         implements com.google.protobuf.ProtocolMessageEnum {
@@ -1004,7 +1004,7 @@ public final class Protos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return Protos.LoginRep.getDescriptor().getEnumTypes().get(1);
+        return Protos.LoginResp.getDescriptor().getEnumTypes().get(1);
       }
 
       private static final Status[] VALUES = values();
@@ -1024,40 +1024,40 @@ public final class Protos {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:LoginRep.Status)
+      // @@protoc_insertion_point(enum_scope:LoginResp.Status)
     }
 
     private int bitField0_;
     public static final int CTYPE_FIELD_NUMBER = 1;
     private int cType_;
     /**
-     * <code>optional .LoginRep.ClientType cType = 1;</code>
+     * <code>optional .LoginResp.ClientType cType = 1;</code>
      */
     public boolean hasCType() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional .LoginRep.ClientType cType = 1;</code>
+     * <code>optional .LoginResp.ClientType cType = 1;</code>
      */
-    public Protos.LoginRep.ClientType getCType() {
-      Protos.LoginRep.ClientType result = Protos.LoginRep.ClientType.valueOf(cType_);
-      return result == null ? Protos.LoginRep.ClientType.COMPANY : result;
+    public Protos.LoginResp.ClientType getCType() {
+      Protos.LoginResp.ClientType result = Protos.LoginResp.ClientType.valueOf(cType_);
+      return result == null ? Protos.LoginResp.ClientType.COMPANY : result;
     }
 
     public static final int STATUS_FIELD_NUMBER = 2;
     private int status_;
     /**
-     * <code>required .LoginRep.Status status = 2;</code>
+     * <code>required .LoginResp.Status status = 2;</code>
      */
     public boolean hasStatus() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required .LoginRep.Status status = 2;</code>
+     * <code>required .LoginResp.Status status = 2;</code>
      */
-    public Protos.LoginRep.Status getStatus() {
-      Protos.LoginRep.Status result = Protos.LoginRep.Status.valueOf(status_);
-      return result == null ? Protos.LoginRep.Status.INVALID : result;
+    public Protos.LoginResp.Status getStatus() {
+      Protos.LoginResp.Status result = Protos.LoginResp.Status.valueOf(status_);
+      return result == null ? Protos.LoginResp.Status.INVALID : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1109,10 +1109,10 @@ public final class Protos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Protos.LoginRep)) {
+      if (!(obj instanceof Protos.LoginResp)) {
         return super.equals(obj);
       }
-      Protos.LoginRep other = (Protos.LoginRep) obj;
+      Protos.LoginResp other = (Protos.LoginResp) obj;
 
       boolean result = true;
       result = result && (hasCType() == other.hasCType());
@@ -1147,58 +1147,58 @@ public final class Protos {
       return hash;
     }
 
-    public static Protos.LoginRep parseFrom(
+    public static Protos.LoginResp parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Protos.LoginRep parseFrom(
+    public static Protos.LoginResp parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Protos.LoginRep parseFrom(byte[] data)
+    public static Protos.LoginResp parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Protos.LoginRep parseFrom(
+    public static Protos.LoginResp parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Protos.LoginRep parseFrom(java.io.InputStream input)
+    public static Protos.LoginResp parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Protos.LoginRep parseFrom(
+    public static Protos.LoginResp parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Protos.LoginRep parseDelimitedFrom(java.io.InputStream input)
+    public static Protos.LoginResp parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Protos.LoginRep parseDelimitedFrom(
+    public static Protos.LoginResp parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Protos.LoginRep parseFrom(
+    public static Protos.LoginResp parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Protos.LoginRep parseFrom(
+    public static Protos.LoginResp parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1210,7 +1210,7 @@ public final class Protos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Protos.LoginRep prototype) {
+    public static Builder newBuilder(Protos.LoginResp prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -1225,25 +1225,25 @@ public final class Protos {
       return builder;
     }
     /**
-     * Protobuf type {@code LoginRep}
+     * Protobuf type {@code LoginResp}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:LoginRep)
-        Protos.LoginRepOrBuilder {
+        // @@protoc_insertion_point(builder_implements:LoginResp)
+        Protos.LoginRespOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Protos.internal_static_LoginRep_descriptor;
+        return Protos.internal_static_LoginResp_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Protos.internal_static_LoginRep_fieldAccessorTable
+        return Protos.internal_static_LoginResp_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Protos.LoginRep.class, Protos.LoginRep.Builder.class);
+                Protos.LoginResp.class, Protos.LoginResp.Builder.class);
       }
 
-      // Construct using Protos.LoginRep.newBuilder()
+      // Construct using Protos.LoginResp.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1269,23 +1269,23 @@ public final class Protos {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Protos.internal_static_LoginRep_descriptor;
+        return Protos.internal_static_LoginResp_descriptor;
       }
 
-      public Protos.LoginRep getDefaultInstanceForType() {
-        return Protos.LoginRep.getDefaultInstance();
+      public Protos.LoginResp getDefaultInstanceForType() {
+        return Protos.LoginResp.getDefaultInstance();
       }
 
-      public Protos.LoginRep build() {
-        Protos.LoginRep result = buildPartial();
+      public Protos.LoginResp build() {
+        Protos.LoginResp result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public Protos.LoginRep buildPartial() {
-        Protos.LoginRep result = new Protos.LoginRep(this);
+      public Protos.LoginResp buildPartial() {
+        Protos.LoginResp result = new Protos.LoginResp(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1328,16 +1328,16 @@ public final class Protos {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Protos.LoginRep) {
-          return mergeFrom((Protos.LoginRep)other);
+        if (other instanceof Protos.LoginResp) {
+          return mergeFrom((Protos.LoginResp)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Protos.LoginRep other) {
-        if (other == Protos.LoginRep.getDefaultInstance()) return this;
+      public Builder mergeFrom(Protos.LoginResp other) {
+        if (other == Protos.LoginResp.getDefaultInstance()) return this;
         if (other.hasCType()) {
           setCType(other.getCType());
         }
@@ -1360,11 +1360,11 @@ public final class Protos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Protos.LoginRep parsedMessage = null;
+        Protos.LoginResp parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Protos.LoginRep) e.getUnfinishedMessage();
+          parsedMessage = (Protos.LoginResp) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -1377,22 +1377,22 @@ public final class Protos {
 
       private int cType_ = 0;
       /**
-       * <code>optional .LoginRep.ClientType cType = 1;</code>
+       * <code>optional .LoginResp.ClientType cType = 1;</code>
        */
       public boolean hasCType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>optional .LoginRep.ClientType cType = 1;</code>
+       * <code>optional .LoginResp.ClientType cType = 1;</code>
        */
-      public Protos.LoginRep.ClientType getCType() {
-        Protos.LoginRep.ClientType result = Protos.LoginRep.ClientType.valueOf(cType_);
-        return result == null ? Protos.LoginRep.ClientType.COMPANY : result;
+      public Protos.LoginResp.ClientType getCType() {
+        Protos.LoginResp.ClientType result = Protos.LoginResp.ClientType.valueOf(cType_);
+        return result == null ? Protos.LoginResp.ClientType.COMPANY : result;
       }
       /**
-       * <code>optional .LoginRep.ClientType cType = 1;</code>
+       * <code>optional .LoginResp.ClientType cType = 1;</code>
        */
-      public Builder setCType(Protos.LoginRep.ClientType value) {
+      public Builder setCType(Protos.LoginResp.ClientType value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -1402,7 +1402,7 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>optional .LoginRep.ClientType cType = 1;</code>
+       * <code>optional .LoginResp.ClientType cType = 1;</code>
        */
       public Builder clearCType() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -1413,22 +1413,22 @@ public final class Protos {
 
       private int status_ = 0;
       /**
-       * <code>required .LoginRep.Status status = 2;</code>
+       * <code>required .LoginResp.Status status = 2;</code>
        */
       public boolean hasStatus() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required .LoginRep.Status status = 2;</code>
+       * <code>required .LoginResp.Status status = 2;</code>
        */
-      public Protos.LoginRep.Status getStatus() {
-        Protos.LoginRep.Status result = Protos.LoginRep.Status.valueOf(status_);
-        return result == null ? Protos.LoginRep.Status.INVALID : result;
+      public Protos.LoginResp.Status getStatus() {
+        Protos.LoginResp.Status result = Protos.LoginResp.Status.valueOf(status_);
+        return result == null ? Protos.LoginResp.Status.INVALID : result;
       }
       /**
-       * <code>required .LoginRep.Status status = 2;</code>
+       * <code>required .LoginResp.Status status = 2;</code>
        */
-      public Builder setStatus(Protos.LoginRep.Status value) {
+      public Builder setStatus(Protos.LoginResp.Status value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -1438,7 +1438,7 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>required .LoginRep.Status status = 2;</code>
+       * <code>required .LoginResp.Status status = 2;</code>
        */
       public Builder clearStatus() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -1457,39 +1457,39 @@ public final class Protos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:LoginRep)
+      // @@protoc_insertion_point(builder_scope:LoginResp)
     }
 
-    // @@protoc_insertion_point(class_scope:LoginRep)
-    private static final Protos.LoginRep DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:LoginResp)
+    private static final Protos.LoginResp DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Protos.LoginRep();
+      DEFAULT_INSTANCE = new Protos.LoginResp();
     }
 
-    public static Protos.LoginRep getDefaultInstance() {
+    public static Protos.LoginResp getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<LoginRep>
-        PARSER = new com.google.protobuf.AbstractParser<LoginRep>() {
-      public LoginRep parsePartialFrom(
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<LoginResp>
+        PARSER = new com.google.protobuf.AbstractParser<LoginResp>() {
+      public LoginResp parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-          return new LoginRep(input, extensionRegistry);
+          return new LoginResp(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<LoginRep> parser() {
+    public static com.google.protobuf.Parser<LoginResp> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<LoginRep> getParserForType() {
+    public com.google.protobuf.Parser<LoginResp> getParserForType() {
       return PARSER;
     }
 
-    public Protos.LoginRep getDefaultInstanceForType() {
+    public Protos.LoginResp getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4194,10 +4194,10 @@ public final class Protos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_LoginReq_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_LoginRep_descriptor;
+    internal_static_LoginResp_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_LoginRep_fieldAccessorTable;
+      internal_static_LoginResp_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_AuctionReq_descriptor;
   private static final 
@@ -4228,22 +4228,22 @@ public final class Protos {
   static {
     java.lang.String[] descriptorData = {
       "\n\014protos.proto\"*\n\010LoginReq\022\014\n\004name\030\001 \002(\t" +
-      "\022\020\n\010password\030\002 \002(\t\"\236\001\n\010LoginRep\022#\n\005cType" +
-      "\030\001 \001(\0162\024.LoginRep.ClientType\022 \n\006status\030\002" +
-      " \002(\0162\020.LoginRep.Status\"\'\n\nClientType\022\013\n\007" +
-      "COMPANY\020\000\022\014\n\010INVESTOR\020\001\"\"\n\006Status\022\013\n\007INV" +
-      "ALID\020\000\022\013\n\007SUCCESS\020\001\"-\n\nAuctionReq\022\r\n\005val" +
-      "ue\030\001 \002(\002\022\020\n\010max_rate\030\002 \002(\002\"^\n\013AuctionRes" +
-      "p\022#\n\006status\030\001 \002(\0162\023.AuctionResp.Status\"*" +
-      "\n\006Status\022\013\n\007SUCCESS\020\000\022\023\n\017ONGOING_AUCTION" +
-      "\020\001\"\235\001\n\021InvestorActionReq\022\017\n\007company\030\001 \002(",
-      "\t\0220\n\010req_type\030\002 \002(\0162\036.InvestorActionReq." +
-      "RequestType\022\r\n\005value\030\003 \002(\002\022\014\n\004rate\030\004 \001(\002" +
-      "\"(\n\013RequestType\022\013\n\007AUCTION\020\000\022\014\n\010EMISSION" +
-      "\020\001\"\177\n\022InvestorActionResp\022*\n\006status\030\001 \002(\016" +
-      "2\032.InvestorActionResp.Status\"=\n\006Status\022\r" +
-      "\n\tCONFIRMED\020\000\022\014\n\010REPLACED\020\001\022\t\n\005ENDED\020\002\022\013" +
-      "\n\007INVALID\020\003"
+      "\022\020\n\010password\030\002 \002(\t\"\241\001\n\tLoginResp\022$\n\005cTyp" +
+      "e\030\001 \001(\0162\025.LoginResp.ClientType\022!\n\006status" +
+      "\030\002 \002(\0162\021.LoginResp.Status\"\'\n\nClientType\022" +
+      "\013\n\007COMPANY\020\000\022\014\n\010INVESTOR\020\001\"\"\n\006Status\022\013\n\007" +
+      "INVALID\020\000\022\013\n\007SUCCESS\020\001\"-\n\nAuctionReq\022\r\n\005" +
+      "value\030\001 \002(\002\022\020\n\010max_rate\030\002 \002(\002\"^\n\013Auction" +
+      "Resp\022#\n\006status\030\001 \002(\0162\023.AuctionResp.Statu" +
+      "s\"*\n\006Status\022\013\n\007SUCCESS\020\000\022\023\n\017ONGOING_AUCT" +
+      "ION\020\001\"\235\001\n\021InvestorActionReq\022\017\n\007company\030\001",
+      " \002(\t\0220\n\010req_type\030\002 \002(\0162\036.InvestorActionR" +
+      "eq.RequestType\022\r\n\005value\030\003 \002(\002\022\014\n\004rate\030\004 " +
+      "\001(\002\"(\n\013RequestType\022\013\n\007AUCTION\020\000\022\014\n\010EMISS" +
+      "ION\020\001\"\177\n\022InvestorActionResp\022*\n\006status\030\001 " +
+      "\002(\0162\032.InvestorActionResp.Status\"=\n\006Statu" +
+      "s\022\r\n\tCONFIRMED\020\000\022\014\n\010REPLACED\020\001\022\t\n\005ENDED\020" +
+      "\002\022\013\n\007INVALID\020\003"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4263,11 +4263,11 @@ public final class Protos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LoginReq_descriptor,
         new java.lang.String[] { "Name", "Password", });
-    internal_static_LoginRep_descriptor =
+    internal_static_LoginResp_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_LoginRep_fieldAccessorTable = new
+    internal_static_LoginResp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_LoginRep_descriptor,
+        internal_static_LoginResp_descriptor,
         new java.lang.String[] { "CType", "Status", });
     internal_static_AuctionReq_descriptor =
       getDescriptor().getMessageTypes().get(2);
