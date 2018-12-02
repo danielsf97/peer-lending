@@ -1,7 +1,7 @@
-import java.util.HashMap;
+import java.util.List;
 
 public class Company {
-
-    private HashMap
-
+    private String company;
+    private List<Auction> activeAuctions;
+    private List<Emission> activeEmissions;
 }
