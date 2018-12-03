@@ -4,8 +4,8 @@ message MessageWrapper {
     oneof inner_message {
         LoginReq loginreq = 1;
         LoginResp loginresp = 2;
-        AuctionReq auctionreq = 3;
-        AuctionResp auctionresp = 4;
+        CompanyActionReq companyactionreq = 3;
+        CompanyActionResp companyactionresp = 4;
         InvestorActionReq investoractionreq = 5;
         InvestorActionResp investoractionresp = 6;
     }
@@ -32,41 +32,27 @@ message LoginResp {
   required Status status = 2;
 }
 
-message AuctionReq{
-    required float value = 1;
-    required float max_rate = 2;
-}
-
-message AuctionResp{
-
-    enum Status {
-        SUCCESS = 0;
-        ONGOING_AUCTION = 1;
+message CompanyActionReq{
+    enum RequestType {
+        AUCTION = 0;
+        EMISSION = 1;
     }
 
-    required Status status = 1;
+    required string client = 1;
+    required string company = 2;
+    required float value = 3;
+    optional float max_rate = 4;
 }
 
-//message InvestorActionReq{
-//    required float value = 1;
-//    required string company = 2;
+message CompanyActionResp{
+    enum Status {
+        SUCCESS = 0;
+        INVALID = 1;
+    }
 
-//    message BidOnAuction{
-//        required float rate = 1;
-//    }
-
-//    message SubsFixedRate{
-
-//    }
-
-//    oneof msg{
-//        BidOnAuction m1 = 3;
-//        BidOnAuction m2 = 4;
-//    }
-//}
-
-
-
+    required string client = 1;
+    required Status status = 2;
+}
 
 message InvestorActionReq{
     enum RequestType {
@@ -74,10 +60,11 @@ message InvestorActionReq{
         EMISSION = 1;
     }
 
-    required string company = 1;
-    required RequestType req_type = 2;
-    required float value = 3;
-    optional float rate = 4;
+    required string client = 1;
+    required string company = 2;
+    required RequestType req_type = 3;
+    required float value = 4;
+    optional float rate = 5;
 }
 
 message InvestorActionResp{
@@ -88,5 +75,6 @@ message InvestorActionResp{
         INVALID = 3;    //dados inválidos
     }
 
-    required Status status = 1;
+    required string client = 1;
+    required Status status = 2;
 }
