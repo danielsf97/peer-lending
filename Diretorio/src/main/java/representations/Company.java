@@ -2,14 +2,14 @@ package representations;
 
 import com.fasterxml.jackson.annotation.*;
 
-public class Empresa {
+public class Company {
     public final long id;
-    public final String nome;
+    public final String name;
 
     @JsonCreator
-    public Empresa(@JsonProperty("id") long id, @JsonProperty("nome") String nome) {
+    public Company(@JsonProperty("id") long id, @JsonProperty("name") String name) {
         this.id = id;
-        this.nome = nome;
+        this.name = name;
     }
 
     public long getId() {

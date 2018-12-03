@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Map;
 
 public class DiretorioApp extends Application<DiretorioConfiguration> {
-    private Map<Long, Empresa> empresas;
-    private Map<Long, LeilaoAtivo> leiloesAtivos;
-    private Map<Long, EmissaoAtiva> emissoesAtivas;
-    private Map<Long, List<Leilao>> historico_leiloes;
-    private Map<Long, List<Emissao>> historico_emissoes;
+    private Map<Long, Company> companies;
+    private List<ActiveAuction> activeAuctions;
+    private List<ActiveEmission> activeEmissions;
+    private Map<Long, List<Auction>> auctionHistory;
+    private Map<Long, List<Emission>> emissionHistory;
 
 
     @Override
@@ -24,24 +24,24 @@ public class DiretorioApp extends Application<DiretorioConfiguration> {
 
     @Override
     public void initialize(Bootstrap<DiretorioConfiguration> bootstrap) {
-        this.empresas = new HashMap<>();
-        this.leiloesAtivos = new HashMap<>();
-        this.emissoesAtivas = new HashMap<>();
-        this.historico_leiloes = new HashMap<>();
-        this.historico_emissoes = new HashMap<>();
-        for(Empresa e : this.empresas.values()) {
-            historico_leiloes.put(e.getId(), new ArrayList<>());
-            historico_emissoes.put(e.getId(), new ArrayList<>());
+        this.companies = new HashMap<>();
+        this.activeAuctions = new ArrayList<>();
+        this.activeEmissions = new ArrayList<>();
+        this.auctionHistory = new HashMap<>();
+        this.emissionHistory = new HashMap<>();
+        for(Company e : this.companies.values()) {
+            auctionHistory.put(e.getId(), new ArrayList<>());
+            emissionHistory.put(e.getId(), new ArrayList<>());
         }
     }
 
     @Override
     public void run(DiretorioConfiguration sampleConfiguration, Environment environment) {
-        environment.jersey().register(new EmpresasResource(empresas));
-        environment.jersey().register(new LeiloesResource(leiloesAtivos));
-        environment.jersey().register(new EmissoesResource(emissoesAtivas));
-        environment.jersey().register(new HistoricoLeiloesResource(empresas, historico_leiloes));
-        environment.jersey().register(new HistoricoEmissoesResource(empresas, historico_emissoes));
+        environment.jersey().register(new CompaniesResource(companies));
+        environment.jersey().register(new AuctionsResource(activeAuctions));
+        environment.jersey().register(new EmissionsResource(activeEmissions));
+        environment.jersey().register(new AuctionHistoryResource(companies, auctionHistory));
+        environment.jersey().register(new EmissionHistoryResource(companies, emissionHistory));
     }
 
     public static void main(String[] args) throws Exception {

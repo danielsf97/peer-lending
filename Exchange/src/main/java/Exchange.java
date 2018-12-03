@@ -4,15 +4,16 @@ import org.zeromq.ZMQ;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Exchange {
 
     public static class ExchangeData {
         public int socket_push_port;
         public int socket_pull_port;
-        public List<String> companies;
+        public Map<String, Company> companies;
 
-        public ExchangeData(int socket_pull_port, int socket_push_port, ArrayList<String> companies) {
+        public ExchangeData(int socket_pull_port, int socket_push_port, Map<String, Company> companies) {
             this.socket_push_port = socket_push_port;
             this.socket_pull_port = socket_pull_port;
             this.companies = companies;
@@ -22,21 +23,21 @@ public class Exchange {
     private static final HashMap<Integer, ExchangeData> exchanges = new HashMap<>() {
         {
             // Exchange 0
-            put(0, new ExchangeData(1241, 1251, new ArrayList<>() {
+            put(0, new ExchangeData(1241, 1251, new HashMap<>() {
                 {
-                    add("empA");
+                    put("empA", new Company("empA"));
                 }
             }));
             // Exchange 1
-            put(1, new ExchangeData(1242, 1252, new ArrayList<>() {
+            put(1, new ExchangeData(1242, 1252, new HashMap<>() {
                 {
-                    add("empB");
+                    put("empB", new Company("empB"));
                 }
             }));
             // Exchange 2
-            put(2, new ExchangeData(1243, 1253, new ArrayList<>() {
+            put(2, new ExchangeData(1243, 1253, new HashMap<>() {
                 {
-                    add("empC");
+                    put("empC", new Company("empC"));
                 }
             }));
         }
@@ -45,6 +46,8 @@ public class Exchange {
     private ZMQ.Context context;
     private ZMQ.Socket push;
     private ZMQ.Socket pull;
+    public Map<String, Company> companies;
+    public DirectoryManager directoryManager;
 
     public Exchange(ExchangeData data) {
         this.context = ZMQ.context(1);
@@ -52,6 +55,8 @@ public class Exchange {
         this.pull = this.context.socket(ZMQ.PULL);
         this.push.bind("tcp://*:" + data.socket_push_port);
         this.pull.bind("tcp://*:" + data.socket_pull_port);
+        this.companies = data.companies;
+        this.directoryManager = new DirectoryManager();
     }
 
     private void start() {
@@ -61,8 +66,26 @@ public class Exchange {
 
                 Protos.MessageWrapper msg = Protos.MessageWrapper.parseFrom(b);
                 switch(msg.getInnerMessageCase()) {
-                    case AUCTIONREQ:
-                        Protos.AuctionReq auctionreq = msg.getAuctionreq();
+                    case CREATEREQ:
+                        Protos.CreateReq createReq = msg.getCreateReq();
+                        long value = createReq.getValue();
+                        float rate = createReq.getRate();
+                        Company c = companies.get(createReq.getCompany());
+                        try {
+                            if (createReq.getType() == Protos.CreateReq.Type.AUCTION) {
+                                Auction a = new Auction(value, rate);
+                                c.setActiveAuction(a);
+                            }
+                            else {
+                                Emission e = new Emission(value, rate);
+                                c.setActiveEmission(e);
+                            }
+                        }
+                        catch(Exception e) {
+                            System.out.println(e.getMessage());
+                            // TODO: mudar isto, deverá informar-se a empresa de que
+                            // TODO: não é possível fazer o leilão/emissão
+                        }
                         break;
                 }
             }
