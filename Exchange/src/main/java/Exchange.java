@@ -66,13 +66,13 @@ public class Exchange {
 
                 Protos.MessageWrapper msg = Protos.MessageWrapper.parseFrom(b);
                 switch(msg.getInnerMessageCase()) {
-                    case CREATEREQ:
-                        Protos.CreateReq createReq = msg.getCreateReq();
+                    case COMPANYACTIONREQ:
+                        Protos.CompanyActionReq createReq = msg.getCompanyActionReq();
                         long value = createReq.getValue();
-                        float rate = createReq.getRate();
+                        float rate = createReq.getInterestRate();
                         Company c = companies.get(createReq.getCompany());
                         try {
-                            if (createReq.getType() == Protos.CreateReq.Type.AUCTION) {
+                            if (createReq.getReqType() == Protos.CompanyActionReq.RequestType.AUCTION) {
                                 Auction a = new Auction(value, rate);
                                 c.setActiveAuction(a);
                             }

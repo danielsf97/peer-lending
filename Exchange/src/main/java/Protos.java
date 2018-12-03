@@ -43,30 +43,30 @@ public final class Protos {
     Protos.LoginRespOrBuilder getLoginRespOrBuilder();
 
     /**
-     * <code>optional .CreateReq createReq = 3;</code>
+     * <code>optional .CompanyActionReq companyActionReq = 3;</code>
      */
-    boolean hasCreateReq();
+    boolean hasCompanyActionReq();
     /**
-     * <code>optional .CreateReq createReq = 3;</code>
+     * <code>optional .CompanyActionReq companyActionReq = 3;</code>
      */
-    Protos.CreateReq getCreateReq();
+    Protos.CompanyActionReq getCompanyActionReq();
     /**
-     * <code>optional .CreateReq createReq = 3;</code>
+     * <code>optional .CompanyActionReq companyActionReq = 3;</code>
      */
-    Protos.CreateReqOrBuilder getCreateReqOrBuilder();
+    Protos.CompanyActionReqOrBuilder getCompanyActionReqOrBuilder();
 
     /**
-     * <code>optional .CreateResp createResp = 4;</code>
+     * <code>optional .CompanyActionResp companyActionResp = 4;</code>
      */
-    boolean hasCreateResp();
+    boolean hasCompanyActionResp();
     /**
-     * <code>optional .CreateResp createResp = 4;</code>
+     * <code>optional .CompanyActionResp companyActionResp = 4;</code>
      */
-    Protos.CreateResp getCreateResp();
+    Protos.CompanyActionResp getCompanyActionResp();
     /**
-     * <code>optional .CreateResp createResp = 4;</code>
+     * <code>optional .CompanyActionResp companyActionResp = 4;</code>
      */
-    Protos.CreateRespOrBuilder getCreateRespOrBuilder();
+    Protos.CompanyActionRespOrBuilder getCompanyActionRespOrBuilder();
 
     /**
      * <code>optional .InvestorActionReq investorActionReq = 5;</code>
@@ -164,28 +164,28 @@ public final class Protos {
               break;
             }
             case 26: {
-              Protos.CreateReq.Builder subBuilder = null;
+              Protos.CompanyActionReq.Builder subBuilder = null;
               if (innerMessageCase_ == 3) {
-                subBuilder = ((Protos.CreateReq) innerMessage_).toBuilder();
+                subBuilder = ((Protos.CompanyActionReq) innerMessage_).toBuilder();
               }
               innerMessage_ =
-                  input.readMessage(Protos.CreateReq.PARSER, extensionRegistry);
+                  input.readMessage(Protos.CompanyActionReq.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((Protos.CreateReq) innerMessage_);
+                subBuilder.mergeFrom((Protos.CompanyActionReq) innerMessage_);
                 innerMessage_ = subBuilder.buildPartial();
               }
               innerMessageCase_ = 3;
               break;
             }
             case 34: {
-              Protos.CreateResp.Builder subBuilder = null;
+              Protos.CompanyActionResp.Builder subBuilder = null;
               if (innerMessageCase_ == 4) {
-                subBuilder = ((Protos.CreateResp) innerMessage_).toBuilder();
+                subBuilder = ((Protos.CompanyActionResp) innerMessage_).toBuilder();
               }
               innerMessage_ =
-                  input.readMessage(Protos.CreateResp.PARSER, extensionRegistry);
+                  input.readMessage(Protos.CompanyActionResp.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom((Protos.CreateResp) innerMessage_);
+                subBuilder.mergeFrom((Protos.CompanyActionResp) innerMessage_);
                 innerMessage_ = subBuilder.buildPartial();
               }
               innerMessageCase_ = 4;
@@ -258,8 +258,8 @@ public final class Protos {
         implements com.google.protobuf.Internal.EnumLite {
       LOGINREQ(1),
       LOGINRESP(2),
-      CREATEREQ(3),
-      CREATERESP(4),
+      COMPANYACTIONREQ(3),
+      COMPANYACTIONRESP(4),
       INVESTORACTIONREQ(5),
       INVESTORACTIONRESP(6),
       INNERMESSAGE_NOT_SET(0);
@@ -279,8 +279,8 @@ public final class Protos {
         switch (value) {
           case 1: return LOGINREQ;
           case 2: return LOGINRESP;
-          case 3: return CREATEREQ;
-          case 4: return CREATERESP;
+          case 3: return COMPANYACTIONREQ;
+          case 4: return COMPANYACTIONRESP;
           case 5: return INVESTORACTIONREQ;
           case 6: return INVESTORACTIONRESP;
           case 0: return INNERMESSAGE_NOT_SET;
@@ -350,56 +350,56 @@ public final class Protos {
       return Protos.LoginResp.getDefaultInstance();
     }
 
-    public static final int CREATEREQ_FIELD_NUMBER = 3;
+    public static final int COMPANYACTIONREQ_FIELD_NUMBER = 3;
     /**
-     * <code>optional .CreateReq createReq = 3;</code>
+     * <code>optional .CompanyActionReq companyActionReq = 3;</code>
      */
-    public boolean hasCreateReq() {
+    public boolean hasCompanyActionReq() {
       return innerMessageCase_ == 3;
     }
     /**
-     * <code>optional .CreateReq createReq = 3;</code>
+     * <code>optional .CompanyActionReq companyActionReq = 3;</code>
      */
-    public Protos.CreateReq getCreateReq() {
+    public Protos.CompanyActionReq getCompanyActionReq() {
       if (innerMessageCase_ == 3) {
-         return (Protos.CreateReq) innerMessage_;
+         return (Protos.CompanyActionReq) innerMessage_;
       }
-      return Protos.CreateReq.getDefaultInstance();
+      return Protos.CompanyActionReq.getDefaultInstance();
     }
     /**
-     * <code>optional .CreateReq createReq = 3;</code>
+     * <code>optional .CompanyActionReq companyActionReq = 3;</code>
      */
-    public Protos.CreateReqOrBuilder getCreateReqOrBuilder() {
+    public Protos.CompanyActionReqOrBuilder getCompanyActionReqOrBuilder() {
       if (innerMessageCase_ == 3) {
-         return (Protos.CreateReq) innerMessage_;
+         return (Protos.CompanyActionReq) innerMessage_;
       }
-      return Protos.CreateReq.getDefaultInstance();
+      return Protos.CompanyActionReq.getDefaultInstance();
     }
 
-    public static final int CREATERESP_FIELD_NUMBER = 4;
+    public static final int COMPANYACTIONRESP_FIELD_NUMBER = 4;
     /**
-     * <code>optional .CreateResp createResp = 4;</code>
+     * <code>optional .CompanyActionResp companyActionResp = 4;</code>
      */
-    public boolean hasCreateResp() {
+    public boolean hasCompanyActionResp() {
       return innerMessageCase_ == 4;
     }
     /**
-     * <code>optional .CreateResp createResp = 4;</code>
+     * <code>optional .CompanyActionResp companyActionResp = 4;</code>
      */
-    public Protos.CreateResp getCreateResp() {
+    public Protos.CompanyActionResp getCompanyActionResp() {
       if (innerMessageCase_ == 4) {
-         return (Protos.CreateResp) innerMessage_;
+         return (Protos.CompanyActionResp) innerMessage_;
       }
-      return Protos.CreateResp.getDefaultInstance();
+      return Protos.CompanyActionResp.getDefaultInstance();
     }
     /**
-     * <code>optional .CreateResp createResp = 4;</code>
+     * <code>optional .CompanyActionResp companyActionResp = 4;</code>
      */
-    public Protos.CreateRespOrBuilder getCreateRespOrBuilder() {
+    public Protos.CompanyActionRespOrBuilder getCompanyActionRespOrBuilder() {
       if (innerMessageCase_ == 4) {
-         return (Protos.CreateResp) innerMessage_;
+         return (Protos.CompanyActionResp) innerMessage_;
       }
-      return Protos.CreateResp.getDefaultInstance();
+      return Protos.CompanyActionResp.getDefaultInstance();
     }
 
     public static final int INVESTORACTIONREQ_FIELD_NUMBER = 5;
@@ -473,14 +473,14 @@ public final class Protos {
           return false;
         }
       }
-      if (hasCreateReq()) {
-        if (!getCreateReq().isInitialized()) {
+      if (hasCompanyActionReq()) {
+        if (!getCompanyActionReq().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
       }
-      if (hasCreateResp()) {
-        if (!getCreateResp().isInitialized()) {
+      if (hasCompanyActionResp()) {
+        if (!getCompanyActionResp().isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -511,10 +511,10 @@ public final class Protos {
         output.writeMessage(2, (Protos.LoginResp) innerMessage_);
       }
       if (innerMessageCase_ == 3) {
-        output.writeMessage(3, (Protos.CreateReq) innerMessage_);
+        output.writeMessage(3, (Protos.CompanyActionReq) innerMessage_);
       }
       if (innerMessageCase_ == 4) {
-        output.writeMessage(4, (Protos.CreateResp) innerMessage_);
+        output.writeMessage(4, (Protos.CompanyActionResp) innerMessage_);
       }
       if (innerMessageCase_ == 5) {
         output.writeMessage(5, (Protos.InvestorActionReq) innerMessage_);
@@ -541,11 +541,11 @@ public final class Protos {
       }
       if (innerMessageCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, (Protos.CreateReq) innerMessage_);
+          .computeMessageSize(3, (Protos.CompanyActionReq) innerMessage_);
       }
       if (innerMessageCase_ == 4) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, (Protos.CreateResp) innerMessage_);
+          .computeMessageSize(4, (Protos.CompanyActionResp) innerMessage_);
       }
       if (innerMessageCase_ == 5) {
         size += com.google.protobuf.CodedOutputStream
@@ -584,12 +584,12 @@ public final class Protos {
               .equals(other.getLoginResp());
           break;
         case 3:
-          result = result && getCreateReq()
-              .equals(other.getCreateReq());
+          result = result && getCompanyActionReq()
+              .equals(other.getCompanyActionReq());
           break;
         case 4:
-          result = result && getCreateResp()
-              .equals(other.getCreateResp());
+          result = result && getCompanyActionResp()
+              .equals(other.getCompanyActionResp());
           break;
         case 5:
           result = result && getInvestorActionReq()
@@ -623,12 +623,12 @@ public final class Protos {
           hash = (53 * hash) + getLoginResp().hashCode();
           break;
         case 3:
-          hash = (37 * hash) + CREATEREQ_FIELD_NUMBER;
-          hash = (53 * hash) + getCreateReq().hashCode();
+          hash = (37 * hash) + COMPANYACTIONREQ_FIELD_NUMBER;
+          hash = (53 * hash) + getCompanyActionReq().hashCode();
           break;
         case 4:
-          hash = (37 * hash) + CREATERESP_FIELD_NUMBER;
-          hash = (53 * hash) + getCreateResp().hashCode();
+          hash = (37 * hash) + COMPANYACTIONRESP_FIELD_NUMBER;
+          hash = (53 * hash) + getCompanyActionResp().hashCode();
           break;
         case 5:
           hash = (37 * hash) + INVESTORACTIONREQ_FIELD_NUMBER;
@@ -819,17 +819,17 @@ public final class Protos {
           }
         }
         if (innerMessageCase_ == 3) {
-          if (createReqBuilder_ == null) {
+          if (companyActionReqBuilder_ == null) {
             result.innerMessage_ = innerMessage_;
           } else {
-            result.innerMessage_ = createReqBuilder_.build();
+            result.innerMessage_ = companyActionReqBuilder_.build();
           }
         }
         if (innerMessageCase_ == 4) {
-          if (createRespBuilder_ == null) {
+          if (companyActionRespBuilder_ == null) {
             result.innerMessage_ = innerMessage_;
           } else {
-            result.innerMessage_ = createRespBuilder_.build();
+            result.innerMessage_ = companyActionRespBuilder_.build();
           }
         }
         if (innerMessageCase_ == 5) {
@@ -905,12 +905,12 @@ public final class Protos {
             mergeLoginResp(other.getLoginResp());
             break;
           }
-          case CREATEREQ: {
-            mergeCreateReq(other.getCreateReq());
+          case COMPANYACTIONREQ: {
+            mergeCompanyActionReq(other.getCompanyActionReq());
             break;
           }
-          case CREATERESP: {
-            mergeCreateResp(other.getCreateResp());
+          case COMPANYACTIONRESP: {
+            mergeCompanyActionResp(other.getCompanyActionResp());
             break;
           }
           case INVESTORACTIONREQ: {
@@ -942,13 +942,13 @@ public final class Protos {
             return false;
           }
         }
-        if (hasCreateReq()) {
-          if (!getCreateReq().isInitialized()) {
+        if (hasCompanyActionReq()) {
+          if (!getCompanyActionReq().isInitialized()) {
             return false;
           }
         }
-        if (hasCreateResp()) {
-          if (!getCreateResp().isInitialized()) {
+        if (hasCompanyActionResp()) {
+          if (!getCompanyActionResp().isInitialized()) {
             return false;
           }
         }
@@ -1273,67 +1273,67 @@ public final class Protos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          Protos.CreateReq, Protos.CreateReq.Builder, Protos.CreateReqOrBuilder> createReqBuilder_;
+          Protos.CompanyActionReq, Protos.CompanyActionReq.Builder, Protos.CompanyActionReqOrBuilder> companyActionReqBuilder_;
       /**
-       * <code>optional .CreateReq createReq = 3;</code>
+       * <code>optional .CompanyActionReq companyActionReq = 3;</code>
        */
-      public boolean hasCreateReq() {
+      public boolean hasCompanyActionReq() {
         return innerMessageCase_ == 3;
       }
       /**
-       * <code>optional .CreateReq createReq = 3;</code>
+       * <code>optional .CompanyActionReq companyActionReq = 3;</code>
        */
-      public Protos.CreateReq getCreateReq() {
-        if (createReqBuilder_ == null) {
+      public Protos.CompanyActionReq getCompanyActionReq() {
+        if (companyActionReqBuilder_ == null) {
           if (innerMessageCase_ == 3) {
-            return (Protos.CreateReq) innerMessage_;
+            return (Protos.CompanyActionReq) innerMessage_;
           }
-          return Protos.CreateReq.getDefaultInstance();
+          return Protos.CompanyActionReq.getDefaultInstance();
         } else {
           if (innerMessageCase_ == 3) {
-            return createReqBuilder_.getMessage();
+            return companyActionReqBuilder_.getMessage();
           }
-          return Protos.CreateReq.getDefaultInstance();
+          return Protos.CompanyActionReq.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .CreateReq createReq = 3;</code>
+       * <code>optional .CompanyActionReq companyActionReq = 3;</code>
        */
-      public Builder setCreateReq(Protos.CreateReq value) {
-        if (createReqBuilder_ == null) {
+      public Builder setCompanyActionReq(Protos.CompanyActionReq value) {
+        if (companyActionReqBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
           innerMessage_ = value;
           onChanged();
         } else {
-          createReqBuilder_.setMessage(value);
+          companyActionReqBuilder_.setMessage(value);
         }
         innerMessageCase_ = 3;
         return this;
       }
       /**
-       * <code>optional .CreateReq createReq = 3;</code>
+       * <code>optional .CompanyActionReq companyActionReq = 3;</code>
        */
-      public Builder setCreateReq(
-          Protos.CreateReq.Builder builderForValue) {
-        if (createReqBuilder_ == null) {
+      public Builder setCompanyActionReq(
+          Protos.CompanyActionReq.Builder builderForValue) {
+        if (companyActionReqBuilder_ == null) {
           innerMessage_ = builderForValue.build();
           onChanged();
         } else {
-          createReqBuilder_.setMessage(builderForValue.build());
+          companyActionReqBuilder_.setMessage(builderForValue.build());
         }
         innerMessageCase_ = 3;
         return this;
       }
       /**
-       * <code>optional .CreateReq createReq = 3;</code>
+       * <code>optional .CompanyActionReq companyActionReq = 3;</code>
        */
-      public Builder mergeCreateReq(Protos.CreateReq value) {
-        if (createReqBuilder_ == null) {
+      public Builder mergeCompanyActionReq(Protos.CompanyActionReq value) {
+        if (companyActionReqBuilder_ == null) {
           if (innerMessageCase_ == 3 &&
-              innerMessage_ != Protos.CreateReq.getDefaultInstance()) {
-            innerMessage_ = Protos.CreateReq.newBuilder((Protos.CreateReq) innerMessage_)
+              innerMessage_ != Protos.CompanyActionReq.getDefaultInstance()) {
+            innerMessage_ = Protos.CompanyActionReq.newBuilder((Protos.CompanyActionReq) innerMessage_)
                 .mergeFrom(value).buildPartial();
           } else {
             innerMessage_ = value;
@@ -1341,18 +1341,18 @@ public final class Protos {
           onChanged();
         } else {
           if (innerMessageCase_ == 3) {
-            createReqBuilder_.mergeFrom(value);
+            companyActionReqBuilder_.mergeFrom(value);
           }
-          createReqBuilder_.setMessage(value);
+          companyActionReqBuilder_.setMessage(value);
         }
         innerMessageCase_ = 3;
         return this;
       }
       /**
-       * <code>optional .CreateReq createReq = 3;</code>
+       * <code>optional .CompanyActionReq companyActionReq = 3;</code>
        */
-      public Builder clearCreateReq() {
-        if (createReqBuilder_ == null) {
+      public Builder clearCompanyActionReq() {
+        if (companyActionReqBuilder_ == null) {
           if (innerMessageCase_ == 3) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
@@ -1363,113 +1363,113 @@ public final class Protos {
             innerMessageCase_ = 0;
             innerMessage_ = null;
           }
-          createReqBuilder_.clear();
+          companyActionReqBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>optional .CreateReq createReq = 3;</code>
+       * <code>optional .CompanyActionReq companyActionReq = 3;</code>
        */
-      public Protos.CreateReq.Builder getCreateReqBuilder() {
-        return getCreateReqFieldBuilder().getBuilder();
+      public Protos.CompanyActionReq.Builder getCompanyActionReqBuilder() {
+        return getCompanyActionReqFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .CreateReq createReq = 3;</code>
+       * <code>optional .CompanyActionReq companyActionReq = 3;</code>
        */
-      public Protos.CreateReqOrBuilder getCreateReqOrBuilder() {
-        if ((innerMessageCase_ == 3) && (createReqBuilder_ != null)) {
-          return createReqBuilder_.getMessageOrBuilder();
+      public Protos.CompanyActionReqOrBuilder getCompanyActionReqOrBuilder() {
+        if ((innerMessageCase_ == 3) && (companyActionReqBuilder_ != null)) {
+          return companyActionReqBuilder_.getMessageOrBuilder();
         } else {
           if (innerMessageCase_ == 3) {
-            return (Protos.CreateReq) innerMessage_;
+            return (Protos.CompanyActionReq) innerMessage_;
           }
-          return Protos.CreateReq.getDefaultInstance();
+          return Protos.CompanyActionReq.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .CreateReq createReq = 3;</code>
+       * <code>optional .CompanyActionReq companyActionReq = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          Protos.CreateReq, Protos.CreateReq.Builder, Protos.CreateReqOrBuilder> 
-          getCreateReqFieldBuilder() {
-        if (createReqBuilder_ == null) {
+          Protos.CompanyActionReq, Protos.CompanyActionReq.Builder, Protos.CompanyActionReqOrBuilder> 
+          getCompanyActionReqFieldBuilder() {
+        if (companyActionReqBuilder_ == null) {
           if (!(innerMessageCase_ == 3)) {
-            innerMessage_ = Protos.CreateReq.getDefaultInstance();
+            innerMessage_ = Protos.CompanyActionReq.getDefaultInstance();
           }
-          createReqBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              Protos.CreateReq, Protos.CreateReq.Builder, Protos.CreateReqOrBuilder>(
-                  (Protos.CreateReq) innerMessage_,
+          companyActionReqBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Protos.CompanyActionReq, Protos.CompanyActionReq.Builder, Protos.CompanyActionReqOrBuilder>(
+                  (Protos.CompanyActionReq) innerMessage_,
                   getParentForChildren(),
                   isClean());
           innerMessage_ = null;
         }
         innerMessageCase_ = 3;
         onChanged();;
-        return createReqBuilder_;
+        return companyActionReqBuilder_;
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          Protos.CreateResp, Protos.CreateResp.Builder, Protos.CreateRespOrBuilder> createRespBuilder_;
+          Protos.CompanyActionResp, Protos.CompanyActionResp.Builder, Protos.CompanyActionRespOrBuilder> companyActionRespBuilder_;
       /**
-       * <code>optional .CreateResp createResp = 4;</code>
+       * <code>optional .CompanyActionResp companyActionResp = 4;</code>
        */
-      public boolean hasCreateResp() {
+      public boolean hasCompanyActionResp() {
         return innerMessageCase_ == 4;
       }
       /**
-       * <code>optional .CreateResp createResp = 4;</code>
+       * <code>optional .CompanyActionResp companyActionResp = 4;</code>
        */
-      public Protos.CreateResp getCreateResp() {
-        if (createRespBuilder_ == null) {
+      public Protos.CompanyActionResp getCompanyActionResp() {
+        if (companyActionRespBuilder_ == null) {
           if (innerMessageCase_ == 4) {
-            return (Protos.CreateResp) innerMessage_;
+            return (Protos.CompanyActionResp) innerMessage_;
           }
-          return Protos.CreateResp.getDefaultInstance();
+          return Protos.CompanyActionResp.getDefaultInstance();
         } else {
           if (innerMessageCase_ == 4) {
-            return createRespBuilder_.getMessage();
+            return companyActionRespBuilder_.getMessage();
           }
-          return Protos.CreateResp.getDefaultInstance();
+          return Protos.CompanyActionResp.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .CreateResp createResp = 4;</code>
+       * <code>optional .CompanyActionResp companyActionResp = 4;</code>
        */
-      public Builder setCreateResp(Protos.CreateResp value) {
-        if (createRespBuilder_ == null) {
+      public Builder setCompanyActionResp(Protos.CompanyActionResp value) {
+        if (companyActionRespBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
           innerMessage_ = value;
           onChanged();
         } else {
-          createRespBuilder_.setMessage(value);
+          companyActionRespBuilder_.setMessage(value);
         }
         innerMessageCase_ = 4;
         return this;
       }
       /**
-       * <code>optional .CreateResp createResp = 4;</code>
+       * <code>optional .CompanyActionResp companyActionResp = 4;</code>
        */
-      public Builder setCreateResp(
-          Protos.CreateResp.Builder builderForValue) {
-        if (createRespBuilder_ == null) {
+      public Builder setCompanyActionResp(
+          Protos.CompanyActionResp.Builder builderForValue) {
+        if (companyActionRespBuilder_ == null) {
           innerMessage_ = builderForValue.build();
           onChanged();
         } else {
-          createRespBuilder_.setMessage(builderForValue.build());
+          companyActionRespBuilder_.setMessage(builderForValue.build());
         }
         innerMessageCase_ = 4;
         return this;
       }
       /**
-       * <code>optional .CreateResp createResp = 4;</code>
+       * <code>optional .CompanyActionResp companyActionResp = 4;</code>
        */
-      public Builder mergeCreateResp(Protos.CreateResp value) {
-        if (createRespBuilder_ == null) {
+      public Builder mergeCompanyActionResp(Protos.CompanyActionResp value) {
+        if (companyActionRespBuilder_ == null) {
           if (innerMessageCase_ == 4 &&
-              innerMessage_ != Protos.CreateResp.getDefaultInstance()) {
-            innerMessage_ = Protos.CreateResp.newBuilder((Protos.CreateResp) innerMessage_)
+              innerMessage_ != Protos.CompanyActionResp.getDefaultInstance()) {
+            innerMessage_ = Protos.CompanyActionResp.newBuilder((Protos.CompanyActionResp) innerMessage_)
                 .mergeFrom(value).buildPartial();
           } else {
             innerMessage_ = value;
@@ -1477,18 +1477,18 @@ public final class Protos {
           onChanged();
         } else {
           if (innerMessageCase_ == 4) {
-            createRespBuilder_.mergeFrom(value);
+            companyActionRespBuilder_.mergeFrom(value);
           }
-          createRespBuilder_.setMessage(value);
+          companyActionRespBuilder_.setMessage(value);
         }
         innerMessageCase_ = 4;
         return this;
       }
       /**
-       * <code>optional .CreateResp createResp = 4;</code>
+       * <code>optional .CompanyActionResp companyActionResp = 4;</code>
        */
-      public Builder clearCreateResp() {
-        if (createRespBuilder_ == null) {
+      public Builder clearCompanyActionResp() {
+        if (companyActionRespBuilder_ == null) {
           if (innerMessageCase_ == 4) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
@@ -1499,49 +1499,49 @@ public final class Protos {
             innerMessageCase_ = 0;
             innerMessage_ = null;
           }
-          createRespBuilder_.clear();
+          companyActionRespBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>optional .CreateResp createResp = 4;</code>
+       * <code>optional .CompanyActionResp companyActionResp = 4;</code>
        */
-      public Protos.CreateResp.Builder getCreateRespBuilder() {
-        return getCreateRespFieldBuilder().getBuilder();
+      public Protos.CompanyActionResp.Builder getCompanyActionRespBuilder() {
+        return getCompanyActionRespFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .CreateResp createResp = 4;</code>
+       * <code>optional .CompanyActionResp companyActionResp = 4;</code>
        */
-      public Protos.CreateRespOrBuilder getCreateRespOrBuilder() {
-        if ((innerMessageCase_ == 4) && (createRespBuilder_ != null)) {
-          return createRespBuilder_.getMessageOrBuilder();
+      public Protos.CompanyActionRespOrBuilder getCompanyActionRespOrBuilder() {
+        if ((innerMessageCase_ == 4) && (companyActionRespBuilder_ != null)) {
+          return companyActionRespBuilder_.getMessageOrBuilder();
         } else {
           if (innerMessageCase_ == 4) {
-            return (Protos.CreateResp) innerMessage_;
+            return (Protos.CompanyActionResp) innerMessage_;
           }
-          return Protos.CreateResp.getDefaultInstance();
+          return Protos.CompanyActionResp.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .CreateResp createResp = 4;</code>
+       * <code>optional .CompanyActionResp companyActionResp = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          Protos.CreateResp, Protos.CreateResp.Builder, Protos.CreateRespOrBuilder> 
-          getCreateRespFieldBuilder() {
-        if (createRespBuilder_ == null) {
+          Protos.CompanyActionResp, Protos.CompanyActionResp.Builder, Protos.CompanyActionRespOrBuilder> 
+          getCompanyActionRespFieldBuilder() {
+        if (companyActionRespBuilder_ == null) {
           if (!(innerMessageCase_ == 4)) {
-            innerMessage_ = Protos.CreateResp.getDefaultInstance();
+            innerMessage_ = Protos.CompanyActionResp.getDefaultInstance();
           }
-          createRespBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              Protos.CreateResp, Protos.CreateResp.Builder, Protos.CreateRespOrBuilder>(
-                  (Protos.CreateResp) innerMessage_,
+          companyActionRespBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Protos.CompanyActionResp, Protos.CompanyActionResp.Builder, Protos.CompanyActionRespOrBuilder>(
+                  (Protos.CompanyActionResp) innerMessage_,
                   getParentForChildren(),
                   isClean());
           innerMessage_ = null;
         }
         innerMessageCase_ = 4;
         onChanged();;
-        return createRespBuilder_;
+        return companyActionRespBuilder_;
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
@@ -3435,27 +3435,32 @@ public final class Protos {
 
   }
 
-  public interface CreateReqOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:CreateReq)
+  public interface CompanyActionReqOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CompanyActionReq)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int64 value = 1;</code>
+     * <code>required .CompanyActionReq.RequestType reqType = 1;</code>
      */
-    boolean hasValue();
+    boolean hasReqType();
     /**
-     * <code>required int64 value = 1;</code>
+     * <code>required .CompanyActionReq.RequestType reqType = 1;</code>
      */
-    long getValue();
+    Protos.CompanyActionReq.RequestType getReqType();
 
     /**
-     * <code>required float rate = 2;</code>
+     * <code>required string client = 2;</code>
      */
-    boolean hasRate();
+    boolean hasClient();
     /**
-     * <code>required float rate = 2;</code>
+     * <code>required string client = 2;</code>
      */
-    float getRate();
+    java.lang.String getClient();
+    /**
+     * <code>required string client = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getClientBytes();
 
     /**
      * <code>required string company = 3;</code>
@@ -3472,29 +3477,39 @@ public final class Protos {
         getCompanyBytes();
 
     /**
-     * <code>required .CreateReq.Type type = 4;</code>
+     * <code>required int64 value = 4;</code>
      */
-    boolean hasType();
+    boolean hasValue();
     /**
-     * <code>required .CreateReq.Type type = 4;</code>
+     * <code>required int64 value = 4;</code>
      */
-    Protos.CreateReq.Type getType();
+    long getValue();
+
+    /**
+     * <code>optional float interestRate = 5;</code>
+     */
+    boolean hasInterestRate();
+    /**
+     * <code>optional float interestRate = 5;</code>
+     */
+    float getInterestRate();
   }
   /**
-   * Protobuf type {@code CreateReq}
+   * Protobuf type {@code CompanyActionReq}
    */
-  public  static final class CreateReq extends
+  public  static final class CompanyActionReq extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:CreateReq)
-      CreateReqOrBuilder {
+      // @@protoc_insertion_point(message_implements:CompanyActionReq)
+      CompanyActionReqOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use CreateReq.newBuilder() to construct.
-    private CreateReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use CompanyActionReq.newBuilder() to construct.
+    private CompanyActionReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private CreateReq() {
+    private CompanyActionReq() {
+      reqType_ = 0;
+      client_ = "";
       company_ = "";
-      type_ = 0;
     }
 
     @java.lang.Override
@@ -3502,7 +3517,7 @@ public final class Protos {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private CreateReq(
+    private CompanyActionReq(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3522,13 +3537,21 @@ public final class Protos {
               done = true;
               break;
             case 8: {
-              bitField0_ |= 0x00000001;
-              value_ = input.readInt64();
+              int rawValue = input.readEnum();
+                @SuppressWarnings("deprecation")
+              Protos.CompanyActionReq.RequestType value = Protos.CompanyActionReq.RequestType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                reqType_ = rawValue;
+              }
               break;
             }
-            case 21: {
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000002;
-              rate_ = input.readFloat();
+              client_ = bs;
               break;
             }
             case 26: {
@@ -3538,15 +3561,13 @@ public final class Protos {
               break;
             }
             case 32: {
-              int rawValue = input.readEnum();
-                @SuppressWarnings("deprecation")
-              Protos.CreateReq.Type value = Protos.CreateReq.Type.valueOf(rawValue);
-              if (value == null) {
-                unknownFields.mergeVarintField(4, rawValue);
-              } else {
-                bitField0_ |= 0x00000008;
-                type_ = rawValue;
-              }
+              bitField0_ |= 0x00000008;
+              value_ = input.readInt64();
+              break;
+            }
+            case 45: {
+              bitField0_ |= 0x00000010;
+              interestRate_ = input.readFloat();
               break;
             }
             default: {
@@ -3570,21 +3591,21 @@ public final class Protos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Protos.internal_static_CreateReq_descriptor;
+      return Protos.internal_static_CompanyActionReq_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Protos.internal_static_CreateReq_fieldAccessorTable
+      return Protos.internal_static_CompanyActionReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Protos.CreateReq.class, Protos.CreateReq.Builder.class);
+              Protos.CompanyActionReq.class, Protos.CompanyActionReq.Builder.class);
     }
 
     /**
-     * Protobuf enum {@code CreateReq.Type}
+     * Protobuf enum {@code CompanyActionReq.RequestType}
      */
-    public enum Type
+    public enum RequestType
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
        * <code>AUCTION = 0;</code>
@@ -3614,11 +3635,11 @@ public final class Protos {
        * @deprecated Use {@link #forNumber(int)} instead.
        */
       @java.lang.Deprecated
-      public static Type valueOf(int value) {
+      public static RequestType valueOf(int value) {
         return forNumber(value);
       }
 
-      public static Type forNumber(int value) {
+      public static RequestType forNumber(int value) {
         switch (value) {
           case 0: return AUCTION;
           case 1: return EMISSION;
@@ -3626,15 +3647,15 @@ public final class Protos {
         }
       }
 
-      public static com.google.protobuf.Internal.EnumLiteMap<Type>
+      public static com.google.protobuf.Internal.EnumLiteMap<RequestType>
           internalGetValueMap() {
         return internalValueMap;
       }
       private static final com.google.protobuf.Internal.EnumLiteMap<
-          Type> internalValueMap =
-            new com.google.protobuf.Internal.EnumLiteMap<Type>() {
-              public Type findValueByNumber(int number) {
-                return Type.forNumber(number);
+          RequestType> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<RequestType>() {
+              public RequestType findValueByNumber(int number) {
+                return RequestType.forNumber(number);
               }
             };
 
@@ -3648,12 +3669,12 @@ public final class Protos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return Protos.CreateReq.getDescriptor().getEnumTypes().get(0);
+        return Protos.CompanyActionReq.getDescriptor().getEnumTypes().get(0);
       }
 
-      private static final Type[] VALUES = values();
+      private static final RequestType[] VALUES = values();
 
-      public static Type valueOf(
+      public static RequestType valueOf(
           com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
         if (desc.getType() != getDescriptor()) {
           throw new java.lang.IllegalArgumentException(
@@ -3664,42 +3685,71 @@ public final class Protos {
 
       private final int value;
 
-      private Type(int value) {
+      private RequestType(int value) {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:CreateReq.Type)
+      // @@protoc_insertion_point(enum_scope:CompanyActionReq.RequestType)
     }
 
     private int bitField0_;
-    public static final int VALUE_FIELD_NUMBER = 1;
-    private long value_;
+    public static final int REQTYPE_FIELD_NUMBER = 1;
+    private int reqType_;
     /**
-     * <code>required int64 value = 1;</code>
+     * <code>required .CompanyActionReq.RequestType reqType = 1;</code>
      */
-    public boolean hasValue() {
+    public boolean hasReqType() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int64 value = 1;</code>
+     * <code>required .CompanyActionReq.RequestType reqType = 1;</code>
      */
-    public long getValue() {
-      return value_;
+    public Protos.CompanyActionReq.RequestType getReqType() {
+      @SuppressWarnings("deprecation")
+      Protos.CompanyActionReq.RequestType result = Protos.CompanyActionReq.RequestType.valueOf(reqType_);
+      return result == null ? Protos.CompanyActionReq.RequestType.AUCTION : result;
     }
 
-    public static final int RATE_FIELD_NUMBER = 2;
-    private float rate_;
+    public static final int CLIENT_FIELD_NUMBER = 2;
+    private volatile java.lang.Object client_;
     /**
-     * <code>required float rate = 2;</code>
+     * <code>required string client = 2;</code>
      */
-    public boolean hasRate() {
+    public boolean hasClient() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required float rate = 2;</code>
+     * <code>required string client = 2;</code>
      */
-    public float getRate() {
-      return rate_;
+    public java.lang.String getClient() {
+      java.lang.Object ref = client_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          client_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string client = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getClientBytes() {
+      java.lang.Object ref = client_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        client_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int COMPANY_FIELD_NUMBER = 3;
@@ -3744,21 +3794,34 @@ public final class Protos {
       }
     }
 
-    public static final int TYPE_FIELD_NUMBER = 4;
-    private int type_;
+    public static final int VALUE_FIELD_NUMBER = 4;
+    private long value_;
     /**
-     * <code>required .CreateReq.Type type = 4;</code>
+     * <code>required int64 value = 4;</code>
      */
-    public boolean hasType() {
+    public boolean hasValue() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required .CreateReq.Type type = 4;</code>
+     * <code>required int64 value = 4;</code>
      */
-    public Protos.CreateReq.Type getType() {
-      @SuppressWarnings("deprecation")
-      Protos.CreateReq.Type result = Protos.CreateReq.Type.valueOf(type_);
-      return result == null ? Protos.CreateReq.Type.AUCTION : result;
+    public long getValue() {
+      return value_;
+    }
+
+    public static final int INTERESTRATE_FIELD_NUMBER = 5;
+    private float interestRate_;
+    /**
+     * <code>optional float interestRate = 5;</code>
+     */
+    public boolean hasInterestRate() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional float interestRate = 5;</code>
+     */
+    public float getInterestRate() {
+      return interestRate_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3768,11 +3831,11 @@ public final class Protos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasValue()) {
+      if (!hasReqType()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasRate()) {
+      if (!hasClient()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3780,7 +3843,7 @@ public final class Protos {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasType()) {
+      if (!hasValue()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3792,16 +3855,19 @@ public final class Protos {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt64(1, value_);
+        output.writeEnum(1, reqType_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeFloat(2, rate_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, client_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, company_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeEnum(4, type_);
+        output.writeInt64(4, value_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeFloat(5, interestRate_);
       }
       unknownFields.writeTo(output);
     }
@@ -3814,18 +3880,21 @@ public final class Protos {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, value_);
+          .computeEnumSize(1, reqType_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(2, rate_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, client_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, company_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(4, type_);
+          .computeInt64Size(4, value_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(5, interestRate_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3837,32 +3906,37 @@ public final class Protos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Protos.CreateReq)) {
+      if (!(obj instanceof Protos.CompanyActionReq)) {
         return super.equals(obj);
       }
-      Protos.CreateReq other = (Protos.CreateReq) obj;
+      Protos.CompanyActionReq other = (Protos.CompanyActionReq) obj;
 
       boolean result = true;
-      result = result && (hasValue() == other.hasValue());
-      if (hasValue()) {
-        result = result && (getValue()
-            == other.getValue());
+      result = result && (hasReqType() == other.hasReqType());
+      if (hasReqType()) {
+        result = result && reqType_ == other.reqType_;
       }
-      result = result && (hasRate() == other.hasRate());
-      if (hasRate()) {
-        result = result && (
-            java.lang.Float.floatToIntBits(getRate())
-            == java.lang.Float.floatToIntBits(
-                other.getRate()));
+      result = result && (hasClient() == other.hasClient());
+      if (hasClient()) {
+        result = result && getClient()
+            .equals(other.getClient());
       }
       result = result && (hasCompany() == other.hasCompany());
       if (hasCompany()) {
         result = result && getCompany()
             .equals(other.getCompany());
       }
-      result = result && (hasType() == other.hasType());
-      if (hasType()) {
-        result = result && type_ == other.type_;
+      result = result && (hasValue() == other.hasValue());
+      if (hasValue()) {
+        result = result && (getValue()
+            == other.getValue());
+      }
+      result = result && (hasInterestRate() == other.hasInterestRate());
+      if (hasInterestRate()) {
+        result = result && (
+            java.lang.Float.floatToIntBits(getInterestRate())
+            == java.lang.Float.floatToIntBits(
+                other.getInterestRate()));
       }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
@@ -3875,92 +3949,96 @@ public final class Protos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasValue()) {
-        hash = (37 * hash) + VALUE_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            getValue());
+      if (hasReqType()) {
+        hash = (37 * hash) + REQTYPE_FIELD_NUMBER;
+        hash = (53 * hash) + reqType_;
       }
-      if (hasRate()) {
-        hash = (37 * hash) + RATE_FIELD_NUMBER;
-        hash = (53 * hash) + java.lang.Float.floatToIntBits(
-            getRate());
+      if (hasClient()) {
+        hash = (37 * hash) + CLIENT_FIELD_NUMBER;
+        hash = (53 * hash) + getClient().hashCode();
       }
       if (hasCompany()) {
         hash = (37 * hash) + COMPANY_FIELD_NUMBER;
         hash = (53 * hash) + getCompany().hashCode();
       }
-      if (hasType()) {
-        hash = (37 * hash) + TYPE_FIELD_NUMBER;
-        hash = (53 * hash) + type_;
+      if (hasValue()) {
+        hash = (37 * hash) + VALUE_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            getValue());
+      }
+      if (hasInterestRate()) {
+        hash = (37 * hash) + INTERESTRATE_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getInterestRate());
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static Protos.CreateReq parseFrom(
+    public static Protos.CompanyActionReq parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Protos.CreateReq parseFrom(
+    public static Protos.CompanyActionReq parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Protos.CreateReq parseFrom(
+    public static Protos.CompanyActionReq parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Protos.CreateReq parseFrom(
+    public static Protos.CompanyActionReq parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Protos.CreateReq parseFrom(byte[] data)
+    public static Protos.CompanyActionReq parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Protos.CreateReq parseFrom(
+    public static Protos.CompanyActionReq parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Protos.CreateReq parseFrom(java.io.InputStream input)
+    public static Protos.CompanyActionReq parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Protos.CreateReq parseFrom(
+    public static Protos.CompanyActionReq parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Protos.CreateReq parseDelimitedFrom(java.io.InputStream input)
+    public static Protos.CompanyActionReq parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Protos.CreateReq parseDelimitedFrom(
+    public static Protos.CompanyActionReq parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Protos.CreateReq parseFrom(
+    public static Protos.CompanyActionReq parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Protos.CreateReq parseFrom(
+    public static Protos.CompanyActionReq parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3973,7 +4051,7 @@ public final class Protos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Protos.CreateReq prototype) {
+    public static Builder newBuilder(Protos.CompanyActionReq prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3989,26 +4067,26 @@ public final class Protos {
       return builder;
     }
     /**
-     * Protobuf type {@code CreateReq}
+     * Protobuf type {@code CompanyActionReq}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:CreateReq)
-        Protos.CreateReqOrBuilder {
+        // @@protoc_insertion_point(builder_implements:CompanyActionReq)
+        Protos.CompanyActionReqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Protos.internal_static_CreateReq_descriptor;
+        return Protos.internal_static_CompanyActionReq_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Protos.internal_static_CreateReq_fieldAccessorTable
+        return Protos.internal_static_CompanyActionReq_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Protos.CreateReq.class, Protos.CreateReq.Builder.class);
+                Protos.CompanyActionReq.class, Protos.CompanyActionReq.Builder.class);
       }
 
-      // Construct using Protos.CreateReq.newBuilder()
+      // Construct using Protos.CompanyActionReq.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4026,31 +4104,33 @@ public final class Protos {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        value_ = 0L;
+        reqType_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
-        rate_ = 0F;
+        client_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
         company_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
-        type_ = 0;
+        value_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000008);
+        interestRate_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Protos.internal_static_CreateReq_descriptor;
+        return Protos.internal_static_CompanyActionReq_descriptor;
       }
 
       @java.lang.Override
-      public Protos.CreateReq getDefaultInstanceForType() {
-        return Protos.CreateReq.getDefaultInstance();
+      public Protos.CompanyActionReq getDefaultInstanceForType() {
+        return Protos.CompanyActionReq.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Protos.CreateReq build() {
-        Protos.CreateReq result = buildPartial();
+      public Protos.CompanyActionReq build() {
+        Protos.CompanyActionReq result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4058,26 +4138,30 @@ public final class Protos {
       }
 
       @java.lang.Override
-      public Protos.CreateReq buildPartial() {
-        Protos.CreateReq result = new Protos.CreateReq(this);
+      public Protos.CompanyActionReq buildPartial() {
+        Protos.CompanyActionReq result = new Protos.CompanyActionReq(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          result.value_ = value_;
           to_bitField0_ |= 0x00000001;
         }
+        result.reqType_ = reqType_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          result.rate_ = rate_;
           to_bitField0_ |= 0x00000002;
         }
+        result.client_ = client_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
         result.company_ = company_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          result.value_ = value_;
           to_bitField0_ |= 0x00000008;
         }
-        result.type_ = type_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          result.interestRate_ = interestRate_;
+          to_bitField0_ |= 0x00000010;
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4117,29 +4201,34 @@ public final class Protos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Protos.CreateReq) {
-          return mergeFrom((Protos.CreateReq)other);
+        if (other instanceof Protos.CompanyActionReq) {
+          return mergeFrom((Protos.CompanyActionReq)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Protos.CreateReq other) {
-        if (other == Protos.CreateReq.getDefaultInstance()) return this;
-        if (other.hasValue()) {
-          setValue(other.getValue());
+      public Builder mergeFrom(Protos.CompanyActionReq other) {
+        if (other == Protos.CompanyActionReq.getDefaultInstance()) return this;
+        if (other.hasReqType()) {
+          setReqType(other.getReqType());
         }
-        if (other.hasRate()) {
-          setRate(other.getRate());
+        if (other.hasClient()) {
+          bitField0_ |= 0x00000002;
+          client_ = other.client_;
+          onChanged();
         }
         if (other.hasCompany()) {
           bitField0_ |= 0x00000004;
           company_ = other.company_;
           onChanged();
         }
-        if (other.hasType()) {
-          setType(other.getType());
+        if (other.hasValue()) {
+          setValue(other.getValue());
+        }
+        if (other.hasInterestRate()) {
+          setInterestRate(other.getInterestRate());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4148,16 +4237,16 @@ public final class Protos {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasValue()) {
+        if (!hasReqType()) {
           return false;
         }
-        if (!hasRate()) {
+        if (!hasClient()) {
           return false;
         }
         if (!hasCompany()) {
           return false;
         }
-        if (!hasType()) {
+        if (!hasValue()) {
           return false;
         }
         return true;
@@ -4168,11 +4257,11 @@ public final class Protos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Protos.CreateReq parsedMessage = null;
+        Protos.CompanyActionReq parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Protos.CreateReq) e.getUnfinishedMessage();
+          parsedMessage = (Protos.CompanyActionReq) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4183,66 +4272,115 @@ public final class Protos {
       }
       private int bitField0_;
 
-      private long value_ ;
+      private int reqType_ = 0;
       /**
-       * <code>required int64 value = 1;</code>
+       * <code>required .CompanyActionReq.RequestType reqType = 1;</code>
        */
-      public boolean hasValue() {
+      public boolean hasReqType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int64 value = 1;</code>
+       * <code>required .CompanyActionReq.RequestType reqType = 1;</code>
        */
-      public long getValue() {
-        return value_;
+      public Protos.CompanyActionReq.RequestType getReqType() {
+        @SuppressWarnings("deprecation")
+        Protos.CompanyActionReq.RequestType result = Protos.CompanyActionReq.RequestType.valueOf(reqType_);
+        return result == null ? Protos.CompanyActionReq.RequestType.AUCTION : result;
       }
       /**
-       * <code>required int64 value = 1;</code>
+       * <code>required .CompanyActionReq.RequestType reqType = 1;</code>
        */
-      public Builder setValue(long value) {
+      public Builder setReqType(Protos.CompanyActionReq.RequestType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
         bitField0_ |= 0x00000001;
-        value_ = value;
+        reqType_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
-       * <code>required int64 value = 1;</code>
+       * <code>required .CompanyActionReq.RequestType reqType = 1;</code>
        */
-      public Builder clearValue() {
+      public Builder clearReqType() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        value_ = 0L;
+        reqType_ = 0;
         onChanged();
         return this;
       }
 
-      private float rate_ ;
+      private java.lang.Object client_ = "";
       /**
-       * <code>required float rate = 2;</code>
+       * <code>required string client = 2;</code>
        */
-      public boolean hasRate() {
+      public boolean hasClient() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required float rate = 2;</code>
+       * <code>required string client = 2;</code>
        */
-      public float getRate() {
-        return rate_;
+      public java.lang.String getClient() {
+        java.lang.Object ref = client_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            client_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required float rate = 2;</code>
+       * <code>required string client = 2;</code>
        */
-      public Builder setRate(float value) {
-        bitField0_ |= 0x00000002;
-        rate_ = value;
+      public com.google.protobuf.ByteString
+          getClientBytes() {
+        java.lang.Object ref = client_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          client_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string client = 2;</code>
+       */
+      public Builder setClient(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        client_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required float rate = 2;</code>
+       * <code>required string client = 2;</code>
        */
-      public Builder clearRate() {
+      public Builder clearClient() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        rate_ = 0F;
+        client_ = getDefaultInstance().getClient();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string client = 2;</code>
+       */
+      public Builder setClientBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        client_ = value;
         onChanged();
         return this;
       }
@@ -4323,39 +4461,66 @@ public final class Protos {
         return this;
       }
 
-      private int type_ = 0;
+      private long value_ ;
       /**
-       * <code>required .CreateReq.Type type = 4;</code>
+       * <code>required int64 value = 4;</code>
        */
-      public boolean hasType() {
+      public boolean hasValue() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required .CreateReq.Type type = 4;</code>
+       * <code>required int64 value = 4;</code>
        */
-      public Protos.CreateReq.Type getType() {
-        @SuppressWarnings("deprecation")
-        Protos.CreateReq.Type result = Protos.CreateReq.Type.valueOf(type_);
-        return result == null ? Protos.CreateReq.Type.AUCTION : result;
+      public long getValue() {
+        return value_;
       }
       /**
-       * <code>required .CreateReq.Type type = 4;</code>
+       * <code>required int64 value = 4;</code>
        */
-      public Builder setType(Protos.CreateReq.Type value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
+      public Builder setValue(long value) {
         bitField0_ |= 0x00000008;
-        type_ = value.getNumber();
+        value_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required .CreateReq.Type type = 4;</code>
+       * <code>required int64 value = 4;</code>
        */
-      public Builder clearType() {
+      public Builder clearValue() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        type_ = 0;
+        value_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private float interestRate_ ;
+      /**
+       * <code>optional float interestRate = 5;</code>
+       */
+      public boolean hasInterestRate() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional float interestRate = 5;</code>
+       */
+      public float getInterestRate() {
+        return interestRate_;
+      }
+      /**
+       * <code>optional float interestRate = 5;</code>
+       */
+      public Builder setInterestRate(float value) {
+        bitField0_ |= 0x00000010;
+        interestRate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float interestRate = 5;</code>
+       */
+      public Builder clearInterestRate() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        interestRate_ = 0F;
         onChanged();
         return this;
       }
@@ -4372,72 +4537,87 @@ public final class Protos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:CreateReq)
+      // @@protoc_insertion_point(builder_scope:CompanyActionReq)
     }
 
-    // @@protoc_insertion_point(class_scope:CreateReq)
-    private static final Protos.CreateReq DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:CompanyActionReq)
+    private static final Protos.CompanyActionReq DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Protos.CreateReq();
+      DEFAULT_INSTANCE = new Protos.CompanyActionReq();
     }
 
-    public static Protos.CreateReq getDefaultInstance() {
+    public static Protos.CompanyActionReq getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<CreateReq>
-        PARSER = new com.google.protobuf.AbstractParser<CreateReq>() {
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<CompanyActionReq>
+        PARSER = new com.google.protobuf.AbstractParser<CompanyActionReq>() {
       @java.lang.Override
-      public CreateReq parsePartialFrom(
+      public CompanyActionReq parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CreateReq(input, extensionRegistry);
+        return new CompanyActionReq(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<CreateReq> parser() {
+    public static com.google.protobuf.Parser<CompanyActionReq> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<CreateReq> getParserForType() {
+    public com.google.protobuf.Parser<CompanyActionReq> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public Protos.CreateReq getDefaultInstanceForType() {
+    public Protos.CompanyActionReq getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface CreateRespOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:CreateResp)
+  public interface CompanyActionRespOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:CompanyActionResp)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .CreateResp.Status status = 1;</code>
+     * <code>required string client = 1;</code>
+     */
+    boolean hasClient();
+    /**
+     * <code>required string client = 1;</code>
+     */
+    java.lang.String getClient();
+    /**
+     * <code>required string client = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getClientBytes();
+
+    /**
+     * <code>required .CompanyActionResp.Status status = 2;</code>
      */
     boolean hasStatus();
     /**
-     * <code>required .CreateResp.Status status = 1;</code>
+     * <code>required .CompanyActionResp.Status status = 2;</code>
      */
-    Protos.CreateResp.Status getStatus();
+    Protos.CompanyActionResp.Status getStatus();
   }
   /**
-   * Protobuf type {@code CreateResp}
+   * Protobuf type {@code CompanyActionResp}
    */
-  public  static final class CreateResp extends
+  public  static final class CompanyActionResp extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:CreateResp)
-      CreateRespOrBuilder {
+      // @@protoc_insertion_point(message_implements:CompanyActionResp)
+      CompanyActionRespOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use CreateResp.newBuilder() to construct.
-    private CreateResp(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use CompanyActionResp.newBuilder() to construct.
+    private CompanyActionResp(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private CreateResp() {
+    private CompanyActionResp() {
+      client_ = "";
       status_ = 0;
     }
 
@@ -4446,7 +4626,7 @@ public final class Protos {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private CreateResp(
+    private CompanyActionResp(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4465,14 +4645,20 @@ public final class Protos {
             case 0:
               done = true;
               break;
-            case 8: {
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              client_ = bs;
+              break;
+            }
+            case 16: {
               int rawValue = input.readEnum();
                 @SuppressWarnings("deprecation")
-              Protos.CreateResp.Status value = Protos.CreateResp.Status.valueOf(rawValue);
+              Protos.CompanyActionResp.Status value = Protos.CompanyActionResp.Status.valueOf(rawValue);
               if (value == null) {
-                unknownFields.mergeVarintField(1, rawValue);
+                unknownFields.mergeVarintField(2, rawValue);
               } else {
-                bitField0_ |= 0x00000001;
+                bitField0_ |= 0x00000002;
                 status_ = rawValue;
               }
               break;
@@ -4498,19 +4684,19 @@ public final class Protos {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return Protos.internal_static_CreateResp_descriptor;
+      return Protos.internal_static_CompanyActionResp_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return Protos.internal_static_CreateResp_fieldAccessorTable
+      return Protos.internal_static_CompanyActionResp_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              Protos.CreateResp.class, Protos.CreateResp.Builder.class);
+              Protos.CompanyActionResp.class, Protos.CompanyActionResp.Builder.class);
     }
 
     /**
-     * Protobuf enum {@code CreateResp.Status}
+     * Protobuf enum {@code CompanyActionResp.Status}
      */
     public enum Status
         implements com.google.protobuf.ProtocolMessageEnum {
@@ -4519,9 +4705,9 @@ public final class Protos {
        */
       SUCCESS(0),
       /**
-       * <code>ONGOING_AUCTION = 1;</code>
+       * <code>INVALID = 1;</code>
        */
-      ONGOING_AUCTION(1),
+      INVALID(1),
       ;
 
       /**
@@ -4529,9 +4715,9 @@ public final class Protos {
        */
       public static final int SUCCESS_VALUE = 0;
       /**
-       * <code>ONGOING_AUCTION = 1;</code>
+       * <code>INVALID = 1;</code>
        */
-      public static final int ONGOING_AUCTION_VALUE = 1;
+      public static final int INVALID_VALUE = 1;
 
 
       public final int getNumber() {
@@ -4549,7 +4735,7 @@ public final class Protos {
       public static Status forNumber(int value) {
         switch (value) {
           case 0: return SUCCESS;
-          case 1: return ONGOING_AUCTION;
+          case 1: return INVALID;
           default: return null;
         }
       }
@@ -4576,7 +4762,7 @@ public final class Protos {
       }
       public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return Protos.CreateResp.getDescriptor().getEnumTypes().get(0);
+        return Protos.CompanyActionResp.getDescriptor().getEnumTypes().get(0);
       }
 
       private static final Status[] VALUES = values();
@@ -4596,25 +4782,67 @@ public final class Protos {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:CreateResp.Status)
+      // @@protoc_insertion_point(enum_scope:CompanyActionResp.Status)
     }
 
     private int bitField0_;
-    public static final int STATUS_FIELD_NUMBER = 1;
-    private int status_;
+    public static final int CLIENT_FIELD_NUMBER = 1;
+    private volatile java.lang.Object client_;
     /**
-     * <code>required .CreateResp.Status status = 1;</code>
+     * <code>required string client = 1;</code>
      */
-    public boolean hasStatus() {
+    public boolean hasClient() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .CreateResp.Status status = 1;</code>
+     * <code>required string client = 1;</code>
      */
-    public Protos.CreateResp.Status getStatus() {
+    public java.lang.String getClient() {
+      java.lang.Object ref = client_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          client_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string client = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getClientBytes() {
+      java.lang.Object ref = client_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        client_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 2;
+    private int status_;
+    /**
+     * <code>required .CompanyActionResp.Status status = 2;</code>
+     */
+    public boolean hasStatus() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .CompanyActionResp.Status status = 2;</code>
+     */
+    public Protos.CompanyActionResp.Status getStatus() {
       @SuppressWarnings("deprecation")
-      Protos.CreateResp.Status result = Protos.CreateResp.Status.valueOf(status_);
-      return result == null ? Protos.CreateResp.Status.SUCCESS : result;
+      Protos.CompanyActionResp.Status result = Protos.CompanyActionResp.Status.valueOf(status_);
+      return result == null ? Protos.CompanyActionResp.Status.SUCCESS : result;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4624,6 +4852,10 @@ public final class Protos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasClient()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!hasStatus()) {
         memoizedIsInitialized = 0;
         return false;
@@ -4636,7 +4868,10 @@ public final class Protos {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(1, status_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, client_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeEnum(2, status_);
       }
       unknownFields.writeTo(output);
     }
@@ -4648,8 +4883,11 @@ public final class Protos {
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, client_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, status_);
+          .computeEnumSize(2, status_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4661,12 +4899,17 @@ public final class Protos {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof Protos.CreateResp)) {
+      if (!(obj instanceof Protos.CompanyActionResp)) {
         return super.equals(obj);
       }
-      Protos.CreateResp other = (Protos.CreateResp) obj;
+      Protos.CompanyActionResp other = (Protos.CompanyActionResp) obj;
 
       boolean result = true;
+      result = result && (hasClient() == other.hasClient());
+      if (hasClient()) {
+        result = result && getClient()
+            .equals(other.getClient());
+      }
       result = result && (hasStatus() == other.hasStatus());
       if (hasStatus()) {
         result = result && status_ == other.status_;
@@ -4682,6 +4925,10 @@ public final class Protos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasClient()) {
+        hash = (37 * hash) + CLIENT_FIELD_NUMBER;
+        hash = (53 * hash) + getClient().hashCode();
+      }
       if (hasStatus()) {
         hash = (37 * hash) + STATUS_FIELD_NUMBER;
         hash = (53 * hash) + status_;
@@ -4691,69 +4938,69 @@ public final class Protos {
       return hash;
     }
 
-    public static Protos.CreateResp parseFrom(
+    public static Protos.CompanyActionResp parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Protos.CreateResp parseFrom(
+    public static Protos.CompanyActionResp parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Protos.CreateResp parseFrom(
+    public static Protos.CompanyActionResp parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Protos.CreateResp parseFrom(
+    public static Protos.CompanyActionResp parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Protos.CreateResp parseFrom(byte[] data)
+    public static Protos.CompanyActionResp parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static Protos.CreateResp parseFrom(
+    public static Protos.CompanyActionResp parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static Protos.CreateResp parseFrom(java.io.InputStream input)
+    public static Protos.CompanyActionResp parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Protos.CreateResp parseFrom(
+    public static Protos.CompanyActionResp parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Protos.CreateResp parseDelimitedFrom(java.io.InputStream input)
+    public static Protos.CompanyActionResp parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static Protos.CreateResp parseDelimitedFrom(
+    public static Protos.CompanyActionResp parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static Protos.CreateResp parseFrom(
+    public static Protos.CompanyActionResp parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static Protos.CreateResp parseFrom(
+    public static Protos.CompanyActionResp parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -4766,7 +5013,7 @@ public final class Protos {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(Protos.CreateResp prototype) {
+    public static Builder newBuilder(Protos.CompanyActionResp prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -4782,26 +5029,26 @@ public final class Protos {
       return builder;
     }
     /**
-     * Protobuf type {@code CreateResp}
+     * Protobuf type {@code CompanyActionResp}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:CreateResp)
-        Protos.CreateRespOrBuilder {
+        // @@protoc_insertion_point(builder_implements:CompanyActionResp)
+        Protos.CompanyActionRespOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return Protos.internal_static_CreateResp_descriptor;
+        return Protos.internal_static_CompanyActionResp_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return Protos.internal_static_CreateResp_fieldAccessorTable
+        return Protos.internal_static_CompanyActionResp_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                Protos.CreateResp.class, Protos.CreateResp.Builder.class);
+                Protos.CompanyActionResp.class, Protos.CompanyActionResp.Builder.class);
       }
 
-      // Construct using Protos.CreateResp.newBuilder()
+      // Construct using Protos.CompanyActionResp.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -4819,25 +5066,27 @@ public final class Protos {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        status_ = 0;
+        client_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
+        status_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return Protos.internal_static_CreateResp_descriptor;
+        return Protos.internal_static_CompanyActionResp_descriptor;
       }
 
       @java.lang.Override
-      public Protos.CreateResp getDefaultInstanceForType() {
-        return Protos.CreateResp.getDefaultInstance();
+      public Protos.CompanyActionResp getDefaultInstanceForType() {
+        return Protos.CompanyActionResp.getDefaultInstance();
       }
 
       @java.lang.Override
-      public Protos.CreateResp build() {
-        Protos.CreateResp result = buildPartial();
+      public Protos.CompanyActionResp build() {
+        Protos.CompanyActionResp result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -4845,12 +5094,16 @@ public final class Protos {
       }
 
       @java.lang.Override
-      public Protos.CreateResp buildPartial() {
-        Protos.CreateResp result = new Protos.CreateResp(this);
+      public Protos.CompanyActionResp buildPartial() {
+        Protos.CompanyActionResp result = new Protos.CompanyActionResp(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
+        }
+        result.client_ = client_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
         }
         result.status_ = status_;
         result.bitField0_ = to_bitField0_;
@@ -4892,16 +5145,21 @@ public final class Protos {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof Protos.CreateResp) {
-          return mergeFrom((Protos.CreateResp)other);
+        if (other instanceof Protos.CompanyActionResp) {
+          return mergeFrom((Protos.CompanyActionResp)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(Protos.CreateResp other) {
-        if (other == Protos.CreateResp.getDefaultInstance()) return this;
+      public Builder mergeFrom(Protos.CompanyActionResp other) {
+        if (other == Protos.CompanyActionResp.getDefaultInstance()) return this;
+        if (other.hasClient()) {
+          bitField0_ |= 0x00000001;
+          client_ = other.client_;
+          onChanged();
+        }
         if (other.hasStatus()) {
           setStatus(other.getStatus());
         }
@@ -4912,6 +5170,9 @@ public final class Protos {
 
       @java.lang.Override
       public final boolean isInitialized() {
+        if (!hasClient()) {
+          return false;
+        }
         if (!hasStatus()) {
           return false;
         }
@@ -4923,11 +5184,11 @@ public final class Protos {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        Protos.CreateResp parsedMessage = null;
+        Protos.CompanyActionResp parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (Protos.CreateResp) e.getUnfinishedMessage();
+          parsedMessage = (Protos.CompanyActionResp) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -4938,38 +5199,114 @@ public final class Protos {
       }
       private int bitField0_;
 
-      private int status_ = 0;
+      private java.lang.Object client_ = "";
       /**
-       * <code>required .CreateResp.Status status = 1;</code>
+       * <code>required string client = 1;</code>
        */
-      public boolean hasStatus() {
+      public boolean hasClient() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .CreateResp.Status status = 1;</code>
+       * <code>required string client = 1;</code>
        */
-      public Protos.CreateResp.Status getStatus() {
-        @SuppressWarnings("deprecation")
-        Protos.CreateResp.Status result = Protos.CreateResp.Status.valueOf(status_);
-        return result == null ? Protos.CreateResp.Status.SUCCESS : result;
+      public java.lang.String getClient() {
+        java.lang.Object ref = client_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            client_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required .CreateResp.Status status = 1;</code>
+       * <code>required string client = 1;</code>
        */
-      public Builder setStatus(Protos.CreateResp.Status value) {
+      public com.google.protobuf.ByteString
+          getClientBytes() {
+        java.lang.Object ref = client_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          client_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public Builder setClient(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        client_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public Builder clearClient() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        client_ = getDefaultInstance().getClient();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public Builder setClientBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        client_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int status_ = 0;
+      /**
+       * <code>required .CompanyActionResp.Status status = 2;</code>
+       */
+      public boolean hasStatus() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .CompanyActionResp.Status status = 2;</code>
+       */
+      public Protos.CompanyActionResp.Status getStatus() {
+        @SuppressWarnings("deprecation")
+        Protos.CompanyActionResp.Status result = Protos.CompanyActionResp.Status.valueOf(status_);
+        return result == null ? Protos.CompanyActionResp.Status.SUCCESS : result;
+      }
+      /**
+       * <code>required .CompanyActionResp.Status status = 2;</code>
+       */
+      public Builder setStatus(Protos.CompanyActionResp.Status value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         status_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
-       * <code>required .CreateResp.Status status = 1;</code>
+       * <code>required .CompanyActionResp.Status status = 2;</code>
        */
       public Builder clearStatus() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         status_ = 0;
         onChanged();
         return this;
@@ -4987,41 +5324,41 @@ public final class Protos {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:CreateResp)
+      // @@protoc_insertion_point(builder_scope:CompanyActionResp)
     }
 
-    // @@protoc_insertion_point(class_scope:CreateResp)
-    private static final Protos.CreateResp DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:CompanyActionResp)
+    private static final Protos.CompanyActionResp DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new Protos.CreateResp();
+      DEFAULT_INSTANCE = new Protos.CompanyActionResp();
     }
 
-    public static Protos.CreateResp getDefaultInstance() {
+    public static Protos.CompanyActionResp getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<CreateResp>
-        PARSER = new com.google.protobuf.AbstractParser<CreateResp>() {
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<CompanyActionResp>
+        PARSER = new com.google.protobuf.AbstractParser<CompanyActionResp>() {
       @java.lang.Override
-      public CreateResp parsePartialFrom(
+      public CompanyActionResp parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new CreateResp(input, extensionRegistry);
+        return new CompanyActionResp(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<CreateResp> parser() {
+    public static com.google.protobuf.Parser<CompanyActionResp> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<CreateResp> getParserForType() {
+    public com.google.protobuf.Parser<CompanyActionResp> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public Protos.CreateResp getDefaultInstanceForType() {
+    public Protos.CompanyActionResp getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -5032,45 +5369,59 @@ public final class Protos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required string company = 1;</code>
+     * <code>required .InvestorActionReq.RequestType reqType = 1;</code>
+     */
+    boolean hasReqType();
+    /**
+     * <code>required .InvestorActionReq.RequestType reqType = 1;</code>
+     */
+    Protos.InvestorActionReq.RequestType getReqType();
+
+    /**
+     * <code>required string client = 2;</code>
+     */
+    boolean hasClient();
+    /**
+     * <code>required string client = 2;</code>
+     */
+    java.lang.String getClient();
+    /**
+     * <code>required string client = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getClientBytes();
+
+    /**
+     * <code>required string company = 3;</code>
      */
     boolean hasCompany();
     /**
-     * <code>required string company = 1;</code>
+     * <code>required string company = 3;</code>
      */
     java.lang.String getCompany();
     /**
-     * <code>required string company = 1;</code>
+     * <code>required string company = 3;</code>
      */
     com.google.protobuf.ByteString
         getCompanyBytes();
 
     /**
-     * <code>required .InvestorActionReq.RequestType reqType = 2;</code>
-     */
-    boolean hasReqType();
-    /**
-     * <code>required .InvestorActionReq.RequestType reqType = 2;</code>
-     */
-    Protos.InvestorActionReq.RequestType getReqType();
-
-    /**
-     * <code>required float value = 3;</code>
+     * <code>required int64 value = 4;</code>
      */
     boolean hasValue();
     /**
-     * <code>required float value = 3;</code>
+     * <code>required int64 value = 4;</code>
      */
-    float getValue();
+    long getValue();
 
     /**
-     * <code>optional float rate = 4;</code>
+     * <code>optional float interestRate = 5;</code>
      */
-    boolean hasRate();
+    boolean hasInterestRate();
     /**
-     * <code>optional float rate = 4;</code>
+     * <code>optional float interestRate = 5;</code>
      */
-    float getRate();
+    float getInterestRate();
   }
   /**
    * Protobuf type {@code InvestorActionReq}
@@ -5085,8 +5436,9 @@ public final class Protos {
       super(builder);
     }
     private InvestorActionReq() {
-      company_ = "";
       reqType_ = 0;
+      client_ = "";
+      company_ = "";
     }
 
     @java.lang.Override
@@ -5113,32 +5465,38 @@ public final class Protos {
             case 0:
               done = true;
               break;
-            case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000001;
-              company_ = bs;
-              break;
-            }
-            case 16: {
+            case 8: {
               int rawValue = input.readEnum();
                 @SuppressWarnings("deprecation")
               Protos.InvestorActionReq.RequestType value = Protos.InvestorActionReq.RequestType.valueOf(rawValue);
               if (value == null) {
-                unknownFields.mergeVarintField(2, rawValue);
+                unknownFields.mergeVarintField(1, rawValue);
               } else {
-                bitField0_ |= 0x00000002;
+                bitField0_ |= 0x00000001;
                 reqType_ = rawValue;
               }
               break;
             }
-            case 29: {
-              bitField0_ |= 0x00000004;
-              value_ = input.readFloat();
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              client_ = bs;
               break;
             }
-            case 37: {
+            case 26: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              company_ = bs;
+              break;
+            }
+            case 32: {
               bitField0_ |= 0x00000008;
-              rate_ = input.readFloat();
+              value_ = input.readInt64();
+              break;
+            }
+            case 45: {
+              bitField0_ |= 0x00000010;
+              interestRate_ = input.readFloat();
               break;
             }
             default: {
@@ -5264,16 +5622,75 @@ public final class Protos {
     }
 
     private int bitField0_;
-    public static final int COMPANY_FIELD_NUMBER = 1;
-    private volatile java.lang.Object company_;
+    public static final int REQTYPE_FIELD_NUMBER = 1;
+    private int reqType_;
     /**
-     * <code>required string company = 1;</code>
+     * <code>required .InvestorActionReq.RequestType reqType = 1;</code>
      */
-    public boolean hasCompany() {
+    public boolean hasReqType() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required string company = 1;</code>
+     * <code>required .InvestorActionReq.RequestType reqType = 1;</code>
+     */
+    public Protos.InvestorActionReq.RequestType getReqType() {
+      @SuppressWarnings("deprecation")
+      Protos.InvestorActionReq.RequestType result = Protos.InvestorActionReq.RequestType.valueOf(reqType_);
+      return result == null ? Protos.InvestorActionReq.RequestType.AUCTION : result;
+    }
+
+    public static final int CLIENT_FIELD_NUMBER = 2;
+    private volatile java.lang.Object client_;
+    /**
+     * <code>required string client = 2;</code>
+     */
+    public boolean hasClient() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string client = 2;</code>
+     */
+    public java.lang.String getClient() {
+      java.lang.Object ref = client_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          client_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string client = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getClientBytes() {
+      java.lang.Object ref = client_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        client_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int COMPANY_FIELD_NUMBER = 3;
+    private volatile java.lang.Object company_;
+    /**
+     * <code>required string company = 3;</code>
+     */
+    public boolean hasCompany() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string company = 3;</code>
      */
     public java.lang.String getCompany() {
       java.lang.Object ref = company_;
@@ -5290,7 +5707,7 @@ public final class Protos {
       }
     }
     /**
-     * <code>required string company = 1;</code>
+     * <code>required string company = 3;</code>
      */
     public com.google.protobuf.ByteString
         getCompanyBytes() {
@@ -5306,51 +5723,34 @@ public final class Protos {
       }
     }
 
-    public static final int REQTYPE_FIELD_NUMBER = 2;
-    private int reqType_;
+    public static final int VALUE_FIELD_NUMBER = 4;
+    private long value_;
     /**
-     * <code>required .InvestorActionReq.RequestType reqType = 2;</code>
-     */
-    public boolean hasReqType() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required .InvestorActionReq.RequestType reqType = 2;</code>
-     */
-    public Protos.InvestorActionReq.RequestType getReqType() {
-      @SuppressWarnings("deprecation")
-      Protos.InvestorActionReq.RequestType result = Protos.InvestorActionReq.RequestType.valueOf(reqType_);
-      return result == null ? Protos.InvestorActionReq.RequestType.AUCTION : result;
-    }
-
-    public static final int VALUE_FIELD_NUMBER = 3;
-    private float value_;
-    /**
-     * <code>required float value = 3;</code>
+     * <code>required int64 value = 4;</code>
      */
     public boolean hasValue() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>required float value = 3;</code>
-     */
-    public float getValue() {
-      return value_;
-    }
-
-    public static final int RATE_FIELD_NUMBER = 4;
-    private float rate_;
-    /**
-     * <code>optional float rate = 4;</code>
-     */
-    public boolean hasRate() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional float rate = 4;</code>
+     * <code>required int64 value = 4;</code>
      */
-    public float getRate() {
-      return rate_;
+    public long getValue() {
+      return value_;
+    }
+
+    public static final int INTERESTRATE_FIELD_NUMBER = 5;
+    private float interestRate_;
+    /**
+     * <code>optional float interestRate = 5;</code>
+     */
+    public boolean hasInterestRate() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional float interestRate = 5;</code>
+     */
+    public float getInterestRate() {
+      return interestRate_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -5360,11 +5760,15 @@ public final class Protos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasCompany()) {
+      if (!hasReqType()) {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasReqType()) {
+      if (!hasClient()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCompany()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -5380,16 +5784,19 @@ public final class Protos {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, company_);
+        output.writeEnum(1, reqType_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeEnum(2, reqType_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, client_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeFloat(3, value_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, company_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeFloat(4, rate_);
+        output.writeInt64(4, value_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeFloat(5, interestRate_);
       }
       unknownFields.writeTo(output);
     }
@@ -5401,19 +5808,22 @@ public final class Protos {
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, company_);
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, reqType_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, reqType_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, client_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(3, value_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, company_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(4, rate_);
+          .computeInt64Size(4, value_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(5, interestRate_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5431,28 +5841,31 @@ public final class Protos {
       Protos.InvestorActionReq other = (Protos.InvestorActionReq) obj;
 
       boolean result = true;
+      result = result && (hasReqType() == other.hasReqType());
+      if (hasReqType()) {
+        result = result && reqType_ == other.reqType_;
+      }
+      result = result && (hasClient() == other.hasClient());
+      if (hasClient()) {
+        result = result && getClient()
+            .equals(other.getClient());
+      }
       result = result && (hasCompany() == other.hasCompany());
       if (hasCompany()) {
         result = result && getCompany()
             .equals(other.getCompany());
       }
-      result = result && (hasReqType() == other.hasReqType());
-      if (hasReqType()) {
-        result = result && reqType_ == other.reqType_;
-      }
       result = result && (hasValue() == other.hasValue());
       if (hasValue()) {
-        result = result && (
-            java.lang.Float.floatToIntBits(getValue())
-            == java.lang.Float.floatToIntBits(
-                other.getValue()));
+        result = result && (getValue()
+            == other.getValue());
       }
-      result = result && (hasRate() == other.hasRate());
-      if (hasRate()) {
+      result = result && (hasInterestRate() == other.hasInterestRate());
+      if (hasInterestRate()) {
         result = result && (
-            java.lang.Float.floatToIntBits(getRate())
+            java.lang.Float.floatToIntBits(getInterestRate())
             == java.lang.Float.floatToIntBits(
-                other.getRate()));
+                other.getInterestRate()));
       }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
@@ -5465,23 +5878,27 @@ public final class Protos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasCompany()) {
-        hash = (37 * hash) + COMPANY_FIELD_NUMBER;
-        hash = (53 * hash) + getCompany().hashCode();
-      }
       if (hasReqType()) {
         hash = (37 * hash) + REQTYPE_FIELD_NUMBER;
         hash = (53 * hash) + reqType_;
       }
+      if (hasClient()) {
+        hash = (37 * hash) + CLIENT_FIELD_NUMBER;
+        hash = (53 * hash) + getClient().hashCode();
+      }
+      if (hasCompany()) {
+        hash = (37 * hash) + COMPANY_FIELD_NUMBER;
+        hash = (53 * hash) + getCompany().hashCode();
+      }
       if (hasValue()) {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
-        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
             getValue());
       }
-      if (hasRate()) {
-        hash = (37 * hash) + RATE_FIELD_NUMBER;
+      if (hasInterestRate()) {
+        hash = (37 * hash) + INTERESTRATE_FIELD_NUMBER;
         hash = (53 * hash) + java.lang.Float.floatToIntBits(
-            getRate());
+            getInterestRate());
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -5616,14 +6033,16 @@ public final class Protos {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        company_ = "";
-        bitField0_ = (bitField0_ & ~0x00000001);
         reqType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        client_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        value_ = 0F;
+        company_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
-        rate_ = 0F;
+        value_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000008);
+        interestRate_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -5655,18 +6074,22 @@ public final class Protos {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.company_ = company_;
+        result.reqType_ = reqType_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.reqType_ = reqType_;
+        result.client_ = client_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          result.value_ = value_;
           to_bitField0_ |= 0x00000004;
         }
+        result.company_ = company_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          result.rate_ = rate_;
+          result.value_ = value_;
           to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          result.interestRate_ = interestRate_;
+          to_bitField0_ |= 0x00000010;
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -5717,19 +6140,24 @@ public final class Protos {
 
       public Builder mergeFrom(Protos.InvestorActionReq other) {
         if (other == Protos.InvestorActionReq.getDefaultInstance()) return this;
-        if (other.hasCompany()) {
-          bitField0_ |= 0x00000001;
-          company_ = other.company_;
-          onChanged();
-        }
         if (other.hasReqType()) {
           setReqType(other.getReqType());
+        }
+        if (other.hasClient()) {
+          bitField0_ |= 0x00000002;
+          client_ = other.client_;
+          onChanged();
+        }
+        if (other.hasCompany()) {
+          bitField0_ |= 0x00000004;
+          company_ = other.company_;
+          onChanged();
         }
         if (other.hasValue()) {
           setValue(other.getValue());
         }
-        if (other.hasRate()) {
-          setRate(other.getRate());
+        if (other.hasInterestRate()) {
+          setInterestRate(other.getInterestRate());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -5738,10 +6166,13 @@ public final class Protos {
 
       @java.lang.Override
       public final boolean isInitialized() {
-        if (!hasCompany()) {
+        if (!hasReqType()) {
           return false;
         }
-        if (!hasReqType()) {
+        if (!hasClient()) {
+          return false;
+        }
+        if (!hasCompany()) {
           return false;
         }
         if (!hasValue()) {
@@ -5770,15 +6201,128 @@ public final class Protos {
       }
       private int bitField0_;
 
-      private java.lang.Object company_ = "";
+      private int reqType_ = 0;
       /**
-       * <code>required string company = 1;</code>
+       * <code>required .InvestorActionReq.RequestType reqType = 1;</code>
        */
-      public boolean hasCompany() {
+      public boolean hasReqType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string company = 1;</code>
+       * <code>required .InvestorActionReq.RequestType reqType = 1;</code>
+       */
+      public Protos.InvestorActionReq.RequestType getReqType() {
+        @SuppressWarnings("deprecation")
+        Protos.InvestorActionReq.RequestType result = Protos.InvestorActionReq.RequestType.valueOf(reqType_);
+        return result == null ? Protos.InvestorActionReq.RequestType.AUCTION : result;
+      }
+      /**
+       * <code>required .InvestorActionReq.RequestType reqType = 1;</code>
+       */
+      public Builder setReqType(Protos.InvestorActionReq.RequestType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        reqType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .InvestorActionReq.RequestType reqType = 1;</code>
+       */
+      public Builder clearReqType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        reqType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object client_ = "";
+      /**
+       * <code>required string client = 2;</code>
+       */
+      public boolean hasClient() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string client = 2;</code>
+       */
+      public java.lang.String getClient() {
+        java.lang.Object ref = client_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            client_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string client = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getClientBytes() {
+        java.lang.Object ref = client_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          client_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string client = 2;</code>
+       */
+      public Builder setClient(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        client_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string client = 2;</code>
+       */
+      public Builder clearClient() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        client_ = getDefaultInstance().getClient();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string client = 2;</code>
+       */
+      public Builder setClientBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        client_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object company_ = "";
+      /**
+       * <code>required string company = 3;</code>
+       */
+      public boolean hasCompany() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string company = 3;</code>
        */
       public java.lang.String getCompany() {
         java.lang.Object ref = company_;
@@ -5795,7 +6339,7 @@ public final class Protos {
         }
       }
       /**
-       * <code>required string company = 1;</code>
+       * <code>required string company = 3;</code>
        */
       public com.google.protobuf.ByteString
           getCompanyBytes() {
@@ -5811,138 +6355,101 @@ public final class Protos {
         }
       }
       /**
-       * <code>required string company = 1;</code>
+       * <code>required string company = 3;</code>
        */
       public Builder setCompany(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  bitField0_ |= 0x00000004;
         company_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string company = 1;</code>
+       * <code>required string company = 3;</code>
        */
       public Builder clearCompany() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000004);
         company_ = getDefaultInstance().getCompany();
         onChanged();
         return this;
       }
       /**
-       * <code>required string company = 1;</code>
+       * <code>required string company = 3;</code>
        */
       public Builder setCompanyBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000001;
+  bitField0_ |= 0x00000004;
         company_ = value;
         onChanged();
         return this;
       }
 
-      private int reqType_ = 0;
+      private long value_ ;
       /**
-       * <code>required .InvestorActionReq.RequestType reqType = 2;</code>
-       */
-      public boolean hasReqType() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required .InvestorActionReq.RequestType reqType = 2;</code>
-       */
-      public Protos.InvestorActionReq.RequestType getReqType() {
-        @SuppressWarnings("deprecation")
-        Protos.InvestorActionReq.RequestType result = Protos.InvestorActionReq.RequestType.valueOf(reqType_);
-        return result == null ? Protos.InvestorActionReq.RequestType.AUCTION : result;
-      }
-      /**
-       * <code>required .InvestorActionReq.RequestType reqType = 2;</code>
-       */
-      public Builder setReqType(Protos.InvestorActionReq.RequestType value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        bitField0_ |= 0x00000002;
-        reqType_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required .InvestorActionReq.RequestType reqType = 2;</code>
-       */
-      public Builder clearReqType() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        reqType_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private float value_ ;
-      /**
-       * <code>required float value = 3;</code>
+       * <code>required int64 value = 4;</code>
        */
       public boolean hasValue() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required float value = 3;</code>
+       * <code>required int64 value = 4;</code>
        */
-      public float getValue() {
+      public long getValue() {
         return value_;
       }
       /**
-       * <code>required float value = 3;</code>
+       * <code>required int64 value = 4;</code>
        */
-      public Builder setValue(float value) {
-        bitField0_ |= 0x00000004;
+      public Builder setValue(long value) {
+        bitField0_ |= 0x00000008;
         value_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required float value = 3;</code>
+       * <code>required int64 value = 4;</code>
        */
       public Builder clearValue() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        value_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        value_ = 0L;
         onChanged();
         return this;
       }
 
-      private float rate_ ;
+      private float interestRate_ ;
       /**
-       * <code>optional float rate = 4;</code>
+       * <code>optional float interestRate = 5;</code>
        */
-      public boolean hasRate() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+      public boolean hasInterestRate() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional float rate = 4;</code>
+       * <code>optional float interestRate = 5;</code>
        */
-      public float getRate() {
-        return rate_;
+      public float getInterestRate() {
+        return interestRate_;
       }
       /**
-       * <code>optional float rate = 4;</code>
+       * <code>optional float interestRate = 5;</code>
        */
-      public Builder setRate(float value) {
-        bitField0_ |= 0x00000008;
-        rate_ = value;
+      public Builder setInterestRate(float value) {
+        bitField0_ |= 0x00000010;
+        interestRate_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional float rate = 4;</code>
+       * <code>optional float interestRate = 5;</code>
        */
-      public Builder clearRate() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        rate_ = 0F;
+      public Builder clearInterestRate() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        interestRate_ = 0F;
         onChanged();
         return this;
       }
@@ -6004,11 +6511,25 @@ public final class Protos {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .InvestorActionResp.Status status = 1;</code>
+     * <code>required string client = 1;</code>
+     */
+    boolean hasClient();
+    /**
+     * <code>required string client = 1;</code>
+     */
+    java.lang.String getClient();
+    /**
+     * <code>required string client = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getClientBytes();
+
+    /**
+     * <code>required .InvestorActionResp.Status status = 2;</code>
      */
     boolean hasStatus();
     /**
-     * <code>required .InvestorActionResp.Status status = 1;</code>
+     * <code>required .InvestorActionResp.Status status = 2;</code>
      */
     Protos.InvestorActionResp.Status getStatus();
   }
@@ -6025,6 +6546,7 @@ public final class Protos {
       super(builder);
     }
     private InvestorActionResp() {
+      client_ = "";
       status_ = 0;
     }
 
@@ -6052,14 +6574,20 @@ public final class Protos {
             case 0:
               done = true;
               break;
-            case 8: {
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              client_ = bs;
+              break;
+            }
+            case 16: {
               int rawValue = input.readEnum();
                 @SuppressWarnings("deprecation")
               Protos.InvestorActionResp.Status value = Protos.InvestorActionResp.Status.valueOf(rawValue);
               if (value == null) {
-                unknownFields.mergeVarintField(1, rawValue);
+                unknownFields.mergeVarintField(2, rawValue);
               } else {
-                bitField0_ |= 0x00000001;
+                bitField0_ |= 0x00000002;
                 status_ = rawValue;
               }
               break;
@@ -6107,7 +6635,7 @@ public final class Protos {
       CONFIRMED(0),
       /**
        * <pre>
-       * apenas no caso dos leilões
+       * Apenas no caso dos leilões
        * </pre>
        *
        * <code>REPLACED = 1;</code>
@@ -6115,7 +6643,7 @@ public final class Protos {
       REPLACED(1),
       /**
        * <pre>
-       * se o leilão ou a emissão terminaram
+       * Se o leilão ou a emissão terminaram
        * </pre>
        *
        * <code>ENDED = 2;</code>
@@ -6123,7 +6651,7 @@ public final class Protos {
       ENDED(2),
       /**
        * <pre>
-       * dados inválidos
+       * Dados inválidos
        * </pre>
        *
        * <code>INVALID = 3;</code>
@@ -6137,7 +6665,7 @@ public final class Protos {
       public static final int CONFIRMED_VALUE = 0;
       /**
        * <pre>
-       * apenas no caso dos leilões
+       * Apenas no caso dos leilões
        * </pre>
        *
        * <code>REPLACED = 1;</code>
@@ -6145,7 +6673,7 @@ public final class Protos {
       public static final int REPLACED_VALUE = 1;
       /**
        * <pre>
-       * se o leilão ou a emissão terminaram
+       * Se o leilão ou a emissão terminaram
        * </pre>
        *
        * <code>ENDED = 2;</code>
@@ -6153,7 +6681,7 @@ public final class Protos {
       public static final int ENDED_VALUE = 2;
       /**
        * <pre>
-       * dados inválidos
+       * Dados inválidos
        * </pre>
        *
        * <code>INVALID = 3;</code>
@@ -6229,16 +6757,58 @@ public final class Protos {
     }
 
     private int bitField0_;
-    public static final int STATUS_FIELD_NUMBER = 1;
-    private int status_;
+    public static final int CLIENT_FIELD_NUMBER = 1;
+    private volatile java.lang.Object client_;
     /**
-     * <code>required .InvestorActionResp.Status status = 1;</code>
+     * <code>required string client = 1;</code>
      */
-    public boolean hasStatus() {
+    public boolean hasClient() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .InvestorActionResp.Status status = 1;</code>
+     * <code>required string client = 1;</code>
+     */
+    public java.lang.String getClient() {
+      java.lang.Object ref = client_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          client_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string client = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getClientBytes() {
+      java.lang.Object ref = client_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        client_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 2;
+    private int status_;
+    /**
+     * <code>required .InvestorActionResp.Status status = 2;</code>
+     */
+    public boolean hasStatus() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .InvestorActionResp.Status status = 2;</code>
      */
     public Protos.InvestorActionResp.Status getStatus() {
       @SuppressWarnings("deprecation")
@@ -6253,6 +6823,10 @@ public final class Protos {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasClient()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!hasStatus()) {
         memoizedIsInitialized = 0;
         return false;
@@ -6265,7 +6839,10 @@ public final class Protos {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(1, status_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, client_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeEnum(2, status_);
       }
       unknownFields.writeTo(output);
     }
@@ -6277,8 +6854,11 @@ public final class Protos {
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, client_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, status_);
+          .computeEnumSize(2, status_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -6296,6 +6876,11 @@ public final class Protos {
       Protos.InvestorActionResp other = (Protos.InvestorActionResp) obj;
 
       boolean result = true;
+      result = result && (hasClient() == other.hasClient());
+      if (hasClient()) {
+        result = result && getClient()
+            .equals(other.getClient());
+      }
       result = result && (hasStatus() == other.hasStatus());
       if (hasStatus()) {
         result = result && status_ == other.status_;
@@ -6311,6 +6896,10 @@ public final class Protos {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasClient()) {
+        hash = (37 * hash) + CLIENT_FIELD_NUMBER;
+        hash = (53 * hash) + getClient().hashCode();
+      }
       if (hasStatus()) {
         hash = (37 * hash) + STATUS_FIELD_NUMBER;
         hash = (53 * hash) + status_;
@@ -6448,8 +7037,10 @@ public final class Protos {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        status_ = 0;
+        client_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
+        status_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -6480,6 +7071,10 @@ public final class Protos {
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
+        }
+        result.client_ = client_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
         }
         result.status_ = status_;
         result.bitField0_ = to_bitField0_;
@@ -6531,6 +7126,11 @@ public final class Protos {
 
       public Builder mergeFrom(Protos.InvestorActionResp other) {
         if (other == Protos.InvestorActionResp.getDefaultInstance()) return this;
+        if (other.hasClient()) {
+          bitField0_ |= 0x00000001;
+          client_ = other.client_;
+          onChanged();
+        }
         if (other.hasStatus()) {
           setStatus(other.getStatus());
         }
@@ -6541,6 +7141,9 @@ public final class Protos {
 
       @java.lang.Override
       public final boolean isInitialized() {
+        if (!hasClient()) {
+          return false;
+        }
         if (!hasStatus()) {
           return false;
         }
@@ -6567,15 +7170,91 @@ public final class Protos {
       }
       private int bitField0_;
 
-      private int status_ = 0;
+      private java.lang.Object client_ = "";
       /**
-       * <code>required .InvestorActionResp.Status status = 1;</code>
+       * <code>required string client = 1;</code>
        */
-      public boolean hasStatus() {
+      public boolean hasClient() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .InvestorActionResp.Status status = 1;</code>
+       * <code>required string client = 1;</code>
+       */
+      public java.lang.String getClient() {
+        java.lang.Object ref = client_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            client_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getClientBytes() {
+        java.lang.Object ref = client_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          client_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public Builder setClient(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        client_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public Builder clearClient() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        client_ = getDefaultInstance().getClient();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public Builder setClientBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        client_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int status_ = 0;
+      /**
+       * <code>required .InvestorActionResp.Status status = 2;</code>
+       */
+      public boolean hasStatus() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .InvestorActionResp.Status status = 2;</code>
        */
       public Protos.InvestorActionResp.Status getStatus() {
         @SuppressWarnings("deprecation")
@@ -6583,22 +7262,22 @@ public final class Protos {
         return result == null ? Protos.InvestorActionResp.Status.CONFIRMED : result;
       }
       /**
-       * <code>required .InvestorActionResp.Status status = 1;</code>
+       * <code>required .InvestorActionResp.Status status = 2;</code>
        */
       public Builder setStatus(Protos.InvestorActionResp.Status value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000001;
+        bitField0_ |= 0x00000002;
         status_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
-       * <code>required .InvestorActionResp.Status status = 1;</code>
+       * <code>required .InvestorActionResp.Status status = 2;</code>
        */
       public Builder clearStatus() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        bitField0_ = (bitField0_ & ~0x00000002);
         status_ = 0;
         onChanged();
         return this;
@@ -6672,15 +7351,15 @@ public final class Protos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_LoginResp_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_CreateReq_descriptor;
+    internal_static_CompanyActionReq_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_CreateReq_fieldAccessorTable;
+      internal_static_CompanyActionReq_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_CreateResp_descriptor;
+    internal_static_CompanyActionResp_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_CreateResp_fieldAccessorTable;
+      internal_static_CompanyActionResp_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_InvestorActionReq_descriptor;
   private static final 
@@ -6700,31 +7379,35 @@ public final class Protos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014protos.proto\"\211\002\n\016MessageWrapper\022\035\n\010log" +
+      "\n\014protos.proto\"\245\002\n\016MessageWrapper\022\035\n\010log" +
       "inReq\030\001 \001(\0132\t.LoginReqH\000\022\037\n\tloginResp\030\002 " +
-      "\001(\0132\n.LoginRespH\000\022\037\n\tcreateReq\030\003 \001(\0132\n.C" +
-      "reateReqH\000\022!\n\ncreateResp\030\004 \001(\0132\013.CreateR" +
-      "espH\000\022/\n\021investorActionReq\030\005 \001(\0132\022.Inves" +
-      "torActionReqH\000\0221\n\022investorActionResp\030\006 \001" +
-      "(\0132\023.InvestorActionRespH\000B\017\n\rinner_messa" +
-      "ge\"*\n\010LoginReq\022\014\n\004name\030\001 \002(\t\022\020\n\010password" +
-      "\030\002 \002(\t\"\241\001\n\tLoginResp\022$\n\005cType\030\001 \001(\0162\025.Lo" +
-      "ginResp.ClientType\022!\n\006status\030\002 \002(\0162\021.Log" +
-      "inResp.Status\"\'\n\nClientType\022\013\n\007COMPANY\020\000" +
-      "\022\014\n\010INVESTOR\020\001\"\"\n\006Status\022\013\n\007INVALID\020\000\022\013\n" +
-      "\007SUCCESS\020\001\"{\n\tCreateReq\022\r\n\005value\030\001 \002(\003\022\014" +
-      "\n\004rate\030\002 \002(\002\022\017\n\007company\030\003 \002(\t\022\035\n\004type\030\004 " +
-      "\002(\0162\017.CreateReq.Type\"!\n\004Type\022\013\n\007AUCTION\020" +
-      "\000\022\014\n\010EMISSION\020\001\"\\\n\nCreateResp\022\"\n\006status\030" +
-      "\001 \002(\0162\022.CreateResp.Status\"*\n\006Status\022\013\n\007S" +
-      "UCCESS\020\000\022\023\n\017ONGOING_AUCTION\020\001\"\234\001\n\021Invest" +
-      "orActionReq\022\017\n\007company\030\001 \002(\t\022/\n\007reqType\030" +
-      "\002 \002(\0162\036.InvestorActionReq.RequestType\022\r\n" +
-      "\005value\030\003 \002(\002\022\014\n\004rate\030\004 \001(\002\"(\n\013RequestTyp" +
-      "e\022\013\n\007AUCTION\020\000\022\014\n\010EMISSION\020\001\"\177\n\022Investor" +
-      "ActionResp\022*\n\006status\030\001 \002(\0162\032.InvestorAct" +
-      "ionResp.Status\"=\n\006Status\022\r\n\tCONFIRMED\020\000\022" +
-      "\014\n\010REPLACED\020\001\022\t\n\005ENDED\020\002\022\013\n\007INVALID\020\003"
+      "\001(\0132\n.LoginRespH\000\022-\n\020companyActionReq\030\003 " +
+      "\001(\0132\021.CompanyActionReqH\000\022/\n\021companyActio" +
+      "nResp\030\004 \001(\0132\022.CompanyActionRespH\000\022/\n\021inv" +
+      "estorActionReq\030\005 \001(\0132\022.InvestorActionReq" +
+      "H\000\0221\n\022investorActionResp\030\006 \001(\0132\023.Investo" +
+      "rActionRespH\000B\017\n\rinner_message\"*\n\010LoginR" +
+      "eq\022\014\n\004name\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\"\241\001\n\tL" +
+      "oginResp\022$\n\005cType\030\001 \001(\0162\025.LoginResp.Clie" +
+      "ntType\022!\n\006status\030\002 \002(\0162\021.LoginResp.Statu" +
+      "s\"\'\n\nClientType\022\013\n\007COMPANY\020\000\022\014\n\010INVESTOR" +
+      "\020\001\"\"\n\006Status\022\013\n\007INVALID\020\000\022\013\n\007SUCCESS\020\001\"\262" +
+      "\001\n\020CompanyActionReq\022.\n\007reqType\030\001 \002(\0162\035.C" +
+      "ompanyActionReq.RequestType\022\016\n\006client\030\002 " +
+      "\002(\t\022\017\n\007company\030\003 \002(\t\022\r\n\005value\030\004 \002(\003\022\024\n\014i" +
+      "nterestRate\030\005 \001(\002\"(\n\013RequestType\022\013\n\007AUCT" +
+      "ION\020\000\022\014\n\010EMISSION\020\001\"r\n\021CompanyActionResp" +
+      "\022\016\n\006client\030\001 \002(\t\022)\n\006status\030\002 \002(\0162\031.Compa" +
+      "nyActionResp.Status\"\"\n\006Status\022\013\n\007SUCCESS" +
+      "\020\000\022\013\n\007INVALID\020\001\"\264\001\n\021InvestorActionReq\022/\n" +
+      "\007reqType\030\001 \002(\0162\036.InvestorActionReq.Reque" +
+      "stType\022\016\n\006client\030\002 \002(\t\022\017\n\007company\030\003 \002(\t\022" +
+      "\r\n\005value\030\004 \002(\003\022\024\n\014interestRate\030\005 \001(\002\"(\n\013" +
+      "RequestType\022\013\n\007AUCTION\020\000\022\014\n\010EMISSION\020\001\"\217" +
+      "\001\n\022InvestorActionResp\022\016\n\006client\030\001 \002(\t\022*\n" +
+      "\006status\030\002 \002(\0162\032.InvestorActionResp.Statu" +
+      "s\"=\n\006Status\022\r\n\tCONFIRMED\020\000\022\014\n\010REPLACED\020\001" +
+      "\022\t\n\005ENDED\020\002\022\013\n\007INVALID\020\003"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6743,7 +7426,7 @@ public final class Protos {
     internal_static_MessageWrapper_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_MessageWrapper_descriptor,
-        new java.lang.String[] { "LoginReq", "LoginResp", "CreateReq", "CreateResp", "InvestorActionReq", "InvestorActionResp", "InnerMessage", });
+        new java.lang.String[] { "LoginReq", "LoginResp", "CompanyActionReq", "CompanyActionResp", "InvestorActionReq", "InvestorActionResp", "InnerMessage", });
     internal_static_LoginReq_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_LoginReq_fieldAccessorTable = new
@@ -6756,30 +7439,30 @@ public final class Protos {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LoginResp_descriptor,
         new java.lang.String[] { "CType", "Status", });
-    internal_static_CreateReq_descriptor =
+    internal_static_CompanyActionReq_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_CreateReq_fieldAccessorTable = new
+    internal_static_CompanyActionReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_CreateReq_descriptor,
-        new java.lang.String[] { "Value", "Rate", "Company", "Type", });
-    internal_static_CreateResp_descriptor =
+        internal_static_CompanyActionReq_descriptor,
+        new java.lang.String[] { "ReqType", "Client", "Company", "Value", "InterestRate", });
+    internal_static_CompanyActionResp_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_CreateResp_fieldAccessorTable = new
+    internal_static_CompanyActionResp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_CreateResp_descriptor,
-        new java.lang.String[] { "Status", });
+        internal_static_CompanyActionResp_descriptor,
+        new java.lang.String[] { "Client", "Status", });
     internal_static_InvestorActionReq_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_InvestorActionReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InvestorActionReq_descriptor,
-        new java.lang.String[] { "Company", "ReqType", "Value", "Rate", });
+        new java.lang.String[] { "ReqType", "Client", "Company", "Value", "InterestRate", });
     internal_static_InvestorActionResp_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_InvestorActionResp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InvestorActionResp_descriptor,
-        new java.lang.String[] { "Status", });
+        new java.lang.String[] { "Client", "Status", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -2,12 +2,12 @@ syntax = "proto2";
 
 message MessageWrapper {
     oneof inner_message {
-        LoginReq loginreq = 1;
-        LoginResp loginresp = 2;
-        CompanyActionReq companyactionreq = 3;
-        CompanyActionResp companyactionresp = 4;
-        InvestorActionReq investoractionreq = 5;
-        InvestorActionResp investoractionresp = 6;
+        LoginReq loginReq = 1;
+        LoginResp loginResp = 2;
+        CompanyActionReq companyActionReq = 3;
+        CompanyActionResp companyActionResp = 4;
+        InvestorActionReq investorActionReq = 5;
+        InvestorActionResp investorActionResp = 6;
     }
 }
 
@@ -18,7 +18,7 @@ message LoginReq {
 
 message LoginResp {
 
-  enum ClientType{
+  enum ClientType {
     COMPANY = 0;
     INVESTOR = 1;
   }
@@ -32,19 +32,20 @@ message LoginResp {
   required Status status = 2;
 }
 
-message CompanyActionReq{
+message CompanyActionReq {
     enum RequestType {
         AUCTION = 0;
         EMISSION = 1;
     }
 
-    required string client = 1;
-    required string company = 2;
-    required float value = 3;
-    optional float max_rate = 4;
+    required RequestType reqType = 1;
+    required string client = 2;
+    required string company = 3;
+    required int64 value = 4;
+    optional float interestRate = 5;
 }
 
-message CompanyActionResp{
+message CompanyActionResp {
     enum Status {
         SUCCESS = 0;
         INVALID = 1;
@@ -54,25 +55,25 @@ message CompanyActionResp{
     required Status status = 2;
 }
 
-message InvestorActionReq{
+message InvestorActionReq {
     enum RequestType {
         AUCTION = 0;
         EMISSION = 1;
     }
 
-    required string client = 1;
-    required string company = 2;
-    required RequestType req_type = 3;
-    required float value = 4;
-    optional float rate = 5;
+    required RequestType reqType = 1;
+    required string client = 2;
+    required string company = 3;
+    required int64 value = 4;
+    optional float interestRate = 5;
 }
 
-message InvestorActionResp{
+message InvestorActionResp {
     enum Status {
         CONFIRMED = 0;
-        REPLACED = 1;   //apenas no caso dos leilões
-        ENDED = 2;      //se o leilão ou a emissão terminaram
-        INVALID = 3;    //dados inválidos
+        REPLACED = 1;   // Apenas no caso dos leilões
+        ENDED = 2;      // Se o leilão ou a emissão terminaram
+        INVALID = 3;    // Dados inválidos
     }
 
     required string client = 1;
