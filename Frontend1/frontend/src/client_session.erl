@@ -60,12 +60,12 @@ client_loop(Sock, User) ->
 
 			end;
 
-		{error, closed} ->
-			io:format("Preparando para fazer logout ao user!! ~n", []),
-			loginManager:logout(User);
-
 		{receiver, Resp} ->
 			gen_tcp:send(Sock, Resp),
-			client_loop(Sock, User)
+			client_loop(Sock, User);
+
+		{tcp_closed, _} ->
+			io:format("Preparando para fazer logout ao user!! ~n", []),
+			loginManager:logout(User)
 	end.
 
