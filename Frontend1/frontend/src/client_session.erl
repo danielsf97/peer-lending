@@ -1,8 +1,8 @@
 -module(client_session).
--export([client_loop/1]).
+-export([client_loop/2]).
 -include("protos_pb.hrl").
 
-client_loop(Sock) ->
+client_loop(Sock, User) ->
 	receive
 		{tcp, Sock, Bin} ->
 			{'MessageWrapper', Msg} = protos_pb:decode_msg(Bin, 'MessageWrapper'),
@@ -10,8 +10,6 @@ client_loop(Sock) ->
 			case MsgType of
 
 				logoutreq ->
-					{'LogoutReq', User_B} = Body,
-					User = binary_to_list(User_B),
 					case login_manager:logout(User) of
 						ok -> 
 							LogoutResp = #'LogoutResp'{status='SUCCESS'},
@@ -21,7 +19,7 @@ client_loop(Sock) ->
 							LogoutResp = #'LogoutResp'{status='ERROR'},
 							Resp = protos_pb:encode_msg(#'MessageWrapper'{inner_message = {logoutresp, LogoutResp}}),
 							gen_tcp:send(Sock, Resp),
-							client_loop(Sock)
+							client_loop(Sock, User)
 					end;
 
 				companyactionreq ->
@@ -39,7 +37,8 @@ client_loop(Sock) ->
 							Erro = #'ErrorMsg'{error='Empresa não existe!!'},
 							Resp = protos_pb:encode_msg(#'MessageWrapper'{inner_message = {errormsg, Erro}}),
 							gen_tcp:send(Sock, Resp)
-					end;
+					end,
+					client_loop(Sock, User);
 
 				investoractionreq ->
 					case Body of
@@ -56,9 +55,17 @@ client_loop(Sock) ->
 							Erro = #'ErrorMsg'{error='Empresa não existe!!'},
 							Resp = protos_pb:encode_msg(#'MessageWrapper'{inner_message = {errormsg, Erro}}),
 							gen_tcp:send(Sock, Resp)
-					end
-						
+					end,
+					client_loop(Sock, User)
 
-			end
+			end;
+
+		{error, closed} ->
+			io:format("Preparando para fazer logout ao user!! ~n", []),
+			loginManager:logout(User);
+
+		{receiver, Resp} ->
+			gen_tcp:send(Sock, Resp),
+			client_loop(Sock, User)
 	end.
 

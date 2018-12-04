@@ -56,7 +56,8 @@ loop(Map) ->
 			case maps:find(Username, Map) of
 				{ok, {Passwd, TipoCliente, true, _}} -> % se o utilizador existir e estiver logged in
 					From ! {login_manager, ok},
-					loop(maps:put(Username, {Passwd, TipoCliente, false, null}, Map));
+					loop(maps:put(Username, {Passwd, TipoCliente, false, null}, Map)),
+					io:format("Logged out!! ~n", []);
 				_ ->
 					From ! {login_manager, invalid},
 					loop(Map)

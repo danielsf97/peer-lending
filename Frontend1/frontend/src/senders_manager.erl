@@ -29,7 +29,6 @@ get_comp_senders_mapping() ->
 manage_senders(Senders, CompSendersMap) ->
 	receive
 		{company, Comp, From} ->
-			PidC = maps:get(Comp, CompSendersMap),
 			case maps:find(Comp, CompSendersMap) of
 				{ok, Sender} -> 
 					Pid = maps:get(Sender, Senders),
