@@ -34,10 +34,10 @@ public class Client {
                 }
             } else {
                 System.out.println("Credenciais inválidas!");
-                login(socket);
+                return login(socket);
             }
         }
-        return null;
+        return login(socket);
     }
 
     public static Protos.LoginResp getLoginResp(byte [] resp){
@@ -75,7 +75,7 @@ public class Client {
             CompanyWorker comp_worker = new CompanyWorker(socket, company);
 
             comp_worker.start();
-        }else{
+        }else {
             Investor investor = (Investor) clientType;
 
             ZMQ.Context context = ZMQ.context(1);
