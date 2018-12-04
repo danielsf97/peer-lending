@@ -7,6 +7,20 @@
 
 -define(protos_pb_gpb_version, "4.4.0").
 
+-ifndef('MESSAGEWRAPPER_PB_H').
+-define('MESSAGEWRAPPER_PB_H', true).
+-record('MessageWrapper',
+        {inner_message          :: {loginreq, protos_pb:'LoginReq'()} | {loginresp, protos_pb:'LoginResp'()} | {logoutreq, protos_pb:'LogoutReq'()} | {logoutresp, protos_pb:'LogoutResp'()} | {companyactionreq, protos_pb:'CompanyActionReq'()} | {companyactionresp, protos_pb:'CompanyActionResp'()} | {investoractionreq, protos_pb:'InvestorActionReq'()} | {investoractionresp, protos_pb:'InvestorActionResp'()} | {errormsg, protos_pb:'ErrorMsg'()} | undefined % oneof
+        }).
+-endif.
+
+-ifndef('ERRORMSG_PB_H').
+-define('ERRORMSG_PB_H', true).
+-record('ErrorMsg',
+        {error                  :: iodata()         % = 1
+        }).
+-endif.
+
 -ifndef('LOGINREQ_PB_H').
 -define('LOGINREQ_PB_H', true).
 -record('LoginReq',
@@ -23,35 +37,53 @@
         }).
 -endif.
 
--ifndef('AUCTIONREQ_PB_H').
--define('AUCTIONREQ_PB_H', true).
--record('AuctionReq',
-        {value                  :: float() | integer() | infinity | '-infinity' | nan, % = 1
-         max_rate               :: float() | integer() | infinity | '-infinity' | nan % = 2
+-ifndef('LOGOUTREQ_PB_H').
+-define('LOGOUTREQ_PB_H', true).
+-record('LogoutReq',
+        {name                   :: iodata()         % = 1
         }).
 -endif.
 
--ifndef('AUCTIONRESP_PB_H').
--define('AUCTIONRESP_PB_H', true).
--record('AuctionResp',
-        {status                 :: 'SUCCESS' | 'ONGOING_AUCTION' | integer() % = 1, enum AuctionResp.Status
+-ifndef('LOGOUTRESP_PB_H').
+-define('LOGOUTRESP_PB_H', true).
+-record('LogoutResp',
+        {status                 :: 'ERROR' | 'SUCCESS' | integer() % = 1, enum LogoutResp.Status
+        }).
+-endif.
+
+-ifndef('COMPANYACTIONREQ_PB_H').
+-define('COMPANYACTIONREQ_PB_H', true).
+-record('CompanyActionReq',
+        {client                 :: iodata(),        % = 1
+         value                  :: integer(),       % = 3, 32 bits
+         max_rate               :: float() | integer() | infinity | '-infinity' | nan | undefined % = 4
+        }).
+-endif.
+
+-ifndef('COMPANYACTIONRESP_PB_H').
+-define('COMPANYACTIONRESP_PB_H', true).
+-record('CompanyActionResp',
+        {client                 :: iodata(),        % = 1
+         status                 :: 'SUCCESS' | 'INVALID' | integer() % = 2, enum CompanyActionResp.Status
         }).
 -endif.
 
 -ifndef('INVESTORACTIONREQ_PB_H').
 -define('INVESTORACTIONREQ_PB_H', true).
 -record('InvestorActionReq',
-        {company                :: iodata(),        % = 1
-         req_type               :: 'AUCTION' | 'EMISSION' | integer(), % = 2, enum InvestorActionReq.RequestType
-         value                  :: float() | integer() | infinity | '-infinity' | nan, % = 3
-         rate                   :: float() | integer() | infinity | '-infinity' | nan | undefined % = 4
+        {client                 :: iodata(),        % = 1
+         company                :: iodata(),        % = 2
+         req_type               :: 'AUCTION' | 'EMISSION' | integer(), % = 3, enum InvestorActionReq.RequestType
+         value                  :: integer(),       % = 4, 32 bits
+         rate                   :: float() | integer() | infinity | '-infinity' | nan | undefined % = 5
         }).
 -endif.
 
 -ifndef('INVESTORACTIONRESP_PB_H').
 -define('INVESTORACTIONRESP_PB_H', true).
 -record('InvestorActionResp',
-        {status                 :: 'CONFIRMED' | 'REPLACED' | 'ENDED' | 'INVALID' | integer() % = 1, enum InvestorActionResp.Status
+        {client                 :: iodata(),        % = 1
+         status                 :: 'CONFIRMED' | 'REPLACED' | 'ENDED' | 'INVALID' | integer() % = 2, enum InvestorActionResp.Status
         }).
 -endif.
 
