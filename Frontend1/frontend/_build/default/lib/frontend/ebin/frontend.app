@@ -1,0 +1,13 @@
+{application,frontend,
+             [{description,"An OTP application"},
+              {vsn,"0.1.0"},
+              {registered,[]},
+              {mod,{frontend_app,[]}},
+              {applications,[kernel,stdlib,erlzmq]},
+              {env,[]},
+              {modules,[client_session,frontend_app,frontend_sup,
+                        login_manager,protos_pb,receiver,sender,
+                        senders_manager]},
+              {maintainers,[]},
+              {licenses,["Apache 2.0"]},
+              {links,[]}]}.
