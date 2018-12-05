@@ -1,4 +1,5 @@
 import core.History;
+import health.AppHealthCheck;
 import io.dropwizard.Application;
 import io.dropwizard.Configuration;
 import io.dropwizard.setup.Bootstrap;
@@ -40,7 +41,7 @@ public class DirectoryApp extends Application<Configuration> {
         environment.jersey().register(new CompaniesResource(companies));
         environment.jersey().register(new AuctionsResource(companies, activeAuctions, activeEmissions));
         environment.jersey().register(new EmissionsResource(companies, activeAuctions, activeEmissions));
-
+        environment.healthChecks().register("isRunning", new AppHealthCheck());
     }
 
     public static void main(String[] args) throws Exception {
