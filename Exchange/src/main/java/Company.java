@@ -1,12 +1,12 @@
 public class Company {
-    private String company;
+    private String name;
     private Auction activeAuction;
     private Emission activeEmission;
 
     public Company(String name) {
         this.activeAuction = null;
         this.activeEmission = null;
-        this.company = name;
+        this.name = name;
     }
 
     public synchronized void setActiveAuction(Auction a) throws Exception {
@@ -27,5 +27,9 @@ public class Company {
 
     public synchronized Emission getActiveEmission() {
         return activeEmission;
+    }
+
+    public synchronized String getName() {
+        return this.name;
     }
 }
