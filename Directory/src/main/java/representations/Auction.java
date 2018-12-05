@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Auction {
+
     public final long value;
     public final float maxRate;
     public String startingDateTime;
@@ -15,5 +16,21 @@ public class Auction {
         this.maxRate = maxRate;
         this.startingDateTime = startingDateTime;
         this.duration = duration;
+    }
+
+    public long getValue() {
+        return value;
+    }
+
+    public float getMaxRate() {
+        return maxRate;
+    }
+
+    public String getStartingDateTime() {
+        return startingDateTime;
+    }
+
+    public long getDuration() {
+        return duration;
     }
 }

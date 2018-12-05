@@ -16,4 +16,20 @@ public class Emission {
         this.startingDateTime = startingDateTime;
         this.duration = duration;
     }
+
+    public long getValue() {
+        return value;
+    }
+
+    public float getFixedRate() {
+        return fixedRate;
+    }
+
+    public String getStartingDateTime() {
+        return startingDateTime;
+    }
+
+    public long getDuration() {
+        return duration;
+    }
 }

@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>PeerLending</groupId>
-    <artifactId>Diretorio</artifactId>
+    <artifactId>Directory</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>PeerLending-Diretorio</name>
+    <name>PeerLending-Directory</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -92,4 +92,5 @@
 
         </plugins>
     </build>
+
 </project>
