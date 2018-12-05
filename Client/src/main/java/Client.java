@@ -64,10 +64,17 @@ public class Client {
     public static void main(String[] args) throws Exception{
         String address = "127.0.0.1"; // args[0]
         int frontend_port = 12345; //Integer.parseInt(args[1]);
-        int notifications_port = 12346; //Integer.parseInt(args[2]);
+        int frontend_async_port = 12346; //Integer.parseInt(args[2]);
+        int notifications_port = 12347; //Integer.parseInt(args[3]);
 
+        //socket utilizado para enviar pedidos e receber respostas a leilões
         SocketChannel socket = SocketChannel.open();
         socket.connect(new InetSocketAddress(address,frontend_port));
+
+        //socket utilizado para receber informação sobre se fomos vencedores ou não leilões
+        //em que licitamos licitamos e para as empresas saberem como correram os leilões e emissões
+        SocketChannel socketAsync = SocketChannel.open();
+        socket.connect(new InetSocketAddress(address,frontend_async_port));
 
         ClientType clientType = login(socket);
 
@@ -91,7 +98,7 @@ public class Client {
             inv_worker.start();
         }
 
-        MsgReader reader = new MsgReader(socket);
+        MsgReader reader = new MsgReader(socketAsync);
         reader.start();
     }
 

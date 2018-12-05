@@ -1,5 +1,6 @@
+package client;
+
 import org.zeromq.ZMQ;
-import protos.Protos;
 import utils.Menu;
 import utils.Utils;
 
@@ -26,9 +27,15 @@ public class CompanyWorker extends Thread{
         int option;
 
         do{
+
+            int nAsyncMessages = company.getNumAsyncMessages();
+            menu.add("Ver " + nAsyncMessages + " resultados" );
+
             menu.execute();
             option = menu.getOption();
             processOption(option);
+
+            menu.removeLast(1);
 
         }while(company.isLoggedIn());
 
@@ -43,12 +50,19 @@ public class CompanyWorker extends Thread{
                 break;
             case 2: create_emission();
                 break;
+            case 3: readAsyncMessages();
+                break;
         }
+    }
+
+    private void readAsyncMessages() {
+        String asyncMessages = company.getAsyncMessages();
+        System.out.println(asyncMessages);
     }
 
     private void logout() {
         Protos.MessageWrapper req = createLogoutReq();
-        Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket);
+        Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket,company);
 
         Protos.LogoutResp logoutResp = null;
         if(resp.hasLogoutresp())
@@ -70,7 +84,7 @@ public class CompanyWorker extends Thread{
         long value = m.readLong("Valor: ");
 
         Protos.MessageWrapper req = createEmissionReq(value);
-        Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket);
+        Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket,company);
 
         Protos.CompanyActionResp companyResp = null;
 
@@ -99,7 +113,7 @@ public class CompanyWorker extends Thread{
         float rate = m.readFloat("Taxa máxima: ");
 
         Protos.MessageWrapper req = createAuctionReq(value, rate);
-        Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket);
+        Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket,company);
 
         Protos.CompanyActionResp companyResp = null;
 
@@ -126,7 +140,9 @@ public class CompanyWorker extends Thread{
                 .setClient(name)
                 .build();
 
-        return Protos.MessageWrapper.newBuilder().setCompanyactionreq(req).build();
+        return Protos.MessageWrapper.newBuilder()
+                .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
+                .setCompanyactionreq(req).build();
     }
 
     private Protos.MessageWrapper createAuctionReq(long value, float rate) {
@@ -136,14 +152,18 @@ public class CompanyWorker extends Thread{
                 .setClient(name)
                 .build();
 
-        return Protos.MessageWrapper.newBuilder().setCompanyactionreq(req).build();
+        return Protos.MessageWrapper.newBuilder()
+                .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
+                .setCompanyactionreq(req).build();
     }
 
     public Protos.MessageWrapper createLogoutReq() {
         Protos.LogoutReq logoutMsg = Protos.LogoutReq.newBuilder()
                 .setName(this.name)
                 .build();
-        return Protos.MessageWrapper.newBuilder().setLogoutreq(logoutMsg).build();
+        return Protos.MessageWrapper.newBuilder()
+                .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
+                .setLogoutreq(logoutMsg).build();
     }
 
 }

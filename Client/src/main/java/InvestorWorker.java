@@ -1,6 +1,6 @@
+package client;
 
 import org.zeromq.ZMQ;
-import protos.Protos;
 import utils.Menu;
 import utils.NetClient;
 import utils.Utils;
@@ -36,13 +36,15 @@ public class InvestorWorker extends Thread{
         
         do {
             int nNotifications = investor.getNumNotifications();
-            if(nNotifications > 0)
-                menu.add("Ver " + nNotifications + " notificações" );
+            int nAsyncMessages = investor.getNumAsyncMessages();
+            menu.add("Ver " + nNotifications + " notificações" );
+            menu.add("Ver " + nAsyncMessages + " resultados" );
+
             menu.execute();
             option = menu.getOption();
             processOption(option);
-            if(nNotifications > 0)
-                menu.removeLast(1);
+
+            menu.removeLast(2);
         } while(investor.isLoggedIn());
 
         System.out.println("Logged out!!");
@@ -72,7 +74,14 @@ public class InvestorWorker extends Thread{
                 break;
             case 10: readNotifications();
                 break;
+            case 11: readAsyncMessages();
+                break;
         }
+    }
+
+    private void readAsyncMessages() {
+        String asyncMessages = investor.getAsyncMessages();
+        System.out.println(asyncMessages);
     }
 
     private void subscribe_company() {
@@ -103,7 +112,7 @@ public class InvestorWorker extends Thread{
         long value = m.readLong("Valor: ");
 
         Protos.MessageWrapper req = createEmissionReq(comp, value);
-        Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket);
+        Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket,investor);
 
         Protos.InvestorActionResp investorResp = null;
 
@@ -135,7 +144,7 @@ public class InvestorWorker extends Thread{
         float rate = m.readFloat("Taxa: ");
 
         Protos.MessageWrapper req = createAuctionReq(comp, value, rate);
-        Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket);
+        Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket,investor);
 
         System.out.println("mensagem recebida");
         Protos.InvestorActionResp investorResp = null;
@@ -258,7 +267,7 @@ public class InvestorWorker extends Thread{
 
     private void logout() {
         Protos.MessageWrapper req = createLogoutReq();
-        Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket);
+        Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket,investor);
 
         Protos.LogoutResp logoutResp = null;
         if(resp.hasLogoutresp())
@@ -281,7 +290,9 @@ public class InvestorWorker extends Thread{
                 .setCompany(comp)
                 .setClient(name)
                 .build();
-        return Protos.MessageWrapper.newBuilder().setInvestoractionreq(req).build();
+        return Protos.MessageWrapper.newBuilder()
+                .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
+                .setInvestoractionreq(req).build();
     }
 
     private Protos.MessageWrapper createEmissionReq(String comp, long value) {
@@ -291,13 +302,17 @@ public class InvestorWorker extends Thread{
                 .setCompany(comp)
                 .setClient(name)
                 .build();
-        return Protos.MessageWrapper.newBuilder().setInvestoractionreq(req).build();
+        return Protos.MessageWrapper.newBuilder()
+                .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
+                .setInvestoractionreq(req).build();
     }
 
     public Protos.MessageWrapper createLogoutReq() {
         Protos.LogoutReq logoutMsg = Protos.LogoutReq.newBuilder()
                 .setName(this.name)
                 .build();
-        return Protos.MessageWrapper.newBuilder().setLogoutreq(logoutMsg).build();
+        return Protos.MessageWrapper.newBuilder()
+                .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
+                .setLogoutreq(logoutMsg).build();
     }
 }

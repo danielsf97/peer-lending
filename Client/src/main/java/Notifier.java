@@ -1,3 +1,5 @@
+package client;
+
 import org.zeromq.ZMQ;
 
 public class Notifier extends Thread{

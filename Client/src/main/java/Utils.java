@@ -1,8 +1,5 @@
 package utils;
 
-
-import protos.Protos;
-
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -10,7 +7,7 @@ import java.nio.channels.SocketChannel;
 
 public class Utils {
 
-    public static Protos.MessageWrapper sendAndRecv(Protos.MessageWrapper req, SocketChannel socket){
+    public static Protos.MessageWrapper sendAndRecv(Protos.MessageWrapper req, SocketChannel socket, ClientType client){
         Protos.MessageWrapper resp = null;
 
         try {
@@ -18,15 +15,17 @@ public class Utils {
 
             send_msg(req_b, socket);
 
-            byte[] resp_b = recv_msg(socket);
-
-            resp = Protos.MessageWrapper.parseFrom(resp_b);
+            resp = get_msg(client);
         }
         catch(IOException e) {
             e.printStackTrace();
         }
 
         return resp;
+    }
+
+    private static Protos.MessageWrapper get_msg(ClientType client) {
+        return client.getSyncMessage();
     }
 
     public static void send_msg(byte[] ba, SocketChannel socket) throws IOException {
