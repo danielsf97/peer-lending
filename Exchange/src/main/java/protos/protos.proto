@@ -1,17 +1,30 @@
 syntax = "proto2";
 
 message MessageWrapper {
-    oneof inner_message {
-        LoginReq loginreq = 1;
-        LoginResp loginresp = 2;
-        LogoutReq logoutreq = 3;
-        LogoutResp logoutresp = 4;
-        CompanyActionReq companyactionreq = 5;
-        CompanyActionResp companyactionresp = 6;
-        InvestorActionReq investoractionreq = 7;
-        InvestorActionResp investoractionresp = 8;
-        ErrorMsg errormsg = 9;
+    enum MessageType{
+        SYNC = 0;
+        ASYNC = 1;
     }
+
+    required MessageType msgType = 1;
+
+    oneof inner_message {
+        LoginReq loginreq = 2;
+        LoginResp loginresp = 3;
+        LogoutReq logoutreq = 4;
+        LogoutResp logoutresp = 5;
+        CompanyActionReq companyactionreq = 6;
+        CompanyActionResp companyactionresp = 7;
+        InvestorActionReq investoractionreq = 8;
+        InvestorActionResp investoractionresp = 9;
+        ErrorMsg errormsg = 10;
+        AuctionEmissionResult auctionemissionresult = 11;
+    }
+}
+
+message AuctionEmissionResult{
+    required string client = 1;
+    required string msg = 2;
 }
 
 message ErrorMsg{
@@ -54,14 +67,14 @@ message LogoutResp {
     required Status status = 1;
 }
 
-message CompanyActionReq{
+message CompanyActionReq {
     enum RequestType {
         AUCTION = 0;
         EMISSION = 1;
     }
 
     required string client = 1;
-    required RequestType req_type = 2;
+    required RequestType reqType = 2;
     required int64 value = 3;
     optional float max_rate = 4;
 }
