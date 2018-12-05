@@ -25,8 +25,8 @@ public class History {
         return emissions;
     }
 
-    public void addAuction(ActiveAuction aa) {
-        Auction a = new Auction(aa.getValue(), aa.getMaxRate(), aa.getStartingDateTime(), aa.getDuration());
+    public void addAuction(ActiveAuction aa, float highestRate, float lowestRate, boolean wasSucessful) {
+        Auction a = new Auction(aa.getValue(), aa.getMaxRate(), aa.getStartingDateTime(), aa.getDuration(), highestRate, lowestRate, wasSucessful);
         auctions.add(a);
     }
 
