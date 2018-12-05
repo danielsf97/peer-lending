@@ -61,6 +61,7 @@ message CompanyActionReq{
     }
 
     required string client = 1;
+    required RequestType req_type = 2;
     required int64 value = 3;
     optional float max_rate = 4;
 }

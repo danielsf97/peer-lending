@@ -2,50 +2,71 @@ syntax = "proto2";
 
 message MessageWrapper {
     oneof inner_message {
-        LoginReq loginReq = 1;
-        LoginResp loginResp = 2;
-        CompanyActionReq companyActionReq = 3;
-        CompanyActionResp companyActionResp = 4;
-        InvestorActionReq investorActionReq = 5;
-        InvestorActionResp investorActionResp = 6;
+        LoginReq loginreq = 1;
+        LoginResp loginresp = 2;
+        LogoutReq logoutreq = 3;
+        LogoutResp logoutresp = 4;
+        CompanyActionReq companyactionreq = 5;
+        CompanyActionResp companyactionresp = 6;
+        InvestorActionReq investoractionreq = 7;
+        InvestorActionResp investoractionresp = 8;
+        ErrorMsg errormsg = 9;
     }
 }
 
+message ErrorMsg{
+    required string error = 1;
+}
+
+
 message LoginReq {
-  required string name = 1;
-  required string password = 2;
+    required string name = 1;
+    required string password = 2;
 }
 
 message LoginResp {
 
-  enum ClientType {
-    COMPANY = 0;
-    INVESTOR = 1;
-  }
+    enum ClientType{
+        COMPANY = 0;
+        INVESTOR = 1;
+    }
 
-  enum Status {
-    INVALID = 0;
-    SUCCESS = 1;
-  }
+    enum Status {
+        INVALID = 0;
+        SUCCESS = 1;
+    }
 
-  optional ClientType cType = 1;
-  required Status status = 2;
+    optional ClientType cType = 1;
+    required Status status = 2;
 }
 
-message CompanyActionReq {
+message LogoutReq {
+    required string name = 1;
+}
+
+message LogoutResp {
+
+    enum Status {
+        ERROR = 0;
+        SUCCESS = 1;
+    }
+
+    required Status status = 1;
+}
+
+message CompanyActionReq{
     enum RequestType {
         AUCTION = 0;
         EMISSION = 1;
     }
 
-    required RequestType reqType = 1;
-    required string client = 2;
-    required string company = 3;
-    required int64 value = 4;
-    optional float interestRate = 5;
+    required string client = 1;
+    required RequestType req_type = 2;
+    required int64 value = 3;
+    optional float max_rate = 4;
 }
 
-message CompanyActionResp {
+message CompanyActionResp{
     enum Status {
         SUCCESS = 0;
         INVALID = 1;
@@ -55,25 +76,25 @@ message CompanyActionResp {
     required Status status = 2;
 }
 
-message InvestorActionReq {
+message InvestorActionReq{
     enum RequestType {
         AUCTION = 0;
         EMISSION = 1;
     }
 
-    required RequestType reqType = 1;
-    required string client = 2;
-    required string company = 3;
+    required string client = 1;
+    required string company = 2;
+    required RequestType req_type = 3;
     required int64 value = 4;
-    optional float interestRate = 5;
+    optional float rate = 5;
 }
 
-message InvestorActionResp {
+message InvestorActionResp{
     enum Status {
         CONFIRMED = 0;
-        REPLACED = 1;   // Apenas no caso dos leilões
-        ENDED = 2;      // Se o leilão ou a emissão terminaram
-        INVALID = 3;    // Dados inválidos
+        REPLACED = 1;   //apenas no caso dos leilões
+        ENDED = 2;      //se o leilão ou a emissão terminaram
+        INVALID = 3;    //dados inválidos
     }
 
     required string client = 1;

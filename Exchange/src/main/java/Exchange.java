@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.*;
 
 public class Exchange {
 
@@ -13,8 +14,7 @@ public class Exchange {
         public int socket_pull_port;
         public Map<String, Company> companies;
 
-        public ExchangeData(int socket_pull_port, int socket_push_port, Map<String, Company> companies) {
-            this.socket_push_port = socket_push_port;
+        public ExchangeData(int socket_pull_port, Map<String, Company> companies) {
             this.socket_pull_port = socket_pull_port;
             this.companies = companies;
         }
@@ -23,19 +23,19 @@ public class Exchange {
     private static final HashMap<Integer, ExchangeData> exchanges = new HashMap<>() {
         {
             // Exchange 0
-            put(0, new ExchangeData(1241, 1251, new HashMap<>() {
+            put(0, new ExchangeData(1234, new HashMap<>() {
                 {
                     put("empA", new Company("empA"));
                 }
             }));
             // Exchange 1
-            put(1, new ExchangeData(1242, 1252, new HashMap<>() {
+            put(1, new ExchangeData(1235, new HashMap<>() {
                 {
                     put("empB", new Company("empB"));
                 }
             }));
             // Exchange 2
-            put(2, new ExchangeData(1243, 1253, new HashMap<>() {
+            put(2, new ExchangeData(1236, new HashMap<>() {
                 {
                     put("empC", new Company("empC"));
                 }
@@ -43,6 +43,9 @@ public class Exchange {
         }
     };
 
+    private final int socket_push_port = 1222;
+    private final int delayTime = 10;
+    private ScheduledExecutorService scheduler;
     private ZMQ.Context context;
     private ZMQ.Socket push;
     private ZMQ.Socket pull;
@@ -53,10 +56,11 @@ public class Exchange {
         this.context = ZMQ.context(1);
         this.push = this.context.socket(ZMQ.PUSH);
         this.pull = this.context.socket(ZMQ.PULL);
-        this.push.bind("tcp://*:" + data.socket_push_port);
+        this.push.connect("tcp://*:" + socket_push_port);
         this.pull.bind("tcp://*:" + data.socket_pull_port);
         this.companies = data.companies;
         this.directoryManager = new DirectoryManager();
+        this.scheduler = Executors.newScheduledThreadPool(1);
     }
 
     private void start() {
@@ -65,18 +69,25 @@ public class Exchange {
                 byte[] b = this.pull.recv();
 
                 Protos.MessageWrapper msg = Protos.MessageWrapper.parseFrom(b);
+
                 switch(msg.getInnerMessageCase()) {
                     case COMPANYACTIONREQ:
-                        Protos.CompanyActionReq createReq = msg.getCompanyActionReq();
+                        Protos.CompanyActionReq createReq = msg.getCompanyactionreq();
                         long value = createReq.getValue();
-                        float rate = createReq.getInterestRate();
-                        Company c = companies.get(createReq.getCompany());
+                        float rate;
+                        Company c = companies.get(createReq.getClient()); //o client é a company
                         try {
                             if (createReq.getReqType() == Protos.CompanyActionReq.RequestType.AUCTION) {
+                                // TODO: verificar se pode criar uma auction
+                                rate = createReq.getMaxRate();
                                 Auction a = new Auction(value, rate);
                                 c.setActiveAuction(a);
+                                scheduler.schedule(new ScheduledExecutor(c), delayTime, TimeUnit.MINUTES);
                             }
                             else {
+                                // TODO: verificar se pode criar uma emission
+
+                                rate = 0; // TODO: esta informação não vem na msg, a taxa é fixa, mas provavelmente nem é necessária
                                 Emission e = new Emission(value, rate);
                                 c.setActiveEmission(e);
                             }
@@ -92,6 +103,8 @@ public class Exchange {
         }
         catch(Exception e) {
             e.printStackTrace();
+        }finally {
+            scheduler.shutdown();
         }
     }
 

@@ -5690,6 +5690,15 @@ public final class Protos {
         getClientBytes();
 
     /**
+     * <code>required .CompanyActionReq.RequestType req_type = 2;</code>
+     */
+    boolean hasReqType();
+    /**
+     * <code>required .CompanyActionReq.RequestType req_type = 2;</code>
+     */
+    Protos.CompanyActionReq.RequestType getReqType();
+
+    /**
      * <code>required int64 value = 3;</code>
      */
     boolean hasValue();
@@ -5720,6 +5729,7 @@ public final class Protos {
     }
     private CompanyActionReq() {
       client_ = "";
+      reqType_ = 0;
       value_ = 0L;
       maxRate_ = 0F;
     }
@@ -5758,13 +5768,24 @@ public final class Protos {
               client_ = bs;
               break;
             }
+            case 16: {
+              int rawValue = input.readEnum();
+              Protos.CompanyActionReq.RequestType value = Protos.CompanyActionReq.RequestType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                reqType_ = rawValue;
+              }
+              break;
+            }
             case 24: {
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000004;
               value_ = input.readInt64();
               break;
             }
             case 37: {
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000008;
               maxRate_ = input.readFloat();
               break;
             }
@@ -5925,13 +5946,29 @@ public final class Protos {
       }
     }
 
+    public static final int REQ_TYPE_FIELD_NUMBER = 2;
+    private int reqType_;
+    /**
+     * <code>required .CompanyActionReq.RequestType req_type = 2;</code>
+     */
+    public boolean hasReqType() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required .CompanyActionReq.RequestType req_type = 2;</code>
+     */
+    public Protos.CompanyActionReq.RequestType getReqType() {
+      Protos.CompanyActionReq.RequestType result = Protos.CompanyActionReq.RequestType.valueOf(reqType_);
+      return result == null ? Protos.CompanyActionReq.RequestType.AUCTION : result;
+    }
+
     public static final int VALUE_FIELD_NUMBER = 3;
     private long value_;
     /**
      * <code>required int64 value = 3;</code>
      */
     public boolean hasValue() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
      * <code>required int64 value = 3;</code>
@@ -5946,7 +5983,7 @@ public final class Protos {
      * <code>optional float max_rate = 4;</code>
      */
     public boolean hasMaxRate() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
      * <code>optional float max_rate = 4;</code>
@@ -5965,6 +6002,10 @@ public final class Protos {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasReqType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!hasValue()) {
         memoizedIsInitialized = 0;
         return false;
@@ -5979,9 +6020,12 @@ public final class Protos {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, client_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt64(3, value_);
+        output.writeEnum(2, reqType_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt64(3, value_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeFloat(4, maxRate_);
       }
       unknownFields.writeTo(output);
@@ -5997,9 +6041,13 @@ public final class Protos {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(3, value_);
+          .computeEnumSize(2, reqType_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, value_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(4, maxRate_);
       }
@@ -6024,6 +6072,10 @@ public final class Protos {
       if (hasClient()) {
         result = result && getClient()
             .equals(other.getClient());
+      }
+      result = result && (hasReqType() == other.hasReqType());
+      if (hasReqType()) {
+        result = result && reqType_ == other.reqType_;
       }
       result = result && (hasValue() == other.hasValue());
       if (hasValue()) {
@@ -6051,6 +6103,10 @@ public final class Protos {
       if (hasClient()) {
         hash = (37 * hash) + CLIENT_FIELD_NUMBER;
         hash = (53 * hash) + getClient().hashCode();
+      }
+      if (hasReqType()) {
+        hash = (37 * hash) + REQ_TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + reqType_;
       }
       if (hasValue()) {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
@@ -6182,10 +6238,12 @@ public final class Protos {
         super.clear();
         client_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        value_ = 0L;
+        reqType_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        maxRate_ = 0F;
+        value_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
+        maxRate_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -6217,9 +6275,13 @@ public final class Protos {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.value_ = value_;
+        result.reqType_ = reqType_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
+        }
+        result.value_ = value_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
         }
         result.maxRate_ = maxRate_;
         result.bitField0_ = to_bitField0_;
@@ -6269,6 +6331,9 @@ public final class Protos {
           client_ = other.client_;
           onChanged();
         }
+        if (other.hasReqType()) {
+          setReqType(other.getReqType());
+        }
         if (other.hasValue()) {
           setValue(other.getValue());
         }
@@ -6282,6 +6347,9 @@ public final class Protos {
 
       public final boolean isInitialized() {
         if (!hasClient()) {
+          return false;
+        }
+        if (!hasReqType()) {
           return false;
         }
         if (!hasValue()) {
@@ -6385,12 +6453,48 @@ public final class Protos {
         return this;
       }
 
+      private int reqType_ = 0;
+      /**
+       * <code>required .CompanyActionReq.RequestType req_type = 2;</code>
+       */
+      public boolean hasReqType() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required .CompanyActionReq.RequestType req_type = 2;</code>
+       */
+      public Protos.CompanyActionReq.RequestType getReqType() {
+        Protos.CompanyActionReq.RequestType result = Protos.CompanyActionReq.RequestType.valueOf(reqType_);
+        return result == null ? Protos.CompanyActionReq.RequestType.AUCTION : result;
+      }
+      /**
+       * <code>required .CompanyActionReq.RequestType req_type = 2;</code>
+       */
+      public Builder setReqType(Protos.CompanyActionReq.RequestType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000002;
+        reqType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .CompanyActionReq.RequestType req_type = 2;</code>
+       */
+      public Builder clearReqType() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        reqType_ = 0;
+        onChanged();
+        return this;
+      }
+
       private long value_ ;
       /**
        * <code>required int64 value = 3;</code>
        */
       public boolean hasValue() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
+        return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
        * <code>required int64 value = 3;</code>
@@ -6402,7 +6506,7 @@ public final class Protos {
        * <code>required int64 value = 3;</code>
        */
       public Builder setValue(long value) {
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         value_ = value;
         onChanged();
         return this;
@@ -6411,7 +6515,7 @@ public final class Protos {
        * <code>required int64 value = 3;</code>
        */
       public Builder clearValue() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000004);
         value_ = 0L;
         onChanged();
         return this;
@@ -6422,7 +6526,7 @@ public final class Protos {
        * <code>optional float max_rate = 4;</code>
        */
       public boolean hasMaxRate() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
        * <code>optional float max_rate = 4;</code>
@@ -6434,7 +6538,7 @@ public final class Protos {
        * <code>optional float max_rate = 4;</code>
        */
       public Builder setMaxRate(float value) {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         maxRate_ = value;
         onChanged();
         return this;
@@ -6443,7 +6547,7 @@ public final class Protos {
        * <code>optional float max_rate = 4;</code>
        */
       public Builder clearMaxRate() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         maxRate_ = 0F;
         onChanged();
         return this;
@@ -9208,21 +9312,22 @@ public final class Protos {
       "VESTOR\020\001\"\"\n\006Status\022\013\n\007INVALID\020\000\022\013\n\007SUCCE" +
       "SS\020\001\"\031\n\tLogoutReq\022\014\n\004name\030\001 \002(\t\"R\n\nLogou" +
       "tResp\022\"\n\006status\030\001 \002(\0162\022.LogoutResp.Statu" +
-      "s\" \n\006Status\022\t\n\005ERROR\020\000\022\013\n\007SUCCESS\020\001\"m\n\020C" +
-      "ompanyActionReq\022\016\n\006client\030\001 \002(\t\022\r\n\005value",
-      "\030\003 \002(\003\022\020\n\010max_rate\030\004 \001(\002\"(\n\013RequestType\022" +
-      "\013\n\007AUCTION\020\000\022\014\n\010EMISSION\020\001\"r\n\021CompanyAct" +
-      "ionResp\022\016\n\006client\030\001 \002(\t\022)\n\006status\030\002 \002(\0162" +
-      "\031.CompanyActionResp.Status\"\"\n\006Status\022\013\n\007" +
-      "SUCCESS\020\000\022\013\n\007INVALID\020\001\"\255\001\n\021InvestorActio" +
-      "nReq\022\016\n\006client\030\001 \002(\t\022\017\n\007company\030\002 \002(\t\0220\n" +
-      "\010req_type\030\003 \002(\0162\036.InvestorActionReq.Requ" +
-      "estType\022\r\n\005value\030\004 \002(\003\022\014\n\004rate\030\005 \001(\002\"(\n\013" +
-      "RequestType\022\013\n\007AUCTION\020\000\022\014\n\010EMISSION\020\001\"\217" +
-      "\001\n\022InvestorActionResp\022\016\n\006client\030\001 \002(\t\022*\n",
-      "\006status\030\002 \002(\0162\032.InvestorActionResp.Statu" +
-      "s\"=\n\006Status\022\r\n\tCONFIRMED\020\000\022\014\n\010REPLACED\020\001" +
-      "\022\t\n\005ENDED\020\002\022\013\n\007INVALID\020\003"
+      "s\" \n\006Status\022\t\n\005ERROR\020\000\022\013\n\007SUCCESS\020\001\"\236\001\n\020" +
+      "CompanyActionReq\022\016\n\006client\030\001 \002(\t\022/\n\010req_",
+      "type\030\002 \002(\0162\035.CompanyActionReq.RequestTyp" +
+      "e\022\r\n\005value\030\003 \002(\003\022\020\n\010max_rate\030\004 \001(\002\"(\n\013Re" +
+      "questType\022\013\n\007AUCTION\020\000\022\014\n\010EMISSION\020\001\"r\n\021" +
+      "CompanyActionResp\022\016\n\006client\030\001 \002(\t\022)\n\006sta" +
+      "tus\030\002 \002(\0162\031.CompanyActionResp.Status\"\"\n\006" +
+      "Status\022\013\n\007SUCCESS\020\000\022\013\n\007INVALID\020\001\"\255\001\n\021Inv" +
+      "estorActionReq\022\016\n\006client\030\001 \002(\t\022\017\n\007compan" +
+      "y\030\002 \002(\t\0220\n\010req_type\030\003 \002(\0162\036.InvestorActi" +
+      "onReq.RequestType\022\r\n\005value\030\004 \002(\003\022\014\n\004rate" +
+      "\030\005 \001(\002\"(\n\013RequestType\022\013\n\007AUCTION\020\000\022\014\n\010EM",
+      "ISSION\020\001\"\217\001\n\022InvestorActionResp\022\016\n\006clien" +
+      "t\030\001 \002(\t\022*\n\006status\030\002 \002(\0162\032.InvestorAction" +
+      "Resp.Status\"=\n\006Status\022\r\n\tCONFIRMED\020\000\022\014\n\010" +
+      "REPLACED\020\001\022\t\n\005ENDED\020\002\022\013\n\007INVALID\020\003"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -9277,7 +9382,7 @@ public final class Protos {
     internal_static_CompanyActionReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CompanyActionReq_descriptor,
-        new java.lang.String[] { "Client", "Value", "MaxRate", });
+        new java.lang.String[] { "Client", "ReqType", "Value", "MaxRate", });
     internal_static_CompanyActionResp_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_CompanyActionResp_fieldAccessorTable = new
