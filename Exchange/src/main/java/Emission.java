@@ -6,9 +6,8 @@ public class Emission {
     private LocalDateTime startingDateTime;
     private static int duration = 10;
 
-    Emission(long value, float maxRate) {
+    Emission(long value) {
         this.value = value;
-        this.fixedRate = maxRate;
         this.startingDateTime = LocalDateTime.now();
     }
 
@@ -20,7 +19,7 @@ public class Emission {
         return value;
     }
 
-    public float getMaxRate() {
+    public float getFixedRate() {
         return fixedRate;
     }
 

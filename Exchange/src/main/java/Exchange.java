@@ -1,9 +1,8 @@
 
 import org.zeromq.ZMQ;
+import protos.Protos;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
 
@@ -78,24 +77,20 @@ public class Exchange {
                         Company c = companies.get(createReq.getClient()); //o client é a company
                         try {
                             if (createReq.getReqType() == Protos.CompanyActionReq.RequestType.AUCTION) {
-                                // TODO: verificar se pode criar uma auction
                                 rate = createReq.getMaxRate();
                                 Auction a = new Auction(value, rate);
                                 c.setActiveAuction(a);
+                                directoryManager.postAuction(a, c.getName());
                                 scheduler.schedule(new ScheduledExecutor(c), delayTime, TimeUnit.MINUTES);
                             }
                             else {
-                                // TODO: verificar se pode criar uma emission
-
-                                rate = 0; // TODO: esta informação não vem na msg, a taxa é fixa, mas provavelmente nem é necessária
-                                Emission e = new Emission(value, rate);
+                                Emission e = new Emission(value);
                                 c.setActiveEmission(e);
+                                directoryManager.postEmission(e, c.getName());
                             }
                         }
                         catch(Exception e) {
-                            System.out.println(e.getMessage());
-                            // TODO: mudar isto, deverá informar-se a empresa de que
-                            // TODO: não é possível fazer o leilão/emissão
+
                         }
                         break;
                 }

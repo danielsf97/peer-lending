@@ -41,6 +41,8 @@ public class Auction {
         return startingDateTime;
     }
 
+
+
     public int addBid(String investor, long value, float rate){
         boolean found = false;
         Bid bid = null;
