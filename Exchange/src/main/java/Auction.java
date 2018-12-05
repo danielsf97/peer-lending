@@ -1,3 +1,4 @@
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -64,8 +65,9 @@ public class Auction {
         else return 0;
     }
 
-    public ArrayList<String> getWinners(){
-        ArrayList<String> res = new ArrayList<>();
+    public Pair<ArrayList<Pair<String,Long>>,ArrayList<String>> getWinnersLosers(){
+        ArrayList<Pair<String,Long>> winners = new ArrayList<>();
+        ArrayList<String> losers = null;
         Iterator it = bids.iterator();
         Bid bid = null;
         long sum = 0;
@@ -73,11 +75,26 @@ public class Auction {
         while(sum < value && it.hasNext()){
             bid = (Bid) it.next();
             sum += bid.getValue();
-            res.add(bid.getInvestor());
+            winners.add(new Pair(bid.getInvestor(), bid.getValue()));
         }
 
-        if(sum >= value)
-            return res;
-        else return null;
+        if(sum >= value){
+            losers = new ArrayList<>();
+            while(it.hasNext()){
+                bid = (Bid) it.next();
+                losers.add(bid.getInvestor());
+            }
+        }
+
+        if(sum == value)
+            return new Pair<>(winners, losers);
+        else if (sum > value){
+            long diff = sum - value;
+            int size = winners.size();
+            Pair pair = winners.get(size - 1);
+            pair.setSecond(diff);
+            return new Pair<>(winners, losers);
+        }
+        else return new Pair<>(null, losers);
     }
 }

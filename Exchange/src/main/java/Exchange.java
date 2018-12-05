@@ -82,7 +82,7 @@ public class Exchange {
                                 rate = createReq.getMaxRate();
                                 Auction a = new Auction(value, rate);
                                 c.setActiveAuction(a);
-                                scheduler.schedule(new ScheduledExecutor(c), delayTime, TimeUnit.MINUTES);
+                                scheduler.schedule(new ScheduledExecutor(c, push), delayTime, TimeUnit.MINUTES);
                             }
                             else {
                                 // TODO: verificar se pode criar uma emission
