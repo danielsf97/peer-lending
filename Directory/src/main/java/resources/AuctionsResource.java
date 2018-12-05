@@ -53,8 +53,8 @@ public class AuctionsResource {
     }
 
     @DELETE
-    @Path("/{company}/{highestRate}/{lowestRate}/{wasSucessful}")
-    public Response delete(@PathParam("company") String company, @PathParam("highestRate") float highestRate, @PathParam("lowestRate") float lowestRate, @PathParam("wasSucessful") boolean wasSucessful) {
+    @Path("/{company}")
+    public Response delete(@PathParam("company") String company) {
         if(!companies.containsKey(company))
             throw new RestException("A empresa não existe!", Response.Status.NOT_FOUND);
 
@@ -70,7 +70,7 @@ public class AuctionsResource {
         }
 
         History h = companies.get(company);
-        h.addAuction(save, highestRate, lowestRate, wasSucessful);
+        h.addAuction(save);
         return Response.ok().build();
     }
 }
