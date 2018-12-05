@@ -1,5 +1,3 @@
-package utils;
-
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
