@@ -1,5 +1,6 @@
 package resources;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import core.History;
 import exceptions.RestException;
 import representations.ActiveAuction;
@@ -46,12 +47,14 @@ public class AuctionsResource {
         if(exists)
             throw new RestException("Já existe um(a) leilão/emissão para essa empresa", Response.Status.CONFLICT);
 
+        activeAuctions.add(a);
+
         return Response.ok().build();
     }
 
     @DELETE
-    @Path("/{company}")
-    public Response delete(@PathParam("company") String company) {
+    @Path("/{company}/{highestRate}/{lowestRate}/{wasSucessful}")
+    public Response delete(@PathParam("company") String company, @PathParam("highestRate") float highestRate, @PathParam("lowestRate") float lowestRate, @PathParam("wasSucessful") boolean wasSucessful) {
         if(!companies.containsKey(company))
             throw new RestException("A empresa não existe!", Response.Status.NOT_FOUND);
 
@@ -67,7 +70,7 @@ public class AuctionsResource {
         }
 
         History h = companies.get(company);
-        h.addAuction(save);
+        h.addAuction(save, highestRate, lowestRate, wasSucessful);
         return Response.ok().build();
     }
 }

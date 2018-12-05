@@ -46,6 +46,7 @@ public class EmissionsResource {
         if(exists)
             throw new RestException("Já existe um(a) leilão/emissão para essa empresa", Response.Status.CONFLICT);
 
+        activeEmissions.add(e);
         return Response.ok().build();
     }
 
