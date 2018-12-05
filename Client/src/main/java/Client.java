@@ -9,7 +9,7 @@ import java.nio.channels.SocketChannel;
 
 public class Client {
 
-    private static ClientType login(SocketChannel socket) throws Exception{
+    private static ClientType login(SocketChannel socket) throws Exception {
         int w = 79;
 
         Menu m = new Menu("Autenticação");
@@ -45,7 +45,8 @@ public class Client {
             Protos.MessageWrapper msg = Protos.MessageWrapper.parseFrom(resp);
             if(msg.hasLoginresp())
                 return msg.getLoginresp();
-        } catch (InvalidProtocolBufferException e) {
+        }
+        catch (InvalidProtocolBufferException e) {
             System.out.println("Mensagem recebida inválida!!");
             e.printStackTrace();
         }

@@ -1,5 +1,6 @@
 package utils;
 
+
 import protos.Protos;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ public class Utils {
     public static Protos.MessageWrapper sendAndRecv(Protos.MessageWrapper req, SocketChannel socket){
         Protos.MessageWrapper resp = null;
 
-        try{
+        try {
             byte [] req_b = req.toByteArray();
 
             send_msg(req_b, socket);
@@ -20,7 +21,8 @@ public class Utils {
             byte[] resp_b = recv_msg(socket);
 
             resp = Protos.MessageWrapper.parseFrom(resp_b);
-        } catch (IOException e) {
+        }
+        catch(IOException e) {
             e.printStackTrace();
         }
 
@@ -47,6 +49,5 @@ public class Utils {
         buffer.get(resp, 0, len);
 
         return resp;
-
     }
 }

@@ -54,13 +54,14 @@ message LogoutResp {
     required Status status = 1;
 }
 
-message CompanyActionReq{
+message CompanyActionReq {
     enum RequestType {
         AUCTION = 0;
         EMISSION = 1;
     }
 
     required string client = 1;
+    required RequestType reqType = 2;
     required int64 value = 3;
     optional float max_rate = 4;
 }

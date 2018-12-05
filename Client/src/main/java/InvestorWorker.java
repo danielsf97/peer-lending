@@ -2,6 +2,7 @@
 import org.zeromq.ZMQ;
 import protos.Protos;
 import utils.Menu;
+import utils.NetClient;
 import utils.Utils;
 
 import java.nio.channels.SocketChannel;
@@ -22,6 +23,7 @@ public class InvestorWorker extends Thread{
         menu.add("Licitar em leilão");
         menu.add("Subscrever empréstimo a taxa fixa");
         menu.add("Subscrever notificação");
+        menu.add("Desativar notificação");
         menu.add("Ver lista de empresas");
         menu.add("Ver leilões ativos");
         menu.add("Ver emissões ativas");
@@ -29,10 +31,10 @@ public class InvestorWorker extends Thread{
         menu.add("Ver histórico de emissões de empresa");
     }
 
-    public void run(){
+    public void run() {
         int option;
         
-        do{
+        do {
             int nNotifications = investor.getNumNotifications();
             if(nNotifications > 0)
                 menu.add("Ver " + nNotifications + " notificações" );
@@ -41,7 +43,7 @@ public class InvestorWorker extends Thread{
             processOption(option);
             if(nNotifications > 0)
                 menu.removeLast(1);
-        }while(investor.isLoggedIn());
+        } while(investor.isLoggedIn());
 
         System.out.println("Logged out!!");
     }
@@ -58,15 +60,15 @@ public class InvestorWorker extends Thread{
                 break;
             case 4: unsubscribe_company();
                 break;
-            case 5: //show_companies();
+            case 5: show_companies();
                 break;
-            case 6: //show_active_auctions();
+            case 6: show_active_auctions();
                 break;
-            case 7: //show_active_emissions();
+            case 7: show_active_emissions();
                 break;
-            case 8: //show_company_auctions_history();
+            case 8: show_company_auction_history();
                 break;
-            case 9: //show_company_emissions_history();
+            case 9: show_company_emission_history();
                 break;
             case 10: readNotifications();
                 break;
@@ -160,6 +162,101 @@ public class InvestorWorker extends Thread{
             }
         }
     }
+
+    private void show_companies() {
+        try {
+            System.out.println("vou fazer cenas");
+            System.out.println(NetClient.getCompanies());
+        }
+        catch(RuntimeException e) {
+            System.out.println("mas então afinal");
+            System.out.println(e.getCause());
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            System.in.read();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void show_active_auctions() {
+        try {
+            System.out.println(NetClient.getActiveAuctions());
+        }
+        catch(RuntimeException e) {
+            System.out.println(e.getMessage());
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            System.in.read();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void show_active_emissions() {
+        try {
+            System.out.println(NetClient.getActiveEmissions());
+        }
+        catch(RuntimeException e ) {
+            System.out.println(e.getMessage());
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            System.in.read();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void show_company_auction_history() {
+        try {
+            String emp = menu.readString("Nome da empresa: ");
+            System.out.println(NetClient.getCompanyAuctionHistory(emp));
+        }
+        catch(RuntimeException e ) {
+            System.out.println(e.getMessage());
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            System.in.read();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void show_company_emission_history() {
+        try {
+            String emp = menu.readString("Nome da empresa: ");
+            System.out.println(NetClient.getCompanyEmissionHistory(emp));
+        }
+        catch(RuntimeException e ) {
+            System.out.println(e.getMessage());
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            System.in.read();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void logout() {
         Protos.MessageWrapper req = createLogoutReq();

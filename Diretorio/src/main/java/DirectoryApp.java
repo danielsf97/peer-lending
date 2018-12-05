@@ -1,4 +1,5 @@
 import io.dropwizard.Application;
+import io.dropwizard.Configuration;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import representations.*;
@@ -9,34 +10,40 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DiretorioApp extends Application<DiretorioConfiguration> {
-    private Map<Long, Company> companies;
+public class DiretorioApp extends Application<Configuration> {
+    private Map<Integer, Company> companies;
     private List<ActiveAuction> activeAuctions;
     private List<ActiveEmission> activeEmissions;
-    private Map<Long, List<Auction>> auctionHistory;
-    private Map<Long, List<Emission>> emissionHistory;
+    private Map<String, List<Auction>> auctionHistory;
+    private Map<String, List<Emission>> emissionHistory;
 
 
-    @Override
-    public String getName() {
-        return "Diretorio";
-    }
-
-    @Override
-    public void initialize(Bootstrap<DiretorioConfiguration> bootstrap) {
+    public DiretorioApp() {
         this.companies = new HashMap<>();
+        this.companies.put(0,new Company(0,"empA"));
+        this.companies.put(1,"empB");
+        this.companies.put(2,"empC");
         this.activeAuctions = new ArrayList<>();
         this.activeEmissions = new ArrayList<>();
         this.auctionHistory = new HashMap<>();
         this.emissionHistory = new HashMap<>();
-        for(Company e : this.companies.values()) {
-            auctionHistory.put(e.getId(), new ArrayList<>());
-            emissionHistory.put(e.getId(), new ArrayList<>());
+        for(String c : this.companies) {
+            auctionHistory.put(c, new ArrayList<>());
+            emissionHistory.put(c, new ArrayList<>());
         }
     }
 
     @Override
-    public void run(DiretorioConfiguration sampleConfiguration, Environment environment) {
+    public String getName() {
+        return "Directory";
+    }
+
+    @Override
+    public void initialize(Bootstrap<Configuration> bootstrap) {
+    }
+
+    @Override
+    public void run(Configuration config, Environment environment) {
         environment.jersey().register(new CompaniesResource(companies));
         environment.jersey().register(new AuctionsResource(activeAuctions));
         environment.jersey().register(new EmissionsResource(activeEmissions));

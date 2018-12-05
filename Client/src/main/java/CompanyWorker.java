@@ -1,5 +1,5 @@
-import protos.Protos;
 import org.zeromq.ZMQ;
+import protos.Protos;
 import utils.Menu;
 import utils.Utils;
 
@@ -109,7 +109,7 @@ public class CompanyWorker extends Thread{
             System.out.println(resp.getErrormsg().getError());
 
         if(companyResp != null) {
-            switch (companyResp.getStatus()){
+            switch (companyResp.getStatus()) {
                 case SUCCESS:
                     System.out.println("Leilão criado com sucesso!!");
                     break;
