@@ -3,6 +3,7 @@ import com.google.gson.Gson;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -14,17 +15,24 @@ public class DirectoryManager {
     }
 
     public void postHttp(String uri, String json) throws Exception {
+        byte[] postData = json.getBytes(StandardCharsets.UTF_8);
+        int postLength = postData.length;
         URL url = new URL(uri);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.connect();
+        conn.setFixedLengthStreamingMode(postLength);
         conn.setRequestMethod("POST");
+        conn.setDoOutput(true);
         conn.setRequestProperty("Content-Type", "application/json");
+        conn.setInstanceFollowRedirects(false);
+        conn.setUseCaches( false );
+
+        conn.connect();
 
         OutputStream os = conn.getOutputStream();
         os.write(json.getBytes());
         os.flush();
 
-        if(conn.getResponseCode() != HttpURLConnection.HTTP_ACCEPTED) {
+        if(conn.getResponseCode() != 200) {
             throw new RuntimeException();
         }
     }
@@ -32,6 +40,9 @@ public class DirectoryManager {
     public void deleteHttp(String partialUri, String company) throws Exception {
         URL url = new URL("http://localhost:8080/companies/" + company + "/" + partialUri);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("DELETE");
+        conn.setDoOutput(true);
+        conn.setRequestProperty("Content-Type", "application/json");
         conn.connect();
 
         if(conn.getResponseCode() != 200)
@@ -55,7 +66,7 @@ public class DirectoryManager {
     }
 
     public void deleteEmission(String company) throws Exception {
-        deleteHttp("emisisonHistory", company);
+        deleteHttp("emissionHistory", company);
     }
 
     class AuctionRep {

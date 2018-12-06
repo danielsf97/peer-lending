@@ -14,7 +14,10 @@ public class Company {
     public synchronized void setActiveAuction(Auction a) throws Exception {
         if((activeAuction == null && activeEmission == null) || a == null)
             this.activeAuction = a;
-        else throw new Exception();
+        else {
+            System.out.println("oi cenas");
+            throw new Exception();
+        }
     }
 
     public synchronized void setActiveEmission(Emission e) throws Exception {

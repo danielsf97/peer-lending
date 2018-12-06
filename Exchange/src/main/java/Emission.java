@@ -14,6 +14,7 @@ public class Emission {
     Emission(long value) {
         this.value = value;
         this.startingDateTime = LocalDateTime.now();
+        this.subscriptions = new ArrayList<>();
     }
 
     public static int getDuration() {
@@ -32,11 +33,11 @@ public class Emission {
         return startingDateTime;
     }
 
-    public void addSubscription(String investor, long value){
+    public void addSubscription(String investor, long value) {
         this.subscriptions.add(new Subscription(investor, value));
     }
 
-    public Pair<ArrayList<Pair<String,Long>>,ArrayList<String>> getWinnersLosers(){
+    public Pair<ArrayList<Pair<String,Long>>,ArrayList<String>> getWinnersLosers() {
         ArrayList<Pair<String,Long>> winners = new ArrayList<>();
         ArrayList<String> losers = null;
         Iterator it = subscriptions.iterator();
@@ -49,7 +50,7 @@ public class Emission {
             winners.add(new Pair(subscription.getInvestor(), subscription.getValue()));
         }
 
-        if(sum >= value){
+        if(sum >= value) {
             losers = new ArrayList<>();
             while(it.hasNext()){
                 subscription = (Subscription) it.next();
@@ -57,7 +58,7 @@ public class Emission {
             }
         }
 
-        if (sum > value){
+        if (sum > value) {
             long diff = sum - value;
             int size = winners.size();
             Pair pair = winners.get(size - 1);

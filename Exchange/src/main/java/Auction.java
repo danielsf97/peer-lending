@@ -26,23 +26,23 @@ public class Auction {
         });
     }
 
-    public static int getDuration() {
+    static int getDuration() {
         return duration;
     }
 
-    public long getValue() {
+    long getValue() {
         return value;
     }
 
-    public float getMaxRate() {
+    float getMaxRate() {
         return maxRate;
     }
 
-    public LocalDateTime getStartingDateTime() {
+    LocalDateTime getStartingDateTime() {
         return startingDateTime;
     }
 
-    public int addBid(String investor, long value, float rate){
+    public int addBid(String investor, long value, float rate) {
         boolean found = false;
         Bid bid = null;
 
@@ -50,12 +50,12 @@ public class Auction {
 
         Iterator it = bids.iterator();
 
-        while(!found && it.hasNext()){
+        while(!found && it.hasNext()) {
             bid = (Bid) it.next();
             if(bid.getInvestor().equals(investor)) found = true;
         }
 
-        if(found){
+        if(found) {
             bids.remove(bid);
         }
 
@@ -65,11 +65,11 @@ public class Auction {
         else return 0;
     }
 
-    public Pair<ArrayList<Pair<String,Long>>,ArrayList<String>> getWinnersLosers(){
+    Pair<ArrayList<Pair<String,Long>>,ArrayList<String>> getWinnersLosers() {
         ArrayList<Pair<String,Long>> winners = new ArrayList<>();
         ArrayList<String> losers = null;
         Iterator it = bids.iterator();
-        Bid bid = null;
+        Bid bid;
         long sum = 0;
 
         while(sum < value && it.hasNext()){
@@ -86,26 +86,32 @@ public class Auction {
             }
         }
 
-        if(sum == value)
+        if(sum == value) {
             return new Pair<>(winners, losers);
-        else if (sum > value){
+        }
+        else if (sum > value ){
             long diff = sum - value;
             int size = winners.size();
             Pair pair = winners.get(size - 1);
             pair.setSecond(diff);
             return new Pair<>(winners, losers);
         }
-        else return new Pair<>(null, losers);
+        else
+            return new Pair<>(null, losers);
     }
 
-    public float getMaxBidRate(int n) {
+    float getMaxBidRate(int n) {
         Bid bid = null;
         Iterator it = bids.iterator();
+
         while(it.hasNext() && n > 0){
             bid = (Bid) it.next();
             n--;
         }
-        if(n == 0) return bid.getRate();
-        else return -1;
+
+        if(n == 0)
+            return bid.getRate();
+        else
+            return -1;
     }
 }

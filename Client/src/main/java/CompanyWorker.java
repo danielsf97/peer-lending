@@ -20,10 +20,10 @@ public class CompanyWorker extends Thread{
         menu.add("Criar emissão");
     }
 
-    public void run(){
+    public void run() {
         int option;
 
-        do{
+        do {
 
             int nAsyncMessages = company.getNumAsyncMessages();
             menu.add("Ver " + nAsyncMessages + " resultados" );
@@ -34,7 +34,7 @@ public class CompanyWorker extends Thread{
 
             menu.removeLast(1);
 
-        }while(company.isLoggedIn());
+        } while(company.isLoggedIn());
 
         System.out.println("Logged out!!");
     }
@@ -68,8 +68,8 @@ public class CompanyWorker extends Thread{
         if(logoutResp != null){
             if (logoutResp.getStatus() == Protos.LogoutResp.Status.SUCCESS)
                 company.logout();
-            else{
-                System.out.println("Erro ao fazer logout!!");
+            else {
+                System.out.println("Erro ao fazer logout!");
             }
         }
     }
@@ -102,7 +102,7 @@ public class CompanyWorker extends Thread{
             System.out.println(resp.getErrormsg().getError());
 
         if(companyResp != null) {
-            switch (companyResp.getStatus()){
+            switch (companyResp.getStatus()) {
                 case SUCCESS:
                     System.out.println("Emissão criada com sucesso!!");
                     break;
@@ -162,6 +162,7 @@ public class CompanyWorker extends Thread{
                 .setMaxRate(rate)
                 .setValue(value)
                 .setClient(this.name)
+                .setReqType(Protos.CompanyActionReq.RequestType.EMISSION)
                 .build();
 
         return Protos.MessageWrapper.newBuilder()
@@ -174,6 +175,7 @@ public class CompanyWorker extends Thread{
                 .setMaxRate(rate)
                 .setValue(value)
                 .setClient(this.name)
+                .setReqType(Protos.CompanyActionReq.RequestType.AUCTION)
                 .build();
 
         return Protos.MessageWrapper.newBuilder()

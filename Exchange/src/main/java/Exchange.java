@@ -8,11 +8,10 @@ import java.util.concurrent.*;
 public class Exchange {
 
     public static class ExchangeData {
-        public int socket_push_port;
-        public int socket_pull_port;
-        public Map<String, Company> companies;
+        int socket_pull_port;
+        Map<String, Company> companies;
 
-        public ExchangeData(int socket_pull_port, Map<String, Company> companies) {
+        ExchangeData(int socket_pull_port, Map<String, Company> companies) {
             this.socket_pull_port = socket_pull_port;
             this.companies = companies;
         }
@@ -24,18 +23,19 @@ public class Exchange {
             put(0, new ExchangeData(1234, new HashMap<>() {
                 {
                     put("empA", new Company("empA"));
+                    put("empB", new Company("empB"));
                 }
             }));
             // Exchange 1
             put(1, new ExchangeData(1235, new HashMap<>() {
                 {
-                    put("empB", new Company("empB"));
+                    put("empC", new Company("empC"));
                 }
             }));
             // Exchange 2
             put(2, new ExchangeData(1236, new HashMap<>() {
                 {
-                    put("empC", new Company("empC"));
+                    put("empD", new Company("empD"));
                 }
             }));
         }
@@ -67,7 +67,7 @@ public class Exchange {
 
     private void start() {
         try {
-            while (true) {
+            while(true) {
                 byte[] b = this.pull.recv();
 
                 Protos.MessageWrapper msg = Protos.MessageWrapper.parseFrom(b);
@@ -75,18 +75,20 @@ public class Exchange {
                 switch(msg.getInnerMessageCase()) {
                     case EMISSIONFIXEDRATEREQ:
                         processEmissionFixedRateReq(msg);
+                        break;
                     case COMPANYACTIONREQ:
                         processCompanyActionReq(msg);
                         break;
                     case INVESTORACTIONREQ:
-                        //processInvestorActionReq(msg);
+                        processInvestorActionReq(msg);
                         break;
                 }
             }
         }
         catch(Exception e) {
             e.printStackTrace();
-        }finally {
+        }
+        finally {
             scheduler.shutdown();
         }
     }
@@ -95,7 +97,7 @@ public class Exchange {
 
         Protos.EmissionFixedRateReq req = msg.getEmissionfixedratereq();
 
-        Company c = companies.get(req.getClient()); //o client é a company
+        Company c = companies.get(req.getClient()); // O cliente é a empresa
 
         float rate = c.getEmissionRate();
 
@@ -108,37 +110,78 @@ public class Exchange {
     }
 
     private void processCompanyActionReq(Protos.MessageWrapper msg) {
-        Protos.CompanyActionReq createReq = msg.getCompanyactionreq();
-        long value = createReq.getValue();
+        Protos.CompanyActionReq companyActionReq = msg.getCompanyactionreq();
+        long value = companyActionReq.getValue();
         float rate;
-        Company c = companies.get(createReq.getClient()); //o client é a company
+        Company c = companies.get(companyActionReq.getClient()); // o client é a company
         try {
-            if (createReq.getReqType() == Protos.CompanyActionReq.RequestType.AUCTION) {
-                rate = createReq.getMaxRate();
+            if (companyActionReq.getReqType() == Protos.CompanyActionReq.RequestType.AUCTION) {
+                rate = companyActionReq.getMaxRate();
                 Auction a = new Auction(value, rate);
                 c.setActiveAuction(a);
 
                 directoryManager.postAuction(a, c.getName());
-                scheduler.schedule(new ScheduledExecutor(c, push, pub), delayTime, TimeUnit.MINUTES);
+                scheduler.schedule(new ScheduledExecutor(c, push, pub, directoryManager), delayTime, TimeUnit.MINUTES);
 
             }
             else {
                 Emission e = new Emission(value);
                 c.setActiveEmission(e);
+
                 directoryManager.postEmission(e, c.getName());
+                scheduler.schedule(new ScheduledExecutor(c, push, pub, directoryManager), delayTime, TimeUnit.MINUTES);
             }
-            //TODO: enviar mensagem de retorno à empresa
+
+            Protos.MessageWrapper statusMsg = createCompanyActionResp(companyActionReq.getClient(), Protos.CompanyActionResp.Status.SUCCESS);
+            push.send(statusMsg.toByteArray());
         }
         catch(Exception e) {
 
+            Protos.MessageWrapper statusMsg = createCompanyActionResp(companyActionReq.getClient(), Protos.CompanyActionResp.Status.INVALID);
+            push.send(statusMsg.toByteArray());
         }
     }
 
+    private void processInvestorActionReq(Protos.MessageWrapper msg) {
+        Protos.InvestorActionReq investorActionReq = msg.getInvestoractionreq();
 
-    public static void main(String[] args) {
-        int exchange_id = Integer.parseInt(args[0]);
-        Exchange exchange = new Exchange(exchanges.get(exchange_id));
-        exchange.start();
+        long value = investorActionReq.getValue();
+        String cName = investorActionReq.getCompany();
+        Company c = companies.get(cName);
+        String client = investorActionReq.getClient();
+
+        if(investorActionReq.getReqType() == Protos.InvestorActionReq.RequestType.AUCTION) {
+            float rate = investorActionReq.getRate();
+            Auction a = c.getActiveAuction();
+            if(a == null) {
+                Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.INVALID);
+                push.send(resp.toByteArray());
+                return;
+            }
+            int stat = a.addBid(client, value, rate);
+            if(stat == -1) {
+                Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.INVALID);
+                push.send(resp.toByteArray());
+                return;
+            }
+            else if(stat == 1) {
+                Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.REPLACED);
+                push.send(resp.toByteArray());
+                return;
+            }
+        }
+        else if(investorActionReq.getReqType() == Protos.InvestorActionReq.RequestType.EMISSION) {
+            Emission e = c.getActiveEmission();
+            if(e == null) {
+                Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.INVALID);
+                push.send(resp.toByteArray());
+                return;
+            }
+            e.addSubscription(client, value);
+        }
+
+        Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.CONFIRMED);
+        push.send(resp.toByteArray());
     }
 
     private Protos.MessageWrapper createEmissionFixedRateResp(String client, float rate) {
@@ -146,9 +189,40 @@ public class Exchange {
                 .setClient(client)
                 .setRate(rate)
                 .build();
+
         return Protos.MessageWrapper.newBuilder()
                 .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
-                .setEmissionfixedrateresp(emissionRateMsg).build();
+                .setEmissionfixedrateresp(emissionRateMsg)
+                .build();
     }
 
+    private Protos.MessageWrapper createCompanyActionResp(String client, Protos.CompanyActionResp.Status status) {
+        Protos.CompanyActionResp companyActionResp = Protos.CompanyActionResp.newBuilder()
+                .setClient(client)
+                .setStatus(status)
+                .build();
+
+        return Protos.MessageWrapper.newBuilder()
+                .setMsgType(Protos.MessageWrapper.MessageType.ASYNC)
+                .setCompanyactionresp(companyActionResp)
+                .build();
+    }
+
+    private Protos.MessageWrapper createInvestorActionResp(String client, Protos.InvestorActionResp.Status status) {
+        Protos.InvestorActionResp investorActionResp = Protos.InvestorActionResp.newBuilder()
+                .setClient(client)
+                .setStatus(status)
+                .build();
+
+        return Protos.MessageWrapper.newBuilder()
+                .setMsgType(Protos.MessageWrapper.MessageType.ASYNC)
+                .setInvestoractionresp(investorActionResp)
+                .build();
+    }
+
+    public static void main(String[] args) {
+        int exchange_id = Integer.parseInt(args[0]);
+        Exchange exchange = new Exchange(exchanges.get(exchange_id));
+        exchange.start();
+    }
 }
