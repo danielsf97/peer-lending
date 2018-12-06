@@ -2,11 +2,13 @@ public class Company {
     private String name;
     private Auction activeAuction;
     private Emission activeEmission;
+    private float emissionRate;
 
     public Company(String name) {
         this.activeAuction = null;
         this.activeEmission = null;
         this.name = name;
+        this.emissionRate = -1;
     }
 
     public synchronized void setActiveAuction(Auction a) throws Exception {
@@ -29,7 +31,15 @@ public class Company {
         return activeEmission;
     }
 
-    public synchronized String getName() {
+    public String getName() {
         return this.name;
+    }
+
+    public float getEmissionRate() {
+        return emissionRate;
+    }
+
+    public void setEmissionRate(float emissionRate) {
+        this.emissionRate = emissionRate;
     }
 }

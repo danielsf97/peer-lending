@@ -1,6 +1,5 @@
 
 import org.zeromq.ZMQ;
-import protos.Protos;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,11 +42,13 @@ public class Exchange {
     };
 
     private final int socket_push_port = 1222;
+    private final int socket_pub_port = 12347;
     private final int delayTime = 10;
     private ScheduledExecutorService scheduler;
     private ZMQ.Context context;
     private ZMQ.Socket push;
     private ZMQ.Socket pull;
+    private ZMQ.Socket pub;
     public Map<String, Company> companies;
     public DirectoryManager directoryManager;
 
@@ -55,8 +56,10 @@ public class Exchange {
         this.context = ZMQ.context(1);
         this.push = this.context.socket(ZMQ.PUSH);
         this.pull = this.context.socket(ZMQ.PULL);
-        this.push.connect("tcp://*:" + socket_push_port);
-        this.pull.bind("tcp://*:" + data.socket_pull_port);
+        this.pub = this.context.socket(ZMQ.PUB);
+        this.push.connect("tcp://localhost:" + socket_push_port);
+        this.pull.bind("tcp://localhost:" + data.socket_pull_port);
+        this.pub.connect("tcp://localhost:" + socket_pub_port);
         this.companies = data.companies;
         this.directoryManager = new DirectoryManager();
         this.scheduler = Executors.newScheduledThreadPool(1);
@@ -82,7 +85,7 @@ public class Exchange {
                                 c.setActiveAuction(a);
 
                                 directoryManager.postAuction(a, c.getName());
-                                scheduler.schedule(new ScheduledExecutor(c, push), delayTime, TimeUnit.MINUTES);
+                                scheduler.schedule(new ScheduledExecutor(c, push, pub), delayTime, TimeUnit.MINUTES);
 
                             }
                             else {
@@ -90,10 +93,13 @@ public class Exchange {
                                 c.setActiveEmission(e);
                                 directoryManager.postEmission(e, c.getName());
                             }
+                            //TODO: enviar mensagem de retorno à empresa
                         }
                         catch(Exception e) {
 
                         }
+                        break;
+                    case INVESTORACTIONREQ:
                         break;
                 }
             }

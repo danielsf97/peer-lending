@@ -42,8 +42,6 @@ public class Auction {
         return startingDateTime;
     }
 
-
-
     public int addBid(String investor, long value, float rate){
         boolean found = false;
         Bid bid = null;
@@ -98,5 +96,16 @@ public class Auction {
             return new Pair<>(winners, losers);
         }
         else return new Pair<>(null, losers);
+    }
+
+    public float getMaxBidRate(int n) {
+        Bid bid = null;
+        Iterator it = bids.iterator();
+        while(it.hasNext() && n > 0){
+            bid = (Bid) it.next();
+            n--;
+        }
+        if(n == 0) return bid.getRate();
+        else return -1;
     }
 }
