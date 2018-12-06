@@ -143,15 +143,41 @@ public final class Protos {
     Protos.ErrorMsgOrBuilder getErrormsgOrBuilder();
 
     /**
-     * <code>optional .AuctionEmissionResult auctionemissionresult = 11;</code>
+     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+     */
+    boolean hasEmissionfixedratereq();
+    /**
+     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+     */
+    Protos.EmissionFixedRateReq getEmissionfixedratereq();
+    /**
+     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+     */
+    Protos.EmissionFixedRateReqOrBuilder getEmissionfixedratereqOrBuilder();
+
+    /**
+     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+     */
+    boolean hasEmissionfixedrateresp();
+    /**
+     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+     */
+    Protos.EmissionFixedRateResp getEmissionfixedrateresp();
+    /**
+     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+     */
+    Protos.EmissionFixedRateRespOrBuilder getEmissionfixedraterespOrBuilder();
+
+    /**
+     * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
      */
     boolean hasAuctionemissionresult();
     /**
-     * <code>optional .AuctionEmissionResult auctionemissionresult = 11;</code>
+     * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
      */
     Protos.AuctionEmissionResult getAuctionemissionresult();
     /**
-     * <code>optional .AuctionEmissionResult auctionemissionresult = 11;</code>
+     * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
      */
     Protos.AuctionEmissionResultOrBuilder getAuctionemissionresultOrBuilder();
 
@@ -338,8 +364,36 @@ public final class Protos {
               break;
             }
             case 90: {
-              Protos.AuctionEmissionResult.Builder subBuilder = null;
+              Protos.EmissionFixedRateReq.Builder subBuilder = null;
               if (innerMessageCase_ == 11) {
+                subBuilder = ((Protos.EmissionFixedRateReq) innerMessage_).toBuilder();
+              }
+              innerMessage_ =
+                  input.readMessage(Protos.EmissionFixedRateReq.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((Protos.EmissionFixedRateReq) innerMessage_);
+                innerMessage_ = subBuilder.buildPartial();
+              }
+              innerMessageCase_ = 11;
+              break;
+            }
+            case 98: {
+              Protos.EmissionFixedRateResp.Builder subBuilder = null;
+              if (innerMessageCase_ == 12) {
+                subBuilder = ((Protos.EmissionFixedRateResp) innerMessage_).toBuilder();
+              }
+              innerMessage_ =
+                  input.readMessage(Protos.EmissionFixedRateResp.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((Protos.EmissionFixedRateResp) innerMessage_);
+                innerMessage_ = subBuilder.buildPartial();
+              }
+              innerMessageCase_ = 12;
+              break;
+            }
+            case 106: {
+              Protos.AuctionEmissionResult.Builder subBuilder = null;
+              if (innerMessageCase_ == 13) {
                 subBuilder = ((Protos.AuctionEmissionResult) innerMessage_).toBuilder();
               }
               innerMessage_ =
@@ -348,7 +402,7 @@ public final class Protos {
                 subBuilder.mergeFrom((Protos.AuctionEmissionResult) innerMessage_);
                 innerMessage_ = subBuilder.buildPartial();
               }
-              innerMessageCase_ = 11;
+              innerMessageCase_ = 13;
               break;
             }
           }
@@ -479,7 +533,9 @@ public final class Protos {
       INVESTORACTIONREQ(8),
       INVESTORACTIONRESP(9),
       ERRORMSG(10),
-      AUCTIONEMISSIONRESULT(11),
+      EMISSIONFIXEDRATEREQ(11),
+      EMISSIONFIXEDRATERESP(12),
+      AUCTIONEMISSIONRESULT(13),
       INNERMESSAGE_NOT_SET(0);
       private final int value;
       private InnerMessageCase(int value) {
@@ -504,7 +560,9 @@ public final class Protos {
           case 8: return INVESTORACTIONREQ;
           case 9: return INVESTORACTIONRESP;
           case 10: return ERRORMSG;
-          case 11: return AUCTIONEMISSIONRESULT;
+          case 11: return EMISSIONFIXEDRATEREQ;
+          case 12: return EMISSIONFIXEDRATERESP;
+          case 13: return AUCTIONEMISSIONRESULT;
           case 0: return INNERMESSAGE_NOT_SET;
           default: return null;
         }
@@ -770,27 +828,79 @@ public final class Protos {
       return Protos.ErrorMsg.getDefaultInstance();
     }
 
-    public static final int AUCTIONEMISSIONRESULT_FIELD_NUMBER = 11;
+    public static final int EMISSIONFIXEDRATEREQ_FIELD_NUMBER = 11;
     /**
-     * <code>optional .AuctionEmissionResult auctionemissionresult = 11;</code>
+     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
      */
-    public boolean hasAuctionemissionresult() {
+    public boolean hasEmissionfixedratereq() {
       return innerMessageCase_ == 11;
     }
     /**
-     * <code>optional .AuctionEmissionResult auctionemissionresult = 11;</code>
+     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+     */
+    public Protos.EmissionFixedRateReq getEmissionfixedratereq() {
+      if (innerMessageCase_ == 11) {
+         return (Protos.EmissionFixedRateReq) innerMessage_;
+      }
+      return Protos.EmissionFixedRateReq.getDefaultInstance();
+    }
+    /**
+     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+     */
+    public Protos.EmissionFixedRateReqOrBuilder getEmissionfixedratereqOrBuilder() {
+      if (innerMessageCase_ == 11) {
+         return (Protos.EmissionFixedRateReq) innerMessage_;
+      }
+      return Protos.EmissionFixedRateReq.getDefaultInstance();
+    }
+
+    public static final int EMISSIONFIXEDRATERESP_FIELD_NUMBER = 12;
+    /**
+     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+     */
+    public boolean hasEmissionfixedrateresp() {
+      return innerMessageCase_ == 12;
+    }
+    /**
+     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+     */
+    public Protos.EmissionFixedRateResp getEmissionfixedrateresp() {
+      if (innerMessageCase_ == 12) {
+         return (Protos.EmissionFixedRateResp) innerMessage_;
+      }
+      return Protos.EmissionFixedRateResp.getDefaultInstance();
+    }
+    /**
+     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+     */
+    public Protos.EmissionFixedRateRespOrBuilder getEmissionfixedraterespOrBuilder() {
+      if (innerMessageCase_ == 12) {
+         return (Protos.EmissionFixedRateResp) innerMessage_;
+      }
+      return Protos.EmissionFixedRateResp.getDefaultInstance();
+    }
+
+    public static final int AUCTIONEMISSIONRESULT_FIELD_NUMBER = 13;
+    /**
+     * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+     */
+    public boolean hasAuctionemissionresult() {
+      return innerMessageCase_ == 13;
+    }
+    /**
+     * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
      */
     public Protos.AuctionEmissionResult getAuctionemissionresult() {
-      if (innerMessageCase_ == 11) {
+      if (innerMessageCase_ == 13) {
          return (Protos.AuctionEmissionResult) innerMessage_;
       }
       return Protos.AuctionEmissionResult.getDefaultInstance();
     }
     /**
-     * <code>optional .AuctionEmissionResult auctionemissionresult = 11;</code>
+     * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
      */
     public Protos.AuctionEmissionResultOrBuilder getAuctionemissionresultOrBuilder() {
-      if (innerMessageCase_ == 11) {
+      if (innerMessageCase_ == 13) {
          return (Protos.AuctionEmissionResult) innerMessage_;
       }
       return Protos.AuctionEmissionResult.getDefaultInstance();
@@ -860,6 +970,18 @@ public final class Protos {
           return false;
         }
       }
+      if (hasEmissionfixedratereq()) {
+        if (!getEmissionfixedratereq().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasEmissionfixedrateresp()) {
+        if (!getEmissionfixedrateresp().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       if (hasAuctionemissionresult()) {
         if (!getAuctionemissionresult().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -903,7 +1025,13 @@ public final class Protos {
         output.writeMessage(10, (Protos.ErrorMsg) innerMessage_);
       }
       if (innerMessageCase_ == 11) {
-        output.writeMessage(11, (Protos.AuctionEmissionResult) innerMessage_);
+        output.writeMessage(11, (Protos.EmissionFixedRateReq) innerMessage_);
+      }
+      if (innerMessageCase_ == 12) {
+        output.writeMessage(12, (Protos.EmissionFixedRateResp) innerMessage_);
+      }
+      if (innerMessageCase_ == 13) {
+        output.writeMessage(13, (Protos.AuctionEmissionResult) innerMessage_);
       }
       unknownFields.writeTo(output);
     }
@@ -955,7 +1083,15 @@ public final class Protos {
       }
       if (innerMessageCase_ == 11) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(11, (Protos.AuctionEmissionResult) innerMessage_);
+          .computeMessageSize(11, (Protos.EmissionFixedRateReq) innerMessage_);
+      }
+      if (innerMessageCase_ == 12) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(12, (Protos.EmissionFixedRateResp) innerMessage_);
+      }
+      if (innerMessageCase_ == 13) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, (Protos.AuctionEmissionResult) innerMessage_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1019,6 +1155,14 @@ public final class Protos {
               .equals(other.getErrormsg());
           break;
         case 11:
+          result = result && getEmissionfixedratereq()
+              .equals(other.getEmissionfixedratereq());
+          break;
+        case 12:
+          result = result && getEmissionfixedrateresp()
+              .equals(other.getEmissionfixedrateresp());
+          break;
+        case 13:
           result = result && getAuctionemissionresult()
               .equals(other.getAuctionemissionresult());
           break;
@@ -1078,6 +1222,14 @@ public final class Protos {
           hash = (53 * hash) + getErrormsg().hashCode();
           break;
         case 11:
+          hash = (37 * hash) + EMISSIONFIXEDRATEREQ_FIELD_NUMBER;
+          hash = (53 * hash) + getEmissionfixedratereq().hashCode();
+          break;
+        case 12:
+          hash = (37 * hash) + EMISSIONFIXEDRATERESP_FIELD_NUMBER;
+          hash = (53 * hash) + getEmissionfixedrateresp().hashCode();
+          break;
+        case 13:
           hash = (37 * hash) + AUCTIONEMISSIONRESULT_FIELD_NUMBER;
           hash = (53 * hash) + getAuctionemissionresult().hashCode();
           break;
@@ -1298,6 +1450,20 @@ public final class Protos {
           }
         }
         if (innerMessageCase_ == 11) {
+          if (emissionfixedratereqBuilder_ == null) {
+            result.innerMessage_ = innerMessage_;
+          } else {
+            result.innerMessage_ = emissionfixedratereqBuilder_.build();
+          }
+        }
+        if (innerMessageCase_ == 12) {
+          if (emissionfixedraterespBuilder_ == null) {
+            result.innerMessage_ = innerMessage_;
+          } else {
+            result.innerMessage_ = emissionfixedraterespBuilder_.build();
+          }
+        }
+        if (innerMessageCase_ == 13) {
           if (auctionemissionresultBuilder_ == null) {
             result.innerMessage_ = innerMessage_;
           } else {
@@ -1387,6 +1553,14 @@ public final class Protos {
             mergeErrormsg(other.getErrormsg());
             break;
           }
+          case EMISSIONFIXEDRATEREQ: {
+            mergeEmissionfixedratereq(other.getEmissionfixedratereq());
+            break;
+          }
+          case EMISSIONFIXEDRATERESP: {
+            mergeEmissionfixedrateresp(other.getEmissionfixedrateresp());
+            break;
+          }
           case AUCTIONEMISSIONRESULT: {
             mergeAuctionemissionresult(other.getAuctionemissionresult());
             break;
@@ -1446,6 +1620,16 @@ public final class Protos {
         }
         if (hasErrormsg()) {
           if (!getErrormsg().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasEmissionfixedratereq()) {
+          if (!getEmissionfixedratereq().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasEmissionfixedrateresp()) {
+          if (!getEmissionfixedrateresp().isInitialized()) {
             return false;
           }
         }
@@ -2752,31 +2936,303 @@ public final class Protos {
       }
 
       private com.google.protobuf.SingleFieldBuilderV3<
-          Protos.AuctionEmissionResult, Protos.AuctionEmissionResult.Builder, Protos.AuctionEmissionResultOrBuilder> auctionemissionresultBuilder_;
+          Protos.EmissionFixedRateReq, Protos.EmissionFixedRateReq.Builder, Protos.EmissionFixedRateReqOrBuilder> emissionfixedratereqBuilder_;
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 11;</code>
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
        */
-      public boolean hasAuctionemissionresult() {
+      public boolean hasEmissionfixedratereq() {
         return innerMessageCase_ == 11;
       }
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 11;</code>
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       */
+      public Protos.EmissionFixedRateReq getEmissionfixedratereq() {
+        if (emissionfixedratereqBuilder_ == null) {
+          if (innerMessageCase_ == 11) {
+            return (Protos.EmissionFixedRateReq) innerMessage_;
+          }
+          return Protos.EmissionFixedRateReq.getDefaultInstance();
+        } else {
+          if (innerMessageCase_ == 11) {
+            return emissionfixedratereqBuilder_.getMessage();
+          }
+          return Protos.EmissionFixedRateReq.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       */
+      public Builder setEmissionfixedratereq(Protos.EmissionFixedRateReq value) {
+        if (emissionfixedratereqBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          innerMessage_ = value;
+          onChanged();
+        } else {
+          emissionfixedratereqBuilder_.setMessage(value);
+        }
+        innerMessageCase_ = 11;
+        return this;
+      }
+      /**
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       */
+      public Builder setEmissionfixedratereq(
+          Protos.EmissionFixedRateReq.Builder builderForValue) {
+        if (emissionfixedratereqBuilder_ == null) {
+          innerMessage_ = builderForValue.build();
+          onChanged();
+        } else {
+          emissionfixedratereqBuilder_.setMessage(builderForValue.build());
+        }
+        innerMessageCase_ = 11;
+        return this;
+      }
+      /**
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       */
+      public Builder mergeEmissionfixedratereq(Protos.EmissionFixedRateReq value) {
+        if (emissionfixedratereqBuilder_ == null) {
+          if (innerMessageCase_ == 11 &&
+              innerMessage_ != Protos.EmissionFixedRateReq.getDefaultInstance()) {
+            innerMessage_ = Protos.EmissionFixedRateReq.newBuilder((Protos.EmissionFixedRateReq) innerMessage_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            innerMessage_ = value;
+          }
+          onChanged();
+        } else {
+          if (innerMessageCase_ == 11) {
+            emissionfixedratereqBuilder_.mergeFrom(value);
+          }
+          emissionfixedratereqBuilder_.setMessage(value);
+        }
+        innerMessageCase_ = 11;
+        return this;
+      }
+      /**
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       */
+      public Builder clearEmissionfixedratereq() {
+        if (emissionfixedratereqBuilder_ == null) {
+          if (innerMessageCase_ == 11) {
+            innerMessageCase_ = 0;
+            innerMessage_ = null;
+            onChanged();
+          }
+        } else {
+          if (innerMessageCase_ == 11) {
+            innerMessageCase_ = 0;
+            innerMessage_ = null;
+          }
+          emissionfixedratereqBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       */
+      public Protos.EmissionFixedRateReq.Builder getEmissionfixedratereqBuilder() {
+        return getEmissionfixedratereqFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       */
+      public Protos.EmissionFixedRateReqOrBuilder getEmissionfixedratereqOrBuilder() {
+        if ((innerMessageCase_ == 11) && (emissionfixedratereqBuilder_ != null)) {
+          return emissionfixedratereqBuilder_.getMessageOrBuilder();
+        } else {
+          if (innerMessageCase_ == 11) {
+            return (Protos.EmissionFixedRateReq) innerMessage_;
+          }
+          return Protos.EmissionFixedRateReq.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Protos.EmissionFixedRateReq, Protos.EmissionFixedRateReq.Builder, Protos.EmissionFixedRateReqOrBuilder> 
+          getEmissionfixedratereqFieldBuilder() {
+        if (emissionfixedratereqBuilder_ == null) {
+          if (!(innerMessageCase_ == 11)) {
+            innerMessage_ = Protos.EmissionFixedRateReq.getDefaultInstance();
+          }
+          emissionfixedratereqBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Protos.EmissionFixedRateReq, Protos.EmissionFixedRateReq.Builder, Protos.EmissionFixedRateReqOrBuilder>(
+                  (Protos.EmissionFixedRateReq) innerMessage_,
+                  getParentForChildren(),
+                  isClean());
+          innerMessage_ = null;
+        }
+        innerMessageCase_ = 11;
+        onChanged();;
+        return emissionfixedratereqBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Protos.EmissionFixedRateResp, Protos.EmissionFixedRateResp.Builder, Protos.EmissionFixedRateRespOrBuilder> emissionfixedraterespBuilder_;
+      /**
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       */
+      public boolean hasEmissionfixedrateresp() {
+        return innerMessageCase_ == 12;
+      }
+      /**
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       */
+      public Protos.EmissionFixedRateResp getEmissionfixedrateresp() {
+        if (emissionfixedraterespBuilder_ == null) {
+          if (innerMessageCase_ == 12) {
+            return (Protos.EmissionFixedRateResp) innerMessage_;
+          }
+          return Protos.EmissionFixedRateResp.getDefaultInstance();
+        } else {
+          if (innerMessageCase_ == 12) {
+            return emissionfixedraterespBuilder_.getMessage();
+          }
+          return Protos.EmissionFixedRateResp.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       */
+      public Builder setEmissionfixedrateresp(Protos.EmissionFixedRateResp value) {
+        if (emissionfixedraterespBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          innerMessage_ = value;
+          onChanged();
+        } else {
+          emissionfixedraterespBuilder_.setMessage(value);
+        }
+        innerMessageCase_ = 12;
+        return this;
+      }
+      /**
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       */
+      public Builder setEmissionfixedrateresp(
+          Protos.EmissionFixedRateResp.Builder builderForValue) {
+        if (emissionfixedraterespBuilder_ == null) {
+          innerMessage_ = builderForValue.build();
+          onChanged();
+        } else {
+          emissionfixedraterespBuilder_.setMessage(builderForValue.build());
+        }
+        innerMessageCase_ = 12;
+        return this;
+      }
+      /**
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       */
+      public Builder mergeEmissionfixedrateresp(Protos.EmissionFixedRateResp value) {
+        if (emissionfixedraterespBuilder_ == null) {
+          if (innerMessageCase_ == 12 &&
+              innerMessage_ != Protos.EmissionFixedRateResp.getDefaultInstance()) {
+            innerMessage_ = Protos.EmissionFixedRateResp.newBuilder((Protos.EmissionFixedRateResp) innerMessage_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            innerMessage_ = value;
+          }
+          onChanged();
+        } else {
+          if (innerMessageCase_ == 12) {
+            emissionfixedraterespBuilder_.mergeFrom(value);
+          }
+          emissionfixedraterespBuilder_.setMessage(value);
+        }
+        innerMessageCase_ = 12;
+        return this;
+      }
+      /**
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       */
+      public Builder clearEmissionfixedrateresp() {
+        if (emissionfixedraterespBuilder_ == null) {
+          if (innerMessageCase_ == 12) {
+            innerMessageCase_ = 0;
+            innerMessage_ = null;
+            onChanged();
+          }
+        } else {
+          if (innerMessageCase_ == 12) {
+            innerMessageCase_ = 0;
+            innerMessage_ = null;
+          }
+          emissionfixedraterespBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       */
+      public Protos.EmissionFixedRateResp.Builder getEmissionfixedraterespBuilder() {
+        return getEmissionfixedraterespFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       */
+      public Protos.EmissionFixedRateRespOrBuilder getEmissionfixedraterespOrBuilder() {
+        if ((innerMessageCase_ == 12) && (emissionfixedraterespBuilder_ != null)) {
+          return emissionfixedraterespBuilder_.getMessageOrBuilder();
+        } else {
+          if (innerMessageCase_ == 12) {
+            return (Protos.EmissionFixedRateResp) innerMessage_;
+          }
+          return Protos.EmissionFixedRateResp.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Protos.EmissionFixedRateResp, Protos.EmissionFixedRateResp.Builder, Protos.EmissionFixedRateRespOrBuilder> 
+          getEmissionfixedraterespFieldBuilder() {
+        if (emissionfixedraterespBuilder_ == null) {
+          if (!(innerMessageCase_ == 12)) {
+            innerMessage_ = Protos.EmissionFixedRateResp.getDefaultInstance();
+          }
+          emissionfixedraterespBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              Protos.EmissionFixedRateResp, Protos.EmissionFixedRateResp.Builder, Protos.EmissionFixedRateRespOrBuilder>(
+                  (Protos.EmissionFixedRateResp) innerMessage_,
+                  getParentForChildren(),
+                  isClean());
+          innerMessage_ = null;
+        }
+        innerMessageCase_ = 12;
+        onChanged();;
+        return emissionfixedraterespBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          Protos.AuctionEmissionResult, Protos.AuctionEmissionResult.Builder, Protos.AuctionEmissionResultOrBuilder> auctionemissionresultBuilder_;
+      /**
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+       */
+      public boolean hasAuctionemissionresult() {
+        return innerMessageCase_ == 13;
+      }
+      /**
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
        */
       public Protos.AuctionEmissionResult getAuctionemissionresult() {
         if (auctionemissionresultBuilder_ == null) {
-          if (innerMessageCase_ == 11) {
+          if (innerMessageCase_ == 13) {
             return (Protos.AuctionEmissionResult) innerMessage_;
           }
           return Protos.AuctionEmissionResult.getDefaultInstance();
         } else {
-          if (innerMessageCase_ == 11) {
+          if (innerMessageCase_ == 13) {
             return auctionemissionresultBuilder_.getMessage();
           }
           return Protos.AuctionEmissionResult.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 11;</code>
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
        */
       public Builder setAuctionemissionresult(Protos.AuctionEmissionResult value) {
         if (auctionemissionresultBuilder_ == null) {
@@ -2788,11 +3244,11 @@ public final class Protos {
         } else {
           auctionemissionresultBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 11;
+        innerMessageCase_ = 13;
         return this;
       }
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 11;</code>
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
        */
       public Builder setAuctionemissionresult(
           Protos.AuctionEmissionResult.Builder builderForValue) {
@@ -2802,15 +3258,15 @@ public final class Protos {
         } else {
           auctionemissionresultBuilder_.setMessage(builderForValue.build());
         }
-        innerMessageCase_ = 11;
+        innerMessageCase_ = 13;
         return this;
       }
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 11;</code>
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
        */
       public Builder mergeAuctionemissionresult(Protos.AuctionEmissionResult value) {
         if (auctionemissionresultBuilder_ == null) {
-          if (innerMessageCase_ == 11 &&
+          if (innerMessageCase_ == 13 &&
               innerMessage_ != Protos.AuctionEmissionResult.getDefaultInstance()) {
             innerMessage_ = Protos.AuctionEmissionResult.newBuilder((Protos.AuctionEmissionResult) innerMessage_)
                 .mergeFrom(value).buildPartial();
@@ -2819,26 +3275,26 @@ public final class Protos {
           }
           onChanged();
         } else {
-          if (innerMessageCase_ == 11) {
+          if (innerMessageCase_ == 13) {
             auctionemissionresultBuilder_.mergeFrom(value);
           }
           auctionemissionresultBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 11;
+        innerMessageCase_ = 13;
         return this;
       }
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 11;</code>
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
        */
       public Builder clearAuctionemissionresult() {
         if (auctionemissionresultBuilder_ == null) {
-          if (innerMessageCase_ == 11) {
+          if (innerMessageCase_ == 13) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
             onChanged();
           }
         } else {
-          if (innerMessageCase_ == 11) {
+          if (innerMessageCase_ == 13) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
           }
@@ -2847,32 +3303,32 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 11;</code>
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
        */
       public Protos.AuctionEmissionResult.Builder getAuctionemissionresultBuilder() {
         return getAuctionemissionresultFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 11;</code>
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
        */
       public Protos.AuctionEmissionResultOrBuilder getAuctionemissionresultOrBuilder() {
-        if ((innerMessageCase_ == 11) && (auctionemissionresultBuilder_ != null)) {
+        if ((innerMessageCase_ == 13) && (auctionemissionresultBuilder_ != null)) {
           return auctionemissionresultBuilder_.getMessageOrBuilder();
         } else {
-          if (innerMessageCase_ == 11) {
+          if (innerMessageCase_ == 13) {
             return (Protos.AuctionEmissionResult) innerMessage_;
           }
           return Protos.AuctionEmissionResult.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 11;</code>
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.AuctionEmissionResult, Protos.AuctionEmissionResult.Builder, Protos.AuctionEmissionResultOrBuilder> 
           getAuctionemissionresultFieldBuilder() {
         if (auctionemissionresultBuilder_ == null) {
-          if (!(innerMessageCase_ == 11)) {
+          if (!(innerMessageCase_ == 13)) {
             innerMessage_ = Protos.AuctionEmissionResult.getDefaultInstance();
           }
           auctionemissionresultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -2882,7 +3338,7 @@ public final class Protos {
                   isClean());
           innerMessage_ = null;
         }
-        innerMessageCase_ = 11;
+        innerMessageCase_ = 13;
         onChanged();;
         return auctionemissionresultBuilder_;
       }
@@ -2930,6 +3386,1237 @@ public final class Protos {
     }
 
     public Protos.MessageWrapper getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface EmissionFixedRateReqOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:EmissionFixedRateReq)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required string client = 1;</code>
+     */
+    boolean hasClient();
+    /**
+     * <code>required string client = 1;</code>
+     */
+    java.lang.String getClient();
+    /**
+     * <code>required string client = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getClientBytes();
+  }
+  /**
+   * Protobuf type {@code EmissionFixedRateReq}
+   */
+  public  static final class EmissionFixedRateReq extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:EmissionFixedRateReq)
+      EmissionFixedRateReqOrBuilder {
+    // Use EmissionFixedRateReq.newBuilder() to construct.
+    private EmissionFixedRateReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private EmissionFixedRateReq() {
+      client_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private EmissionFixedRateReq(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              client_ = bs;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Protos.internal_static_EmissionFixedRateReq_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Protos.internal_static_EmissionFixedRateReq_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Protos.EmissionFixedRateReq.class, Protos.EmissionFixedRateReq.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int CLIENT_FIELD_NUMBER = 1;
+    private volatile java.lang.Object client_;
+    /**
+     * <code>required string client = 1;</code>
+     */
+    public boolean hasClient() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string client = 1;</code>
+     */
+    public java.lang.String getClient() {
+      java.lang.Object ref = client_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          client_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string client = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getClientBytes() {
+      java.lang.Object ref = client_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        client_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasClient()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, client_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, client_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Protos.EmissionFixedRateReq)) {
+        return super.equals(obj);
+      }
+      Protos.EmissionFixedRateReq other = (Protos.EmissionFixedRateReq) obj;
+
+      boolean result = true;
+      result = result && (hasClient() == other.hasClient());
+      if (hasClient()) {
+        result = result && getClient()
+            .equals(other.getClient());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasClient()) {
+        hash = (37 * hash) + CLIENT_FIELD_NUMBER;
+        hash = (53 * hash) + getClient().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Protos.EmissionFixedRateReq parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Protos.EmissionFixedRateReq parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Protos.EmissionFixedRateReq parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Protos.EmissionFixedRateReq parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Protos.EmissionFixedRateReq parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Protos.EmissionFixedRateReq parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Protos.EmissionFixedRateReq parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static Protos.EmissionFixedRateReq parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Protos.EmissionFixedRateReq parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Protos.EmissionFixedRateReq parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Protos.EmissionFixedRateReq prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code EmissionFixedRateReq}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:EmissionFixedRateReq)
+        Protos.EmissionFixedRateReqOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Protos.internal_static_EmissionFixedRateReq_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Protos.internal_static_EmissionFixedRateReq_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Protos.EmissionFixedRateReq.class, Protos.EmissionFixedRateReq.Builder.class);
+      }
+
+      // Construct using Protos.EmissionFixedRateReq.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        client_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Protos.internal_static_EmissionFixedRateReq_descriptor;
+      }
+
+      public Protos.EmissionFixedRateReq getDefaultInstanceForType() {
+        return Protos.EmissionFixedRateReq.getDefaultInstance();
+      }
+
+      public Protos.EmissionFixedRateReq build() {
+        Protos.EmissionFixedRateReq result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public Protos.EmissionFixedRateReq buildPartial() {
+        Protos.EmissionFixedRateReq result = new Protos.EmissionFixedRateReq(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.client_ = client_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Protos.EmissionFixedRateReq) {
+          return mergeFrom((Protos.EmissionFixedRateReq)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Protos.EmissionFixedRateReq other) {
+        if (other == Protos.EmissionFixedRateReq.getDefaultInstance()) return this;
+        if (other.hasClient()) {
+          bitField0_ |= 0x00000001;
+          client_ = other.client_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasClient()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        Protos.EmissionFixedRateReq parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (Protos.EmissionFixedRateReq) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object client_ = "";
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public boolean hasClient() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public java.lang.String getClient() {
+        java.lang.Object ref = client_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            client_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getClientBytes() {
+        java.lang.Object ref = client_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          client_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public Builder setClient(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        client_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public Builder clearClient() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        client_ = getDefaultInstance().getClient();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public Builder setClientBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        client_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:EmissionFixedRateReq)
+    }
+
+    // @@protoc_insertion_point(class_scope:EmissionFixedRateReq)
+    private static final Protos.EmissionFixedRateReq DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Protos.EmissionFixedRateReq();
+    }
+
+    public static Protos.EmissionFixedRateReq getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<EmissionFixedRateReq>
+        PARSER = new com.google.protobuf.AbstractParser<EmissionFixedRateReq>() {
+      public EmissionFixedRateReq parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new EmissionFixedRateReq(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<EmissionFixedRateReq> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<EmissionFixedRateReq> getParserForType() {
+      return PARSER;
+    }
+
+    public Protos.EmissionFixedRateReq getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface EmissionFixedRateRespOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:EmissionFixedRateResp)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required string client = 1;</code>
+     */
+    boolean hasClient();
+    /**
+     * <code>required string client = 1;</code>
+     */
+    java.lang.String getClient();
+    /**
+     * <code>required string client = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getClientBytes();
+
+    /**
+     * <pre>
+     *-1 caso não seja possivel criar emissão
+     * </pre>
+     *
+     * <code>required float rate = 2;</code>
+     */
+    boolean hasRate();
+    /**
+     * <pre>
+     *-1 caso não seja possivel criar emissão
+     * </pre>
+     *
+     * <code>required float rate = 2;</code>
+     */
+    float getRate();
+  }
+  /**
+   * Protobuf type {@code EmissionFixedRateResp}
+   */
+  public  static final class EmissionFixedRateResp extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:EmissionFixedRateResp)
+      EmissionFixedRateRespOrBuilder {
+    // Use EmissionFixedRateResp.newBuilder() to construct.
+    private EmissionFixedRateResp(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private EmissionFixedRateResp() {
+      client_ = "";
+      rate_ = 0F;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private EmissionFixedRateResp(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              client_ = bs;
+              break;
+            }
+            case 21: {
+              bitField0_ |= 0x00000002;
+              rate_ = input.readFloat();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Protos.internal_static_EmissionFixedRateResp_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Protos.internal_static_EmissionFixedRateResp_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Protos.EmissionFixedRateResp.class, Protos.EmissionFixedRateResp.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int CLIENT_FIELD_NUMBER = 1;
+    private volatile java.lang.Object client_;
+    /**
+     * <code>required string client = 1;</code>
+     */
+    public boolean hasClient() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string client = 1;</code>
+     */
+    public java.lang.String getClient() {
+      java.lang.Object ref = client_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          client_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string client = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getClientBytes() {
+      java.lang.Object ref = client_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        client_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int RATE_FIELD_NUMBER = 2;
+    private float rate_;
+    /**
+     * <pre>
+     *-1 caso não seja possivel criar emissão
+     * </pre>
+     *
+     * <code>required float rate = 2;</code>
+     */
+    public boolean hasRate() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <pre>
+     *-1 caso não seja possivel criar emissão
+     * </pre>
+     *
+     * <code>required float rate = 2;</code>
+     */
+    public float getRate() {
+      return rate_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasClient()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasRate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, client_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeFloat(2, rate_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, client_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(2, rate_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof Protos.EmissionFixedRateResp)) {
+        return super.equals(obj);
+      }
+      Protos.EmissionFixedRateResp other = (Protos.EmissionFixedRateResp) obj;
+
+      boolean result = true;
+      result = result && (hasClient() == other.hasClient());
+      if (hasClient()) {
+        result = result && getClient()
+            .equals(other.getClient());
+      }
+      result = result && (hasRate() == other.hasRate());
+      if (hasRate()) {
+        result = result && (
+            java.lang.Float.floatToIntBits(getRate())
+            == java.lang.Float.floatToIntBits(
+                other.getRate()));
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasClient()) {
+        hash = (37 * hash) + CLIENT_FIELD_NUMBER;
+        hash = (53 * hash) + getClient().hashCode();
+      }
+      if (hasRate()) {
+        hash = (37 * hash) + RATE_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getRate());
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static Protos.EmissionFixedRateResp parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Protos.EmissionFixedRateResp parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Protos.EmissionFixedRateResp parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Protos.EmissionFixedRateResp parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Protos.EmissionFixedRateResp parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Protos.EmissionFixedRateResp parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Protos.EmissionFixedRateResp parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static Protos.EmissionFixedRateResp parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static Protos.EmissionFixedRateResp parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static Protos.EmissionFixedRateResp parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(Protos.EmissionFixedRateResp prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code EmissionFixedRateResp}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:EmissionFixedRateResp)
+        Protos.EmissionFixedRateRespOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Protos.internal_static_EmissionFixedRateResp_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Protos.internal_static_EmissionFixedRateResp_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Protos.EmissionFixedRateResp.class, Protos.EmissionFixedRateResp.Builder.class);
+      }
+
+      // Construct using Protos.EmissionFixedRateResp.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        client_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        rate_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Protos.internal_static_EmissionFixedRateResp_descriptor;
+      }
+
+      public Protos.EmissionFixedRateResp getDefaultInstanceForType() {
+        return Protos.EmissionFixedRateResp.getDefaultInstance();
+      }
+
+      public Protos.EmissionFixedRateResp build() {
+        Protos.EmissionFixedRateResp result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public Protos.EmissionFixedRateResp buildPartial() {
+        Protos.EmissionFixedRateResp result = new Protos.EmissionFixedRateResp(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.client_ = client_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.rate_ = rate_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Protos.EmissionFixedRateResp) {
+          return mergeFrom((Protos.EmissionFixedRateResp)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Protos.EmissionFixedRateResp other) {
+        if (other == Protos.EmissionFixedRateResp.getDefaultInstance()) return this;
+        if (other.hasClient()) {
+          bitField0_ |= 0x00000001;
+          client_ = other.client_;
+          onChanged();
+        }
+        if (other.hasRate()) {
+          setRate(other.getRate());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasClient()) {
+          return false;
+        }
+        if (!hasRate()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        Protos.EmissionFixedRateResp parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (Protos.EmissionFixedRateResp) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object client_ = "";
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public boolean hasClient() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public java.lang.String getClient() {
+        java.lang.Object ref = client_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            client_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getClientBytes() {
+        java.lang.Object ref = client_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          client_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public Builder setClient(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        client_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public Builder clearClient() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        client_ = getDefaultInstance().getClient();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string client = 1;</code>
+       */
+      public Builder setClientBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        client_ = value;
+        onChanged();
+        return this;
+      }
+
+      private float rate_ ;
+      /**
+       * <pre>
+       *-1 caso não seja possivel criar emissão
+       * </pre>
+       *
+       * <code>required float rate = 2;</code>
+       */
+      public boolean hasRate() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <pre>
+       *-1 caso não seja possivel criar emissão
+       * </pre>
+       *
+       * <code>required float rate = 2;</code>
+       */
+      public float getRate() {
+        return rate_;
+      }
+      /**
+       * <pre>
+       *-1 caso não seja possivel criar emissão
+       * </pre>
+       *
+       * <code>required float rate = 2;</code>
+       */
+      public Builder setRate(float value) {
+        bitField0_ |= 0x00000002;
+        rate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *-1 caso não seja possivel criar emissão
+       * </pre>
+       *
+       * <code>required float rate = 2;</code>
+       */
+      public Builder clearRate() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        rate_ = 0F;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:EmissionFixedRateResp)
+    }
+
+    // @@protoc_insertion_point(class_scope:EmissionFixedRateResp)
+    private static final Protos.EmissionFixedRateResp DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new Protos.EmissionFixedRateResp();
+    }
+
+    public static Protos.EmissionFixedRateResp getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<EmissionFixedRateResp>
+        PARSER = new com.google.protobuf.AbstractParser<EmissionFixedRateResp>() {
+      public EmissionFixedRateResp parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new EmissionFixedRateResp(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<EmissionFixedRateResp> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<EmissionFixedRateResp> getParserForType() {
+      return PARSER;
+    }
+
+    public Protos.EmissionFixedRateResp getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -6853,11 +8540,11 @@ public final class Protos {
     long getValue();
 
     /**
-     * <code>optional float max_rate = 4;</code>
+     * <code>required float max_rate = 4;</code>
      */
     boolean hasMaxRate();
     /**
-     * <code>optional float max_rate = 4;</code>
+     * <code>required float max_rate = 4;</code>
      */
     float getMaxRate();
   }
@@ -7125,13 +8812,13 @@ public final class Protos {
     public static final int MAX_RATE_FIELD_NUMBER = 4;
     private float maxRate_;
     /**
-     * <code>optional float max_rate = 4;</code>
+     * <code>required float max_rate = 4;</code>
      */
     public boolean hasMaxRate() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional float max_rate = 4;</code>
+     * <code>required float max_rate = 4;</code>
      */
     public float getMaxRate() {
       return maxRate_;
@@ -7152,6 +8839,10 @@ public final class Protos {
         return false;
       }
       if (!hasValue()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasMaxRate()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -7500,6 +9191,9 @@ public final class Protos {
         if (!hasValue()) {
           return false;
         }
+        if (!hasMaxRate()) {
+          return false;
+        }
         return true;
       }
 
@@ -7668,19 +9362,19 @@ public final class Protos {
 
       private float maxRate_ ;
       /**
-       * <code>optional float max_rate = 4;</code>
+       * <code>required float max_rate = 4;</code>
        */
       public boolean hasMaxRate() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional float max_rate = 4;</code>
+       * <code>required float max_rate = 4;</code>
        */
       public float getMaxRate() {
         return maxRate_;
       }
       /**
-       * <code>optional float max_rate = 4;</code>
+       * <code>required float max_rate = 4;</code>
        */
       public Builder setMaxRate(float value) {
         bitField0_ |= 0x00000008;
@@ -7689,7 +9383,7 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>optional float max_rate = 4;</code>
+       * <code>required float max_rate = 4;</code>
        */
       public Builder clearMaxRate() {
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -10386,6 +12080,16 @@ public final class Protos {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_MessageWrapper_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_EmissionFixedRateReq_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_EmissionFixedRateReq_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_EmissionFixedRateResp_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_EmissionFixedRateResp_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_AuctionEmissionResult_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -10444,7 +12148,7 @@ public final class Protos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014protos.proto\"\223\004\n\016MessageWrapper\022,\n\007msg" +
+      "\n\014protos.proto\"\203\005\n\016MessageWrapper\022,\n\007msg" +
       "Type\030\001 \002(\0162\033.MessageWrapper.MessageType\022" +
       "\035\n\010loginreq\030\002 \001(\0132\t.LoginReqH\000\022\037\n\tloginr" +
       "esp\030\003 \001(\0132\n.LoginRespH\000\022\037\n\tlogoutreq\030\004 \001" +
@@ -10454,35 +12158,40 @@ public final class Protos {
       "\007 \001(\0132\022.CompanyActionRespH\000\022/\n\021investora" +
       "ctionreq\030\010 \001(\0132\022.InvestorActionReqH\000\0221\n\022" +
       "investoractionresp\030\t \001(\0132\023.InvestorActio",
-      "nRespH\000\022\035\n\010errormsg\030\n \001(\0132\t.ErrorMsgH\000\0227" +
-      "\n\025auctionemissionresult\030\013 \001(\0132\026.AuctionE" +
-      "missionResultH\000\"\"\n\013MessageType\022\010\n\004SYNC\020\000" +
-      "\022\t\n\005ASYNC\020\001B\017\n\rinner_message\"4\n\025AuctionE" +
-      "missionResult\022\016\n\006client\030\001 \002(\t\022\013\n\003msg\030\002 \002" +
-      "(\t\"\031\n\010ErrorMsg\022\r\n\005error\030\001 \002(\t\"*\n\010LoginRe" +
-      "q\022\014\n\004name\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\"\241\001\n\tLo" +
-      "ginResp\022$\n\005cType\030\001 \001(\0162\025.LoginResp.Clien" +
-      "tType\022!\n\006status\030\002 \002(\0162\021.LoginResp.Status" +
-      "\"\'\n\nClientType\022\013\n\007COMPANY\020\000\022\014\n\010INVESTOR\020",
-      "\001\"\"\n\006Status\022\013\n\007INVALID\020\000\022\013\n\007SUCCESS\020\001\"\031\n" +
-      "\tLogoutReq\022\014\n\004name\030\001 \002(\t\"R\n\nLogoutResp\022\"" +
-      "\n\006status\030\001 \002(\0162\022.LogoutResp.Status\" \n\006St" +
-      "atus\022\t\n\005ERROR\020\000\022\013\n\007SUCCESS\020\001\"\235\001\n\020Company" +
-      "ActionReq\022\016\n\006client\030\001 \002(\t\022.\n\007reqType\030\002 \002" +
-      "(\0162\035.CompanyActionReq.RequestType\022\r\n\005val" +
-      "ue\030\003 \002(\003\022\020\n\010max_rate\030\004 \001(\002\"(\n\013RequestTyp" +
-      "e\022\013\n\007AUCTION\020\000\022\014\n\010EMISSION\020\001\"r\n\021CompanyA" +
-      "ctionResp\022\016\n\006client\030\001 \002(\t\022)\n\006status\030\002 \002(" +
-      "\0162\031.CompanyActionResp.Status\"\"\n\006Status\022\013",
-      "\n\007SUCCESS\020\000\022\013\n\007INVALID\020\001\"\255\001\n\021InvestorAct" +
-      "ionReq\022\016\n\006client\030\001 \002(\t\022\017\n\007company\030\002 \002(\t\022" +
-      "0\n\010req_type\030\003 \002(\0162\036.InvestorActionReq.Re" +
-      "questType\022\r\n\005value\030\004 \002(\003\022\014\n\004rate\030\005 \001(\002\"(" +
-      "\n\013RequestType\022\013\n\007AUCTION\020\000\022\014\n\010EMISSION\020\001" +
-      "\"\217\001\n\022InvestorActionResp\022\016\n\006client\030\001 \002(\t\022" +
-      "*\n\006status\030\002 \002(\0162\032.InvestorActionResp.Sta" +
-      "tus\"=\n\006Status\022\r\n\tCONFIRMED\020\000\022\014\n\010REPLACED" +
-      "\020\001\022\t\n\005ENDED\020\002\022\013\n\007INVALID\020\003"
+      "nRespH\000\022\035\n\010errormsg\030\n \001(\0132\t.ErrorMsgH\000\0225" +
+      "\n\024emissionfixedratereq\030\013 \001(\0132\025.EmissionF" +
+      "ixedRateReqH\000\0227\n\025emissionfixedrateresp\030\014" +
+      " \001(\0132\026.EmissionFixedRateRespH\000\0227\n\025auctio" +
+      "nemissionresult\030\r \001(\0132\026.AuctionEmissionR" +
+      "esultH\000\"\"\n\013MessageType\022\010\n\004SYNC\020\000\022\t\n\005ASYN" +
+      "C\020\001B\017\n\rinner_message\"&\n\024EmissionFixedRat" +
+      "eReq\022\016\n\006client\030\001 \002(\t\"5\n\025EmissionFixedRat" +
+      "eResp\022\016\n\006client\030\001 \002(\t\022\014\n\004rate\030\002 \002(\002\"4\n\025A" +
+      "uctionEmissionResult\022\016\n\006client\030\001 \002(\t\022\013\n\003",
+      "msg\030\002 \002(\t\"\031\n\010ErrorMsg\022\r\n\005error\030\001 \002(\t\"*\n\010" +
+      "LoginReq\022\014\n\004name\030\001 \002(\t\022\020\n\010password\030\002 \002(\t" +
+      "\"\241\001\n\tLoginResp\022$\n\005cType\030\001 \001(\0162\025.LoginRes" +
+      "p.ClientType\022!\n\006status\030\002 \002(\0162\021.LoginResp" +
+      ".Status\"\'\n\nClientType\022\013\n\007COMPANY\020\000\022\014\n\010IN" +
+      "VESTOR\020\001\"\"\n\006Status\022\013\n\007INVALID\020\000\022\013\n\007SUCCE" +
+      "SS\020\001\"\031\n\tLogoutReq\022\014\n\004name\030\001 \002(\t\"R\n\nLogou" +
+      "tResp\022\"\n\006status\030\001 \002(\0162\022.LogoutResp.Statu" +
+      "s\" \n\006Status\022\t\n\005ERROR\020\000\022\013\n\007SUCCESS\020\001\"\235\001\n\020" +
+      "CompanyActionReq\022\016\n\006client\030\001 \002(\t\022.\n\007reqT",
+      "ype\030\002 \002(\0162\035.CompanyActionReq.RequestType" +
+      "\022\r\n\005value\030\003 \002(\003\022\020\n\010max_rate\030\004 \002(\002\"(\n\013Req" +
+      "uestType\022\013\n\007AUCTION\020\000\022\014\n\010EMISSION\020\001\"r\n\021C" +
+      "ompanyActionResp\022\016\n\006client\030\001 \002(\t\022)\n\006stat" +
+      "us\030\002 \002(\0162\031.CompanyActionResp.Status\"\"\n\006S" +
+      "tatus\022\013\n\007SUCCESS\020\000\022\013\n\007INVALID\020\001\"\255\001\n\021Inve" +
+      "storActionReq\022\016\n\006client\030\001 \002(\t\022\017\n\007company" +
+      "\030\002 \002(\t\0220\n\010req_type\030\003 \002(\0162\036.InvestorActio" +
+      "nReq.RequestType\022\r\n\005value\030\004 \002(\003\022\014\n\004rate\030" +
+      "\005 \001(\002\"(\n\013RequestType\022\013\n\007AUCTION\020\000\022\014\n\010EMI",
+      "SSION\020\001\"\217\001\n\022InvestorActionResp\022\016\n\006client" +
+      "\030\001 \002(\t\022*\n\006status\030\002 \002(\0162\032.InvestorActionR" +
+      "esp.Status\"=\n\006Status\022\r\n\tCONFIRMED\020\000\022\014\n\010R" +
+      "EPLACED\020\001\022\t\n\005ENDED\020\002\022\013\n\007INVALID\020\003"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -10501,63 +12210,75 @@ public final class Protos {
     internal_static_MessageWrapper_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_MessageWrapper_descriptor,
-        new java.lang.String[] { "MsgType", "Loginreq", "Loginresp", "Logoutreq", "Logoutresp", "Companyactionreq", "Companyactionresp", "Investoractionreq", "Investoractionresp", "Errormsg", "Auctionemissionresult", "InnerMessage", });
-    internal_static_AuctionEmissionResult_descriptor =
+        new java.lang.String[] { "MsgType", "Loginreq", "Loginresp", "Logoutreq", "Logoutresp", "Companyactionreq", "Companyactionresp", "Investoractionreq", "Investoractionresp", "Errormsg", "Emissionfixedratereq", "Emissionfixedrateresp", "Auctionemissionresult", "InnerMessage", });
+    internal_static_EmissionFixedRateReq_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_EmissionFixedRateReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_EmissionFixedRateReq_descriptor,
+        new java.lang.String[] { "Client", });
+    internal_static_EmissionFixedRateResp_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_EmissionFixedRateResp_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_EmissionFixedRateResp_descriptor,
+        new java.lang.String[] { "Client", "Rate", });
+    internal_static_AuctionEmissionResult_descriptor =
+      getDescriptor().getMessageTypes().get(3);
     internal_static_AuctionEmissionResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_AuctionEmissionResult_descriptor,
         new java.lang.String[] { "Client", "Msg", });
     internal_static_ErrorMsg_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_ErrorMsg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ErrorMsg_descriptor,
         new java.lang.String[] { "Error", });
     internal_static_LoginReq_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_LoginReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LoginReq_descriptor,
         new java.lang.String[] { "Name", "Password", });
     internal_static_LoginResp_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_LoginResp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LoginResp_descriptor,
         new java.lang.String[] { "CType", "Status", });
     internal_static_LogoutReq_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_LogoutReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LogoutReq_descriptor,
         new java.lang.String[] { "Name", });
     internal_static_LogoutResp_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_LogoutResp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LogoutResp_descriptor,
         new java.lang.String[] { "Status", });
     internal_static_CompanyActionReq_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_CompanyActionReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CompanyActionReq_descriptor,
         new java.lang.String[] { "Client", "ReqType", "Value", "MaxRate", });
     internal_static_CompanyActionResp_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_CompanyActionResp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CompanyActionResp_descriptor,
         new java.lang.String[] { "Client", "Status", });
     internal_static_InvestorActionReq_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_InvestorActionReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InvestorActionReq_descriptor,
         new java.lang.String[] { "Client", "Company", "ReqType", "Value", "Rate", });
     internal_static_InvestorActionResp_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_InvestorActionResp_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_InvestorActionResp_descriptor,

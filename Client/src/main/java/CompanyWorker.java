@@ -75,12 +75,23 @@ public class CompanyWorker extends Thread{
     }
 
     private void create_emission() {
-        Menu m = new Menu("Criar Emissão a Taxa Fixa");
+
+        float rate = getEmissionFixedRate();
+
+        if(rate == -1){
+            System.out.println("Não é possível criar emissão!!");
+            return;
+        }
+
+        Menu m = new Menu("Criar Emissão a Taxa Fixa de " + String.format("%.2f", rate*100) + "%");
+        m.add("Sim");
         m.execute();
+
+        if(menu.getOption() == 0) return;
 
         long value = m.readLong("Valor: ");
 
-        Protos.MessageWrapper req = createEmissionReq(value);
+        Protos.MessageWrapper req = createEmissionReq(value, rate);
         Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket,company);
 
         Protos.CompanyActionResp companyResp = null;
@@ -131,10 +142,26 @@ public class CompanyWorker extends Thread{
         }
     }
 
-    private Protos.MessageWrapper createEmissionReq(long value) {
+    private float getEmissionFixedRate() {
+        Protos.MessageWrapper req = createEmissionFixedRateReq();
+        Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket,company);
+        return resp.getEmissionfixedrateresp().getRate();
+    }
+
+    private Protos.MessageWrapper createEmissionFixedRateReq() {
+        Protos.EmissionFixedRateReq emissionRateMsg = Protos.EmissionFixedRateReq.newBuilder()
+                .setClient(this.name)
+                .build();
+        return Protos.MessageWrapper.newBuilder()
+                .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
+                .setEmissionfixedratereq(emissionRateMsg).build();
+    }
+
+    private Protos.MessageWrapper createEmissionReq(long value, float rate) {
         Protos.CompanyActionReq req = Protos.CompanyActionReq.newBuilder()
+                .setMaxRate(rate)
                 .setValue(value)
-                .setClient(name)
+                .setClient(this.name)
                 .build();
 
         return Protos.MessageWrapper.newBuilder()
@@ -146,7 +173,7 @@ public class CompanyWorker extends Thread{
         Protos.CompanyActionReq req = Protos.CompanyActionReq.newBuilder()
                 .setMaxRate(rate)
                 .setValue(value)
-                .setClient(name)
+                .setClient(this.name)
                 .build();
 
         return Protos.MessageWrapper.newBuilder()

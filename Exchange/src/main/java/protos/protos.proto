@@ -18,8 +18,19 @@ message MessageWrapper {
         InvestorActionReq investoractionreq = 8;
         InvestorActionResp investoractionresp = 9;
         ErrorMsg errormsg = 10;
-        AuctionEmissionResult auctionemissionresult = 11;
+        EmissionFixedRateReq emissionfixedratereq = 11;
+        EmissionFixedRateResp emissionfixedrateresp = 12;
+        AuctionEmissionResult auctionemissionresult = 13;
     }
+}
+
+message EmissionFixedRateReq{
+    required string client = 1;
+}
+
+message EmissionFixedRateResp{
+    required string client = 1;
+    required float rate = 2; //-1 caso não seja possivel criar emissão
 }
 
 message AuctionEmissionResult{
@@ -76,7 +87,7 @@ message CompanyActionReq {
     required string client = 1;
     required RequestType reqType = 2;
     required int64 value = 3;
-    optional float max_rate = 4;
+    required float max_rate = 4;
 }
 
 message CompanyActionResp{
