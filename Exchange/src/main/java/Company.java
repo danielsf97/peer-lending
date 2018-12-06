@@ -42,4 +42,8 @@ public class Company {
     public void setEmissionRate(float emissionRate) {
         this.emissionRate = emissionRate;
     }
+
+    public synchronized boolean hasActiveAction(){
+        return (activeAuction != null || activeEmission != null);
+    }
 }

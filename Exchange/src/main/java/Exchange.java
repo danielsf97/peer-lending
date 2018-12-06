@@ -73,33 +73,13 @@ public class Exchange {
                 Protos.MessageWrapper msg = Protos.MessageWrapper.parseFrom(b);
 
                 switch(msg.getInnerMessageCase()) {
+                    case EMISSIONFIXEDRATEREQ:
+                        processEmissionFixedRateReq(msg);
                     case COMPANYACTIONREQ:
-                        Protos.CompanyActionReq createReq = msg.getCompanyactionreq();
-                        long value = createReq.getValue();
-                        float rate;
-                        Company c = companies.get(createReq.getClient()); //o client é a company
-                        try {
-                            if (createReq.getReqType() == Protos.CompanyActionReq.RequestType.AUCTION) {
-                                rate = createReq.getMaxRate();
-                                Auction a = new Auction(value, rate);
-                                c.setActiveAuction(a);
-
-                                directoryManager.postAuction(a, c.getName());
-                                scheduler.schedule(new ScheduledExecutor(c, push, pub), delayTime, TimeUnit.MINUTES);
-
-                            }
-                            else {
-                                Emission e = new Emission(value);
-                                c.setActiveEmission(e);
-                                directoryManager.postEmission(e, c.getName());
-                            }
-                            //TODO: enviar mensagem de retorno à empresa
-                        }
-                        catch(Exception e) {
-
-                        }
+                        processCompanyActionReq(msg);
                         break;
                     case INVESTORACTIONREQ:
+                        //processInvestorActionReq(msg);
                         break;
                 }
             }
@@ -111,10 +91,64 @@ public class Exchange {
         }
     }
 
+    private void processEmissionFixedRateReq(Protos.MessageWrapper msg) {
+
+        Protos.EmissionFixedRateReq req = msg.getEmissionfixedratereq();
+
+        Company c = companies.get(req.getClient()); //o client é a company
+
+        float rate = c.getEmissionRate();
+
+        if(c.hasActiveAction()) rate = -1;
+
+        Protos.MessageWrapper resp = createEmissionFixedRateResp(req.getClient(), rate);
+
+        this.push.send(resp.toByteArray());
+
+    }
+
+    private void processCompanyActionReq(Protos.MessageWrapper msg) {
+        Protos.CompanyActionReq createReq = msg.getCompanyactionreq();
+        long value = createReq.getValue();
+        float rate;
+        Company c = companies.get(createReq.getClient()); //o client é a company
+        try {
+            if (createReq.getReqType() == Protos.CompanyActionReq.RequestType.AUCTION) {
+                rate = createReq.getMaxRate();
+                Auction a = new Auction(value, rate);
+                c.setActiveAuction(a);
+
+                directoryManager.postAuction(a, c.getName());
+                scheduler.schedule(new ScheduledExecutor(c, push, pub), delayTime, TimeUnit.MINUTES);
+
+            }
+            else {
+                Emission e = new Emission(value);
+                c.setActiveEmission(e);
+                directoryManager.postEmission(e, c.getName());
+            }
+            //TODO: enviar mensagem de retorno à empresa
+        }
+        catch(Exception e) {
+
+        }
+    }
+
+
     public static void main(String[] args) {
         int exchange_id = Integer.parseInt(args[0]);
         Exchange exchange = new Exchange(exchanges.get(exchange_id));
         exchange.start();
+    }
+
+    private Protos.MessageWrapper createEmissionFixedRateResp(String client, float rate) {
+        Protos.EmissionFixedRateResp emissionRateMsg = Protos.EmissionFixedRateResp.newBuilder()
+                .setClient(client)
+                .setRate(rate)
+                .build();
+        return Protos.MessageWrapper.newBuilder()
+                .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
+                .setEmissionfixedrateresp(emissionRateMsg).build();
     }
 
 }
