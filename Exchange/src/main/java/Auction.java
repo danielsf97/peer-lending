@@ -93,7 +93,8 @@ public class Auction {
             long diff = sum - value;
             int size = winners.size();
             Pair pair = winners.get(size - 1);
-            pair.setSecond(diff);
+            long update = (long) pair.getSecond() - diff;
+            pair.setSecond(update);
             return new Pair<>(winners, losers);
         }
         else

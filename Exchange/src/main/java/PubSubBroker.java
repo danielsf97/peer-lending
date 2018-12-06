@@ -7,8 +7,8 @@ public class PubSubBroker {
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket pubs = context.socket(ZMQ.XSUB);
         ZMQ.Socket subs = context.socket(ZMQ.XPUB);
-        System.out.println(pubs.bind("tcp://*:" + args[0]));
-        System.out.println(subs.bind("tcp://*:" + args[1]));
+        pubs.bind("tcp://*:" + pubs_port);
+        subs.bind("tcp://*:" + subs_port);
         ZMQ.proxy(pubs, subs, null);
     }
 }

@@ -3,17 +3,22 @@
 
 start(Host, Port) ->
 	{ok,Context} = erlzmq:context(),
-	{ok, Socket} = erlzmq:socket(Context, [ pull, {active, true} ]),
+	{ok, Socket} = erlzmq:socket(Context, [pull, {active, false}]),
 	ok = erlzmq:bind(Socket, "tcp://" ++ Host ++ ":" ++ Port),
 	spawn(fun() -> msg_forwarding_loop(Socket) end).
 
 msg_forwarding_loop(Socket) ->
-	receive
+	case erlzmq:recv(Socket) of
 		{ok, Bin} ->
-			{'MessageWrapper', Msg} = protos_pb:decode_msg(Bin, 'MessageWrapper'),
+			{'MessageWrapper', _, Msg} = protos_pb:decode_msg(Bin, 'MessageWrapper'),
 			{MsgType, Body} = Msg,
 
 			case MsgType of
+
+				emissionfixedrateresp ->
+					{'EmissionFixedRateResp', Client_B, _} = Body,
+					Client = binary_to_list(Client_B),
+					send_to_client_session(Client, Bin);
 
 				companyactionresp ->
 					{'CompanyActionResp', Client_B, _} = Body,
@@ -22,6 +27,11 @@ msg_forwarding_loop(Socket) ->
 
 				investoractionresp ->
 					{'InvestorActionResp', Client_B, _} = Body,
+					Client = binary_to_list(Client_B),
+					send_to_client_session(Client, Bin);
+
+				auctionemissionresult ->
+					{'AuctionEmissionResult', Client_B, _} = Body,
 					Client = binary_to_list(Client_B),
 					send_to_client_session(Client, Bin)
 
@@ -32,13 +42,12 @@ msg_forwarding_loop(Socket) ->
 
 send_to_client_session(Client, Msg) ->
 
-	login_manager:get_pid(Client),
+	case login_manager:get_pid(Client) of
 
-	receive
-		{login_manager, Pid} ->
-			Pid ! {receiver, Msg};
+		invalid ->
+			pass; %descarta a mensagem
 
-		{login_manager, invalid} ->
-			pass %descarta a mensagem
-			
+		Pid ->
+			Pid ! {receiver, Msg}
+		
 	end.

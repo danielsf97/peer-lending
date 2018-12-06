@@ -10,7 +10,31 @@
 -ifndef('MESSAGEWRAPPER_PB_H').
 -define('MESSAGEWRAPPER_PB_H', true).
 -record('MessageWrapper',
-        {inner_message          :: {loginreq, protos_pb:'LoginReq'()} | {loginresp, protos_pb:'LoginResp'()} | {logoutreq, protos_pb:'LogoutReq'()} | {logoutresp, protos_pb:'LogoutResp'()} | {companyactionreq, protos_pb:'CompanyActionReq'()} | {companyactionresp, protos_pb:'CompanyActionResp'()} | {investoractionreq, protos_pb:'InvestorActionReq'()} | {investoractionresp, protos_pb:'InvestorActionResp'()} | {errormsg, protos_pb:'ErrorMsg'()} | undefined % oneof
+        {msgType                :: 'SYNC' | 'ASYNC' | integer(), % = 1, enum MessageWrapper.MessageType
+         inner_message          :: {loginreq, protos_pb:'LoginReq'()} | {loginresp, protos_pb:'LoginResp'()} | {logoutreq, protos_pb:'LogoutReq'()} | {logoutresp, protos_pb:'LogoutResp'()} | {companyactionreq, protos_pb:'CompanyActionReq'()} | {companyactionresp, protos_pb:'CompanyActionResp'()} | {investoractionreq, protos_pb:'InvestorActionReq'()} | {investoractionresp, protos_pb:'InvestorActionResp'()} | {errormsg, protos_pb:'ErrorMsg'()} | {emissionfixedratereq, protos_pb:'EmissionFixedRateReq'()} | {emissionfixedrateresp, protos_pb:'EmissionFixedRateResp'()} | {auctionemissionresult, protos_pb:'AuctionEmissionResult'()} | undefined % oneof
+        }).
+-endif.
+
+-ifndef('EMISSIONFIXEDRATEREQ_PB_H').
+-define('EMISSIONFIXEDRATEREQ_PB_H', true).
+-record('EmissionFixedRateReq',
+        {client                 :: iodata()         % = 1
+        }).
+-endif.
+
+-ifndef('EMISSIONFIXEDRATERESP_PB_H').
+-define('EMISSIONFIXEDRATERESP_PB_H', true).
+-record('EmissionFixedRateResp',
+        {client                 :: iodata(),        % = 1
+         rate                   :: float() | integer() | infinity | '-infinity' | nan % = 2
+        }).
+-endif.
+
+-ifndef('AUCTIONEMISSIONRESULT_PB_H').
+-define('AUCTIONEMISSIONRESULT_PB_H', true).
+-record('AuctionEmissionResult',
+        {client                 :: iodata(),        % = 1
+         msg                    :: iodata()         % = 2
         }).
 -endif.
 
@@ -55,8 +79,9 @@
 -define('COMPANYACTIONREQ_PB_H', true).
 -record('CompanyActionReq',
         {client                 :: iodata(),        % = 1
+         reqType                :: 'AUCTION' | 'EMISSION' | integer(), % = 2, enum CompanyActionReq.RequestType
          value                  :: integer(),       % = 3, 32 bits
-         max_rate               :: float() | integer() | infinity | '-infinity' | nan | undefined % = 4
+         max_rate               :: float() | integer() | infinity | '-infinity' | nan % = 4
         }).
 -endif.
 

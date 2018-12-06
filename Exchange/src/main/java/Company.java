@@ -15,7 +15,6 @@ public class Company {
         if((activeAuction == null && activeEmission == null) || a == null)
             this.activeAuction = a;
         else {
-            System.out.println("oi cenas");
             throw new Exception();
         }
     }

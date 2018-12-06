@@ -82,7 +82,7 @@ public class ScheduledExecutor implements Runnable {
         push.send(msgEmpresa.toByteArray());
         pub.send(notification);
 
-        dir.deleteAuction(this.company.getName());
+        //dir.deleteAuction(this.company.getName());
     }
 
     private Protos.MessageWrapper createAuctionWinningResultMsg(Pair winnerVal) {
@@ -133,8 +133,6 @@ public class ScheduledExecutor implements Runnable {
                 Protos.MessageWrapper msg = createEmissionLoserResultMsg(investor);
                 push.send(msg.toByteArray());
             }
-            float nextEmissionRate = this.company.getEmissionRate() * (float) 1.1;
-            this.company.setEmissionRate(nextEmissionRate);
         }
 
         // Enviar mensagem à empresa
@@ -145,24 +143,32 @@ public class ScheduledExecutor implements Runnable {
             String status = "Total";
             msgEmpresa = createEmissionCompanyResultMsg(status, emission.getValue(), sum);
 
-            notification = this.company.getName() + ": Emissão Terminada, subscrição: Total, montante: " + emission.getValue();
-        }
-        else if(sum == 0) {
-            String status = "Nula";
-            msgEmpresa = createEmissionCompanyResultMsg(status, emission.getValue(), sum);
+            notification = this.company.getName() + ": Emissão Terminada, subscrição: Total, requerido: " +
+                    emission.getValue() + ", obtido: " + sum;
 
-            notification = this.company.getName() + ": Leilão Terminado, subscrição: Nula, montante: " + emission.getValue();
         }
         else {
-            String status = "Parcial";
-            msgEmpresa = createEmissionCompanyResultMsg(status, emission.getValue(), sum);
+            if(sum == 0) {
+                String status = "Nula";
+                msgEmpresa = createEmissionCompanyResultMsg(status, emission.getValue(), sum);
 
-            notification = this.company.getName() + ": Leilão Terminado, subscrição: Sucesso, montante: " + emission.getValue();
+                notification = this.company.getName() + ": Leilão Terminado, subscrição: Nula, requerido: " +
+                        emission.getValue() + ", obtido: " + sum;
+            }
+            else {
+                String status = "Parcial";
+                msgEmpresa = createEmissionCompanyResultMsg(status, emission.getValue(), sum);
+
+                notification = this.company.getName() + ": Leilão Terminado, subscrição: Parcial, requerido: " +
+                        emission.getValue() + ", obtido: " + sum;
+            }
+            float nextEmissionRate = this.company.getEmissionRate() * (float) 1.1;
+            this.company.setEmissionRate(nextEmissionRate);
         }
         push.send(msgEmpresa.toByteArray());
         pub.send(notification);
 
-        dir.deleteEmission(this.company.getName());
+        //dir.deleteEmission(this.company.getName());
     }
 
     private Protos.MessageWrapper createEmissionWinningResultMsg(Pair winnerVal) {

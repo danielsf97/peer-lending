@@ -43,7 +43,7 @@ public class Exchange {
 
     private final int socket_push_port = 1222;
     private final int socket_pub_port = 12347;
-    private final int delayTime = 10;
+    private final int delayTime = 1;
     private ScheduledExecutorService scheduler;
     private ZMQ.Context context;
     private ZMQ.Socket push;
@@ -112,31 +112,36 @@ public class Exchange {
     private void processCompanyActionReq(Protos.MessageWrapper msg) {
         Protos.CompanyActionReq companyActionReq = msg.getCompanyactionreq();
         long value = companyActionReq.getValue();
-        float rate;
+        float rate = companyActionReq.getMaxRate();
+        String notification = null;
         Company c = companies.get(companyActionReq.getClient()); // o client é a company
         try {
             if (companyActionReq.getReqType() == Protos.CompanyActionReq.RequestType.AUCTION) {
-                rate = companyActionReq.getMaxRate();
+
                 Auction a = new Auction(value, rate);
                 c.setActiveAuction(a);
 
-                directoryManager.postAuction(a, c.getName());
+                //directoryManager.postAuction(a, c.getName());
                 scheduler.schedule(new ScheduledExecutor(c, push, pub, directoryManager), delayTime, TimeUnit.MINUTES);
+
+                notification = c.getName() + ": Criação de Leilão, Montante: " + value + ", Taxa Max.: " + rate;
 
             }
             else {
                 Emission e = new Emission(value);
                 c.setActiveEmission(e);
 
-                directoryManager.postEmission(e, c.getName());
+                //directoryManager.postEmission(e, c.getName());
                 scheduler.schedule(new ScheduledExecutor(c, push, pub, directoryManager), delayTime, TimeUnit.MINUTES);
+
+                notification = c.getName() + ": Criação de Emissão, Montante: " + value + ", Taxa: " + rate;
             }
 
             Protos.MessageWrapper statusMsg = createCompanyActionResp(companyActionReq.getClient(), Protos.CompanyActionResp.Status.SUCCESS);
             push.send(statusMsg.toByteArray());
+            pub.send(notification);
         }
         catch(Exception e) {
-
             Protos.MessageWrapper statusMsg = createCompanyActionResp(companyActionReq.getClient(), Protos.CompanyActionResp.Status.INVALID);
             push.send(statusMsg.toByteArray());
         }
@@ -172,6 +177,7 @@ public class Exchange {
         }
         else if(investorActionReq.getReqType() == Protos.InvestorActionReq.RequestType.EMISSION) {
             Emission e = c.getActiveEmission();
+
             if(e == null) {
                 Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.INVALID);
                 push.send(resp.toByteArray());
@@ -203,7 +209,7 @@ public class Exchange {
                 .build();
 
         return Protos.MessageWrapper.newBuilder()
-                .setMsgType(Protos.MessageWrapper.MessageType.ASYNC)
+                .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
                 .setCompanyactionresp(companyActionResp)
                 .build();
     }
@@ -215,7 +221,7 @@ public class Exchange {
                 .build();
 
         return Protos.MessageWrapper.newBuilder()
-                .setMsgType(Protos.MessageWrapper.MessageType.ASYNC)
+                .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
                 .setInvestoractionresp(investorActionResp)
                 .build();
     }

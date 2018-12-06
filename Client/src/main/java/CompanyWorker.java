@@ -27,12 +27,13 @@ public class CompanyWorker extends Thread{
 
             int nAsyncMessages = company.getNumAsyncMessages();
             menu.add("Ver " + nAsyncMessages + " resultados" );
+            menu.add("Atualizar menu");
 
             menu.execute();
             option = menu.getOption();
             processOption(option);
 
-            menu.removeLast(1);
+            menu.removeLast(2);
 
         } while(company.isLoggedIn());
 
@@ -48,6 +49,8 @@ public class CompanyWorker extends Thread{
             case 2: create_emission();
                 break;
             case 3: readAsyncMessages();
+                break;
+            case 4:
                 break;
         }
     }
@@ -87,7 +90,7 @@ public class CompanyWorker extends Thread{
         m.add("Sim");
         m.execute();
 
-        if(menu.getOption() == 0) return;
+        if(m.getOption() == 0) return;
 
         long value = m.readLong("Valor: ");
 

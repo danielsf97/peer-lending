@@ -24,8 +24,10 @@ public class Investor extends ClientType {
         String msg;
         StringBuilder sb = new StringBuilder();
 
-        while((msg = notifications.pollFirst()) != null)
+        while((msg = notifications.pollFirst()) != null){
             sb.append(msg).append("\n");
+            numNotifications--;
+        }
 
         return sb.toString();
     }

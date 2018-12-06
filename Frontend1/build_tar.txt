@@ -1,0 +1,23 @@
+##Construir tar
+
+#Create release
+-> editar rebar.config:
+'''
+{relx, [{release, {frontendrel, "0.0.1"},
+     [frontend]},
+
+    {dev_mode, true},
+    {include_erts, false},
+
+    {extended_start_script, true}]}.
+'''
+
+-> correr:
+	rebar3 release -d false
+
+-> criar tar:
+	rebar3 as prod tar
+
+-> descomprimir tar e correr:
+	bin/frontendrel console
+

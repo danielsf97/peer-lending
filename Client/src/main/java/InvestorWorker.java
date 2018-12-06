@@ -1,3 +1,4 @@
+
 import org.zeromq.ZMQ;
 import utils.Menu;
 import utils.NetClient;
@@ -36,12 +37,13 @@ public class InvestorWorker extends Thread{
             int nAsyncMessages = investor.getNumAsyncMessages();
             menu.add("Ver " + nNotifications + " notificações" );
             menu.add("Ver " + nAsyncMessages + " resultados" );
+            menu.add("Atualizar menu");
 
             menu.execute();
             option = menu.getOption();
             processOption(option);
 
-            menu.removeLast(2);
+            menu.removeLast(3);
         } while(investor.isLoggedIn());
 
         System.out.println("Logged out!!");
@@ -72,6 +74,8 @@ public class InvestorWorker extends Thread{
             case 10: readNotifications();
                 break;
             case 11: readAsyncMessages();
+                break;
+            case 12:
                 break;
         }
     }
@@ -143,7 +147,6 @@ public class InvestorWorker extends Thread{
         Protos.MessageWrapper req = createAuctionReq(comp, value, rate);
         Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket,investor);
 
-        System.out.println("mensagem recebida");
         Protos.InvestorActionResp investorResp = null;
 
         if(resp.hasInvestoractionresp())
@@ -295,7 +298,7 @@ public class InvestorWorker extends Thread{
     private Protos.MessageWrapper createEmissionReq(String comp, long value) {
         Protos.InvestorActionReq req = Protos.InvestorActionReq.newBuilder()
                 .setValue(value)
-                .setReqType(Protos.InvestorActionReq.RequestType.AUCTION)
+                .setReqType(Protos.InvestorActionReq.RequestType.EMISSION)
                 .setCompany(comp)
                 .setClient(name)
                 .build();

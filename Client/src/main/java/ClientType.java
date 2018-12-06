@@ -63,9 +63,10 @@ public class ClientType {
         String msg;
         StringBuilder sb = new StringBuilder();
 
-        while((msg = asyncMessages.pollFirst()) != null)
+        while((msg = asyncMessages.pollFirst()) != null){
             sb.append(msg).append("\n");
-
+            numAsyncMessages--;
+        }
         return sb.toString();
     }
 }

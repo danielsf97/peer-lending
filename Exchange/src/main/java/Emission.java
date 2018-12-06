@@ -8,7 +8,7 @@ public class Emission {
     private long value;
     private float fixedRate;
     private LocalDateTime startingDateTime;
-    private static int duration = 10;
+    private static int duration = 1;
     private ArrayList<Subscription> subscriptions;
 
     Emission(long value) {

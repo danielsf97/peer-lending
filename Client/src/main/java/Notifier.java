@@ -5,7 +5,7 @@ public class Notifier extends Thread{
     private Investor investor;
     private ZMQ.Socket sub;
 
-    public Notifier(Investor investidor, ZMQ.Socket sub) {
+    public Notifier(Investor investor, ZMQ.Socket sub) {
         this.investor = investor;
         this.sub = sub;
     }

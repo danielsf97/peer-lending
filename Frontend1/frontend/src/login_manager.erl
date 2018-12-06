@@ -44,11 +44,9 @@ loop(Map) ->
 		{login, Username, Passwd, From} ->
 			case maps:find(Username, Map) of
 				{ok, {Passwd, TipoCliente, false, _ }} -> % se o utilizador existir e não estiver logged in
-					io:fwrite("Tentativa de Login ~n",[]),
 					From ! {login_manager, {ok, TipoCliente}},
 					loop(maps:put(Username, {Passwd, TipoCliente, true, From}, Map));
 				_ ->
-					io:fwrite("Tentativa de Login Falhada ~n",[]),
 					From ! {login_manager, invalid},
 					loop(Map)
 			end;

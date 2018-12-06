@@ -15,6 +15,7 @@
 -export([find_msg_def/1, fetch_msg_def/1]).
 -export([find_enum_def/1, fetch_enum_def/1]).
 -export([enum_symbol_by_value/2, enum_value_by_symbol/2]).
+-export(['enum_symbol_by_value_MessageWrapper.MessageType'/1, 'enum_value_by_symbol_MessageWrapper.MessageType'/1]).
 -export(['enum_symbol_by_value_LoginResp.ClientType'/1, 'enum_value_by_symbol_LoginResp.ClientType'/1]).
 -export(['enum_symbol_by_value_LoginResp.Status'/1, 'enum_value_by_symbol_LoginResp.Status'/1]).
 -export(['enum_symbol_by_value_LogoutResp.Status'/1, 'enum_value_by_symbol_LogoutResp.Status'/1]).
@@ -33,6 +34,7 @@
 -include("gpb.hrl").
 
 %% enumerated types
+-type 'MessageWrapper.MessageType'() :: 'SYNC' | 'ASYNC'.
 -type 'LoginResp.ClientType'() :: 'COMPANY' | 'INVESTOR'.
 -type 'LoginResp.Status'() :: 'INVALID' | 'SUCCESS'.
 -type 'LogoutResp.Status'() :: 'ERROR' | 'SUCCESS'.
@@ -40,10 +42,16 @@
 -type 'CompanyActionResp.Status'() :: 'SUCCESS' | 'INVALID'.
 -type 'InvestorActionReq.RequestType'() :: 'AUCTION' | 'EMISSION'.
 -type 'InvestorActionResp.Status'() :: 'CONFIRMED' | 'REPLACED' | 'ENDED' | 'INVALID'.
--export_type(['LoginResp.ClientType'/0, 'LoginResp.Status'/0, 'LogoutResp.Status'/0, 'CompanyActionReq.RequestType'/0, 'CompanyActionResp.Status'/0, 'InvestorActionReq.RequestType'/0, 'InvestorActionResp.Status'/0]).
+-export_type(['MessageWrapper.MessageType'/0, 'LoginResp.ClientType'/0, 'LoginResp.Status'/0, 'LogoutResp.Status'/0, 'CompanyActionReq.RequestType'/0, 'CompanyActionResp.Status'/0, 'InvestorActionReq.RequestType'/0, 'InvestorActionResp.Status'/0]).
 
 %% message types
 -type 'MessageWrapper'() :: #'MessageWrapper'{}.
+
+-type 'EmissionFixedRateReq'() :: #'EmissionFixedRateReq'{}.
+
+-type 'EmissionFixedRateResp'() :: #'EmissionFixedRateResp'{}.
+
+-type 'AuctionEmissionResult'() :: #'AuctionEmissionResult'{}.
 
 -type 'ErrorMsg'() :: #'ErrorMsg'{}.
 
@@ -63,20 +71,20 @@
 
 -type 'InvestorActionResp'() :: #'InvestorActionResp'{}.
 
--export_type(['MessageWrapper'/0, 'ErrorMsg'/0, 'LoginReq'/0, 'LoginResp'/0, 'LogoutReq'/0, 'LogoutResp'/0, 'CompanyActionReq'/0, 'CompanyActionResp'/0, 'InvestorActionReq'/0, 'InvestorActionResp'/0]).
+-export_type(['MessageWrapper'/0, 'EmissionFixedRateReq'/0, 'EmissionFixedRateResp'/0, 'AuctionEmissionResult'/0, 'ErrorMsg'/0, 'LoginReq'/0, 'LoginResp'/0, 'LogoutReq'/0, 'LogoutResp'/0, 'CompanyActionReq'/0, 'CompanyActionResp'/0, 'InvestorActionReq'/0, 'InvestorActionResp'/0]).
 
--spec encode_msg(#'MessageWrapper'{} | #'ErrorMsg'{} | #'LoginReq'{} | #'LoginResp'{} | #'LogoutReq'{} | #'LogoutResp'{} | #'CompanyActionReq'{} | #'CompanyActionResp'{} | #'InvestorActionReq'{} | #'InvestorActionResp'{}) -> binary().
+-spec encode_msg(#'MessageWrapper'{} | #'EmissionFixedRateReq'{} | #'EmissionFixedRateResp'{} | #'AuctionEmissionResult'{} | #'ErrorMsg'{} | #'LoginReq'{} | #'LoginResp'{} | #'LogoutReq'{} | #'LogoutResp'{} | #'CompanyActionReq'{} | #'CompanyActionResp'{} | #'InvestorActionReq'{} | #'InvestorActionResp'{}) -> binary().
 encode_msg(Msg) when tuple_size(Msg) >= 1 ->
     encode_msg(Msg, element(1, Msg), []).
 
--spec encode_msg(#'MessageWrapper'{} | #'ErrorMsg'{} | #'LoginReq'{} | #'LoginResp'{} | #'LogoutReq'{} | #'LogoutResp'{} | #'CompanyActionReq'{} | #'CompanyActionResp'{} | #'InvestorActionReq'{} | #'InvestorActionResp'{}, atom() | list()) -> binary().
+-spec encode_msg(#'MessageWrapper'{} | #'EmissionFixedRateReq'{} | #'EmissionFixedRateResp'{} | #'AuctionEmissionResult'{} | #'ErrorMsg'{} | #'LoginReq'{} | #'LoginResp'{} | #'LogoutReq'{} | #'LogoutResp'{} | #'CompanyActionReq'{} | #'CompanyActionResp'{} | #'InvestorActionReq'{} | #'InvestorActionResp'{}, atom() | list()) -> binary().
 encode_msg(Msg, MsgName) when is_atom(MsgName) ->
     encode_msg(Msg, MsgName, []);
 encode_msg(Msg, Opts)
     when tuple_size(Msg) >= 1, is_list(Opts) ->
     encode_msg(Msg, element(1, Msg), Opts).
 
--spec encode_msg(#'MessageWrapper'{} | #'ErrorMsg'{} | #'LoginReq'{} | #'LoginResp'{} | #'LogoutReq'{} | #'LogoutResp'{} | #'CompanyActionReq'{} | #'CompanyActionResp'{} | #'InvestorActionReq'{} | #'InvestorActionResp'{}, atom(), list()) -> binary().
+-spec encode_msg(#'MessageWrapper'{} | #'EmissionFixedRateReq'{} | #'EmissionFixedRateResp'{} | #'AuctionEmissionResult'{} | #'ErrorMsg'{} | #'LoginReq'{} | #'LoginResp'{} | #'LogoutReq'{} | #'LogoutResp'{} | #'CompanyActionReq'{} | #'CompanyActionResp'{} | #'InvestorActionReq'{} | #'InvestorActionResp'{}, atom(), list()) -> binary().
 encode_msg(Msg, MsgName, Opts) ->
     case proplists:get_bool(verify, Opts) of
       true -> verify_msg(Msg, MsgName, Opts);
@@ -87,6 +95,15 @@ encode_msg(Msg, MsgName, Opts) ->
       'MessageWrapper' ->
 	  encode_msg_MessageWrapper(id(Msg, TrUserData),
 				    TrUserData);
+      'EmissionFixedRateReq' ->
+	  encode_msg_EmissionFixedRateReq(id(Msg, TrUserData),
+					  TrUserData);
+      'EmissionFixedRateResp' ->
+	  encode_msg_EmissionFixedRateResp(id(Msg, TrUserData),
+					   TrUserData);
+      'AuctionEmissionResult' ->
+	  encode_msg_AuctionEmissionResult(id(Msg, TrUserData),
+					   TrUserData);
       'ErrorMsg' ->
 	  encode_msg_ErrorMsg(id(Msg, TrUserData), TrUserData);
       'LoginReq' ->
@@ -116,77 +133,152 @@ encode_msg_MessageWrapper(Msg, TrUserData) ->
     encode_msg_MessageWrapper(Msg, <<>>, TrUserData).
 
 
-encode_msg_MessageWrapper(#'MessageWrapper'{inner_message
-						= F1},
+encode_msg_MessageWrapper(#'MessageWrapper'{msgType =
+						F1,
+					    inner_message = F2},
 			  Bin, TrUserData) ->
-    if F1 =:= undefined -> Bin;
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   'e_enum_MessageWrapper.MessageType'(TrF1,
+					       <<Bin/binary, 8>>, TrUserData)
+	 end,
+    if F2 =:= undefined -> B1;
        true ->
-	   case id(F1, TrUserData) of
-	     {loginreq, TF1} ->
+	   case id(F2, TrUserData) of
+	     {loginreq, TF2} ->
 		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_MessageWrapper_loginreq(TrTF1,
-						    <<Bin/binary, 10>>,
+		   TrTF2 = id(TF2, TrUserData),
+		   e_mfield_MessageWrapper_loginreq(TrTF2,
+						    <<B1/binary, 18>>,
 						    TrUserData)
 		 end;
-	     {loginresp, TF1} ->
+	     {loginresp, TF2} ->
 		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_MessageWrapper_loginresp(TrTF1,
-						     <<Bin/binary, 18>>,
+		   TrTF2 = id(TF2, TrUserData),
+		   e_mfield_MessageWrapper_loginresp(TrTF2,
+						     <<B1/binary, 26>>,
 						     TrUserData)
 		 end;
-	     {logoutreq, TF1} ->
+	     {logoutreq, TF2} ->
 		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_MessageWrapper_logoutreq(TrTF1,
-						     <<Bin/binary, 26>>,
+		   TrTF2 = id(TF2, TrUserData),
+		   e_mfield_MessageWrapper_logoutreq(TrTF2,
+						     <<B1/binary, 34>>,
 						     TrUserData)
 		 end;
-	     {logoutresp, TF1} ->
+	     {logoutresp, TF2} ->
 		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_MessageWrapper_logoutresp(TrTF1,
-						      <<Bin/binary, 34>>,
+		   TrTF2 = id(TF2, TrUserData),
+		   e_mfield_MessageWrapper_logoutresp(TrTF2,
+						      <<B1/binary, 42>>,
 						      TrUserData)
 		 end;
-	     {companyactionreq, TF1} ->
+	     {companyactionreq, TF2} ->
 		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_MessageWrapper_companyactionreq(TrTF1,
-							    <<Bin/binary, 42>>,
+		   TrTF2 = id(TF2, TrUserData),
+		   e_mfield_MessageWrapper_companyactionreq(TrTF2,
+							    <<B1/binary, 50>>,
 							    TrUserData)
 		 end;
-	     {companyactionresp, TF1} ->
+	     {companyactionresp, TF2} ->
 		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_MessageWrapper_companyactionresp(TrTF1,
-							     <<Bin/binary, 50>>,
+		   TrTF2 = id(TF2, TrUserData),
+		   e_mfield_MessageWrapper_companyactionresp(TrTF2,
+							     <<B1/binary, 58>>,
 							     TrUserData)
 		 end;
-	     {investoractionreq, TF1} ->
+	     {investoractionreq, TF2} ->
 		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_MessageWrapper_investoractionreq(TrTF1,
-							     <<Bin/binary, 58>>,
+		   TrTF2 = id(TF2, TrUserData),
+		   e_mfield_MessageWrapper_investoractionreq(TrTF2,
+							     <<B1/binary, 66>>,
 							     TrUserData)
 		 end;
-	     {investoractionresp, TF1} ->
+	     {investoractionresp, TF2} ->
 		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_MessageWrapper_investoractionresp(TrTF1,
-							      <<Bin/binary,
-								66>>,
+		   TrTF2 = id(TF2, TrUserData),
+		   e_mfield_MessageWrapper_investoractionresp(TrTF2,
+							      <<B1/binary, 74>>,
 							      TrUserData)
 		 end;
-	     {errormsg, TF1} ->
+	     {errormsg, TF2} ->
 		 begin
-		   TrTF1 = id(TF1, TrUserData),
-		   e_mfield_MessageWrapper_errormsg(TrTF1,
-						    <<Bin/binary, 74>>,
+		   TrTF2 = id(TF2, TrUserData),
+		   e_mfield_MessageWrapper_errormsg(TrTF2,
+						    <<B1/binary, 82>>,
 						    TrUserData)
+		 end;
+	     {emissionfixedratereq, TF2} ->
+		 begin
+		   TrTF2 = id(TF2, TrUserData),
+		   e_mfield_MessageWrapper_emissionfixedratereq(TrTF2,
+								<<B1/binary,
+								  90>>,
+								TrUserData)
+		 end;
+	     {emissionfixedrateresp, TF2} ->
+		 begin
+		   TrTF2 = id(TF2, TrUserData),
+		   e_mfield_MessageWrapper_emissionfixedrateresp(TrTF2,
+								 <<B1/binary,
+								   98>>,
+								 TrUserData)
+		 end;
+	     {auctionemissionresult, TF2} ->
+		 begin
+		   TrTF2 = id(TF2, TrUserData),
+		   e_mfield_MessageWrapper_auctionemissionresult(TrTF2,
+								 <<B1/binary,
+								   106>>,
+								 TrUserData)
 		 end
 	   end
+    end.
+
+encode_msg_EmissionFixedRateReq(Msg, TrUserData) ->
+    encode_msg_EmissionFixedRateReq(Msg, <<>>, TrUserData).
+
+
+encode_msg_EmissionFixedRateReq(#'EmissionFixedRateReq'{client
+							    = F1},
+				Bin, TrUserData) ->
+    begin
+      TrF1 = id(F1, TrUserData),
+      e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+    end.
+
+encode_msg_EmissionFixedRateResp(Msg, TrUserData) ->
+    encode_msg_EmissionFixedRateResp(Msg, <<>>, TrUserData).
+
+
+encode_msg_EmissionFixedRateResp(#'EmissionFixedRateResp'{client
+							      = F1,
+							  rate = F2},
+				 Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    begin
+      TrF2 = id(F2, TrUserData),
+      e_type_float(TrF2, <<B1/binary, 21>>, TrUserData)
+    end.
+
+encode_msg_AuctionEmissionResult(Msg, TrUserData) ->
+    encode_msg_AuctionEmissionResult(Msg, <<>>, TrUserData).
+
+
+encode_msg_AuctionEmissionResult(#'AuctionEmissionResult'{client
+							      = F1,
+							  msg = F2},
+				 Bin, TrUserData) ->
+    B1 = begin
+	   TrF1 = id(F1, TrUserData),
+	   e_type_string(TrF1, <<Bin/binary, 10>>, TrUserData)
+	 end,
+    begin
+      TrF2 = id(F2, TrUserData),
+      e_type_string(TrF2, <<B1/binary, 18>>, TrUserData)
     end.
 
 encode_msg_ErrorMsg(Msg, TrUserData) ->
@@ -266,7 +358,8 @@ encode_msg_CompanyActionReq(Msg, TrUserData) ->
 
 encode_msg_CompanyActionReq(#'CompanyActionReq'{client =
 						    F1,
-						value = F2, max_rate = F3},
+						reqType = F2, value = F3,
+						max_rate = F4},
 			    Bin, TrUserData) ->
     B1 = begin
 	   TrF1 = id(F1, TrUserData),
@@ -274,14 +367,16 @@ encode_msg_CompanyActionReq(#'CompanyActionReq'{client =
 	 end,
     B2 = begin
 	   TrF2 = id(F2, TrUserData),
-	   e_type_int64(TrF2, <<B1/binary, 24>>, TrUserData)
+	   'e_enum_CompanyActionReq.RequestType'(TrF2,
+						 <<B1/binary, 16>>, TrUserData)
 	 end,
-    if F3 == undefined -> B2;
-       true ->
-	   begin
-	     TrF3 = id(F3, TrUserData),
-	     e_type_float(TrF3, <<B2/binary, 37>>, TrUserData)
-	   end
+    B3 = begin
+	   TrF3 = id(F3, TrUserData),
+	   e_type_int64(TrF3, <<B2/binary, 24>>, TrUserData)
+	 end,
+    begin
+      TrF4 = id(F4, TrUserData),
+      e_type_float(TrF4, <<B3/binary, 37>>, TrUserData)
     end.
 
 encode_msg_CompanyActionResp(Msg, TrUserData) ->
@@ -411,6 +506,37 @@ e_mfield_MessageWrapper_errormsg(Msg, Bin,
     Bin2 = e_varint(byte_size(SubBin), Bin),
     <<Bin2/binary, SubBin/binary>>.
 
+e_mfield_MessageWrapper_emissionfixedratereq(Msg, Bin,
+					     TrUserData) ->
+    SubBin = encode_msg_EmissionFixedRateReq(Msg, <<>>,
+					     TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
+
+e_mfield_MessageWrapper_emissionfixedrateresp(Msg, Bin,
+					      TrUserData) ->
+    SubBin = encode_msg_EmissionFixedRateResp(Msg, <<>>,
+					      TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
+
+e_mfield_MessageWrapper_auctionemissionresult(Msg, Bin,
+					      TrUserData) ->
+    SubBin = encode_msg_AuctionEmissionResult(Msg, <<>>,
+					      TrUserData),
+    Bin2 = e_varint(byte_size(SubBin), Bin),
+    <<Bin2/binary, SubBin/binary>>.
+
+'e_enum_MessageWrapper.MessageType'('SYNC', Bin,
+				    _TrUserData) ->
+    <<Bin/binary, 0>>;
+'e_enum_MessageWrapper.MessageType'('ASYNC', Bin,
+				    _TrUserData) ->
+    <<Bin/binary, 1>>;
+'e_enum_MessageWrapper.MessageType'(V, Bin,
+				    _TrUserData) ->
+    e_varint(V, Bin).
+
 'e_enum_LoginResp.ClientType'('COMPANY', Bin,
 			      _TrUserData) ->
     <<Bin/binary, 0>>;
@@ -435,6 +561,16 @@ e_mfield_MessageWrapper_errormsg(Msg, Bin,
 			   _TrUserData) ->
     <<Bin/binary, 1>>;
 'e_enum_LogoutResp.Status'(V, Bin, _TrUserData) ->
+    e_varint(V, Bin).
+
+'e_enum_CompanyActionReq.RequestType'('AUCTION', Bin,
+				      _TrUserData) ->
+    <<Bin/binary, 0>>;
+'e_enum_CompanyActionReq.RequestType'('EMISSION', Bin,
+				      _TrUserData) ->
+    <<Bin/binary, 1>>;
+'e_enum_CompanyActionReq.RequestType'(V, Bin,
+				      _TrUserData) ->
     e_varint(V, Bin).
 
 'e_enum_CompanyActionResp.Status'('SUCCESS', Bin,
@@ -590,6 +726,18 @@ decode_msg_1_catch(Bin, MsgName, TrUserData) ->
 decode_msg_2_doit('MessageWrapper', Bin, TrUserData) ->
     id(decode_msg_MessageWrapper(Bin, TrUserData),
        TrUserData);
+decode_msg_2_doit('EmissionFixedRateReq', Bin,
+		  TrUserData) ->
+    id(decode_msg_EmissionFixedRateReq(Bin, TrUserData),
+       TrUserData);
+decode_msg_2_doit('EmissionFixedRateResp', Bin,
+		  TrUserData) ->
+    id(decode_msg_EmissionFixedRateResp(Bin, TrUserData),
+       TrUserData);
+decode_msg_2_doit('AuctionEmissionResult', Bin,
+		  TrUserData) ->
+    id(decode_msg_AuctionEmissionResult(Bin, TrUserData),
+       TrUserData);
 decode_msg_2_doit('ErrorMsg', Bin, TrUserData) ->
     id(decode_msg_ErrorMsg(Bin, TrUserData), TrUserData);
 decode_msg_2_doit('LoginReq', Bin, TrUserData) ->
@@ -621,126 +769,179 @@ decode_msg_2_doit('InvestorActionResp', Bin,
 
 decode_msg_MessageWrapper(Bin, TrUserData) ->
     dfp_read_field_def_MessageWrapper(Bin, 0, 0,
+				      id(undefined, TrUserData),
 				      id(undefined, TrUserData), TrUserData).
 
-dfp_read_field_def_MessageWrapper(<<10, Rest/binary>>,
-				  Z1, Z2, F@_1, TrUserData) ->
-    d_field_MessageWrapper_loginreq(Rest, Z1, Z2, F@_1,
-				    TrUserData);
+dfp_read_field_def_MessageWrapper(<<8, Rest/binary>>,
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_MessageWrapper_msgType(Rest, Z1, Z2, F@_1, F@_2,
+				   TrUserData);
 dfp_read_field_def_MessageWrapper(<<18, Rest/binary>>,
-				  Z1, Z2, F@_1, TrUserData) ->
-    d_field_MessageWrapper_loginresp(Rest, Z1, Z2, F@_1,
-				     TrUserData);
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_MessageWrapper_loginreq(Rest, Z1, Z2, F@_1,
+				    F@_2, TrUserData);
 dfp_read_field_def_MessageWrapper(<<26, Rest/binary>>,
-				  Z1, Z2, F@_1, TrUserData) ->
-    d_field_MessageWrapper_logoutreq(Rest, Z1, Z2, F@_1,
-				     TrUserData);
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_MessageWrapper_loginresp(Rest, Z1, Z2, F@_1,
+				     F@_2, TrUserData);
 dfp_read_field_def_MessageWrapper(<<34, Rest/binary>>,
-				  Z1, Z2, F@_1, TrUserData) ->
-    d_field_MessageWrapper_logoutresp(Rest, Z1, Z2, F@_1,
-				      TrUserData);
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_MessageWrapper_logoutreq(Rest, Z1, Z2, F@_1,
+				     F@_2, TrUserData);
 dfp_read_field_def_MessageWrapper(<<42, Rest/binary>>,
-				  Z1, Z2, F@_1, TrUserData) ->
-    d_field_MessageWrapper_companyactionreq(Rest, Z1, Z2,
-					    F@_1, TrUserData);
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_MessageWrapper_logoutresp(Rest, Z1, Z2, F@_1,
+				      F@_2, TrUserData);
 dfp_read_field_def_MessageWrapper(<<50, Rest/binary>>,
-				  Z1, Z2, F@_1, TrUserData) ->
-    d_field_MessageWrapper_companyactionresp(Rest, Z1, Z2,
-					     F@_1, TrUserData);
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_MessageWrapper_companyactionreq(Rest, Z1, Z2,
+					    F@_1, F@_2, TrUserData);
 dfp_read_field_def_MessageWrapper(<<58, Rest/binary>>,
-				  Z1, Z2, F@_1, TrUserData) ->
-    d_field_MessageWrapper_investoractionreq(Rest, Z1, Z2,
-					     F@_1, TrUserData);
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_MessageWrapper_companyactionresp(Rest, Z1, Z2,
+					     F@_1, F@_2, TrUserData);
 dfp_read_field_def_MessageWrapper(<<66, Rest/binary>>,
-				  Z1, Z2, F@_1, TrUserData) ->
-    d_field_MessageWrapper_investoractionresp(Rest, Z1, Z2,
-					      F@_1, TrUserData);
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_MessageWrapper_investoractionreq(Rest, Z1, Z2,
+					     F@_1, F@_2, TrUserData);
 dfp_read_field_def_MessageWrapper(<<74, Rest/binary>>,
-				  Z1, Z2, F@_1, TrUserData) ->
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_MessageWrapper_investoractionresp(Rest, Z1, Z2,
+					      F@_1, F@_2, TrUserData);
+dfp_read_field_def_MessageWrapper(<<82, Rest/binary>>,
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
     d_field_MessageWrapper_errormsg(Rest, Z1, Z2, F@_1,
-				    TrUserData);
+				    F@_2, TrUserData);
+dfp_read_field_def_MessageWrapper(<<90, Rest/binary>>,
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_MessageWrapper_emissionfixedratereq(Rest, Z1,
+						Z2, F@_1, F@_2, TrUserData);
+dfp_read_field_def_MessageWrapper(<<98, Rest/binary>>,
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_MessageWrapper_emissionfixedrateresp(Rest, Z1,
+						 Z2, F@_1, F@_2, TrUserData);
+dfp_read_field_def_MessageWrapper(<<106, Rest/binary>>,
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_MessageWrapper_auctionemissionresult(Rest, Z1,
+						 Z2, F@_1, F@_2, TrUserData);
 dfp_read_field_def_MessageWrapper(<<>>, 0, 0, F@_1,
-				  _) ->
-    #'MessageWrapper'{inner_message = F@_1};
+				  F@_2, _) ->
+    #'MessageWrapper'{msgType = F@_1, inner_message = F@_2};
 dfp_read_field_def_MessageWrapper(Other, Z1, Z2, F@_1,
-				  TrUserData) ->
+				  F@_2, TrUserData) ->
     dg_read_field_def_MessageWrapper(Other, Z1, Z2, F@_1,
-				     TrUserData).
+				     F@_2, TrUserData).
 
 dg_read_field_def_MessageWrapper(<<1:1, X:7,
 				   Rest/binary>>,
-				 N, Acc, F@_1, TrUserData)
+				 N, Acc, F@_1, F@_2, TrUserData)
     when N < 32 - 7 ->
     dg_read_field_def_MessageWrapper(Rest, N + 7,
-				     X bsl N + Acc, F@_1, TrUserData);
+				     X bsl N + Acc, F@_1, F@_2, TrUserData);
 dg_read_field_def_MessageWrapper(<<0:1, X:7,
 				   Rest/binary>>,
-				 N, Acc, F@_1, TrUserData) ->
+				 N, Acc, F@_1, F@_2, TrUserData) ->
     Key = X bsl N + Acc,
     case Key of
-      10 ->
-	  d_field_MessageWrapper_loginreq(Rest, 0, 0, F@_1,
-					  TrUserData);
+      8 ->
+	  d_field_MessageWrapper_msgType(Rest, 0, 0, F@_1, F@_2,
+					 TrUserData);
       18 ->
-	  d_field_MessageWrapper_loginresp(Rest, 0, 0, F@_1,
-					   TrUserData);
+	  d_field_MessageWrapper_loginreq(Rest, 0, 0, F@_1, F@_2,
+					  TrUserData);
       26 ->
-	  d_field_MessageWrapper_logoutreq(Rest, 0, 0, F@_1,
+	  d_field_MessageWrapper_loginresp(Rest, 0, 0, F@_1, F@_2,
 					   TrUserData);
       34 ->
-	  d_field_MessageWrapper_logoutresp(Rest, 0, 0, F@_1,
-					    TrUserData);
+	  d_field_MessageWrapper_logoutreq(Rest, 0, 0, F@_1, F@_2,
+					   TrUserData);
       42 ->
-	  d_field_MessageWrapper_companyactionreq(Rest, 0, 0,
-						  F@_1, TrUserData);
+	  d_field_MessageWrapper_logoutresp(Rest, 0, 0, F@_1,
+					    F@_2, TrUserData);
       50 ->
-	  d_field_MessageWrapper_companyactionresp(Rest, 0, 0,
-						   F@_1, TrUserData);
+	  d_field_MessageWrapper_companyactionreq(Rest, 0, 0,
+						  F@_1, F@_2, TrUserData);
       58 ->
-	  d_field_MessageWrapper_investoractionreq(Rest, 0, 0,
-						   F@_1, TrUserData);
+	  d_field_MessageWrapper_companyactionresp(Rest, 0, 0,
+						   F@_1, F@_2, TrUserData);
       66 ->
-	  d_field_MessageWrapper_investoractionresp(Rest, 0, 0,
-						    F@_1, TrUserData);
+	  d_field_MessageWrapper_investoractionreq(Rest, 0, 0,
+						   F@_1, F@_2, TrUserData);
       74 ->
-	  d_field_MessageWrapper_errormsg(Rest, 0, 0, F@_1,
+	  d_field_MessageWrapper_investoractionresp(Rest, 0, 0,
+						    F@_1, F@_2, TrUserData);
+      82 ->
+	  d_field_MessageWrapper_errormsg(Rest, 0, 0, F@_1, F@_2,
 					  TrUserData);
+      90 ->
+	  d_field_MessageWrapper_emissionfixedratereq(Rest, 0, 0,
+						      F@_1, F@_2, TrUserData);
+      98 ->
+	  d_field_MessageWrapper_emissionfixedrateresp(Rest, 0, 0,
+						       F@_1, F@_2, TrUserData);
+      106 ->
+	  d_field_MessageWrapper_auctionemissionresult(Rest, 0, 0,
+						       F@_1, F@_2, TrUserData);
       _ ->
 	  case Key band 7 of
 	    0 ->
-		skip_varint_MessageWrapper(Rest, 0, 0, F@_1,
+		skip_varint_MessageWrapper(Rest, 0, 0, F@_1, F@_2,
 					   TrUserData);
 	    1 ->
-		skip_64_MessageWrapper(Rest, 0, 0, F@_1, TrUserData);
+		skip_64_MessageWrapper(Rest, 0, 0, F@_1, F@_2,
+				       TrUserData);
 	    2 ->
 		skip_length_delimited_MessageWrapper(Rest, 0, 0, F@_1,
-						     TrUserData);
+						     F@_2, TrUserData);
 	    3 ->
 		skip_group_MessageWrapper(Rest, Key bsr 3, 0, F@_1,
-					  TrUserData);
+					  F@_2, TrUserData);
 	    5 ->
-		skip_32_MessageWrapper(Rest, 0, 0, F@_1, TrUserData)
+		skip_32_MessageWrapper(Rest, 0, 0, F@_1, F@_2,
+				       TrUserData)
 	  end
     end;
-dg_read_field_def_MessageWrapper(<<>>, 0, 0, F@_1, _) ->
-    #'MessageWrapper'{inner_message = F@_1}.
+dg_read_field_def_MessageWrapper(<<>>, 0, 0, F@_1, F@_2,
+				 _) ->
+    #'MessageWrapper'{msgType = F@_1, inner_message = F@_2}.
+
+d_field_MessageWrapper_msgType(<<1:1, X:7,
+				 Rest/binary>>,
+			       N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    d_field_MessageWrapper_msgType(Rest, N + 7,
+				   X bsl N + Acc, F@_1, F@_2, TrUserData);
+d_field_MessageWrapper_msgType(<<0:1, X:7,
+				 Rest/binary>>,
+			       N, Acc, _, F@_2, TrUserData) ->
+    {NewFValue, RestF} =
+	{id('d_enum_MessageWrapper.MessageType'(begin
+						  <<Res:32/signed-native>> =
+						      <<(X bsl N +
+							   Acc):32/unsigned-native>>,
+						  id(Res, TrUserData)
+						end),
+	    TrUserData),
+	 Rest},
+    dfp_read_field_def_MessageWrapper(RestF, 0, 0,
+				      NewFValue, F@_2, TrUserData).
 
 d_field_MessageWrapper_loginreq(<<1:1, X:7,
 				  Rest/binary>>,
-				N, Acc, F@_1, TrUserData)
+				N, Acc, F@_1, F@_2, TrUserData)
     when N < 57 ->
     d_field_MessageWrapper_loginreq(Rest, N + 7,
-				    X bsl N + Acc, F@_1, TrUserData);
+				    X bsl N + Acc, F@_1, F@_2, TrUserData);
 d_field_MessageWrapper_loginreq(<<0:1, X:7,
 				  Rest/binary>>,
-				N, Acc, Prev, TrUserData) ->
+				N, Acc, F@_1, Prev, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Bs:Len/binary, Rest2/binary>> = Rest,
 			   {id(decode_msg_LoginReq(Bs, TrUserData), TrUserData),
 			    Rest2}
 			 end,
-    dfp_read_field_def_MessageWrapper(RestF, 0, 0,
+    dfp_read_field_def_MessageWrapper(RestF, 0, 0, F@_1,
 				      case Prev of
 					undefined ->
 					    id({loginreq, NewFValue},
@@ -759,13 +960,13 @@ d_field_MessageWrapper_loginreq(<<0:1, X:7,
 
 d_field_MessageWrapper_loginresp(<<1:1, X:7,
 				   Rest/binary>>,
-				 N, Acc, F@_1, TrUserData)
+				 N, Acc, F@_1, F@_2, TrUserData)
     when N < 57 ->
     d_field_MessageWrapper_loginresp(Rest, N + 7,
-				     X bsl N + Acc, F@_1, TrUserData);
+				     X bsl N + Acc, F@_1, F@_2, TrUserData);
 d_field_MessageWrapper_loginresp(<<0:1, X:7,
 				   Rest/binary>>,
-				 N, Acc, Prev, TrUserData) ->
+				 N, Acc, F@_1, Prev, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Bs:Len/binary, Rest2/binary>> = Rest,
@@ -773,7 +974,7 @@ d_field_MessageWrapper_loginresp(<<0:1, X:7,
 			       TrUserData),
 			    Rest2}
 			 end,
-    dfp_read_field_def_MessageWrapper(RestF, 0, 0,
+    dfp_read_field_def_MessageWrapper(RestF, 0, 0, F@_1,
 				      case Prev of
 					undefined ->
 					    id({loginresp, NewFValue},
@@ -792,13 +993,13 @@ d_field_MessageWrapper_loginresp(<<0:1, X:7,
 
 d_field_MessageWrapper_logoutreq(<<1:1, X:7,
 				   Rest/binary>>,
-				 N, Acc, F@_1, TrUserData)
+				 N, Acc, F@_1, F@_2, TrUserData)
     when N < 57 ->
     d_field_MessageWrapper_logoutreq(Rest, N + 7,
-				     X bsl N + Acc, F@_1, TrUserData);
+				     X bsl N + Acc, F@_1, F@_2, TrUserData);
 d_field_MessageWrapper_logoutreq(<<0:1, X:7,
 				   Rest/binary>>,
-				 N, Acc, Prev, TrUserData) ->
+				 N, Acc, F@_1, Prev, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Bs:Len/binary, Rest2/binary>> = Rest,
@@ -806,7 +1007,7 @@ d_field_MessageWrapper_logoutreq(<<0:1, X:7,
 			       TrUserData),
 			    Rest2}
 			 end,
-    dfp_read_field_def_MessageWrapper(RestF, 0, 0,
+    dfp_read_field_def_MessageWrapper(RestF, 0, 0, F@_1,
 				      case Prev of
 					undefined ->
 					    id({logoutreq, NewFValue},
@@ -825,13 +1026,13 @@ d_field_MessageWrapper_logoutreq(<<0:1, X:7,
 
 d_field_MessageWrapper_logoutresp(<<1:1, X:7,
 				    Rest/binary>>,
-				  N, Acc, F@_1, TrUserData)
+				  N, Acc, F@_1, F@_2, TrUserData)
     when N < 57 ->
     d_field_MessageWrapper_logoutresp(Rest, N + 7,
-				      X bsl N + Acc, F@_1, TrUserData);
+				      X bsl N + Acc, F@_1, F@_2, TrUserData);
 d_field_MessageWrapper_logoutresp(<<0:1, X:7,
 				    Rest/binary>>,
-				  N, Acc, Prev, TrUserData) ->
+				  N, Acc, F@_1, Prev, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Bs:Len/binary, Rest2/binary>> = Rest,
@@ -839,7 +1040,7 @@ d_field_MessageWrapper_logoutresp(<<0:1, X:7,
 			       TrUserData),
 			    Rest2}
 			 end,
-    dfp_read_field_def_MessageWrapper(RestF, 0, 0,
+    dfp_read_field_def_MessageWrapper(RestF, 0, 0, F@_1,
 				      case Prev of
 					undefined ->
 					    id({logoutresp, NewFValue},
@@ -858,13 +1059,14 @@ d_field_MessageWrapper_logoutresp(<<0:1, X:7,
 
 d_field_MessageWrapper_companyactionreq(<<1:1, X:7,
 					  Rest/binary>>,
-					N, Acc, F@_1, TrUserData)
+					N, Acc, F@_1, F@_2, TrUserData)
     when N < 57 ->
     d_field_MessageWrapper_companyactionreq(Rest, N + 7,
-					    X bsl N + Acc, F@_1, TrUserData);
+					    X bsl N + Acc, F@_1, F@_2,
+					    TrUserData);
 d_field_MessageWrapper_companyactionreq(<<0:1, X:7,
 					  Rest/binary>>,
-					N, Acc, Prev, TrUserData) ->
+					N, Acc, F@_1, Prev, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Bs:Len/binary, Rest2/binary>> = Rest,
@@ -872,7 +1074,7 @@ d_field_MessageWrapper_companyactionreq(<<0:1, X:7,
 			       TrUserData),
 			    Rest2}
 			 end,
-    dfp_read_field_def_MessageWrapper(RestF, 0, 0,
+    dfp_read_field_def_MessageWrapper(RestF, 0, 0, F@_1,
 				      case Prev of
 					undefined ->
 					    id({companyactionreq, NewFValue},
@@ -891,13 +1093,14 @@ d_field_MessageWrapper_companyactionreq(<<0:1, X:7,
 
 d_field_MessageWrapper_companyactionresp(<<1:1, X:7,
 					   Rest/binary>>,
-					 N, Acc, F@_1, TrUserData)
+					 N, Acc, F@_1, F@_2, TrUserData)
     when N < 57 ->
     d_field_MessageWrapper_companyactionresp(Rest, N + 7,
-					     X bsl N + Acc, F@_1, TrUserData);
+					     X bsl N + Acc, F@_1, F@_2,
+					     TrUserData);
 d_field_MessageWrapper_companyactionresp(<<0:1, X:7,
 					   Rest/binary>>,
-					 N, Acc, Prev, TrUserData) ->
+					 N, Acc, F@_1, Prev, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Bs:Len/binary, Rest2/binary>> = Rest,
@@ -905,7 +1108,7 @@ d_field_MessageWrapper_companyactionresp(<<0:1, X:7,
 			       TrUserData),
 			    Rest2}
 			 end,
-    dfp_read_field_def_MessageWrapper(RestF, 0, 0,
+    dfp_read_field_def_MessageWrapper(RestF, 0, 0, F@_1,
 				      case Prev of
 					undefined ->
 					    id({companyactionresp, NewFValue},
@@ -924,13 +1127,14 @@ d_field_MessageWrapper_companyactionresp(<<0:1, X:7,
 
 d_field_MessageWrapper_investoractionreq(<<1:1, X:7,
 					   Rest/binary>>,
-					 N, Acc, F@_1, TrUserData)
+					 N, Acc, F@_1, F@_2, TrUserData)
     when N < 57 ->
     d_field_MessageWrapper_investoractionreq(Rest, N + 7,
-					     X bsl N + Acc, F@_1, TrUserData);
+					     X bsl N + Acc, F@_1, F@_2,
+					     TrUserData);
 d_field_MessageWrapper_investoractionreq(<<0:1, X:7,
 					   Rest/binary>>,
-					 N, Acc, Prev, TrUserData) ->
+					 N, Acc, F@_1, Prev, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Bs:Len/binary, Rest2/binary>> = Rest,
@@ -938,7 +1142,7 @@ d_field_MessageWrapper_investoractionreq(<<0:1, X:7,
 			       TrUserData),
 			    Rest2}
 			 end,
-    dfp_read_field_def_MessageWrapper(RestF, 0, 0,
+    dfp_read_field_def_MessageWrapper(RestF, 0, 0, F@_1,
 				      case Prev of
 					undefined ->
 					    id({investoractionreq, NewFValue},
@@ -957,13 +1161,14 @@ d_field_MessageWrapper_investoractionreq(<<0:1, X:7,
 
 d_field_MessageWrapper_investoractionresp(<<1:1, X:7,
 					    Rest/binary>>,
-					  N, Acc, F@_1, TrUserData)
+					  N, Acc, F@_1, F@_2, TrUserData)
     when N < 57 ->
     d_field_MessageWrapper_investoractionresp(Rest, N + 7,
-					      X bsl N + Acc, F@_1, TrUserData);
+					      X bsl N + Acc, F@_1, F@_2,
+					      TrUserData);
 d_field_MessageWrapper_investoractionresp(<<0:1, X:7,
 					    Rest/binary>>,
-					  N, Acc, Prev, TrUserData) ->
+					  N, Acc, F@_1, Prev, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Bs:Len/binary, Rest2/binary>> = Rest,
@@ -971,7 +1176,7 @@ d_field_MessageWrapper_investoractionresp(<<0:1, X:7,
 			       TrUserData),
 			    Rest2}
 			 end,
-    dfp_read_field_def_MessageWrapper(RestF, 0, 0,
+    dfp_read_field_def_MessageWrapper(RestF, 0, 0, F@_1,
 				      case Prev of
 					undefined ->
 					    id({investoractionresp, NewFValue},
@@ -990,20 +1195,20 @@ d_field_MessageWrapper_investoractionresp(<<0:1, X:7,
 
 d_field_MessageWrapper_errormsg(<<1:1, X:7,
 				  Rest/binary>>,
-				N, Acc, F@_1, TrUserData)
+				N, Acc, F@_1, F@_2, TrUserData)
     when N < 57 ->
     d_field_MessageWrapper_errormsg(Rest, N + 7,
-				    X bsl N + Acc, F@_1, TrUserData);
+				    X bsl N + Acc, F@_1, F@_2, TrUserData);
 d_field_MessageWrapper_errormsg(<<0:1, X:7,
 				  Rest/binary>>,
-				N, Acc, Prev, TrUserData) ->
+				N, Acc, F@_1, Prev, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Bs:Len/binary, Rest2/binary>> = Rest,
 			   {id(decode_msg_ErrorMsg(Bs, TrUserData), TrUserData),
 			    Rest2}
 			 end,
-    dfp_read_field_def_MessageWrapper(RestF, 0, 0,
+    dfp_read_field_def_MessageWrapper(RestF, 0, 0, F@_1,
 				      case Prev of
 					undefined ->
 					    id({errormsg, NewFValue},
@@ -1020,44 +1225,557 @@ d_field_MessageWrapper_errormsg(<<0:1, X:7,
 				      end,
 				      TrUserData).
 
+d_field_MessageWrapper_emissionfixedratereq(<<1:1, X:7,
+					      Rest/binary>>,
+					    N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    d_field_MessageWrapper_emissionfixedratereq(Rest, N + 7,
+						X bsl N + Acc, F@_1, F@_2,
+						TrUserData);
+d_field_MessageWrapper_emissionfixedratereq(<<0:1, X:7,
+					      Rest/binary>>,
+					    N, Acc, F@_1, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bs:Len/binary, Rest2/binary>> = Rest,
+			   {id(decode_msg_EmissionFixedRateReq(Bs, TrUserData),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_MessageWrapper(RestF, 0, 0, F@_1,
+				      case Prev of
+					undefined ->
+					    id({emissionfixedratereq,
+						NewFValue},
+					       TrUserData);
+					{emissionfixedratereq, MVPrev} ->
+					    id({emissionfixedratereq,
+						merge_msg_EmissionFixedRateReq(MVPrev,
+									       NewFValue,
+									       TrUserData)},
+					       TrUserData);
+					_ ->
+					    id({emissionfixedratereq,
+						NewFValue},
+					       TrUserData)
+				      end,
+				      TrUserData).
+
+d_field_MessageWrapper_emissionfixedrateresp(<<1:1, X:7,
+					       Rest/binary>>,
+					     N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    d_field_MessageWrapper_emissionfixedrateresp(Rest,
+						 N + 7, X bsl N + Acc, F@_1,
+						 F@_2, TrUserData);
+d_field_MessageWrapper_emissionfixedrateresp(<<0:1, X:7,
+					       Rest/binary>>,
+					     N, Acc, F@_1, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bs:Len/binary, Rest2/binary>> = Rest,
+			   {id(decode_msg_EmissionFixedRateResp(Bs, TrUserData),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_MessageWrapper(RestF, 0, 0, F@_1,
+				      case Prev of
+					undefined ->
+					    id({emissionfixedrateresp,
+						NewFValue},
+					       TrUserData);
+					{emissionfixedrateresp, MVPrev} ->
+					    id({emissionfixedrateresp,
+						merge_msg_EmissionFixedRateResp(MVPrev,
+										NewFValue,
+										TrUserData)},
+					       TrUserData);
+					_ ->
+					    id({emissionfixedrateresp,
+						NewFValue},
+					       TrUserData)
+				      end,
+				      TrUserData).
+
+d_field_MessageWrapper_auctionemissionresult(<<1:1, X:7,
+					       Rest/binary>>,
+					     N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    d_field_MessageWrapper_auctionemissionresult(Rest,
+						 N + 7, X bsl N + Acc, F@_1,
+						 F@_2, TrUserData);
+d_field_MessageWrapper_auctionemissionresult(<<0:1, X:7,
+					       Rest/binary>>,
+					     N, Acc, F@_1, Prev, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bs:Len/binary, Rest2/binary>> = Rest,
+			   {id(decode_msg_AuctionEmissionResult(Bs, TrUserData),
+			       TrUserData),
+			    Rest2}
+			 end,
+    dfp_read_field_def_MessageWrapper(RestF, 0, 0, F@_1,
+				      case Prev of
+					undefined ->
+					    id({auctionemissionresult,
+						NewFValue},
+					       TrUserData);
+					{auctionemissionresult, MVPrev} ->
+					    id({auctionemissionresult,
+						merge_msg_AuctionEmissionResult(MVPrev,
+										NewFValue,
+										TrUserData)},
+					       TrUserData);
+					_ ->
+					    id({auctionemissionresult,
+						NewFValue},
+					       TrUserData)
+				      end,
+				      TrUserData).
+
 skip_varint_MessageWrapper(<<1:1, _:7, Rest/binary>>,
-			   Z1, Z2, F@_1, TrUserData) ->
-    skip_varint_MessageWrapper(Rest, Z1, Z2, F@_1,
+			   Z1, Z2, F@_1, F@_2, TrUserData) ->
+    skip_varint_MessageWrapper(Rest, Z1, Z2, F@_1, F@_2,
 			       TrUserData);
 skip_varint_MessageWrapper(<<0:1, _:7, Rest/binary>>,
-			   Z1, Z2, F@_1, TrUserData) ->
+			   Z1, Z2, F@_1, F@_2, TrUserData) ->
     dfp_read_field_def_MessageWrapper(Rest, Z1, Z2, F@_1,
-				      TrUserData).
+				      F@_2, TrUserData).
 
 skip_length_delimited_MessageWrapper(<<1:1, X:7,
 				       Rest/binary>>,
-				     N, Acc, F@_1, TrUserData)
+				     N, Acc, F@_1, F@_2, TrUserData)
     when N < 57 ->
     skip_length_delimited_MessageWrapper(Rest, N + 7,
-					 X bsl N + Acc, F@_1, TrUserData);
+					 X bsl N + Acc, F@_1, F@_2, TrUserData);
 skip_length_delimited_MessageWrapper(<<0:1, X:7,
 				       Rest/binary>>,
-				     N, Acc, F@_1, TrUserData) ->
+				     N, Acc, F@_1, F@_2, TrUserData) ->
     Length = X bsl N + Acc,
     <<_:Length/binary, Rest2/binary>> = Rest,
     dfp_read_field_def_MessageWrapper(Rest2, 0, 0, F@_1,
-				      TrUserData).
+				      F@_2, TrUserData).
 
-skip_group_MessageWrapper(Bin, FNum, Z2, F@_1,
+skip_group_MessageWrapper(Bin, FNum, Z2, F@_1, F@_2,
 			  TrUserData) ->
     {_, Rest} = read_group(Bin, FNum),
     dfp_read_field_def_MessageWrapper(Rest, 0, Z2, F@_1,
-				      TrUserData).
+				      F@_2, TrUserData).
 
 skip_32_MessageWrapper(<<_:32, Rest/binary>>, Z1, Z2,
-		       F@_1, TrUserData) ->
+		       F@_1, F@_2, TrUserData) ->
     dfp_read_field_def_MessageWrapper(Rest, Z1, Z2, F@_1,
-				      TrUserData).
+				      F@_2, TrUserData).
 
 skip_64_MessageWrapper(<<_:64, Rest/binary>>, Z1, Z2,
-		       F@_1, TrUserData) ->
+		       F@_1, F@_2, TrUserData) ->
     dfp_read_field_def_MessageWrapper(Rest, Z1, Z2, F@_1,
-				      TrUserData).
+				      F@_2, TrUserData).
+
+decode_msg_EmissionFixedRateReq(Bin, TrUserData) ->
+    dfp_read_field_def_EmissionFixedRateReq(Bin, 0, 0,
+					    id(undefined, TrUserData),
+					    TrUserData).
+
+dfp_read_field_def_EmissionFixedRateReq(<<10,
+					  Rest/binary>>,
+					Z1, Z2, F@_1, TrUserData) ->
+    d_field_EmissionFixedRateReq_client(Rest, Z1, Z2, F@_1,
+					TrUserData);
+dfp_read_field_def_EmissionFixedRateReq(<<>>, 0, 0,
+					F@_1, _) ->
+    #'EmissionFixedRateReq'{client = F@_1};
+dfp_read_field_def_EmissionFixedRateReq(Other, Z1, Z2,
+					F@_1, TrUserData) ->
+    dg_read_field_def_EmissionFixedRateReq(Other, Z1, Z2,
+					   F@_1, TrUserData).
+
+dg_read_field_def_EmissionFixedRateReq(<<1:1, X:7,
+					 Rest/binary>>,
+				       N, Acc, F@_1, TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_EmissionFixedRateReq(Rest, N + 7,
+					   X bsl N + Acc, F@_1, TrUserData);
+dg_read_field_def_EmissionFixedRateReq(<<0:1, X:7,
+					 Rest/binary>>,
+				       N, Acc, F@_1, TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_EmissionFixedRateReq_client(Rest, 0, 0, F@_1,
+					      TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_EmissionFixedRateReq(Rest, 0, 0, F@_1,
+						 TrUserData);
+	    1 ->
+		skip_64_EmissionFixedRateReq(Rest, 0, 0, F@_1,
+					     TrUserData);
+	    2 ->
+		skip_length_delimited_EmissionFixedRateReq(Rest, 0, 0,
+							   F@_1, TrUserData);
+	    3 ->
+		skip_group_EmissionFixedRateReq(Rest, Key bsr 3, 0,
+						F@_1, TrUserData);
+	    5 ->
+		skip_32_EmissionFixedRateReq(Rest, 0, 0, F@_1,
+					     TrUserData)
+	  end
+    end;
+dg_read_field_def_EmissionFixedRateReq(<<>>, 0, 0, F@_1,
+				       _) ->
+    #'EmissionFixedRateReq'{client = F@_1}.
+
+d_field_EmissionFixedRateReq_client(<<1:1, X:7,
+				      Rest/binary>>,
+				    N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    d_field_EmissionFixedRateReq_client(Rest, N + 7,
+					X bsl N + Acc, F@_1, TrUserData);
+d_field_EmissionFixedRateReq_client(<<0:1, X:7,
+				      Rest/binary>>,
+				    N, Acc, _, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bytes:Len/binary, Rest2/binary>> = Rest,
+			   {id(binary:copy(Bytes), TrUserData), Rest2}
+			 end,
+    dfp_read_field_def_EmissionFixedRateReq(RestF, 0, 0,
+					    NewFValue, TrUserData).
+
+skip_varint_EmissionFixedRateReq(<<1:1, _:7,
+				   Rest/binary>>,
+				 Z1, Z2, F@_1, TrUserData) ->
+    skip_varint_EmissionFixedRateReq(Rest, Z1, Z2, F@_1,
+				     TrUserData);
+skip_varint_EmissionFixedRateReq(<<0:1, _:7,
+				   Rest/binary>>,
+				 Z1, Z2, F@_1, TrUserData) ->
+    dfp_read_field_def_EmissionFixedRateReq(Rest, Z1, Z2,
+					    F@_1, TrUserData).
+
+skip_length_delimited_EmissionFixedRateReq(<<1:1, X:7,
+					     Rest/binary>>,
+					   N, Acc, F@_1, TrUserData)
+    when N < 57 ->
+    skip_length_delimited_EmissionFixedRateReq(Rest, N + 7,
+					       X bsl N + Acc, F@_1, TrUserData);
+skip_length_delimited_EmissionFixedRateReq(<<0:1, X:7,
+					     Rest/binary>>,
+					   N, Acc, F@_1, TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_EmissionFixedRateReq(Rest2, 0, 0,
+					    F@_1, TrUserData).
+
+skip_group_EmissionFixedRateReq(Bin, FNum, Z2, F@_1,
+				TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_EmissionFixedRateReq(Rest, 0, Z2,
+					    F@_1, TrUserData).
+
+skip_32_EmissionFixedRateReq(<<_:32, Rest/binary>>, Z1,
+			     Z2, F@_1, TrUserData) ->
+    dfp_read_field_def_EmissionFixedRateReq(Rest, Z1, Z2,
+					    F@_1, TrUserData).
+
+skip_64_EmissionFixedRateReq(<<_:64, Rest/binary>>, Z1,
+			     Z2, F@_1, TrUserData) ->
+    dfp_read_field_def_EmissionFixedRateReq(Rest, Z1, Z2,
+					    F@_1, TrUserData).
+
+decode_msg_EmissionFixedRateResp(Bin, TrUserData) ->
+    dfp_read_field_def_EmissionFixedRateResp(Bin, 0, 0,
+					     id(undefined, TrUserData),
+					     id(undefined, TrUserData),
+					     TrUserData).
+
+dfp_read_field_def_EmissionFixedRateResp(<<10,
+					   Rest/binary>>,
+					 Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_EmissionFixedRateResp_client(Rest, Z1, Z2, F@_1,
+					 F@_2, TrUserData);
+dfp_read_field_def_EmissionFixedRateResp(<<21,
+					   Rest/binary>>,
+					 Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_EmissionFixedRateResp_rate(Rest, Z1, Z2, F@_1,
+				       F@_2, TrUserData);
+dfp_read_field_def_EmissionFixedRateResp(<<>>, 0, 0,
+					 F@_1, F@_2, _) ->
+    #'EmissionFixedRateResp'{client = F@_1, rate = F@_2};
+dfp_read_field_def_EmissionFixedRateResp(Other, Z1, Z2,
+					 F@_1, F@_2, TrUserData) ->
+    dg_read_field_def_EmissionFixedRateResp(Other, Z1, Z2,
+					    F@_1, F@_2, TrUserData).
+
+dg_read_field_def_EmissionFixedRateResp(<<1:1, X:7,
+					  Rest/binary>>,
+					N, Acc, F@_1, F@_2, TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_EmissionFixedRateResp(Rest, N + 7,
+					    X bsl N + Acc, F@_1, F@_2,
+					    TrUserData);
+dg_read_field_def_EmissionFixedRateResp(<<0:1, X:7,
+					  Rest/binary>>,
+					N, Acc, F@_1, F@_2, TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_EmissionFixedRateResp_client(Rest, 0, 0, F@_1,
+					       F@_2, TrUserData);
+      21 ->
+	  d_field_EmissionFixedRateResp_rate(Rest, 0, 0, F@_1,
+					     F@_2, TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_EmissionFixedRateResp(Rest, 0, 0, F@_1,
+						  F@_2, TrUserData);
+	    1 ->
+		skip_64_EmissionFixedRateResp(Rest, 0, 0, F@_1, F@_2,
+					      TrUserData);
+	    2 ->
+		skip_length_delimited_EmissionFixedRateResp(Rest, 0, 0,
+							    F@_1, F@_2,
+							    TrUserData);
+	    3 ->
+		skip_group_EmissionFixedRateResp(Rest, Key bsr 3, 0,
+						 F@_1, F@_2, TrUserData);
+	    5 ->
+		skip_32_EmissionFixedRateResp(Rest, 0, 0, F@_1, F@_2,
+					      TrUserData)
+	  end
+    end;
+dg_read_field_def_EmissionFixedRateResp(<<>>, 0, 0,
+					F@_1, F@_2, _) ->
+    #'EmissionFixedRateResp'{client = F@_1, rate = F@_2}.
+
+d_field_EmissionFixedRateResp_client(<<1:1, X:7,
+				       Rest/binary>>,
+				     N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    d_field_EmissionFixedRateResp_client(Rest, N + 7,
+					 X bsl N + Acc, F@_1, F@_2, TrUserData);
+d_field_EmissionFixedRateResp_client(<<0:1, X:7,
+				       Rest/binary>>,
+				     N, Acc, _, F@_2, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bytes:Len/binary, Rest2/binary>> = Rest,
+			   {id(binary:copy(Bytes), TrUserData), Rest2}
+			 end,
+    dfp_read_field_def_EmissionFixedRateResp(RestF, 0, 0,
+					     NewFValue, F@_2, TrUserData).
+
+d_field_EmissionFixedRateResp_rate(<<0:16, 128, 127,
+				     Rest/binary>>,
+				   Z1, Z2, F@_1, _, TrUserData) ->
+    dfp_read_field_def_EmissionFixedRateResp(Rest, Z1, Z2,
+					     F@_1, id(infinity, TrUserData),
+					     TrUserData);
+d_field_EmissionFixedRateResp_rate(<<0:16, 128, 255,
+				     Rest/binary>>,
+				   Z1, Z2, F@_1, _, TrUserData) ->
+    dfp_read_field_def_EmissionFixedRateResp(Rest, Z1, Z2,
+					     F@_1, id('-infinity', TrUserData),
+					     TrUserData);
+d_field_EmissionFixedRateResp_rate(<<_:16, 1:1, _:7,
+				     _:1, 127:7, Rest/binary>>,
+				   Z1, Z2, F@_1, _, TrUserData) ->
+    dfp_read_field_def_EmissionFixedRateResp(Rest, Z1, Z2,
+					     F@_1, id(nan, TrUserData),
+					     TrUserData);
+d_field_EmissionFixedRateResp_rate(<<Value:32/little-float,
+				     Rest/binary>>,
+				   Z1, Z2, F@_1, _, TrUserData) ->
+    dfp_read_field_def_EmissionFixedRateResp(Rest, Z1, Z2,
+					     F@_1, id(Value, TrUserData),
+					     TrUserData).
+
+skip_varint_EmissionFixedRateResp(<<1:1, _:7,
+				    Rest/binary>>,
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    skip_varint_EmissionFixedRateResp(Rest, Z1, Z2, F@_1,
+				      F@_2, TrUserData);
+skip_varint_EmissionFixedRateResp(<<0:1, _:7,
+				    Rest/binary>>,
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_EmissionFixedRateResp(Rest, Z1, Z2,
+					     F@_1, F@_2, TrUserData).
+
+skip_length_delimited_EmissionFixedRateResp(<<1:1, X:7,
+					      Rest/binary>>,
+					    N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    skip_length_delimited_EmissionFixedRateResp(Rest, N + 7,
+						X bsl N + Acc, F@_1, F@_2,
+						TrUserData);
+skip_length_delimited_EmissionFixedRateResp(<<0:1, X:7,
+					      Rest/binary>>,
+					    N, Acc, F@_1, F@_2, TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_EmissionFixedRateResp(Rest2, 0, 0,
+					     F@_1, F@_2, TrUserData).
+
+skip_group_EmissionFixedRateResp(Bin, FNum, Z2, F@_1,
+				 F@_2, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_EmissionFixedRateResp(Rest, 0, Z2,
+					     F@_1, F@_2, TrUserData).
+
+skip_32_EmissionFixedRateResp(<<_:32, Rest/binary>>, Z1,
+			      Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_EmissionFixedRateResp(Rest, Z1, Z2,
+					     F@_1, F@_2, TrUserData).
+
+skip_64_EmissionFixedRateResp(<<_:64, Rest/binary>>, Z1,
+			      Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_EmissionFixedRateResp(Rest, Z1, Z2,
+					     F@_1, F@_2, TrUserData).
+
+decode_msg_AuctionEmissionResult(Bin, TrUserData) ->
+    dfp_read_field_def_AuctionEmissionResult(Bin, 0, 0,
+					     id(undefined, TrUserData),
+					     id(undefined, TrUserData),
+					     TrUserData).
+
+dfp_read_field_def_AuctionEmissionResult(<<10,
+					   Rest/binary>>,
+					 Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_AuctionEmissionResult_client(Rest, Z1, Z2, F@_1,
+					 F@_2, TrUserData);
+dfp_read_field_def_AuctionEmissionResult(<<18,
+					   Rest/binary>>,
+					 Z1, Z2, F@_1, F@_2, TrUserData) ->
+    d_field_AuctionEmissionResult_msg(Rest, Z1, Z2, F@_1,
+				      F@_2, TrUserData);
+dfp_read_field_def_AuctionEmissionResult(<<>>, 0, 0,
+					 F@_1, F@_2, _) ->
+    #'AuctionEmissionResult'{client = F@_1, msg = F@_2};
+dfp_read_field_def_AuctionEmissionResult(Other, Z1, Z2,
+					 F@_1, F@_2, TrUserData) ->
+    dg_read_field_def_AuctionEmissionResult(Other, Z1, Z2,
+					    F@_1, F@_2, TrUserData).
+
+dg_read_field_def_AuctionEmissionResult(<<1:1, X:7,
+					  Rest/binary>>,
+					N, Acc, F@_1, F@_2, TrUserData)
+    when N < 32 - 7 ->
+    dg_read_field_def_AuctionEmissionResult(Rest, N + 7,
+					    X bsl N + Acc, F@_1, F@_2,
+					    TrUserData);
+dg_read_field_def_AuctionEmissionResult(<<0:1, X:7,
+					  Rest/binary>>,
+					N, Acc, F@_1, F@_2, TrUserData) ->
+    Key = X bsl N + Acc,
+    case Key of
+      10 ->
+	  d_field_AuctionEmissionResult_client(Rest, 0, 0, F@_1,
+					       F@_2, TrUserData);
+      18 ->
+	  d_field_AuctionEmissionResult_msg(Rest, 0, 0, F@_1,
+					    F@_2, TrUserData);
+      _ ->
+	  case Key band 7 of
+	    0 ->
+		skip_varint_AuctionEmissionResult(Rest, 0, 0, F@_1,
+						  F@_2, TrUserData);
+	    1 ->
+		skip_64_AuctionEmissionResult(Rest, 0, 0, F@_1, F@_2,
+					      TrUserData);
+	    2 ->
+		skip_length_delimited_AuctionEmissionResult(Rest, 0, 0,
+							    F@_1, F@_2,
+							    TrUserData);
+	    3 ->
+		skip_group_AuctionEmissionResult(Rest, Key bsr 3, 0,
+						 F@_1, F@_2, TrUserData);
+	    5 ->
+		skip_32_AuctionEmissionResult(Rest, 0, 0, F@_1, F@_2,
+					      TrUserData)
+	  end
+    end;
+dg_read_field_def_AuctionEmissionResult(<<>>, 0, 0,
+					F@_1, F@_2, _) ->
+    #'AuctionEmissionResult'{client = F@_1, msg = F@_2}.
+
+d_field_AuctionEmissionResult_client(<<1:1, X:7,
+				       Rest/binary>>,
+				     N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    d_field_AuctionEmissionResult_client(Rest, N + 7,
+					 X bsl N + Acc, F@_1, F@_2, TrUserData);
+d_field_AuctionEmissionResult_client(<<0:1, X:7,
+				       Rest/binary>>,
+				     N, Acc, _, F@_2, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bytes:Len/binary, Rest2/binary>> = Rest,
+			   {id(binary:copy(Bytes), TrUserData), Rest2}
+			 end,
+    dfp_read_field_def_AuctionEmissionResult(RestF, 0, 0,
+					     NewFValue, F@_2, TrUserData).
+
+d_field_AuctionEmissionResult_msg(<<1:1, X:7,
+				    Rest/binary>>,
+				  N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    d_field_AuctionEmissionResult_msg(Rest, N + 7,
+				      X bsl N + Acc, F@_1, F@_2, TrUserData);
+d_field_AuctionEmissionResult_msg(<<0:1, X:7,
+				    Rest/binary>>,
+				  N, Acc, F@_1, _, TrUserData) ->
+    {NewFValue, RestF} = begin
+			   Len = X bsl N + Acc,
+			   <<Bytes:Len/binary, Rest2/binary>> = Rest,
+			   {id(binary:copy(Bytes), TrUserData), Rest2}
+			 end,
+    dfp_read_field_def_AuctionEmissionResult(RestF, 0, 0,
+					     F@_1, NewFValue, TrUserData).
+
+skip_varint_AuctionEmissionResult(<<1:1, _:7,
+				    Rest/binary>>,
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    skip_varint_AuctionEmissionResult(Rest, Z1, Z2, F@_1,
+				      F@_2, TrUserData);
+skip_varint_AuctionEmissionResult(<<0:1, _:7,
+				    Rest/binary>>,
+				  Z1, Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_AuctionEmissionResult(Rest, Z1, Z2,
+					     F@_1, F@_2, TrUserData).
+
+skip_length_delimited_AuctionEmissionResult(<<1:1, X:7,
+					      Rest/binary>>,
+					    N, Acc, F@_1, F@_2, TrUserData)
+    when N < 57 ->
+    skip_length_delimited_AuctionEmissionResult(Rest, N + 7,
+						X bsl N + Acc, F@_1, F@_2,
+						TrUserData);
+skip_length_delimited_AuctionEmissionResult(<<0:1, X:7,
+					      Rest/binary>>,
+					    N, Acc, F@_1, F@_2, TrUserData) ->
+    Length = X bsl N + Acc,
+    <<_:Length/binary, Rest2/binary>> = Rest,
+    dfp_read_field_def_AuctionEmissionResult(Rest2, 0, 0,
+					     F@_1, F@_2, TrUserData).
+
+skip_group_AuctionEmissionResult(Bin, FNum, Z2, F@_1,
+				 F@_2, TrUserData) ->
+    {_, Rest} = read_group(Bin, FNum),
+    dfp_read_field_def_AuctionEmissionResult(Rest, 0, Z2,
+					     F@_1, F@_2, TrUserData).
+
+skip_32_AuctionEmissionResult(<<_:32, Rest/binary>>, Z1,
+			      Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_AuctionEmissionResult(Rest, Z1, Z2,
+					     F@_1, F@_2, TrUserData).
+
+skip_64_AuctionEmissionResult(<<_:64, Rest/binary>>, Z1,
+			      Z2, F@_1, F@_2, TrUserData) ->
+    dfp_read_field_def_AuctionEmissionResult(Rest, Z1, Z2,
+					     F@_1, F@_2, TrUserData).
 
 decode_msg_ErrorMsg(Bin, TrUserData) ->
     dfp_read_field_def_ErrorMsg(Bin, 0, 0,
@@ -1608,101 +2326,139 @@ decode_msg_CompanyActionReq(Bin, TrUserData) ->
     dfp_read_field_def_CompanyActionReq(Bin, 0, 0,
 					id(undefined, TrUserData),
 					id(undefined, TrUserData),
+					id(undefined, TrUserData),
 					id(undefined, TrUserData), TrUserData).
 
 dfp_read_field_def_CompanyActionReq(<<10, Rest/binary>>,
-				    Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+				    Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+				    TrUserData) ->
     d_field_CompanyActionReq_client(Rest, Z1, Z2, F@_1,
-				    F@_2, F@_3, TrUserData);
+				    F@_2, F@_3, F@_4, TrUserData);
+dfp_read_field_def_CompanyActionReq(<<16, Rest/binary>>,
+				    Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+				    TrUserData) ->
+    d_field_CompanyActionReq_reqType(Rest, Z1, Z2, F@_1,
+				     F@_2, F@_3, F@_4, TrUserData);
 dfp_read_field_def_CompanyActionReq(<<24, Rest/binary>>,
-				    Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+				    Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+				    TrUserData) ->
     d_field_CompanyActionReq_value(Rest, Z1, Z2, F@_1, F@_2,
-				   F@_3, TrUserData);
+				   F@_3, F@_4, TrUserData);
 dfp_read_field_def_CompanyActionReq(<<37, Rest/binary>>,
-				    Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+				    Z1, Z2, F@_1, F@_2, F@_3, F@_4,
+				    TrUserData) ->
     d_field_CompanyActionReq_max_rate(Rest, Z1, Z2, F@_1,
-				      F@_2, F@_3, TrUserData);
+				      F@_2, F@_3, F@_4, TrUserData);
 dfp_read_field_def_CompanyActionReq(<<>>, 0, 0, F@_1,
-				    F@_2, F@_3, _) ->
-    #'CompanyActionReq'{client = F@_1, value = F@_2,
-			max_rate = F@_3};
+				    F@_2, F@_3, F@_4, _) ->
+    #'CompanyActionReq'{client = F@_1, reqType = F@_2,
+			value = F@_3, max_rate = F@_4};
 dfp_read_field_def_CompanyActionReq(Other, Z1, Z2, F@_1,
-				    F@_2, F@_3, TrUserData) ->
+				    F@_2, F@_3, F@_4, TrUserData) ->
     dg_read_field_def_CompanyActionReq(Other, Z1, Z2, F@_1,
-				       F@_2, F@_3, TrUserData).
+				       F@_2, F@_3, F@_4, TrUserData).
 
 dg_read_field_def_CompanyActionReq(<<1:1, X:7,
 				     Rest/binary>>,
-				   N, Acc, F@_1, F@_2, F@_3, TrUserData)
+				   N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
     when N < 32 - 7 ->
     dg_read_field_def_CompanyActionReq(Rest, N + 7,
-				       X bsl N + Acc, F@_1, F@_2, F@_3,
+				       X bsl N + Acc, F@_1, F@_2, F@_3, F@_4,
 				       TrUserData);
 dg_read_field_def_CompanyActionReq(<<0:1, X:7,
 				     Rest/binary>>,
-				   N, Acc, F@_1, F@_2, F@_3, TrUserData) ->
+				   N, Acc, F@_1, F@_2, F@_3, F@_4,
+				   TrUserData) ->
     Key = X bsl N + Acc,
     case Key of
       10 ->
 	  d_field_CompanyActionReq_client(Rest, 0, 0, F@_1, F@_2,
-					  F@_3, TrUserData);
+					  F@_3, F@_4, TrUserData);
+      16 ->
+	  d_field_CompanyActionReq_reqType(Rest, 0, 0, F@_1, F@_2,
+					   F@_3, F@_4, TrUserData);
       24 ->
 	  d_field_CompanyActionReq_value(Rest, 0, 0, F@_1, F@_2,
-					 F@_3, TrUserData);
+					 F@_3, F@_4, TrUserData);
       37 ->
 	  d_field_CompanyActionReq_max_rate(Rest, 0, 0, F@_1,
-					    F@_2, F@_3, TrUserData);
+					    F@_2, F@_3, F@_4, TrUserData);
       _ ->
 	  case Key band 7 of
 	    0 ->
 		skip_varint_CompanyActionReq(Rest, 0, 0, F@_1, F@_2,
-					     F@_3, TrUserData);
+					     F@_3, F@_4, TrUserData);
 	    1 ->
 		skip_64_CompanyActionReq(Rest, 0, 0, F@_1, F@_2, F@_3,
-					 TrUserData);
+					 F@_4, TrUserData);
 	    2 ->
 		skip_length_delimited_CompanyActionReq(Rest, 0, 0, F@_1,
-						       F@_2, F@_3, TrUserData);
+						       F@_2, F@_3, F@_4,
+						       TrUserData);
 	    3 ->
 		skip_group_CompanyActionReq(Rest, Key bsr 3, 0, F@_1,
-					    F@_2, F@_3, TrUserData);
+					    F@_2, F@_3, F@_4, TrUserData);
 	    5 ->
 		skip_32_CompanyActionReq(Rest, 0, 0, F@_1, F@_2, F@_3,
-					 TrUserData)
+					 F@_4, TrUserData)
 	  end
     end;
 dg_read_field_def_CompanyActionReq(<<>>, 0, 0, F@_1,
-				   F@_2, F@_3, _) ->
-    #'CompanyActionReq'{client = F@_1, value = F@_2,
-			max_rate = F@_3}.
+				   F@_2, F@_3, F@_4, _) ->
+    #'CompanyActionReq'{client = F@_1, reqType = F@_2,
+			value = F@_3, max_rate = F@_4}.
 
 d_field_CompanyActionReq_client(<<1:1, X:7,
 				  Rest/binary>>,
-				N, Acc, F@_1, F@_2, F@_3, TrUserData)
+				N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
     when N < 57 ->
     d_field_CompanyActionReq_client(Rest, N + 7,
-				    X bsl N + Acc, F@_1, F@_2, F@_3,
+				    X bsl N + Acc, F@_1, F@_2, F@_3, F@_4,
 				    TrUserData);
 d_field_CompanyActionReq_client(<<0:1, X:7,
 				  Rest/binary>>,
-				N, Acc, _, F@_2, F@_3, TrUserData) ->
+				N, Acc, _, F@_2, F@_3, F@_4, TrUserData) ->
     {NewFValue, RestF} = begin
 			   Len = X bsl N + Acc,
 			   <<Bytes:Len/binary, Rest2/binary>> = Rest,
 			   {id(binary:copy(Bytes), TrUserData), Rest2}
 			 end,
     dfp_read_field_def_CompanyActionReq(RestF, 0, 0,
-					NewFValue, F@_2, F@_3, TrUserData).
+					NewFValue, F@_2, F@_3, F@_4,
+					TrUserData).
+
+d_field_CompanyActionReq_reqType(<<1:1, X:7,
+				   Rest/binary>>,
+				 N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
+    when N < 57 ->
+    d_field_CompanyActionReq_reqType(Rest, N + 7,
+				     X bsl N + Acc, F@_1, F@_2, F@_3, F@_4,
+				     TrUserData);
+d_field_CompanyActionReq_reqType(<<0:1, X:7,
+				   Rest/binary>>,
+				 N, Acc, F@_1, _, F@_3, F@_4, TrUserData) ->
+    {NewFValue, RestF} =
+	{id('d_enum_CompanyActionReq.RequestType'(begin
+						    <<Res:32/signed-native>> =
+							<<(X bsl N +
+							     Acc):32/unsigned-native>>,
+						    id(Res, TrUserData)
+						  end),
+	    TrUserData),
+	 Rest},
+    dfp_read_field_def_CompanyActionReq(RestF, 0, 0, F@_1,
+					NewFValue, F@_3, F@_4, TrUserData).
 
 d_field_CompanyActionReq_value(<<1:1, X:7,
 				 Rest/binary>>,
-			       N, Acc, F@_1, F@_2, F@_3, TrUserData)
+			       N, Acc, F@_1, F@_2, F@_3, F@_4, TrUserData)
     when N < 57 ->
     d_field_CompanyActionReq_value(Rest, N + 7,
-				   X bsl N + Acc, F@_1, F@_2, F@_3, TrUserData);
+				   X bsl N + Acc, F@_1, F@_2, F@_3, F@_4,
+				   TrUserData);
 d_field_CompanyActionReq_value(<<0:1, X:7,
 				 Rest/binary>>,
-			       N, Acc, F@_1, _, F@_3, TrUserData) ->
+			       N, Acc, F@_1, F@_2, _, F@_4, TrUserData) ->
     {NewFValue, RestF} = {begin
 			    <<Res:64/signed-native>> = <<(X bsl N +
 							    Acc):64/unsigned-native>>,
@@ -1710,71 +2466,74 @@ d_field_CompanyActionReq_value(<<0:1, X:7,
 			  end,
 			  Rest},
     dfp_read_field_def_CompanyActionReq(RestF, 0, 0, F@_1,
-					NewFValue, F@_3, TrUserData).
+					F@_2, NewFValue, F@_4, TrUserData).
 
 d_field_CompanyActionReq_max_rate(<<0:16, 128, 127,
 				    Rest/binary>>,
-				  Z1, Z2, F@_1, F@_2, _, TrUserData) ->
+				  Z1, Z2, F@_1, F@_2, F@_3, _, TrUserData) ->
     dfp_read_field_def_CompanyActionReq(Rest, Z1, Z2, F@_1,
-					F@_2, id(infinity, TrUserData),
+					F@_2, F@_3, id(infinity, TrUserData),
 					TrUserData);
 d_field_CompanyActionReq_max_rate(<<0:16, 128, 255,
 				    Rest/binary>>,
-				  Z1, Z2, F@_1, F@_2, _, TrUserData) ->
+				  Z1, Z2, F@_1, F@_2, F@_3, _, TrUserData) ->
     dfp_read_field_def_CompanyActionReq(Rest, Z1, Z2, F@_1,
-					F@_2, id('-infinity', TrUserData),
+					F@_2, F@_3, id('-infinity', TrUserData),
 					TrUserData);
 d_field_CompanyActionReq_max_rate(<<_:16, 1:1, _:7, _:1,
 				    127:7, Rest/binary>>,
-				  Z1, Z2, F@_1, F@_2, _, TrUserData) ->
+				  Z1, Z2, F@_1, F@_2, F@_3, _, TrUserData) ->
     dfp_read_field_def_CompanyActionReq(Rest, Z1, Z2, F@_1,
-					F@_2, id(nan, TrUserData), TrUserData);
+					F@_2, F@_3, id(nan, TrUserData),
+					TrUserData);
 d_field_CompanyActionReq_max_rate(<<Value:32/little-float,
 				    Rest/binary>>,
-				  Z1, Z2, F@_1, F@_2, _, TrUserData) ->
+				  Z1, Z2, F@_1, F@_2, F@_3, _, TrUserData) ->
     dfp_read_field_def_CompanyActionReq(Rest, Z1, Z2, F@_1,
-					F@_2, id(Value, TrUserData),
+					F@_2, F@_3, id(Value, TrUserData),
 					TrUserData).
 
 skip_varint_CompanyActionReq(<<1:1, _:7, Rest/binary>>,
-			     Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+			     Z1, Z2, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
     skip_varint_CompanyActionReq(Rest, Z1, Z2, F@_1, F@_2,
-				 F@_3, TrUserData);
+				 F@_3, F@_4, TrUserData);
 skip_varint_CompanyActionReq(<<0:1, _:7, Rest/binary>>,
-			     Z1, Z2, F@_1, F@_2, F@_3, TrUserData) ->
+			     Z1, Z2, F@_1, F@_2, F@_3, F@_4, TrUserData) ->
     dfp_read_field_def_CompanyActionReq(Rest, Z1, Z2, F@_1,
-					F@_2, F@_3, TrUserData).
+					F@_2, F@_3, F@_4, TrUserData).
 
 skip_length_delimited_CompanyActionReq(<<1:1, X:7,
 					 Rest/binary>>,
-				       N, Acc, F@_1, F@_2, F@_3, TrUserData)
+				       N, Acc, F@_1, F@_2, F@_3, F@_4,
+				       TrUserData)
     when N < 57 ->
     skip_length_delimited_CompanyActionReq(Rest, N + 7,
 					   X bsl N + Acc, F@_1, F@_2, F@_3,
-					   TrUserData);
+					   F@_4, TrUserData);
 skip_length_delimited_CompanyActionReq(<<0:1, X:7,
 					 Rest/binary>>,
-				       N, Acc, F@_1, F@_2, F@_3, TrUserData) ->
+				       N, Acc, F@_1, F@_2, F@_3, F@_4,
+				       TrUserData) ->
     Length = X bsl N + Acc,
     <<_:Length/binary, Rest2/binary>> = Rest,
     dfp_read_field_def_CompanyActionReq(Rest2, 0, 0, F@_1,
-					F@_2, F@_3, TrUserData).
+					F@_2, F@_3, F@_4, TrUserData).
 
 skip_group_CompanyActionReq(Bin, FNum, Z2, F@_1, F@_2,
-			    F@_3, TrUserData) ->
+			    F@_3, F@_4, TrUserData) ->
     {_, Rest} = read_group(Bin, FNum),
     dfp_read_field_def_CompanyActionReq(Rest, 0, Z2, F@_1,
-					F@_2, F@_3, TrUserData).
+					F@_2, F@_3, F@_4, TrUserData).
 
 skip_32_CompanyActionReq(<<_:32, Rest/binary>>, Z1, Z2,
-			 F@_1, F@_2, F@_3, TrUserData) ->
+			 F@_1, F@_2, F@_3, F@_4, TrUserData) ->
     dfp_read_field_def_CompanyActionReq(Rest, Z1, Z2, F@_1,
-					F@_2, F@_3, TrUserData).
+					F@_2, F@_3, F@_4, TrUserData).
 
 skip_64_CompanyActionReq(<<_:64, Rest/binary>>, Z1, Z2,
-			 F@_1, F@_2, F@_3, TrUserData) ->
+			 F@_1, F@_2, F@_3, F@_4, TrUserData) ->
     dfp_read_field_def_CompanyActionReq(Rest, Z1, Z2, F@_1,
-					F@_2, F@_3, TrUserData).
+					F@_2, F@_3, F@_4, TrUserData).
 
 decode_msg_CompanyActionResp(Bin, TrUserData) ->
     dfp_read_field_def_CompanyActionResp(Bin, 0, 0,
@@ -2329,6 +3088,10 @@ skip_64_InvestorActionResp(<<_:64, Rest/binary>>, Z1,
     dfp_read_field_def_InvestorActionResp(Rest, Z1, Z2,
 					  F@_1, F@_2, TrUserData).
 
+'d_enum_MessageWrapper.MessageType'(0) -> 'SYNC';
+'d_enum_MessageWrapper.MessageType'(1) -> 'ASYNC';
+'d_enum_MessageWrapper.MessageType'(V) -> V.
+
 'd_enum_LoginResp.ClientType'(0) -> 'COMPANY';
 'd_enum_LoginResp.ClientType'(1) -> 'INVESTOR';
 'd_enum_LoginResp.ClientType'(V) -> V.
@@ -2340,6 +3103,10 @@ skip_64_InvestorActionResp(<<_:64, Rest/binary>>, Z1,
 'd_enum_LogoutResp.Status'(0) -> 'ERROR';
 'd_enum_LogoutResp.Status'(1) -> 'SUCCESS';
 'd_enum_LogoutResp.Status'(V) -> V.
+
+'d_enum_CompanyActionReq.RequestType'(0) -> 'AUCTION';
+'d_enum_CompanyActionReq.RequestType'(1) -> 'EMISSION';
+'d_enum_CompanyActionReq.RequestType'(V) -> V.
 
 'd_enum_CompanyActionResp.Status'(0) -> 'SUCCESS';
 'd_enum_CompanyActionResp.Status'(1) -> 'INVALID';
@@ -2429,6 +3196,12 @@ merge_msgs(Prev, New, MsgName, Opts) ->
     case MsgName of
       'MessageWrapper' ->
 	  merge_msg_MessageWrapper(Prev, New, TrUserData);
+      'EmissionFixedRateReq' ->
+	  merge_msg_EmissionFixedRateReq(Prev, New, TrUserData);
+      'EmissionFixedRateResp' ->
+	  merge_msg_EmissionFixedRateResp(Prev, New, TrUserData);
+      'AuctionEmissionResult' ->
+	  merge_msg_AuctionEmissionResult(Prev, New, TrUserData);
       'ErrorMsg' -> merge_msg_ErrorMsg(Prev, New, TrUserData);
       'LoginReq' -> merge_msg_LoginReq(Prev, New, TrUserData);
       'LoginResp' ->
@@ -2450,9 +3223,11 @@ merge_msgs(Prev, New, MsgName, Opts) ->
 -compile({nowarn_unused_function,merge_msg_MessageWrapper/3}).
 merge_msg_MessageWrapper(#'MessageWrapper'{inner_message
 					       = PFinner_message},
-			 #'MessageWrapper'{inner_message = NFinner_message},
+			 #'MessageWrapper'{msgType = NFmsgType,
+					   inner_message = NFinner_message},
 			 TrUserData) ->
-    #'MessageWrapper'{inner_message =
+    #'MessageWrapper'{msgType = NFmsgType,
+		      inner_message =
 			  case {PFinner_message, NFinner_message} of
 			    {{loginreq, OPFinner_message},
 			     {loginreq, ONFinner_message}} ->
@@ -2508,9 +3283,48 @@ merge_msg_MessageWrapper(#'MessageWrapper'{inner_message
 				 merge_msg_ErrorMsg(OPFinner_message,
 						    ONFinner_message,
 						    TrUserData)};
+			    {{emissionfixedratereq, OPFinner_message},
+			     {emissionfixedratereq, ONFinner_message}} ->
+				{emissionfixedratereq,
+				 merge_msg_EmissionFixedRateReq(OPFinner_message,
+								ONFinner_message,
+								TrUserData)};
+			    {{emissionfixedrateresp, OPFinner_message},
+			     {emissionfixedrateresp, ONFinner_message}} ->
+				{emissionfixedrateresp,
+				 merge_msg_EmissionFixedRateResp(OPFinner_message,
+								 ONFinner_message,
+								 TrUserData)};
+			    {{auctionemissionresult, OPFinner_message},
+			     {auctionemissionresult, ONFinner_message}} ->
+				{auctionemissionresult,
+				 merge_msg_AuctionEmissionResult(OPFinner_message,
+								 ONFinner_message,
+								 TrUserData)};
 			    {_, undefined} -> PFinner_message;
 			    _ -> NFinner_message
 			  end}.
+
+-compile({nowarn_unused_function,merge_msg_EmissionFixedRateReq/3}).
+merge_msg_EmissionFixedRateReq(#'EmissionFixedRateReq'{},
+			       #'EmissionFixedRateReq'{client = NFclient}, _) ->
+    #'EmissionFixedRateReq'{client = NFclient}.
+
+-compile({nowarn_unused_function,merge_msg_EmissionFixedRateResp/3}).
+merge_msg_EmissionFixedRateResp(#'EmissionFixedRateResp'{},
+				#'EmissionFixedRateResp'{client = NFclient,
+							 rate = NFrate},
+				_) ->
+    #'EmissionFixedRateResp'{client = NFclient,
+			     rate = NFrate}.
+
+-compile({nowarn_unused_function,merge_msg_AuctionEmissionResult/3}).
+merge_msg_AuctionEmissionResult(#'AuctionEmissionResult'{},
+				#'AuctionEmissionResult'{client = NFclient,
+							 msg = NFmsg},
+				_) ->
+    #'AuctionEmissionResult'{client = NFclient,
+			     msg = NFmsg}.
 
 -compile({nowarn_unused_function,merge_msg_ErrorMsg/3}).
 merge_msg_ErrorMsg(#'ErrorMsg'{},
@@ -2542,17 +3356,15 @@ merge_msg_LogoutResp(#'LogoutResp'{},
     #'LogoutResp'{status = NFstatus}.
 
 -compile({nowarn_unused_function,merge_msg_CompanyActionReq/3}).
-merge_msg_CompanyActionReq(#'CompanyActionReq'{max_rate
-						   = PFmax_rate},
+merge_msg_CompanyActionReq(#'CompanyActionReq'{},
 			   #'CompanyActionReq'{client = NFclient,
+					       reqType = NFreqType,
 					       value = NFvalue,
 					       max_rate = NFmax_rate},
 			   _) ->
-    #'CompanyActionReq'{client = NFclient, value = NFvalue,
-			max_rate =
-			    if NFmax_rate =:= undefined -> PFmax_rate;
-			       true -> NFmax_rate
-			    end}.
+    #'CompanyActionReq'{client = NFclient,
+			reqType = NFreqType, value = NFvalue,
+			max_rate = NFmax_rate}.
 
 -compile({nowarn_unused_function,merge_msg_CompanyActionResp/3}).
 merge_msg_CompanyActionResp(#'CompanyActionResp'{},
@@ -2605,6 +3417,12 @@ verify_msg(Msg, MsgName, Opts) ->
     case MsgName of
       'MessageWrapper' ->
 	  v_msg_MessageWrapper(Msg, [MsgName], TrUserData);
+      'EmissionFixedRateReq' ->
+	  v_msg_EmissionFixedRateReq(Msg, [MsgName], TrUserData);
+      'EmissionFixedRateResp' ->
+	  v_msg_EmissionFixedRateResp(Msg, [MsgName], TrUserData);
+      'AuctionEmissionResult' ->
+	  v_msg_AuctionEmissionResult(Msg, [MsgName], TrUserData);
       'ErrorMsg' ->
 	  v_msg_ErrorMsg(Msg, [MsgName], TrUserData);
       'LoginReq' ->
@@ -2629,49 +3447,102 @@ verify_msg(Msg, MsgName, Opts) ->
 
 -compile({nowarn_unused_function,v_msg_MessageWrapper/3}).
 -dialyzer({nowarn_function,v_msg_MessageWrapper/3}).
-v_msg_MessageWrapper(#'MessageWrapper'{inner_message =
-					   F1},
+v_msg_MessageWrapper(#'MessageWrapper'{msgType = F1,
+				       inner_message = F2},
 		     Path, TrUserData) ->
-    case F1 of
+    'v_enum_MessageWrapper.MessageType'(F1,
+					[msgType | Path], TrUserData),
+    case F2 of
       undefined -> ok;
-      {loginreq, OF1} ->
-	  v_msg_LoginReq(OF1, [loginreq, inner_message | Path],
+      {loginreq, OF2} ->
+	  v_msg_LoginReq(OF2, [loginreq, inner_message | Path],
 			 TrUserData);
-      {loginresp, OF1} ->
-	  v_msg_LoginResp(OF1, [loginresp, inner_message | Path],
+      {loginresp, OF2} ->
+	  v_msg_LoginResp(OF2, [loginresp, inner_message | Path],
 			  TrUserData);
-      {logoutreq, OF1} ->
-	  v_msg_LogoutReq(OF1, [logoutreq, inner_message | Path],
+      {logoutreq, OF2} ->
+	  v_msg_LogoutReq(OF2, [logoutreq, inner_message | Path],
 			  TrUserData);
-      {logoutresp, OF1} ->
-	  v_msg_LogoutResp(OF1,
+      {logoutresp, OF2} ->
+	  v_msg_LogoutResp(OF2,
 			   [logoutresp, inner_message | Path], TrUserData);
-      {companyactionreq, OF1} ->
-	  v_msg_CompanyActionReq(OF1,
+      {companyactionreq, OF2} ->
+	  v_msg_CompanyActionReq(OF2,
 				 [companyactionreq, inner_message | Path],
 				 TrUserData);
-      {companyactionresp, OF1} ->
-	  v_msg_CompanyActionResp(OF1,
+      {companyactionresp, OF2} ->
+	  v_msg_CompanyActionResp(OF2,
 				  [companyactionresp, inner_message | Path],
 				  TrUserData);
-      {investoractionreq, OF1} ->
-	  v_msg_InvestorActionReq(OF1,
+      {investoractionreq, OF2} ->
+	  v_msg_InvestorActionReq(OF2,
 				  [investoractionreq, inner_message | Path],
 				  TrUserData);
-      {investoractionresp, OF1} ->
-	  v_msg_InvestorActionResp(OF1,
+      {investoractionresp, OF2} ->
+	  v_msg_InvestorActionResp(OF2,
 				   [investoractionresp, inner_message | Path],
 				   TrUserData);
-      {errormsg, OF1} ->
-	  v_msg_ErrorMsg(OF1, [errormsg, inner_message | Path],
+      {errormsg, OF2} ->
+	  v_msg_ErrorMsg(OF2, [errormsg, inner_message | Path],
 			 TrUserData);
+      {emissionfixedratereq, OF2} ->
+	  v_msg_EmissionFixedRateReq(OF2,
+				     [emissionfixedratereq, inner_message
+				      | Path],
+				     TrUserData);
+      {emissionfixedrateresp, OF2} ->
+	  v_msg_EmissionFixedRateResp(OF2,
+				      [emissionfixedrateresp, inner_message
+				       | Path],
+				      TrUserData);
+      {auctionemissionresult, OF2} ->
+	  v_msg_AuctionEmissionResult(OF2,
+				      [auctionemissionresult, inner_message
+				       | Path],
+				      TrUserData);
       _ ->
-	  mk_type_error(invalid_oneof, F1, [inner_message | Path])
+	  mk_type_error(invalid_oneof, F2, [inner_message | Path])
     end,
     ok;
 v_msg_MessageWrapper(X, Path, _TrUserData) ->
     mk_type_error({expected_msg, 'MessageWrapper'}, X,
 		  Path).
+
+-compile({nowarn_unused_function,v_msg_EmissionFixedRateReq/3}).
+-dialyzer({nowarn_function,v_msg_EmissionFixedRateReq/3}).
+v_msg_EmissionFixedRateReq(#'EmissionFixedRateReq'{client
+						       = F1},
+			   Path, TrUserData) ->
+    v_type_string(F1, [client | Path], TrUserData), ok;
+v_msg_EmissionFixedRateReq(X, Path, _TrUserData) ->
+    mk_type_error({expected_msg, 'EmissionFixedRateReq'}, X,
+		  Path).
+
+-compile({nowarn_unused_function,v_msg_EmissionFixedRateResp/3}).
+-dialyzer({nowarn_function,v_msg_EmissionFixedRateResp/3}).
+v_msg_EmissionFixedRateResp(#'EmissionFixedRateResp'{client
+							 = F1,
+						     rate = F2},
+			    Path, TrUserData) ->
+    v_type_string(F1, [client | Path], TrUserData),
+    v_type_float(F2, [rate | Path], TrUserData),
+    ok;
+v_msg_EmissionFixedRateResp(X, Path, _TrUserData) ->
+    mk_type_error({expected_msg, 'EmissionFixedRateResp'},
+		  X, Path).
+
+-compile({nowarn_unused_function,v_msg_AuctionEmissionResult/3}).
+-dialyzer({nowarn_function,v_msg_AuctionEmissionResult/3}).
+v_msg_AuctionEmissionResult(#'AuctionEmissionResult'{client
+							 = F1,
+						     msg = F2},
+			    Path, TrUserData) ->
+    v_type_string(F1, [client | Path], TrUserData),
+    v_type_string(F2, [msg | Path], TrUserData),
+    ok;
+v_msg_AuctionEmissionResult(X, Path, _TrUserData) ->
+    mk_type_error({expected_msg, 'AuctionEmissionResult'},
+		  X, Path).
 
 -compile({nowarn_unused_function,v_msg_ErrorMsg/3}).
 -dialyzer({nowarn_function,v_msg_ErrorMsg/3}).
@@ -2727,13 +3598,14 @@ v_msg_LogoutResp(X, Path, _TrUserData) ->
 -compile({nowarn_unused_function,v_msg_CompanyActionReq/3}).
 -dialyzer({nowarn_function,v_msg_CompanyActionReq/3}).
 v_msg_CompanyActionReq(#'CompanyActionReq'{client = F1,
-					   value = F2, max_rate = F3},
+					   reqType = F2, value = F3,
+					   max_rate = F4},
 		       Path, TrUserData) ->
     v_type_string(F1, [client | Path], TrUserData),
-    v_type_int64(F2, [value | Path], TrUserData),
-    if F3 == undefined -> ok;
-       true -> v_type_float(F3, [max_rate | Path], TrUserData)
-    end,
+    'v_enum_CompanyActionReq.RequestType'(F2,
+					  [reqType | Path], TrUserData),
+    v_type_int64(F3, [value | Path], TrUserData),
+    v_type_float(F4, [max_rate | Path], TrUserData),
     ok;
 v_msg_CompanyActionReq(X, Path, _TrUserData) ->
     mk_type_error({expected_msg, 'CompanyActionReq'}, X,
@@ -2787,6 +3659,23 @@ v_msg_InvestorActionResp(X, Path, _TrUserData) ->
     mk_type_error({expected_msg, 'InvestorActionResp'}, X,
 		  Path).
 
+-compile({nowarn_unused_function,'v_enum_MessageWrapper.MessageType'/3}).
+-dialyzer({nowarn_function,'v_enum_MessageWrapper.MessageType'/3}).
+'v_enum_MessageWrapper.MessageType'('SYNC', _Path,
+				    _TrUserData) ->
+    ok;
+'v_enum_MessageWrapper.MessageType'('ASYNC', _Path,
+				    _TrUserData) ->
+    ok;
+'v_enum_MessageWrapper.MessageType'(V, Path, TrUserData)
+    when is_integer(V) ->
+    v_type_sint32(V, Path, TrUserData);
+'v_enum_MessageWrapper.MessageType'(X, Path,
+				    _TrUserData) ->
+    mk_type_error({invalid_enum,
+		   'MessageWrapper.MessageType'},
+		  X, Path).
+
 -compile({nowarn_unused_function,'v_enum_LoginResp.ClientType'/3}).
 -dialyzer({nowarn_function,'v_enum_LoginResp.ClientType'/3}).
 'v_enum_LoginResp.ClientType'('COMPANY', _Path,
@@ -2831,6 +3720,24 @@ v_msg_InvestorActionResp(X, Path, _TrUserData) ->
 'v_enum_LogoutResp.Status'(X, Path, _TrUserData) ->
     mk_type_error({invalid_enum, 'LogoutResp.Status'}, X,
 		  Path).
+
+-compile({nowarn_unused_function,'v_enum_CompanyActionReq.RequestType'/3}).
+-dialyzer({nowarn_function,'v_enum_CompanyActionReq.RequestType'/3}).
+'v_enum_CompanyActionReq.RequestType'('AUCTION', _Path,
+				      _TrUserData) ->
+    ok;
+'v_enum_CompanyActionReq.RequestType'('EMISSION', _Path,
+				      _TrUserData) ->
+    ok;
+'v_enum_CompanyActionReq.RequestType'(V, Path,
+				      TrUserData)
+    when is_integer(V) ->
+    v_type_sint32(V, Path, TrUserData);
+'v_enum_CompanyActionReq.RequestType'(X, Path,
+				      _TrUserData) ->
+    mk_type_error({invalid_enum,
+		   'CompanyActionReq.RequestType'},
+		  X, Path).
 
 -compile({nowarn_unused_function,'v_enum_CompanyActionResp.Status'/3}).
 -dialyzer({nowarn_function,'v_enum_CompanyActionResp.Status'/3}).
@@ -2985,7 +3892,9 @@ cons(Elem, Acc, _TrUserData) -> [Elem | Acc].
 'erlang_++'(A, B, _TrUserData) -> A ++ B.
 
 get_msg_defs() ->
-    [{{enum, 'LoginResp.ClientType'},
+    [{{enum, 'MessageWrapper.MessageType'},
+      [{'SYNC', 0}, {'ASYNC', 1}]},
+     {{enum, 'LoginResp.ClientType'},
       [{'COMPANY', 0}, {'INVESTOR', 1}]},
      {{enum, 'LoginResp.Status'},
       [{'INVALID', 0}, {'SUCCESS', 1}]},
@@ -3001,35 +3910,60 @@ get_msg_defs() ->
       [{'CONFIRMED', 0}, {'REPLACED', 1}, {'ENDED', 2},
        {'INVALID', 3}]},
      {{msg, 'MessageWrapper'},
-      [#gpb_oneof{name = inner_message, rnum = 2,
+      [#field{name = msgType, fnum = 1, rnum = 2,
+	      type = {enum, 'MessageWrapper.MessageType'},
+	      occurrence = required, opts = []},
+       #gpb_oneof{name = inner_message, rnum = 3,
 		  fields =
-		      [#field{name = loginreq, fnum = 1, rnum = 2,
+		      [#field{name = loginreq, fnum = 2, rnum = 3,
 			      type = {msg, 'LoginReq'}, occurrence = optional,
 			      opts = []},
-		       #field{name = loginresp, fnum = 2, rnum = 2,
+		       #field{name = loginresp, fnum = 3, rnum = 3,
 			      type = {msg, 'LoginResp'}, occurrence = optional,
 			      opts = []},
-		       #field{name = logoutreq, fnum = 3, rnum = 2,
+		       #field{name = logoutreq, fnum = 4, rnum = 3,
 			      type = {msg, 'LogoutReq'}, occurrence = optional,
 			      opts = []},
-		       #field{name = logoutresp, fnum = 4, rnum = 2,
+		       #field{name = logoutresp, fnum = 5, rnum = 3,
 			      type = {msg, 'LogoutResp'}, occurrence = optional,
 			      opts = []},
-		       #field{name = companyactionreq, fnum = 5, rnum = 2,
+		       #field{name = companyactionreq, fnum = 6, rnum = 3,
 			      type = {msg, 'CompanyActionReq'},
 			      occurrence = optional, opts = []},
-		       #field{name = companyactionresp, fnum = 6, rnum = 2,
+		       #field{name = companyactionresp, fnum = 7, rnum = 3,
 			      type = {msg, 'CompanyActionResp'},
 			      occurrence = optional, opts = []},
-		       #field{name = investoractionreq, fnum = 7, rnum = 2,
+		       #field{name = investoractionreq, fnum = 8, rnum = 3,
 			      type = {msg, 'InvestorActionReq'},
 			      occurrence = optional, opts = []},
-		       #field{name = investoractionresp, fnum = 8, rnum = 2,
+		       #field{name = investoractionresp, fnum = 9, rnum = 3,
 			      type = {msg, 'InvestorActionResp'},
 			      occurrence = optional, opts = []},
-		       #field{name = errormsg, fnum = 9, rnum = 2,
+		       #field{name = errormsg, fnum = 10, rnum = 3,
 			      type = {msg, 'ErrorMsg'}, occurrence = optional,
-			      opts = []}]}]},
+			      opts = []},
+		       #field{name = emissionfixedratereq, fnum = 11, rnum = 3,
+			      type = {msg, 'EmissionFixedRateReq'},
+			      occurrence = optional, opts = []},
+		       #field{name = emissionfixedrateresp, fnum = 12,
+			      rnum = 3, type = {msg, 'EmissionFixedRateResp'},
+			      occurrence = optional, opts = []},
+		       #field{name = auctionemissionresult, fnum = 13,
+			      rnum = 3, type = {msg, 'AuctionEmissionResult'},
+			      occurrence = optional, opts = []}]}]},
+     {{msg, 'EmissionFixedRateReq'},
+      [#field{name = client, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []}]},
+     {{msg, 'EmissionFixedRateResp'},
+      [#field{name = client, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = rate, fnum = 2, rnum = 3, type = float,
+	      occurrence = required, opts = []}]},
+     {{msg, 'AuctionEmissionResult'},
+      [#field{name = client, fnum = 1, rnum = 2,
+	      type = string, occurrence = required, opts = []},
+       #field{name = msg, fnum = 2, rnum = 3, type = string,
+	      occurrence = required, opts = []}]},
      {{msg, 'ErrorMsg'},
       [#field{name = error, fnum = 1, rnum = 2, type = string,
 	      occurrence = required, opts = []}]},
@@ -3055,10 +3989,13 @@ get_msg_defs() ->
      {{msg, 'CompanyActionReq'},
       [#field{name = client, fnum = 1, rnum = 2,
 	      type = string, occurrence = required, opts = []},
-       #field{name = value, fnum = 3, rnum = 3, type = int64,
+       #field{name = reqType, fnum = 2, rnum = 3,
+	      type = {enum, 'CompanyActionReq.RequestType'},
 	      occurrence = required, opts = []},
-       #field{name = max_rate, fnum = 4, rnum = 4,
-	      type = float, occurrence = optional, opts = []}]},
+       #field{name = value, fnum = 3, rnum = 4, type = int64,
+	      occurrence = required, opts = []},
+       #field{name = max_rate, fnum = 4, rnum = 5,
+	      type = float, occurrence = required, opts = []}]},
      {{msg, 'CompanyActionResp'},
       [#field{name = client, fnum = 1, rnum = 2,
 	      type = string, occurrence = required, opts = []},
@@ -3086,25 +4023,28 @@ get_msg_defs() ->
 
 
 get_msg_names() ->
-    ['MessageWrapper', 'ErrorMsg', 'LoginReq', 'LoginResp',
-     'LogoutReq', 'LogoutResp', 'CompanyActionReq',
-     'CompanyActionResp', 'InvestorActionReq',
-     'InvestorActionResp'].
+    ['MessageWrapper', 'EmissionFixedRateReq',
+     'EmissionFixedRateResp', 'AuctionEmissionResult',
+     'ErrorMsg', 'LoginReq', 'LoginResp', 'LogoutReq',
+     'LogoutResp', 'CompanyActionReq', 'CompanyActionResp',
+     'InvestorActionReq', 'InvestorActionResp'].
 
 
 get_group_names() -> [].
 
 
 get_msg_or_group_names() ->
-    ['MessageWrapper', 'ErrorMsg', 'LoginReq', 'LoginResp',
-     'LogoutReq', 'LogoutResp', 'CompanyActionReq',
-     'CompanyActionResp', 'InvestorActionReq',
-     'InvestorActionResp'].
+    ['MessageWrapper', 'EmissionFixedRateReq',
+     'EmissionFixedRateResp', 'AuctionEmissionResult',
+     'ErrorMsg', 'LoginReq', 'LoginResp', 'LogoutReq',
+     'LogoutResp', 'CompanyActionReq', 'CompanyActionResp',
+     'InvestorActionReq', 'InvestorActionResp'].
 
 
 get_enum_names() ->
-    ['LoginResp.ClientType', 'LoginResp.Status',
-     'LogoutResp.Status', 'CompanyActionReq.RequestType',
+    ['MessageWrapper.MessageType', 'LoginResp.ClientType',
+     'LoginResp.Status', 'LogoutResp.Status',
+     'CompanyActionReq.RequestType',
      'CompanyActionResp.Status',
      'InvestorActionReq.RequestType',
      'InvestorActionResp.Status'].
@@ -3125,35 +4065,60 @@ fetch_enum_def(EnumName) ->
 
 
 find_msg_def('MessageWrapper') ->
-    [#gpb_oneof{name = inner_message, rnum = 2,
+    [#field{name = msgType, fnum = 1, rnum = 2,
+	    type = {enum, 'MessageWrapper.MessageType'},
+	    occurrence = required, opts = []},
+     #gpb_oneof{name = inner_message, rnum = 3,
 		fields =
-		    [#field{name = loginreq, fnum = 1, rnum = 2,
+		    [#field{name = loginreq, fnum = 2, rnum = 3,
 			    type = {msg, 'LoginReq'}, occurrence = optional,
 			    opts = []},
-		     #field{name = loginresp, fnum = 2, rnum = 2,
+		     #field{name = loginresp, fnum = 3, rnum = 3,
 			    type = {msg, 'LoginResp'}, occurrence = optional,
 			    opts = []},
-		     #field{name = logoutreq, fnum = 3, rnum = 2,
+		     #field{name = logoutreq, fnum = 4, rnum = 3,
 			    type = {msg, 'LogoutReq'}, occurrence = optional,
 			    opts = []},
-		     #field{name = logoutresp, fnum = 4, rnum = 2,
+		     #field{name = logoutresp, fnum = 5, rnum = 3,
 			    type = {msg, 'LogoutResp'}, occurrence = optional,
 			    opts = []},
-		     #field{name = companyactionreq, fnum = 5, rnum = 2,
+		     #field{name = companyactionreq, fnum = 6, rnum = 3,
 			    type = {msg, 'CompanyActionReq'},
 			    occurrence = optional, opts = []},
-		     #field{name = companyactionresp, fnum = 6, rnum = 2,
+		     #field{name = companyactionresp, fnum = 7, rnum = 3,
 			    type = {msg, 'CompanyActionResp'},
 			    occurrence = optional, opts = []},
-		     #field{name = investoractionreq, fnum = 7, rnum = 2,
+		     #field{name = investoractionreq, fnum = 8, rnum = 3,
 			    type = {msg, 'InvestorActionReq'},
 			    occurrence = optional, opts = []},
-		     #field{name = investoractionresp, fnum = 8, rnum = 2,
+		     #field{name = investoractionresp, fnum = 9, rnum = 3,
 			    type = {msg, 'InvestorActionResp'},
 			    occurrence = optional, opts = []},
-		     #field{name = errormsg, fnum = 9, rnum = 2,
+		     #field{name = errormsg, fnum = 10, rnum = 3,
 			    type = {msg, 'ErrorMsg'}, occurrence = optional,
-			    opts = []}]}];
+			    opts = []},
+		     #field{name = emissionfixedratereq, fnum = 11, rnum = 3,
+			    type = {msg, 'EmissionFixedRateReq'},
+			    occurrence = optional, opts = []},
+		     #field{name = emissionfixedrateresp, fnum = 12,
+			    rnum = 3, type = {msg, 'EmissionFixedRateResp'},
+			    occurrence = optional, opts = []},
+		     #field{name = auctionemissionresult, fnum = 13,
+			    rnum = 3, type = {msg, 'AuctionEmissionResult'},
+			    occurrence = optional, opts = []}]}];
+find_msg_def('EmissionFixedRateReq') ->
+    [#field{name = client, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []}];
+find_msg_def('EmissionFixedRateResp') ->
+    [#field{name = client, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = rate, fnum = 2, rnum = 3, type = float,
+	    occurrence = required, opts = []}];
+find_msg_def('AuctionEmissionResult') ->
+    [#field{name = client, fnum = 1, rnum = 2,
+	    type = string, occurrence = required, opts = []},
+     #field{name = msg, fnum = 2, rnum = 3, type = string,
+	    occurrence = required, opts = []}];
 find_msg_def('ErrorMsg') ->
     [#field{name = error, fnum = 1, rnum = 2, type = string,
 	    occurrence = required, opts = []}];
@@ -3179,10 +4144,13 @@ find_msg_def('LogoutResp') ->
 find_msg_def('CompanyActionReq') ->
     [#field{name = client, fnum = 1, rnum = 2,
 	    type = string, occurrence = required, opts = []},
-     #field{name = value, fnum = 3, rnum = 3, type = int64,
+     #field{name = reqType, fnum = 2, rnum = 3,
+	    type = {enum, 'CompanyActionReq.RequestType'},
 	    occurrence = required, opts = []},
-     #field{name = max_rate, fnum = 4, rnum = 4,
-	    type = float, occurrence = optional, opts = []}];
+     #field{name = value, fnum = 3, rnum = 4, type = int64,
+	    occurrence = required, opts = []},
+     #field{name = max_rate, fnum = 4, rnum = 5,
+	    type = float, occurrence = required, opts = []}];
 find_msg_def('CompanyActionResp') ->
     [#field{name = client, fnum = 1, rnum = 2,
 	    type = string, occurrence = required, opts = []},
@@ -3210,6 +4178,8 @@ find_msg_def('InvestorActionResp') ->
 find_msg_def(_) -> error.
 
 
+find_enum_def('MessageWrapper.MessageType') ->
+    [{'SYNC', 0}, {'ASYNC', 1}];
 find_enum_def('LoginResp.ClientType') ->
     [{'COMPANY', 0}, {'INVESTOR', 1}];
 find_enum_def('LoginResp.Status') ->
@@ -3228,6 +4198,9 @@ find_enum_def('InvestorActionResp.Status') ->
 find_enum_def(_) -> error.
 
 
+enum_symbol_by_value('MessageWrapper.MessageType',
+		     Value) ->
+    'enum_symbol_by_value_MessageWrapper.MessageType'(Value);
 enum_symbol_by_value('LoginResp.ClientType', Value) ->
     'enum_symbol_by_value_LoginResp.ClientType'(Value);
 enum_symbol_by_value('LoginResp.Status', Value) ->
@@ -3248,6 +4221,9 @@ enum_symbol_by_value('InvestorActionResp.Status',
     'enum_symbol_by_value_InvestorActionResp.Status'(Value).
 
 
+enum_value_by_symbol('MessageWrapper.MessageType',
+		     Sym) ->
+    'enum_value_by_symbol_MessageWrapper.MessageType'(Sym);
 enum_value_by_symbol('LoginResp.ClientType', Sym) ->
     'enum_value_by_symbol_LoginResp.ClientType'(Sym);
 enum_value_by_symbol('LoginResp.Status', Sym) ->
@@ -3266,6 +4242,17 @@ enum_value_by_symbol('InvestorActionResp.Status',
 		     Sym) ->
     'enum_value_by_symbol_InvestorActionResp.Status'(Sym).
 
+
+'enum_symbol_by_value_MessageWrapper.MessageType'(0) ->
+    'SYNC';
+'enum_symbol_by_value_MessageWrapper.MessageType'(1) ->
+    'ASYNC'.
+
+
+'enum_value_by_symbol_MessageWrapper.MessageType'('SYNC') ->
+    0;
+'enum_value_by_symbol_MessageWrapper.MessageType'('ASYNC') ->
+    1.
 
 'enum_symbol_by_value_LoginResp.ClientType'(0) ->
     'COMPANY';
