@@ -37,7 +37,7 @@ public class CompanyWorker extends Thread{
 
         } while(company.isLoggedIn());
 
-        System.out.println("Logged out!!");
+        System.out.println("Logged out!");
     }
 
     private void processOption(int option) {
@@ -81,8 +81,8 @@ public class CompanyWorker extends Thread{
 
         float rate = getEmissionFixedRate();
 
-        if(rate == -1){
-            System.out.println("Não é possível criar emissão!!");
+        if(rate == -1) {
+            System.out.println("Não é possível criar emissão!");
             return;
         }
 
@@ -110,7 +110,7 @@ public class CompanyWorker extends Thread{
                     System.out.println("Emissão criada com sucesso!!");
                     break;
                 case INVALID:
-                    System.out.println("Criação de Emissão inválida!!");
+                    System.out.println("Criação de emissão inválida!");
                     break;
             }
         }
@@ -136,10 +136,10 @@ public class CompanyWorker extends Thread{
         if(companyResp != null) {
             switch (companyResp.getStatus()) {
                 case SUCCESS:
-                    System.out.println("Leilão criado com sucesso!!");
+                    System.out.println("Leilão criado com sucesso!");
                     break;
                 case INVALID:
-                    System.out.println("Criação de Leilão inválida!!");
+                    System.out.println("Criação de leilão inválida!");
                     break;
             }
         }
@@ -155,6 +155,7 @@ public class CompanyWorker extends Thread{
         Protos.EmissionFixedRateReq emissionRateMsg = Protos.EmissionFixedRateReq.newBuilder()
                 .setClient(this.name)
                 .build();
+
         return Protos.MessageWrapper.newBuilder()
                 .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
                 .setEmissionfixedratereq(emissionRateMsg).build();
@@ -190,9 +191,9 @@ public class CompanyWorker extends Thread{
         Protos.LogoutReq logoutMsg = Protos.LogoutReq.newBuilder()
                 .setName(this.name)
                 .build();
+
         return Protos.MessageWrapper.newBuilder()
                 .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
                 .setLogoutreq(logoutMsg).build();
     }
-
 }

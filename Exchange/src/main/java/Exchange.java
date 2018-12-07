@@ -121,7 +121,7 @@ public class Exchange {
                 Auction a = new Auction(value, rate);
                 c.setActiveAuction(a);
 
-                //directoryManager.postAuction(a, c.getName());
+                directoryManager.postAuction(a, c.getName());
                 scheduler.schedule(new ScheduledExecutor(c, push, pub, directoryManager), delayTime, TimeUnit.MINUTES);
 
                 notification = c.getName() + ": Criação de Leilão, Montante: " + value + ", Taxa Max.: " + rate;
@@ -131,7 +131,7 @@ public class Exchange {
                 Emission e = new Emission(value);
                 c.setActiveEmission(e);
 
-                //directoryManager.postEmission(e, c.getName());
+                directoryManager.postEmission(e, c.getName());
                 scheduler.schedule(new ScheduledExecutor(c, push, pub, directoryManager), delayTime, TimeUnit.MINUTES);
 
                 notification = c.getName() + ": Criação de Emissão, Montante: " + value + ", Taxa: " + rate;

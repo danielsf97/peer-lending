@@ -36,19 +36,20 @@ public class ClientType {
         this.numAsyncMessages++;
     }
 
-    public synchronized void setSyncMessage(Protos.MessageWrapper syncMessage){
+    public synchronized void setSyncMessage(Protos.MessageWrapper syncMessage) {
         this.syncMessage = syncMessage;
         this.notify();
     }
 
-    public synchronized Protos.MessageWrapper getSyncMessage(){
-        Protos.MessageWrapper msg = null;
+    public synchronized Protos.MessageWrapper getSyncMessage() {
+        Protos.MessageWrapper msg;
         try {
 
             if (this.syncMessage == null)
                 this.wait();
 
-        } catch (InterruptedException e) {
+        }
+        catch (InterruptedException e) {
             e.printStackTrace();
             return getSyncMessage();
         }
@@ -63,10 +64,11 @@ public class ClientType {
         String msg;
         StringBuilder sb = new StringBuilder();
 
-        while((msg = asyncMessages.pollFirst()) != null){
+        while((msg = asyncMessages.pollFirst()) != null) {
             sb.append(msg).append("\n");
             numAsyncMessages--;
         }
+
         return sb.toString();
     }
 }

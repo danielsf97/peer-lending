@@ -69,8 +69,11 @@ public class AuctionsResource {
             throw new RestException("Não existe leilão ativo para essa empresa", Response.Status.NOT_FOUND);
         }
 
+        activeAuctions.remove(save);
+
         History h = companies.get(company);
         h.addAuction(save);
+
         return Response.ok().build();
     }
 }

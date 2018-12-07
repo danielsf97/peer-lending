@@ -5,7 +5,7 @@ import java.nio.channels.SocketChannel;
 
 public class Utils {
 
-    public static Protos.MessageWrapper sendAndRecv(Protos.MessageWrapper req, SocketChannel socket, ClientType client){
+    public static Protos.MessageWrapper sendAndRecv(Protos.MessageWrapper req, SocketChannel socket, ClientType client) {
         Protos.MessageWrapper resp = null;
 
         try {

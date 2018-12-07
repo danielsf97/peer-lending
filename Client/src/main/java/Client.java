@@ -30,10 +30,12 @@ public class Client {
             if (loginResp.getStatus() == Protos.LoginResp.Status.SUCCESS) {
                 if (loginResp.getCType() == Protos.LoginResp.ClientType.COMPANY) {
                     return new Company(user);
-                } else {
+                }
+                else {
                     return new Investor(user);
                 }
-            } else {
+            }
+            else {
                 System.out.println("Credenciais inválidas!");
                 return login(socket);
             }
@@ -41,7 +43,7 @@ public class Client {
         return login(socket);
     }
 
-    public static Protos.LoginResp getLoginResp(byte [] resp){
+    public static Protos.LoginResp getLoginResp(byte[] resp) {
         try {
             Protos.MessageWrapper msg = Protos.MessageWrapper.parseFrom(resp);
             if(msg.hasLoginresp())
@@ -74,12 +76,13 @@ public class Client {
 
         ClientType clientType = login(socket);
 
-        if(clientType instanceof Company){
+        if(clientType instanceof Company) {
             Company company = (Company) clientType;
             CompanyWorker comp_worker = new CompanyWorker(socket, company);
 
             comp_worker.start();
-        }else {
+        }
+        else {
             Investor investor = (Investor) clientType;
 
             ZMQ.Context context = ZMQ.context(1);

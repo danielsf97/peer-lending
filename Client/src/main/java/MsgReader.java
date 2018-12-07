@@ -5,7 +5,7 @@ public class MsgReader extends Thread{
     private SocketChannel sc;
     private ClientType client;
 
-    public MsgReader(SocketChannel socket, ClientType client){
+    public MsgReader(SocketChannel socket, ClientType client) {
         this.sc = socket;
         this.client = client;
     }
@@ -15,7 +15,7 @@ public class MsgReader extends Thread{
         Protos.MessageWrapper msg;
         try {
 
-            while ((msg_b = Utils.recv_msg(sc)) != null){
+            while ((msg_b = Utils.recv_msg(sc)) != null) {
 
                 msg = Protos.MessageWrapper.parseFrom(msg_b);
                 switch (msg.getMsgType()){
@@ -28,7 +28,8 @@ public class MsgReader extends Thread{
                 }
             }
 
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }

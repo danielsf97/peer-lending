@@ -38,7 +38,7 @@ public class DirectoryManager {
     }
 
     public void deleteHttp(String partialUri, String company) throws Exception {
-        URL url = new URL("http://localhost:8080/companies/" + company + "/" + partialUri);
+        URL url = new URL("http://localhost:8080/" + partialUri + "/" + company);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("DELETE");
         conn.setDoOutput(true);
@@ -62,11 +62,11 @@ public class DirectoryManager {
     }
 
     public void deleteAuction(String company) throws Exception {
-        deleteHttp("auctionHistory", company);
+        deleteHttp("activeAuctions", company);
     }
 
     public void deleteEmission(String company) throws Exception {
-        deleteHttp("emissionHistory", company);
+        deleteHttp("activeEmissions", company);
     }
 
     class AuctionRep {

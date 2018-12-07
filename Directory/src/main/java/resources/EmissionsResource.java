@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.Map;
 
-@Path("/emissions")
+@Path("/activeEmissions")
 @Produces(MediaType.APPLICATION_JSON)
 public class EmissionsResource {
     private Map<String, History> companies;
@@ -67,8 +67,11 @@ public class EmissionsResource {
             throw new RestException("Não existe leilão ativo para essa empresa", Response.Status.NOT_FOUND);
         }
 
+        activeEmissions.remove(save);
+
         History h = companies.get(company);
         h.addEmission(save);
+
         return Response.ok().build();
     }
 }

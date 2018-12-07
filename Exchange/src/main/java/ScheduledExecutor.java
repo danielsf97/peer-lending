@@ -82,7 +82,7 @@ public class ScheduledExecutor implements Runnable {
         push.send(msgEmpresa.toByteArray());
         pub.send(notification);
 
-        //dir.deleteAuction(this.company.getName());
+        dir.deleteAuction(this.company.getName());
     }
 
     private Protos.MessageWrapper createAuctionWinningResultMsg(Pair winnerVal) {
@@ -168,7 +168,7 @@ public class ScheduledExecutor implements Runnable {
         push.send(msgEmpresa.toByteArray());
         pub.send(notification);
 
-        //dir.deleteEmission(this.company.getName());
+        dir.deleteEmission(this.company.getName());
     }
 
     private Protos.MessageWrapper createEmissionWinningResultMsg(Pair winnerVal) {
