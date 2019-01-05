@@ -1,6 +1,5 @@
 package resources;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import core.History;
 import exceptions.RestException;
 import representations.ActiveAuction;

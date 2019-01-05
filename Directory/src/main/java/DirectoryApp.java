@@ -17,7 +17,10 @@ public class DirectoryApp extends Application<Configuration> {
     private List<ActiveAuction> activeAuctions;
     private List<ActiveEmission> activeEmissions;
 
-
+    /**
+     *
+     *
+     */
     public DirectoryApp() {
         this.companies = new HashMap<>();
         this.companies.put("empA", new History());
@@ -27,15 +30,28 @@ public class DirectoryApp extends Application<Configuration> {
         this.activeEmissions = new ArrayList<>();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getName() {
         return "Directory";
     }
 
+    /**
+     *
+     * @param bootstrap
+     */
     @Override
     public void initialize(Bootstrap<Configuration> bootstrap) {
     }
 
+    /**
+     *
+     * @param config
+     * @param environment
+     */
     @Override
     public void run(Configuration config, Environment environment) {
         environment.jersey().register(new CompaniesResource(companies));
@@ -44,6 +60,13 @@ public class DirectoryApp extends Application<Configuration> {
         environment.healthChecks().register("isRunning", new AppHealthCheck());
     }
 
+
+    /**
+     * Corre o serviço REST
+     *
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         new DirectoryApp().run(args);
     }

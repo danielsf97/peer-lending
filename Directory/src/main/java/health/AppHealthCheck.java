@@ -2,6 +2,11 @@ package health;
 
 import com.codahale.metrics.health.HealthCheck;
 
+
+/**
+ * Health check simples (se está a correr está saudável).
+ *
+ */
 public class AppHealthCheck extends HealthCheck {
 
     public AppHealthCheck() {
@@ -9,7 +14,7 @@ public class AppHealthCheck extends HealthCheck {
     }
 
     @Override
-    protected Result check() throws Exception {
+    protected Result check() {
         return Result.healthy();
     }
 }
