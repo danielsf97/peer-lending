@@ -3,7 +3,12 @@ import utils.Menu;
 
 import java.nio.channels.SocketChannel;
 
-public class CompanyWorker extends Thread{
+
+/**
+ * Classe responsável por lidar com as ações tomadas por uma empresa.
+ *
+ */
+public class CompanyWorker extends Thread {
 
     private SocketChannel socket;
     private ZMQ.Socket sub;
@@ -11,6 +16,13 @@ public class CompanyWorker extends Thread{
     private String name;
     private Menu menu;
 
+
+    /**
+     * Construtor parametrizado.
+     *
+     * @param socket        Socket.
+     * @param company       Empresa.
+     */
     public CompanyWorker(SocketChannel socket, Company company) {
         this.socket = socket;
         this.company = company;
@@ -20,6 +32,12 @@ public class CompanyWorker extends Thread{
         this.menu.add("Criar emissão");
     }
 
+
+    /**
+     * Mostra o menu da empresa enquanto esta estiver autenticada,
+     * esperando pelas opções escolhidas por esta.
+     *
+     */
     public void run() {
         int option;
 
@@ -41,13 +59,20 @@ public class CompanyWorker extends Thread{
         System.out.println("Logged out!");
     }
 
+
+    /**
+     * Efetua uma ação dependendo de uma opção escolhida
+     * pelo utilizador (empresa).
+     *
+     * @param option    Opção escolhida.
+     */
     private void processOption(int option) {
         switch(option) {
             case 0: logout();
                 break;
-            case 1: create_auction();
+            case 1: createAuction();
                 break;
-            case 2: create_emission();
+            case 2: createEmission();
                 break;
             case 3: readAsyncMessages();
                 break;
@@ -56,11 +81,21 @@ public class CompanyWorker extends Thread{
         }
     }
 
+
+    /**
+     * Lê mensagens assíncronas destinadas à empresa (notificações).
+     *
+     */
     private void readAsyncMessages() {
         String asyncMessages = company.getAsyncMessages();
         System.out.println(asyncMessages);
     }
 
+
+    /**
+     * Efetua o logout de uma empresa.
+     *
+     */
     private void logout() {
         Protos.MessageWrapper req = createLogoutReq();
         Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket,company);
@@ -78,7 +113,14 @@ public class CompanyWorker extends Thread{
         }
     }
 
-    private void create_emission() {
+
+    /**
+     * Possibilita a uma empresa criar uma emissão, mediante a especificação
+     * do seu valor. É necessário antes disto enviar um pedido de forma a
+     * descobrir a taxa fixa desta emissão.
+     *
+     */
+    private void createEmission() {
 
         float rate = getEmissionFixedRate();
 
@@ -117,7 +159,13 @@ public class CompanyWorker extends Thread{
         }
     }
 
-    private void create_auction() {
+
+    /**
+     * Possibilita a uma empresa a criação de um leilão, mediante a especificação
+     * de um valor e de uma taxa máxima admitida para este.
+     *
+     */
+    private void createAuction() {
         Menu m = new Menu("Criar Leilão");
         m.execute();
 
@@ -125,7 +173,7 @@ public class CompanyWorker extends Thread{
         float rate = m.readFloat("Taxa máxima: ");
 
         Protos.MessageWrapper req = createAuctionReq(value, rate);
-        Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket,company);
+        Protos.MessageWrapper resp = Utils.sendAndRecv(req, socket, company);
 
         Protos.CompanyActionResp companyResp = null;
 
@@ -146,12 +194,24 @@ public class CompanyWorker extends Thread{
         }
     }
 
+
+    /**
+     * Envia um pedido pela taxa fixa de uma emissão futura ao servidor frontend.
+     *
+     * @return  valor da taxa fixa da emissão.
+     */
     private float getEmissionFixedRate() {
         Protos.MessageWrapper req = createEmissionFixedRateReq();
-        Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket,company);
+        Protos.MessageWrapper resp = Utils.sendAndRecv(req, socket, company);
         return resp.getEmissionfixedrateresp().getRate();
     }
 
+
+    /**
+     * Cria o pedido pela taxa fixa de uma emissão futura.
+     *
+     * @return  Mensagem criada.
+     */
     private Protos.MessageWrapper createEmissionFixedRateReq() {
         Protos.EmissionFixedRateReq emissionRateMsg = Protos.EmissionFixedRateReq.newBuilder()
                 .setClient(this.name)
@@ -162,6 +222,13 @@ public class CompanyWorker extends Thread{
                 .setEmissionfixedratereq(emissionRateMsg).build();
     }
 
+    /**
+     * Cria o pedido de criação de uma emissão.
+     *
+     * @param value     Valor da emissão.
+     * @param rate      Taxa fixa da emissão.
+     * @return          Mensagem criada.
+     */
     private Protos.MessageWrapper createEmissionReq(long value, float rate) {
         Protos.CompanyActionReq req = Protos.CompanyActionReq.newBuilder()
                 .setMaxRate(rate)
@@ -175,6 +242,14 @@ public class CompanyWorker extends Thread{
                 .setCompanyactionreq(req).build();
     }
 
+
+    /**
+     * Cria o pedido de criação de um leilão.
+     *
+     * @param value     Valor do leilão.
+     * @param rate      Taxa máxima admitida no leilão.
+     * @return          Mensagem criada.
+     */
     private Protos.MessageWrapper createAuctionReq(long value, float rate) {
         Protos.CompanyActionReq req = Protos.CompanyActionReq.newBuilder()
                 .setMaxRate(rate)
@@ -188,6 +263,12 @@ public class CompanyWorker extends Thread{
                 .setCompanyactionreq(req).build();
     }
 
+
+    /**
+     * Cria mensagem para pedido de logout.
+     *
+     * @return  Mensagem criada.
+     */
     public Protos.MessageWrapper createLogoutReq() {
         Protos.LogoutReq logoutMsg = Protos.LogoutReq.newBuilder()
                 .setName(this.name)

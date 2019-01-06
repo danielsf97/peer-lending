@@ -5,6 +5,11 @@ import utils.NetClient;
 
 import java.nio.channels.SocketChannel;
 
+
+/**
+ * Classe responsável por lidar com as ações tomadas por um investidor.
+ *
+ */
 public class InvestorWorker extends Thread{
     private SocketChannel socket;
     private ZMQ.Socket sub;
@@ -12,6 +17,14 @@ public class InvestorWorker extends Thread{
     private String name;
     private Menu menu;
 
+
+    /**
+     * Construtor parametrizado.
+     *
+     * @param socket        Socket.
+     * @param investor      Investidor.
+     * @param sub           Socket sub para notificações.
+     */
     public InvestorWorker(SocketChannel socket, Investor investor, ZMQ.Socket sub) {
         this.socket = socket;
         this.sub = sub;
@@ -29,6 +42,12 @@ public class InvestorWorker extends Thread{
         this.menu.add("Ver histórico de emissões de empresa");
     }
 
+
+    /**
+     * Mostra o menu do investidor enquanto este estiver autenticado,
+     * esperando pelas opções escolhidas por esta.
+     *
+     */
     public void run() {
         int option;
         
@@ -49,6 +68,13 @@ public class InvestorWorker extends Thread{
         System.out.println("Logged out!");
     }
 
+
+    /**
+     * Efetua uma ação dependendo de uma opção escolhida
+     * pelo utilizador (investidor).
+     *
+     * @param option    Opção escolhida.
+     */
     private void processOption(int option) {
         switch(option) {
             case 0: logout();
@@ -80,11 +106,21 @@ public class InvestorWorker extends Thread{
         }
     }
 
+
+    /**
+     * Lê mensagens assíncronas destinadas ao investidor (notificações).
+     *
+     */
     private void readAsyncMessages() {
         String asyncMessages = investor.getAsyncMessages();
         System.out.println(asyncMessages);
     }
 
+
+    /**
+     * Possibilita a um investidor subscrever as notificações de uma empresa.
+     *
+     */
     private void subscribeCompany() {
         Menu m = new Menu("Subscrever Empresa");
 
@@ -97,6 +133,11 @@ public class InvestorWorker extends Thread{
         System.out.println("Notificações da empresa " + comp + " subscritas.\n");
     }
 
+
+    /**
+     * Possibilita a um investidor cancelar a subscrição de notificações de uma empresa.
+     *
+     */
     private void unsubscribeCompany() {
         Menu m = new Menu("Remover Subscrição de Empresa");
 
@@ -108,11 +149,21 @@ public class InvestorWorker extends Thread{
         System.out.println("Remoção das notificações da empresa " + comp + " completa.\n");
     }
 
+
+    /**
+     * Lê notificações destinadas ao investidor.
+     *
+     */
     private void readNotifications() {
         String notifications = investor.getNotifications();
         System.out.println(notifications);
     }
 
+
+    /**
+     * Possibilita ao investidor fazer subscrição a uma emissão.
+     *
+     */
     private void subscribeEmission() {
         Menu m = new Menu("Subscrever empréstimo a taxa fixa");
         m.execute();
@@ -144,6 +195,11 @@ public class InvestorWorker extends Thread{
         }
     }
 
+
+    /**
+     * Possiblita ao investidor fazer uma licitação num leilão.
+     *
+     */
     private void bidOnAuction() {
         Menu m = new Menu("Licitar em Leilão");
         m.execute();
@@ -179,6 +235,11 @@ public class InvestorWorker extends Thread{
         }
     }
 
+
+    /**
+     * Possibilita a um investidor ver as empresas existentes.
+     *
+     */
     private void showCompanies() {
         try {
             System.out.println(NetClient.getCompanies());
@@ -197,6 +258,10 @@ public class InvestorWorker extends Thread{
         }
     }
 
+    /**
+     * Possibilita a um investidor ver a lista de leilões ativos.
+     *
+     */
     private void showActiveAuctions() {
         try {
             System.out.println(NetClient.getActiveAuctions());
@@ -215,6 +280,10 @@ public class InvestorWorker extends Thread{
         }
     }
 
+    /**
+     * Possibilita a um investidor ver a lista de emissões ativas.
+     *
+     */
     private void showActiveEmissions() {
         try {
             System.out.println(NetClient.getActiveEmissions());
@@ -233,6 +302,11 @@ public class InvestorWorker extends Thread{
         }
     }
 
+    /**
+     * Possibilita a um investidor ver o histórico de leilões para uma
+     * determinada empresa.
+     *
+     */
     private void showCompanyAuctionHistory() {
         try {
             String emp = menu.readString("Nome da empresa: ");
@@ -252,6 +326,12 @@ public class InvestorWorker extends Thread{
         }
     }
 
+
+    /**
+     * Possibilita a um investidor ver o histórico de emissões para uma
+     * determinada empresa.
+     *
+     */
     private void showCompanyEmissionHistory() {
         try {
             String emp = menu.readString("Nome da empresa: ");
@@ -271,7 +351,10 @@ public class InvestorWorker extends Thread{
         }
     }
 
-
+    /**
+     * Possibilita a um investidor efetuar logout.
+     *
+     */
     private void logout() {
         Protos.MessageWrapper req = createLogoutReq();
         Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket,investor);
@@ -289,6 +372,15 @@ public class InvestorWorker extends Thread{
         }
     }
 
+
+    /**
+     * Cria um pedido de licitação de um leilão.
+     *
+     * @param comp      Empresa da qual é o leilão.
+     * @param value     Montante da licitação.
+     * @param rate      Taxa da licitação.
+     * @return          Mensagem criada.
+     */
     private Protos.MessageWrapper createAuctionReq(String comp, long value, float rate) {
         Protos.InvestorActionReq req = Protos.InvestorActionReq.newBuilder()
                 .setRate(rate)
@@ -302,6 +394,13 @@ public class InvestorWorker extends Thread{
                 .setInvestoractionreq(req).build();
     }
 
+    /**
+     * Cria um pedido de subscrição de uma emissão.
+     *
+     * @param comp      Empresa da qual é a emissão.
+     * @param value     Montante da subscrição.
+     * @return          Mensagem criada.
+     */
     private Protos.MessageWrapper createEmissionReq(String comp, long value) {
         Protos.InvestorActionReq req = Protos.InvestorActionReq.newBuilder()
                 .setValue(value)
@@ -314,6 +413,12 @@ public class InvestorWorker extends Thread{
                 .setInvestoractionreq(req).build();
     }
 
+
+    /**
+     * Cria mensagem de pedido de logout.
+     * 
+     * @return  Mensagem criada.
+     */
     public Protos.MessageWrapper createLogoutReq() {
         Protos.LogoutReq logoutMsg = Protos.LogoutReq.newBuilder()
                 .setName(this.name)

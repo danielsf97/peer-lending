@@ -6,8 +6,22 @@ import utils.Menu;
 import java.net.InetSocketAddress;
 import java.nio.channels.SocketChannel;
 
+
+/**
+ * Classe principal, responsável por executar um cliente.
+ *
+ */
 public class Client {
 
+
+    /**
+     * Mostra o menu de autenticação a um utilizador e efetua o seu login,
+     * fazendo a distinção entre investidor ou empresa.
+     *
+     * @param socket        Socket.
+     * @return              Cliente autenticado.
+     * @throws Exception
+     */
     private static ClientType login(SocketChannel socket) throws Exception {
 
         Menu m = new Menu("Autenticação");
@@ -42,6 +56,12 @@ public class Client {
         return login(socket);
     }
 
+    /**
+     * Cria uma mensagem de resposta a um pedido de autenticação.
+     *
+     * @param resp     Bytes com mensagem de resposta.
+     * @return         Mensagem criada.
+     */
     public static Protos.LoginResp getLoginResp(byte[] resp) {
         try {
             Protos.MessageWrapper msg = Protos.MessageWrapper.parseFrom(resp);
@@ -55,6 +75,14 @@ public class Client {
         return null;
     }
 
+
+    /**
+     * Cria uma mensagem de pedido de autenticação.
+     *
+     * @param user     Utilizador que se deseja autenticar.
+     * @param pass     Password do utilizador que se deseja autenticar.
+     * @return         Mensagem criada.
+     */
     public static Protos.MessageWrapper createLoginReq(String user, String pass) {
         Protos.LoginReq loginMsg = Protos.LoginReq.newBuilder()
                                         .setName(user)
@@ -65,6 +93,13 @@ public class Client {
                 .setLoginreq(loginMsg).build();
     }
 
+
+    /**
+     * Começa a execução de um cliente.
+     *
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception{
         String address = "127.0.0.1"; // args[0]
         int frontendPort = 12345; //Integer.parseInt(args[1]);
