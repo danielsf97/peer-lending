@@ -9,7 +9,6 @@ import java.nio.channels.SocketChannel;
 public class Client {
 
     private static ClientType login(SocketChannel socket) throws Exception {
-        int w = 79;
 
         Menu m = new Menu("Autenticação");
         m.execute();
@@ -17,8 +16,8 @@ public class Client {
         String pass = m.readString("Password: ");
 
         Protos.MessageWrapper req = createLoginReq(user, pass);
-        Utils.send_msg(req.toByteArray(), socket);
-        byte [] resp_b = Utils.recv_msg(socket);
+        Utils.sendMsg(req.toByteArray(), socket);
+        byte [] resp_b = Utils.recvMsg(socket);
         Protos.MessageWrapper resp = Protos.MessageWrapper.parseFrom(resp_b);
 
         Protos.LoginResp loginResp = null;
@@ -50,7 +49,7 @@ public class Client {
                 return msg.getLoginresp();
         }
         catch (InvalidProtocolBufferException e) {
-            System.out.println("Mensagem recebida inválida!!");
+            System.out.println("Mensagem recebida inválida!");
             e.printStackTrace();
         }
         return null;

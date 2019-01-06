@@ -18,15 +18,15 @@ public class InvestorWorker extends Thread{
         this.investor = investor;
         this.name = investor.getName();
         this.menu = new Menu("Menu Investidor");
-        menu.add("Licitar em leilão");
-        menu.add("Subscrever empréstimo a taxa fixa");
-        menu.add("Subscrever notificação");
-        menu.add("Desativar notificação");
-        menu.add("Ver lista de empresas");
-        menu.add("Ver leilões ativos");
-        menu.add("Ver emissões ativas");
-        menu.add("Ver histórico de leilões de empresa");
-        menu.add("Ver histórico de emissões de empresa");
+        this.menu.add("Licitar em leilão");
+        this.menu.add("Subscrever empréstimo a taxa fixa");
+        this.menu.add("Subscrever notificação");
+        this.menu.add("Desativar notificação");
+        this.menu.add("Ver lista de empresas");
+        this.menu.add("Ver leilões ativos");
+        this.menu.add("Ver emissões ativas");
+        this.menu.add("Ver histórico de leilões de empresa");
+        this.menu.add("Ver histórico de emissões de empresa");
     }
 
     public void run() {
@@ -35,41 +35,41 @@ public class InvestorWorker extends Thread{
         do {
             int nNotifications = investor.getNumNotifications();
             int nAsyncMessages = investor.getNumAsyncMessages();
-            menu.add("Ver " + nNotifications + " notificações" );
-            menu.add("Ver " + nAsyncMessages + " resultados" );
-            menu.add("Atualizar menu");
+            this.menu.add("Ver " + nNotifications + " notificações" );
+            this.menu.add("Ver " + nAsyncMessages + " resultados" );
+            this.menu.add("Atualizar menu");
 
-            menu.execute();
-            option = menu.getOption();
+            this.menu.execute();
+            option = this.menu.getOption();
             processOption(option);
 
-            menu.removeLast(3);
+            this.menu.removeLast(3);
         } while(investor.isLoggedIn());
 
-        System.out.println("Logged out!!");
+        System.out.println("Logged out!");
     }
 
     private void processOption(int option) {
         switch(option) {
             case 0: logout();
                 break;
-            case 1: bid_on_auction();
+            case 1: bidOnAuction();
                 break;
-            case 2: subscribe_emission();
+            case 2: subscribeEmission();
                 break;
-            case 3: subscribe_company();
+            case 3: subscribeCompany();
                 break;
-            case 4: unsubscribe_company();
+            case 4: unsubscribeCompany();
                 break;
-            case 5: show_companies();
+            case 5: showCompanies();
                 break;
-            case 6: show_active_auctions();
+            case 6: showActiveAuctions();
                 break;
-            case 7: show_active_emissions();
+            case 7: showActiveEmissions();
                 break;
-            case 8: show_company_auction_history();
+            case 8: showCompanyAuctionHistory();
                 break;
-            case 9: show_company_emission_history();
+            case 9: showCompanyEmissionHistory();
                 break;
             case 10: readNotifications();
                 break;
@@ -85,16 +85,23 @@ public class InvestorWorker extends Thread{
         System.out.println(asyncMessages);
     }
 
-    private void subscribe_company() {
+    private void subscribeCompany() {
         Menu m = new Menu("Subscrever Empresa");
+
+        m.execute();
+
         String comp = menu.readString("Empresa: ");
 
         sub.subscribe(comp);
+
         System.out.println("Notificações da empresa " + comp + " subscritas.\n");
     }
 
-    private void unsubscribe_company() {
+    private void unsubscribeCompany() {
         Menu m = new Menu("Remover Subscrição de Empresa");
+
+        m.execute();
+
         String comp = menu.readString("Empresa: ");
 
         sub.subscribe(comp);
@@ -106,7 +113,7 @@ public class InvestorWorker extends Thread{
         System.out.println(notifications);
     }
 
-    private void subscribe_emission() {
+    private void subscribeEmission() {
         Menu m = new Menu("Subscrever empréstimo a taxa fixa");
         m.execute();
         String comp = m.readString("Empresa: ");
@@ -137,7 +144,7 @@ public class InvestorWorker extends Thread{
         }
     }
 
-    private void bid_on_auction() {
+    private void bidOnAuction() {
         Menu m = new Menu("Licitar em Leilão");
         m.execute();
         String comp = m.readString("Empresa: ");
@@ -172,7 +179,7 @@ public class InvestorWorker extends Thread{
         }
     }
 
-    private void show_companies() {
+    private void showCompanies() {
         try {
             System.out.println(NetClient.getCompanies());
         }
@@ -190,7 +197,7 @@ public class InvestorWorker extends Thread{
         }
     }
 
-    private void show_active_auctions() {
+    private void showActiveAuctions() {
         try {
             System.out.println(NetClient.getActiveAuctions());
         }
@@ -208,7 +215,7 @@ public class InvestorWorker extends Thread{
         }
     }
 
-    private void show_active_emissions() {
+    private void showActiveEmissions() {
         try {
             System.out.println(NetClient.getActiveEmissions());
         }
@@ -226,7 +233,7 @@ public class InvestorWorker extends Thread{
         }
     }
 
-    private void show_company_auction_history() {
+    private void showCompanyAuctionHistory() {
         try {
             String emp = menu.readString("Nome da empresa: ");
             System.out.println(NetClient.getCompanyAuctionHistory(emp));
@@ -245,7 +252,7 @@ public class InvestorWorker extends Thread{
         }
     }
 
-    private void show_company_emission_history() {
+    private void showCompanyEmissionHistory() {
         try {
             String emp = menu.readString("Nome da empresa: ");
             System.out.println(NetClient.getCompanyEmissionHistory(emp));

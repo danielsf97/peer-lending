@@ -12,6 +12,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
+
+/**
+ * Cliente para o diretório, com o propósito de obter informação acerca de empresas
+ * existentes, leilões/emissões ativos e históricos de empresas.
+ *
+ */
 public class NetClient {
 
     public static final int w = 79;

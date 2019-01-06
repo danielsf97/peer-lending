@@ -7,6 +7,11 @@ import java.util.Scanner;
 
 import org.apache.commons.lang3.StringUtils;
 
+
+/**
+ * Classe para criação de um menu para interface de texto.
+ *
+ */
 public class Menu {
     private String title;
     private List<String> options;
@@ -14,14 +19,25 @@ public class Menu {
     private int op;
     private Scanner sc;
 
+    /**
+     * Construtor parametrizado.
+     *
+     * @param title  Título do menu.
+     */
     public Menu(String title) {
         this.title = title;
-        this.options = new ArrayList<String>();
+        this.options = new ArrayList<>();
         this.nOptions = 0;
         this.op = 0;
-        sc = new Scanner(System.in);
+        this.sc = new Scanner(System.in);
     }
 
+
+    /**
+     * Executa o menu, fazendo display deste e lendo a opção dada
+     * pelo cliente.
+     *
+     */
     public void execute() {
         do {
             printMenu();
@@ -31,18 +47,36 @@ public class Menu {
         while(this.op == -1);
     }
 
+
+    /**
+     * Adiciona uma opção ao menu.
+     *
+     * @param option opção a adicionar.
+     */
     public void add(String option) {
         options.add(option);
         nOptions++;
     }
-    public void removeLast(int optionsNumber){
-        while(optionsNumber > 0){
+
+
+    /**
+     * Remove as últimas n opções.
+     *
+     * @param optionsNumber Número de opções a eliminar.
+     */
+    public void removeLast(int optionsNumber) {
+        while(optionsNumber > 0) {
             nOptions--;
             options.remove(nOptions);
             optionsNumber--;
         }
     }
 
+
+    /**
+     * Faz display de um menu.
+     *
+     */
     private void printMenu() {
         int w = 79;
         System.out.println(StringUtils.rightPad("+", w - 1, "-") + "+");
@@ -61,6 +95,12 @@ public class Menu {
 
     }
 
+
+    /**
+     * Lê a opção dada pelo utilizador.
+     *
+     * @return opção escolhida pelo utilizador.
+     */
     private int readOption() {
         int op;
         Scanner is = new Scanner(System.in);
@@ -80,28 +120,47 @@ public class Menu {
         return op;
     }
 
+
+    /**
+     * Retorna opção escolhida pelo utilizador.
+     *
+     * @return Opção escolhida pelo utilizador.
+     */
     public int getOption() {
         return this.op;
     }
 
-    public int readInt(String msg){
+
+    /**
+     * Lê um inteiro dado pelo utilizador.
+     *
+     * @param msg   Mensagem de pedido.
+     * @return      Inteiro lido.
+     */
+    public int readInt(String msg) {
         int num;
 
         System.out.print(msg);
 
         try {
-
             num = Integer.parseInt(sc.next());
 
         } catch (NumberFormatException e) {
-            System.out.println("O valor não é válido!!\n");
+            System.out.println("O valor não é válido!\n");
             num = readInt(msg);
         }
 
         return num;
     }
 
-    public float readFloat(String msg){
+
+    /**
+     * Lê um número floating point dado pelo utilizador.
+     *
+     * @param msg   Mensagem de pedido.
+     * @return      Número lido.
+     */
+    public float readFloat(String msg) {
         float num;
 
         System.out.print(msg);
@@ -118,11 +177,25 @@ public class Menu {
         return num;
     }
 
-    public String readString(String msg){
+
+    /**
+     * Lê uma string dada pelo utilizador.
+     *
+     * @param msg   Mensagem de pedido.
+     * @return      String lida.
+     */
+    public String readString(String msg) {
         System.out.print(msg);
         return sc.next();
     }
 
+
+    /**
+     * Lê um long dado pelo utilizador.
+     *
+     * @param msg   Mensagem de pedido.
+     * @return      Long lido.
+     */
     public long readLong(String msg) {
         long num;
 
@@ -133,7 +206,7 @@ public class Menu {
             num = Long.parseLong(sc.next());
 
         } catch (NumberFormatException e) {
-            System.out.println("O valor não é válido!!\n");
+            System.out.println("O valor não é válido!\n");
             num = readLong(msg);
         }
 

@@ -11,9 +11,9 @@ public class Utils {
         try {
             byte [] req_b = req.toByteArray();
 
-            send_msg(req_b, socket);
+            sendMsg(req_b, socket);
 
-            resp = get_msg(client);
+            resp = getMsg(client);
         }
         catch(IOException e) {
             e.printStackTrace();
@@ -22,11 +22,11 @@ public class Utils {
         return resp;
     }
 
-    private static Protos.MessageWrapper get_msg(ClientType client) {
+    private static Protos.MessageWrapper getMsg(ClientType client) {
         return client.getSyncMessage();
     }
 
-    public static void send_msg(byte[] ba, SocketChannel socket) throws IOException {
+    public static void sendMsg(byte[] ba, SocketChannel socket) throws IOException {
 
         ByteBuffer buffer = ByteBuffer.allocate(ba.length);
         buffer.order(ByteOrder.BIG_ENDIAN);
@@ -37,7 +37,7 @@ public class Utils {
 
     }
 
-    public static byte[] recv_msg(SocketChannel socket) throws IOException {
+    public static byte[] recvMsg(SocketChannel socket) throws IOException {
         ByteBuffer buffer = ByteBuffer.allocate(512);
 
         int len = socket.read(buffer);

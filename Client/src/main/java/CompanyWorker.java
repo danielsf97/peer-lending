@@ -15,9 +15,9 @@ public class CompanyWorker extends Thread{
         this.socket = socket;
         this.company = company;
         this.name = company.getName();
-        menu = new Menu("Menu Empresa");
-        menu.add("Criar leilão");
-        menu.add("Criar emissão");
+        this.menu = new Menu("Menu Empresa");
+        this.menu.add("Criar leilão");
+        this.menu.add("Criar emissão");
     }
 
     public void run() {
@@ -26,6 +26,7 @@ public class CompanyWorker extends Thread{
         do {
 
             int nAsyncMessages = company.getNumAsyncMessages();
+
             menu.add("Ver " + nAsyncMessages + " resultados" );
             menu.add("Atualizar menu");
 

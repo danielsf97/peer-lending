@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.nio.channels.SocketChannel;
 
-public class MsgReader extends Thread{
+public class MsgReader extends Thread {
     private SocketChannel sc;
     private ClientType client;
 
@@ -10,14 +10,14 @@ public class MsgReader extends Thread{
         this.client = client;
     }
 
-    public void run(){
-        byte [] msg_b;
+    public void run() {
+        byte [] msgB;
         Protos.MessageWrapper msg;
         try {
 
-            while ((msg_b = Utils.recv_msg(sc)) != null) {
+            while ((msgB = Utils.recvMsg(sc)) != null) {
 
-                msg = Protos.MessageWrapper.parseFrom(msg_b);
+                msg = Protos.MessageWrapper.parseFrom(msgB);
                 switch (msg.getMsgType()){
                     case SYNC:
                         client.setSyncMessage(msg);

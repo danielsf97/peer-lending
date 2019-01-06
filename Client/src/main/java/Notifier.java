@@ -1,6 +1,6 @@
 import org.zeromq.ZMQ;
 
-public class Notifier extends Thread{
+public class Notifier extends Thread {
 
     private Investor investor;
     private ZMQ.Socket sub;
@@ -15,10 +15,9 @@ public class Notifier extends Thread{
 
         while(true) {
 
-            byte[] msg_b = sub.recv();
-            msg = new String(msg_b);
+            byte[] msgB = sub.recv();
+            msg = new String(msgB);
             investor.addNotification(msg);
         }
     }
-
 }
