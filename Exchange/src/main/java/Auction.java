@@ -86,8 +86,8 @@ public class Auction {
      * @param value    Valor da licitação.
      * @param rate     Taxa da licitação.
      * @return -1 em caso de invalidez da licitação
-     * 0 em caso de sucesso (nova licitação)
-     * 1 em caso de sucesso (licitação alterada)
+     *          0 em caso de sucesso (nova licitação)
+     *          1 em caso de sucesso (licitação alterada)
      */
     public int addBid(String investor, long value, float rate) {
         boolean found = false;
@@ -114,9 +114,9 @@ public class Auction {
 
 
     /**
-     * Retorna os ganhadores e perdedores de um leilão.
+     * Retorna os vencedores e perdedores de um leilão.
      *
-     * @return um par constituído pelos ganhadores e perdedores de um leilão.
+     * @return um par constituído pelos vencedores e perdedores de um leilão.
      */
     Pair<ArrayList<Pair<String, Long>>, ArrayList<String>> getWinnersLosers() {
         ArrayList<Pair<String, Long>> winners = new ArrayList<>();
@@ -141,14 +141,16 @@ public class Auction {
 
         if (sum == value) {
             return new Pair<>(winners, losers);
-        } else if (sum > value) {
+        }
+        else if (sum > value) {
             long diff = sum - value;
             int size = winners.size();
             Pair pair = winners.get(size - 1);
             long update = (long) pair.getSecond() - diff;
             pair.setSecond(update);
             return new Pair<>(winners, losers);
-        } else
+        }
+        else
             return new Pair<>(null, losers);
     }
 
@@ -156,7 +158,7 @@ public class Auction {
     /**
      * Retorna a taxa da licitação com a taxa mais alta.
      *
-     * @param n Número de ganhadores do leilão.
+     * @param n Número de vencedores do leilão.
      * @return Valor da taxa mais alta.
      */
     float getMaxBidRate(int n) {

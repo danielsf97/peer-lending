@@ -2,13 +2,26 @@ import org.zeromq.ZMQ;
 
 import java.util.ArrayList;
 
-public class ScheduledExecutor implements Runnable {
 
+/**
+ * Representa a tarefa a ser executada no fim de um leilão/emissão.
+ *
+ */
+public class ScheduledExecutor implements Runnable {
     private Company company;
     private ZMQ.Socket push;
     private ZMQ.Socket pub;
     private DirectoryManager dir;
 
+
+    /**
+     * Construtor parametrizado.
+     *
+     * @param company   Empresa responsável pelo leilão/emissão.
+     * @param push      Socket push.
+     * @param pub       Socket pub.
+     * @param dir       Gestor do diretório.
+     */
     ScheduledExecutor(Company company, ZMQ.Socket push, ZMQ.Socket pub, DirectoryManager dir) {
         this.company = company;
         this.push = push;
@@ -16,6 +29,11 @@ public class ScheduledExecutor implements Runnable {
         this.dir = dir;
     }
 
+
+    /**
+     * Corre a tarefa.
+     *
+     */
     @Override
     public void run() {
         Auction auction;
@@ -37,8 +55,14 @@ public class ScheduledExecutor implements Runnable {
         }
     }
 
-    //-----------------------------------------------------------------------------------------------------------------------------
 
+    /**
+     * Responsável por acabar um leilão. Calcula a lista de vencedores/perdedores
+     * e envia mensagem do resultado a todos os envolvidos.
+     *
+     * @param auction           Leilão a acabar.
+     * @throws Exception
+     */
     private void finishAuction(Auction auction) throws Exception {
         Pair<ArrayList<Pair<String,Long>>, ArrayList<String>> winnersAndLosers = auction.getWinnersLosers();
 
@@ -85,6 +109,13 @@ public class ScheduledExecutor implements Runnable {
         dir.deleteAuction(this.company.getName());
     }
 
+
+    /**
+     * Cria mensagem para os vencedores de um leilão.
+     *
+     * @param winnerVal Par cujo primeiro elemento é o investidor vencedor e segundo elemento o montante do leilão.
+     * @return          Mensagem criada.
+     */
     private Protos.MessageWrapper createAuctionWinningResultMsg(Pair winnerVal) {
         String client = (String) winnerVal.getFirst();
         Long value = (Long) winnerVal.getSecond();
@@ -93,13 +124,24 @@ public class ScheduledExecutor implements Runnable {
         return createAuctionEmissionResult(client, msg);
     }
 
+    /**
+     * Cria mensagem para os perdedores de um leilão.
+     *
+     * @param investor  Investidor perdedor.
+     * @return          Mensagem criada.
+     */
     private Protos.MessageWrapper createAuctionLoserResultMsg(String investor) {
-
         String msg = "Leilão terminado! Empresa: " + company.getName() + ", Status: Perdedor";
 
         return createAuctionEmissionResult(investor, msg);
     }
 
+    /**
+     * Cria mensagem com informação acerca de sucesso/insucesso do leilão para a empresa.
+     *
+     * @param status    Resultado do leilão.
+     * @return          Mensagem criada.
+     */
     private Protos.MessageWrapper createAuctionCompanyResultMsg(String status) {
         String msg = "Leilão terminado! Status: " + status;
         String client = company.getName();
@@ -110,6 +152,14 @@ public class ScheduledExecutor implements Runnable {
 
     //-----------------------------------------------------------------------------------------------------------------------------
 
+
+    /**
+     * Responsável por acabar uma emissão. Calcula a lista de vencedores/perdedores
+     * e envia mensagem do resultado a todos os envolvidos.
+     *
+     * @param emission           Emissão a acabar.
+     * @throws Exception
+     */
     private void finishEmission(Emission emission) throws Exception {
         Pair<ArrayList<Pair<String,Long>>,ArrayList<String>> winnersAndLosers = emission.getWinnersLosers();
 
@@ -171,6 +221,13 @@ public class ScheduledExecutor implements Runnable {
         dir.deleteEmission(this.company.getName());
     }
 
+
+    /**
+     * Cria mensagem para os vencedores de uma emissão.
+     *
+     * @param winnerVal Par cujo primeiro elemento é o investidor vencedor e segundo elemento o montante da emissão.
+     * @return          Mensagem criada.
+     */
     private Protos.MessageWrapper createEmissionWinningResultMsg(Pair winnerVal) {
         String client = (String) winnerVal.getFirst();
         Long value = (Long) winnerVal.getSecond();
@@ -179,12 +236,26 @@ public class ScheduledExecutor implements Runnable {
         return createAuctionEmissionResult(client, msg);
     }
 
+
+    /**
+     * Cria mensagem para os perdedores de uma emissão.
+     *
+     * @param investor  Investidor perdedor.
+     * @return          Mensagem criada.
+     */
     private Protos.MessageWrapper createEmissionLoserResultMsg(String investor) {
         String msg = "Emissão terminada! Empresa: " + company.getName() + ", Status: Perdedor";
 
         return createAuctionEmissionResult(investor, msg);
     }
 
+
+    /**
+     * Cria mensagem com informação acerca de sucesso/insucesso da emissão para a empresa.
+     *
+     * @param status    Resultado da emissão.
+     * @return          Mensagem criada.
+     */
     private Protos.MessageWrapper createEmissionCompanyResultMsg(String status, long value, long sum) {
         String msg = "Emissão terminada! Subscrição: " + status + ", Esperado: " + value + ", Obtido: " + sum;
         String client = company.getName();
@@ -194,6 +265,14 @@ public class ScheduledExecutor implements Runnable {
 
     //-----------------------------------------------------------------------------------------------------------------------------
 
+
+    /**
+     * Cria mensagem para o envio aos envolvidos numa emissão/leilão.
+     *
+     * @param client        Cliente envolvido.
+     * @param msg           Mensagem a ser enviada.
+     * @return              Mensagem criada.
+     */
     private Protos.MessageWrapper createAuctionEmissionResult(String client, String msg) {
         Protos.AuctionEmissionResult result = Protos.AuctionEmissionResult.newBuilder()
                 .setClient(client)

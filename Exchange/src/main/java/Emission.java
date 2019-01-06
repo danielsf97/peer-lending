@@ -79,9 +79,9 @@ public class Emission {
 
 
     /**
-     * Devolve os ganhadores e perdedores de uma emissão.
+     * Devolve os vencedores e perdedores de uma emissão.
      *
-     * @return um par cujo primeiro elemento são os ganhadores e segundo elemento
+     * @return um par cujo primeiro elemento são os vencedores e segundo elemento
      *         os perdedores de uma emissão.
      */
     public Pair<ArrayList<Pair<String,Long>>,ArrayList<String>> getWinnersLosers() {

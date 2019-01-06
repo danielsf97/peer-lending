@@ -9,8 +9,8 @@ import java.time.format.DateTimeFormatter;
 
 
 /**
- * Responsável por enviar pedidos ao diretório através da interface RESTful oferecida
- * por este.
+ * Responsável por enviar pedidos ao diretório através da interface
+ * RESTful oferecida por este.
  *
  */
 public class DirectoryManager {
