@@ -12,13 +12,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Serviço RESTful para obter informações acerca de leilões/emissões
+ * a decorrer.
+ *
+ */
 public class DirectoryApp extends Application<Configuration> {
     private Map<String, History> companies;
     private List<ActiveAuction> activeAuctions;
     private List<ActiveEmission> activeEmissions;
 
+
     /**
-     *
+     * Construtor vazio
      *
      */
     public DirectoryApp() {
@@ -30,9 +36,11 @@ public class DirectoryApp extends Application<Configuration> {
         this.activeEmissions = new ArrayList<>();
     }
 
+
     /**
+     * Retorna o nome da aplicação.
      *
-     * @return
+     * @return nome da aplicação.
      */
     @Override
     public String getName() {
@@ -40,6 +48,7 @@ public class DirectoryApp extends Application<Configuration> {
     }
 
     /**
+     * Inicializa o bootstrap da aplicação.
      *
      * @param bootstrap
      */
@@ -48,6 +57,7 @@ public class DirectoryApp extends Application<Configuration> {
     }
 
     /**
+     * Faz parse aos argumentos da linha de comandos e corre a aplicação.
      *
      * @param config
      * @param environment
@@ -62,7 +72,7 @@ public class DirectoryApp extends Application<Configuration> {
 
 
     /**
-     * Corre o serviço REST
+     * Corre o serviço REST.
      *
      * @param args
      * @throws Exception
