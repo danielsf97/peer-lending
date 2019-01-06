@@ -16,7 +16,6 @@ import java.util.Scanner;
 /**
  * Cliente para o diretório, com o propósito de obter informação acerca de empresas
  * existentes, leilões/emissões ativos e históricos de empresas.
- * TODO
  */
 public class NetClient {
 
@@ -24,6 +23,13 @@ public class NetClient {
 
     // -------------------------------------------------------------------------------------------
 
+
+    /**
+     * Efetua o pedido REST e obtém a resposta em Json.
+     *
+     * @param uri       URI do pedido.
+     * @return          Resposta em Json do pedido.
+     */
     public static JsonElement getJsonTree(String uri) throws Exception {
         URL url = new URL(uri);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -55,6 +61,13 @@ public class NetClient {
 
     // -------------------------------------------------------------------------------------------
 
+
+    /**
+     * Constrói a representação textual de uma lista de empresas.
+     *
+     * @param jarray        JsonArray.
+     * @return              Representação textual de uma lista de empresas.
+     */
     public static String companiesToString(JsonArray jarray) {
         StringBuilder sb = new StringBuilder();
 
@@ -69,6 +82,14 @@ public class NetClient {
         return sb.toString();
     }
 
+
+    /**
+     * Constrói a representação textual de uma lista de leilões.
+     *
+     * @param jarray        JsonArray.
+     * @param active        Indicação de se tratar de uma lista de leilões ativos ou não.
+     * @return              Representação textual de uma lista de leilões.
+     */
     public static String auctionsToString(JsonArray jarray, boolean active) {
         StringBuilder sb = new StringBuilder();
 
@@ -89,6 +110,14 @@ public class NetClient {
         return sb.toString();
     }
 
+
+    /**
+     * Constrói a representação textual de uma lista de emissões.
+     *
+     * @param jarray        JsonArray.
+     * @param active        Indicação de se tratar de uma lista de emissões ativas ou não.
+     * @return              Representação textual de uma lista de emissões.
+     */
     public static String emissionsToString(JsonArray jarray, boolean active) {
         StringBuilder sb = new StringBuilder();
 
@@ -112,6 +141,14 @@ public class NetClient {
 
     // -------------------------------------------------------------------------------------------
 
+
+    /**
+     * Envia pedido ao diretório para listagem de empresas e retorna a representação textual
+     * destas.
+     *
+     * @return                  Representação textual das empresas existentes.
+     * @throws Exception
+     */
     public static String getCompanies() throws Exception {
         JsonElement tree = getJsonTree("http://localhost:8080/companies");
         JsonArray companies_array = tree.getAsJsonArray();
@@ -121,6 +158,14 @@ public class NetClient {
 
     }
 
+
+    /**
+     * Envia pedido ao diretório para listagem dos leilões ativos e retorna a representação
+     * textual destes.
+     *
+     * @return                  Representação textual dos leilões ativos.
+     * @throws Exception
+     */
     public static String getActiveAuctions() throws Exception {
         JsonElement tree = getJsonTree("http://localhost:8080/activeAuctions");
         JsonArray aa_array = tree.getAsJsonArray();
@@ -129,6 +174,14 @@ public class NetClient {
         return auctionsToString(aa_array, true);
     }
 
+
+    /**
+     * Envia pedido ao diretório para listagem das emissões ativas e retorna a representação
+     * textual destas.
+     * *
+     * @return                  Representação textual das emissões ativas.
+     * @throws Exception
+     */
     public static String getActiveEmissions() throws Exception {
         JsonElement tree = getJsonTree("http://localhost:8080/activeEmissions");
         JsonArray ae_array = tree.getAsJsonArray();
@@ -137,6 +190,16 @@ public class NetClient {
         return emissionsToString(ae_array, true);
     }
 
+
+    /**
+     * Envia pedido ao diretório para o histórico de leilões para uma determinada empresa
+     * e retorna a representação textual deste.
+     *
+     * @param company           Empresa para a qual se deseja saber o histórico.
+     * @return                  Representação textual do histórico de leilões para uma
+     *                          determinada empresa.
+     * @throws Exception
+     */
     public static String getCompanyAuctionHistory(String company) throws Exception {
         JsonElement tree = getJsonTree("http://localhost:8080/companies/" + company + "/auctionHistory");
         JsonArray cah_array = tree.getAsJsonArray();
@@ -145,6 +208,16 @@ public class NetClient {
         return auctionsToString(cah_array,false);
     }
 
+
+    /**
+     * Envia pedido ao diretório para o histórico de emissões para uma determinada empresa
+     * e retorna a representação textual deste.
+     *
+     * @param company           Empresa para a qual se deseja saber o histórico.
+     * @return                  Representação textual do histórico de emissões para uma
+     *                          determinada empresa.
+     * @throws Exception
+     */
     public static String getCompanyEmissionHistory(String company) throws Exception {
         JsonElement tree = getJsonTree("http://localhost:8080/companies/" + company + "/emissionHistory");
         JsonArray ceh_array = tree.getAsJsonArray();
