@@ -178,7 +178,7 @@ public class NetClient {
     /**
      * Envia pedido ao diretório para listagem das emissões ativas e retorna a representação
      * textual destas.
-     * *
+     *
      * @return                  Representação textual das emissões ativas.
      * @throws Exception
      */
