@@ -5,13 +5,21 @@ import java.nio.channels.SocketChannel;
 
 public class Utils {
 
+    /**
+     * Envia e recebe a respetiva resposta de uma mensagem.
+     *
+     * @param req           Mensagem (pedido) a enviar.
+     * @param socket        SocketChannel.
+     * @param client        Cliente a quem enviar.
+     * @return
+     */
     public static Protos.MessageWrapper sendAndRecv(Protos.MessageWrapper req, SocketChannel socket, ClientType client) {
         Protos.MessageWrapper resp = null;
 
         try {
-            byte [] req_b = req.toByteArray();
+            byte[] reqB = req.toByteArray();
 
-            sendMsg(req_b, socket);
+            sendMsg(reqB, socket);
 
             resp = getMsg(client);
         }
@@ -22,10 +30,24 @@ public class Utils {
         return resp;
     }
 
+    /**
+     * Recebe mensagem de um cliente.
+     *
+     * @param client    Cliente de quem receber mensagem.
+     * @return          Mensagem recebida.
+     */
     private static Protos.MessageWrapper getMsg(ClientType client) {
         return client.getSyncMessage();
     }
 
+
+    /**
+     * Envia uma mensagem.
+     *
+     * @param ba            Bytes da mensagem.
+     * @param socket        SocketChannel.
+     * @throws IOException
+     */
     public static void sendMsg(byte[] ba, SocketChannel socket) throws IOException {
 
         ByteBuffer buffer = ByteBuffer.allocate(ba.length);
@@ -37,6 +59,14 @@ public class Utils {
 
     }
 
+
+    /**
+     * Recebe uma mensagem.
+     *
+     * @param socket        SocketChannel.
+     * @return              Mensagem recebida.
+     * @throws IOException
+     */
     public static byte[] recvMsg(SocketChannel socket) throws IOException {
         ByteBuffer buffer = ByteBuffer.allocate(512);
 

@@ -1,6 +1,15 @@
+/**
+ * Representa uma empresa.
+ *
+ */
 public class Company extends ClientType {
 
-    public Company(String name){
+    /**
+     * Construtor parametrizado.
+     *
+     * @param name  Nome da empresa.
+     */
+    public Company(String name) {
         super(name);
     }
 }

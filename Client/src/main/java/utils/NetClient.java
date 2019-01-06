@@ -16,7 +16,7 @@ import java.util.Scanner;
 /**
  * Cliente para o diretório, com o propósito de obter informação acerca de empresas
  * existentes, leilões/emissões ativos e históricos de empresas.
- *
+ * TODO
  */
 public class NetClient {
 

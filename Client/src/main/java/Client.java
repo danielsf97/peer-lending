@@ -17,8 +17,8 @@ public class Client {
 
         Protos.MessageWrapper req = createLoginReq(user, pass);
         Utils.sendMsg(req.toByteArray(), socket);
-        byte [] resp_b = Utils.recvMsg(socket);
-        Protos.MessageWrapper resp = Protos.MessageWrapper.parseFrom(resp_b);
+        byte[] respB = Utils.recvMsg(socket);
+        Protos.MessageWrapper resp = Protos.MessageWrapper.parseFrom(respB);
 
         Protos.LoginResp loginResp = null;
 
@@ -67,33 +67,33 @@ public class Client {
 
     public static void main(String[] args) throws Exception{
         String address = "127.0.0.1"; // args[0]
-        int frontend_port = 12345; //Integer.parseInt(args[1]);
-        int notifications_port = 12346; //Integer.parseInt(args[2]);
+        int frontendPort = 12345; //Integer.parseInt(args[1]);
+        int notificationsPort = 12346; //Integer.parseInt(args[2]);
 
         SocketChannel socket = SocketChannel.open();
-        socket.connect(new InetSocketAddress(address,frontend_port));
+        socket.connect(new InetSocketAddress(address,frontendPort));
 
         ClientType clientType = login(socket);
 
         if(clientType instanceof Company) {
             Company company = (Company) clientType;
-            CompanyWorker comp_worker = new CompanyWorker(socket, company);
+            CompanyWorker compWorker = new CompanyWorker(socket, company);
 
-            comp_worker.start();
+            compWorker.start();
         }
         else {
             Investor investor = (Investor) clientType;
 
             ZMQ.Context context = ZMQ.context(1);
             ZMQ.Socket sub = context.socket(ZMQ.SUB);
-            sub.connect("tcp://localhost:" + notifications_port);
+            sub.connect("tcp://localhost:" + notificationsPort);
 
 
             Notifier notifier = new Notifier(investor, sub);
-            InvestorWorker inv_worker = new InvestorWorker(socket, investor, sub);
+            InvestorWorker invWorker = new InvestorWorker(socket, investor, sub);
 
             notifier.start();
-            inv_worker.start();
+            invWorker.start();
         }
 
         MsgReader reader = new MsgReader(socket, clientType);

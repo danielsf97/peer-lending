@@ -11,7 +11,7 @@ public class MsgReader extends Thread {
     }
 
     public void run() {
-        byte [] msgB;
+        byte[] msgB;
         Protos.MessageWrapper msg;
         try {
 
@@ -29,7 +29,7 @@ public class MsgReader extends Thread {
             }
 
         }
-        catch (IOException e) {
+        catch(IOException e) {
             e.printStackTrace();
         }
     }
