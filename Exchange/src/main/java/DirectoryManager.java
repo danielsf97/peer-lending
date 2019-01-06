@@ -7,13 +7,32 @@ import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+
+/**
+ * Responsável por enviar pedidos ao diretório através da interface RESTful oferecida
+ * por este.
+ *
+ */
 public class DirectoryManager {
     private Gson gson;
 
+
+    /**
+     * Construtor vazio.
+     *
+     */
     DirectoryManager() {
         this.gson = new Gson();
     }
 
+
+    /**
+     * Publica para um determinado URI um body passado como parâmetro.
+     *
+     * @param uri           URI para o qual se pretende publicar.
+     * @param json          Body a publicar.
+     * @throws Exception
+     */
     public void postHttp(String uri, String json) throws Exception {
         byte[] postData = json.getBytes(StandardCharsets.UTF_8);
         int postLength = postData.length;
@@ -37,6 +56,13 @@ public class DirectoryManager {
         }
     }
 
+    /**
+     * Envia pedido de DELETE ao serviço RESTful.
+     *
+     * @param partialUri       URI parcial para o qual se pretende enviar DELETE.
+     * @param company          Nome da empresa.
+     * @throws Exception
+     */
     public void deleteHttp(String partialUri, String company) throws Exception {
         URL url = new URL("http://localhost:8080/" + partialUri + "/" + company);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -49,26 +75,60 @@ public class DirectoryManager {
             throw new RuntimeException();
     }
 
+
+    /**
+     * Publica um determinado leilão ativo no diretório.
+     *
+     * @param a             Leilão a publicar.
+     * @param company       Empresa para a qual publicar leilão.
+     * @throws Exception
+     */
     public void postAuction(Auction a, String company) throws Exception {
         AuctionRep auctionRep = new AuctionRep(a.getValue(), a.getMaxRate(), a.getStartingDateTime(), a.getDuration(), company);
         String auctionJson = gson.toJson(auctionRep);
         postHttp("http://localhost:8080/activeAuctions", auctionJson);
     }
 
+    /**
+     * Publica uma emissão ativa no diretório.
+     *
+     * @param e             Emissão a publicar.
+     * @param company       Empresa para a qual publicar emissão.
+     * @throws Exception
+     */
     public void postEmission(Emission e, String company) throws Exception {
         EmissionRep emissionRep = new EmissionRep(e.getValue(), e.getFixedRate(), e.getStartingDateTime(), e.getDuration(), company);
         String emissionJson = gson.toJson(emissionRep);
         postHttp("http://localhost:8080/activeEmissions", emissionJson);
     }
 
+
+    /**
+     * Apaga um leilão ativo de uma determinada empresa do diretório.
+     *
+     * @param company       Empresa para a qual apagar leilão ativo.
+     * @throws Exception
+     */
     public void deleteAuction(String company) throws Exception {
         deleteHttp("activeAuctions", company);
     }
 
+
+    /**
+     * Apaga uma emissão ativa de uma determinada empresa do diretório.
+     *
+     * @param company       Empresa para a qual apagar emissão ativa.
+     * @throws Exception
+     */
     public void deleteEmission(String company) throws Exception {
         deleteHttp("activeEmissions", company);
     }
 
+
+    /**
+     * Representação de um leilão para conversão para JSON.
+     *
+     */
     class AuctionRep {
         public long value;
         public float maxRate;
@@ -86,6 +146,10 @@ public class DirectoryManager {
         }
     }
 
+    /**
+     * Representação de uma emissão para conversão para JSON.
+     *
+     */
     class EmissionRep {
         public long value;
         public float fixedRate;
