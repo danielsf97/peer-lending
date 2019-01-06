@@ -80,9 +80,9 @@ public class Company {
 
 
     /**
-     * Retorna a taxa de emissão da emissão ativa.
+     * Retorna a taxa de emissão da próxima emissão.
      *
-     * @return a taxa de emissão da emissão ativa.
+     * @return a taxa de emissão da próxima emissão.
      */
     public float getEmissionRate() {
         return emissionRate;
@@ -90,9 +90,9 @@ public class Company {
 
 
     /**
-     * Estabelece a taxa de emissão da emissão ativa.
+     * Estabelece a taxa da próxima emissão.
      *
-     * @param emissionRate  Taxa de emissão da emissão ativa.
+     * @param emissionRate  Taxa de emissão da próxima emissão.
      */
     public void setEmissionRate(float emissionRate) {
         this.emissionRate = emissionRate;

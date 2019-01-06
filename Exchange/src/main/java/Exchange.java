@@ -5,14 +5,31 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.*;
 
+
+/**
+ * Representa uma exchange.
+ *
+ */
 public class Exchange {
 
+
+    /**
+     * Classe representativa os dados de uma exchange.
+     *
+     */
     public static class ExchangeData {
-        int socket_pull_port;
+        int socketPullPort;
         Map<String, Company> companies;
 
-        ExchangeData(int socket_pull_port, Map<String, Company> companies) {
-            this.socket_pull_port = socket_pull_port;
+
+        /**
+         * Construtor parametrizado.
+         *
+         * @param socketPullPort  Porta do socket pull.
+         * @param companies         Empresas pela qual a exchange está responsável.
+         */
+        ExchangeData(int socketPullPort, Map<String, Company> companies) {
+            this.socketPullPort = socketPullPort;
             this.companies = companies;
         }
     }
@@ -41,30 +58,42 @@ public class Exchange {
         }
     };
 
-    private final int socket_push_port = 1222;
-    private final int socket_pub_port = 12347;
+    private final int socketPushPort = 1222;
+    private final int socketPubPort = 12347;
     private final int delayTime = 1;
     private ScheduledExecutorService scheduler;
     private ZMQ.Context context;
     private ZMQ.Socket push;
     private ZMQ.Socket pull;
     private ZMQ.Socket pub;
-    public Map<String, Company> companies;
-    public DirectoryManager directoryManager;
+    private Map<String, Company> companies;
+    private DirectoryManager directoryManager;
 
+
+    /**
+     * Construtor parametrizado.
+     *
+     * @param data Dados da exchange como porta pull e empresas pelas quais
+     *             está responsável.
+     */
     public Exchange(ExchangeData data) {
         this.context = ZMQ.context(1);
         this.push = this.context.socket(ZMQ.PUSH);
         this.pull = this.context.socket(ZMQ.PULL);
         this.pub = this.context.socket(ZMQ.PUB);
-        this.push.connect("tcp://localhost:" + socket_push_port);
-        this.pull.bind("tcp://localhost:" + data.socket_pull_port);
-        this.pub.connect("tcp://localhost:" + socket_pub_port);
+        this.push.connect("tcp://localhost:" + socketPushPort);
+        this.pull.bind("tcp://localhost:" + data.socketPullPort);
+        this.pub.connect("tcp://localhost:" + socketPubPort);
         this.companies = data.companies;
         this.directoryManager = new DirectoryManager();
         this.scheduler = Executors.newScheduledThreadPool(1);
     }
 
+
+    /**
+     * Recebe os pedidos de clientes através do socket pull.
+     *
+     */
     private void start() {
         try {
             while(true) {
@@ -93,6 +122,13 @@ public class Exchange {
         }
     }
 
+
+    /**
+     * Trata de processar um pedido pela taxa fixa de uma próxima emissão
+     * e de enviar a resposta ao cliente.
+     *
+     * @param msg   Mensagem com o pedido recebido.
+     */
     private void processEmissionFixedRateReq(Protos.MessageWrapper msg) {
 
         Protos.EmissionFixedRateReq req = msg.getEmissionfixedratereq();
@@ -109,6 +145,13 @@ public class Exchange {
 
     }
 
+
+    /**
+     * Trata de processar um pedido para uma ação de uma empresa e de enviar
+     * a resposta ao cliente.
+     *
+     * @param msg   Mensagem com a resposta ao pedido.
+     */
     private void processCompanyActionReq(Protos.MessageWrapper msg) {
         Protos.CompanyActionReq companyActionReq = msg.getCompanyactionreq();
         long value = companyActionReq.getValue();
@@ -147,6 +190,13 @@ public class Exchange {
         }
     }
 
+
+    /**
+     * Trata de processar um pedido para uma ação de um investidor e de enviar
+     * a resposta ao cliente.
+     *
+     * @param msg   Mensagem com a resposta ao pedido.
+     */
     private void processInvestorActionReq(Protos.MessageWrapper msg) {
         Protos.InvestorActionReq investorActionReq = msg.getInvestoractionreq();
 
@@ -190,6 +240,14 @@ public class Exchange {
         push.send(resp.toByteArray());
     }
 
+
+    /**
+     * Cria uma resposta a um pedido acerca da taxa da próxima emissão.
+     *
+     * @param client    Cliente que fez o pedido.
+     * @param rate      Taxa da próxima emissão.
+     * @return          Resposta criada.
+     */
     private Protos.MessageWrapper createEmissionFixedRateResp(String client, float rate) {
         Protos.EmissionFixedRateResp emissionRateMsg = Protos.EmissionFixedRateResp.newBuilder()
                 .setClient(client)
@@ -202,6 +260,14 @@ public class Exchange {
                 .build();
     }
 
+
+    /**
+     * Cria uma resposta a uma ação de uma empresa (criação de leilão/emissão, etc).
+     *
+     * @param client    Cliente que fez o pedido.
+     * @param status    Estado indicativo do sucesso/insucesso da ação.
+     * @return          Resposta criada.
+     */
     private Protos.MessageWrapper createCompanyActionResp(String client, Protos.CompanyActionResp.Status status) {
         Protos.CompanyActionResp companyActionResp = Protos.CompanyActionResp.newBuilder()
                 .setClient(client)
@@ -214,6 +280,14 @@ public class Exchange {
                 .build();
     }
 
+
+    /**
+     * Cria uma resposta a uma ação de um investidor (criação de subscrição/licitação, etc).
+     *
+     * @param client    Cliente que fez o pedido.
+     * @param status    Estado indicativo do sucesso/insucesso da ação.
+     * @return          Resposta criada.
+     */
     private Protos.MessageWrapper createInvestorActionResp(String client, Protos.InvestorActionResp.Status status) {
         Protos.InvestorActionResp investorActionResp = Protos.InvestorActionResp.newBuilder()
                 .setClient(client)
@@ -226,6 +300,12 @@ public class Exchange {
                 .build();
     }
 
+
+    /**
+     * Cria e começa a execução de uma exchange.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         int exchange_id = Integer.parseInt(args[0]);
         Exchange exchange = new Exchange(exchanges.get(exchange_id));
