@@ -416,7 +416,7 @@ public class InvestorWorker extends Thread{
 
     /**
      * Cria mensagem de pedido de logout.
-     * 
+     *
      * @return  Mensagem criada.
      */
     public Protos.MessageWrapper createLogoutReq() {

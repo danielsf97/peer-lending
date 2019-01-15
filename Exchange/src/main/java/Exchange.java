@@ -19,6 +19,7 @@ public class Exchange {
      */
     public static class ExchangeData {
         int socketPullPort;
+        int socketPushPort;
         Map<String, Company> companies;
 
 
@@ -28,8 +29,9 @@ public class Exchange {
          * @param socketPullPort  Porta do socket pull.
          * @param companies         Empresas pela qual a exchange está responsável.
          */
-        ExchangeData(int socketPullPort, Map<String, Company> companies) {
+        ExchangeData(int socketPullPort, int socketPushPort, Map<String, Company> companies) {
             this.socketPullPort = socketPullPort;
+            this.socketPushPort = socketPushPort;
             this.companies = companies;
         }
     }
@@ -37,20 +39,20 @@ public class Exchange {
     private static final HashMap<Integer, ExchangeData> exchanges = new HashMap<>() {
         {
             // Exchange 0
-            put(0, new ExchangeData(1234, new HashMap<>() {
+            put(0, new ExchangeData(1234, 1221, new HashMap<>() {
                 {
                     put("empA", new Company("empA"));
                     put("empB", new Company("empB"));
                 }
             }));
             // Exchange 1
-            put(1, new ExchangeData(1235, new HashMap<>() {
+            put(1, new ExchangeData(1235, 1222, new HashMap<>() {
                 {
                     put("empC", new Company("empC"));
                 }
             }));
             // Exchange 2
-            put(2, new ExchangeData(1236, new HashMap<>() {
+            put(2, new ExchangeData(1236, 1223, new HashMap<>() {
                 {
                     put("empD", new Company("empD"));
                 }
@@ -58,7 +60,6 @@ public class Exchange {
         }
     };
 
-    private final int socketPushPort = 1222;
     private final int socketPubPort = 12347;
     private final int delayTime = 1;
     private ScheduledExecutorService scheduler;
@@ -81,7 +82,7 @@ public class Exchange {
         this.push = this.context.socket(ZMQ.PUSH);
         this.pull = this.context.socket(ZMQ.PULL);
         this.pub = this.context.socket(ZMQ.PUB);
-        this.push.connect("tcp://localhost:" + socketPushPort);
+        this.push.connect("tcp://localhost:" + data.socketPushPort);
         this.pull.bind("tcp://localhost:" + data.socketPullPort);
         this.pub.connect("tcp://localhost:" + socketPubPort);
         this.companies = data.companies;
@@ -307,8 +308,8 @@ public class Exchange {
      * @param args
      */
     public static void main(String[] args) {
-        int exchange_id = Integer.parseInt(args[0]);
-        Exchange exchange = new Exchange(exchanges.get(exchange_id));
+        int exchangeId = Integer.parseInt(args[0]);
+        Exchange exchange = new Exchange(exchanges.get(exchangeId));
         exchange.start();
     }
 }
