@@ -106,13 +106,15 @@ public class ScheduledExecutor implements Runnable {
         push.send(msgEmpresa.toByteArray());
         pub.send(notification);
 
-        dir.deleteAuction(this.company.getName());
+        if(winners != null)
+            dir.deleteAuction(this.company.getName(), "SUCCESSFUL");
+        else
+            dir.deleteAuction(this.company.getName(), "NON-SUCCESSFUL");
     }
 
 
     /**
      * Cria mensagem para os vencedores de um leilão.
-     *
      * @param winnerVal Par cujo primeiro elemento é o investidor vencedor e segundo elemento o montante do leilão.
      * @return          Mensagem criada.
      */
@@ -218,7 +220,10 @@ public class ScheduledExecutor implements Runnable {
         push.send(msgEmpresa.toByteArray());
         pub.send(notification);
 
-        dir.deleteEmission(this.company.getName());
+        if(winners != null)
+            dir.deleteEmission(this.company.getName(), "SUCCESSFUL");
+        else
+            dir.deleteEmission(this.company.getName(), "NON-SUCCESSFUL");
     }
 
 

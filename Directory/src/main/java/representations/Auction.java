@@ -8,6 +8,7 @@ public class Auction {
     public final float maxRate;
     public final long duration;
     public String startingDateTime;
+    public String success;
 
 
     /**
@@ -19,11 +20,12 @@ public class Auction {
      * @param duration              Duração do leilão.
      */
     @JsonCreator
-    public Auction(@JsonProperty("value") long value, @JsonProperty("maxRate") float maxRate, @JsonProperty("startingDateTime") String startingDateTime, @JsonProperty("duration") long duration) {
+    public Auction(@JsonProperty("value") long value, @JsonProperty("maxRate") float maxRate, @JsonProperty("startingDateTime") String startingDateTime, @JsonProperty("duration") long duration, @JsonProperty("success") String success) {
         this.value = value;
         this.maxRate = maxRate;
         this.startingDateTime = startingDateTime;
         this.duration = duration;
+        this.success = success;
     }
 
 
@@ -64,5 +66,23 @@ public class Auction {
      */
     public long getDuration() {
         return duration;
+    }
+
+
+    /**
+     * Obtém informação acerca do sucesso de um leilão.
+     *
+     * @return indicação de sucesso/insucesso de um leilão.
+     */
+    public String getSuccess() {
+        return success;
+    }
+
+    /**
+     * Mudar sucesso de um leilão.
+     *
+     */
+    public void setSuccess(String success) {
+        this.success = success;
     }
 }

@@ -8,6 +8,7 @@ public class Emission {
     public final float fixedRate;
     public String startingDateTime;
     public final long duration;
+    public String success;
 
 
     /**
@@ -18,11 +19,12 @@ public class Emission {
      * @param duration              Duração da emissão.
      */
     @JsonCreator
-    public Emission(@JsonProperty("value") long value, @JsonProperty("fixedRate") float fixedRate, @JsonProperty("startingDateTime") String startingDateTime, @JsonProperty("duration") long duration) {
+    public Emission(@JsonProperty("value") long value, @JsonProperty("fixedRate") float fixedRate, @JsonProperty("startingDateTime") String startingDateTime, @JsonProperty("duration") long duration, @JsonProperty("success") String success) {
         this.value = value;
         this.fixedRate = fixedRate;
         this.startingDateTime = startingDateTime;
         this.duration = duration;
+        this.success = success;
     }
 
 
@@ -63,5 +65,22 @@ public class Emission {
      */
     public long getDuration() {
         return duration;
+    }
+
+    /**
+     * Obtém informação acerca do sucesso de uma emissão.
+     *
+     * @return indicação de sucesso/insucesso de um leilão.
+     */
+    public String getSuccess() {
+        return success;
+    }
+
+    /**
+     * Mudar sucesso de uma emissão.
+     *
+     */
+    public void setSuccess(String success) {
+        this.success = success;
     }
 }

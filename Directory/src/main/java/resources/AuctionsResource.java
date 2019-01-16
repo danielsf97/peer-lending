@@ -90,8 +90,8 @@ public class AuctionsResource {
      * @return          Resposta REST ao pedido.
      */
     @DELETE
-    @Path("/{company}")
-    public Response delete(@PathParam("company") String company) {
+    @Path("/{company}?success={success}")
+    public Response delete(@PathParam("company") String company, @PathParam("success") String success) {
         if(!companies.containsKey(company))
             throw new RestException("A empresa não existe!", Response.Status.NOT_FOUND);
 
@@ -107,6 +107,8 @@ public class AuctionsResource {
         }
 
         activeAuctions.remove(save);
+
+        save.setSuccess(success);
 
         History h = companies.get(company);
         h.addAuction(save);

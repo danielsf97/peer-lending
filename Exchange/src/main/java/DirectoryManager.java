@@ -63,8 +63,8 @@ public class DirectoryManager {
      * @param company          Nome da empresa.
      * @throws Exception
      */
-    public void deleteHttp(String partialUri, String company) throws Exception {
-        URL url = new URL("http://localhost:8080/" + partialUri + "/" + company);
+    public void deleteHttp(String partialUri, String company, String success) throws Exception {
+        URL url = new URL("http://localhost:8080/" + partialUri + "/" + company + "?success=" + success);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("DELETE");
         conn.setDoOutput(true);
@@ -84,7 +84,7 @@ public class DirectoryManager {
      * @throws Exception
      */
     public void postAuction(Auction a, String company) throws Exception {
-        AuctionRep auctionRep = new AuctionRep(a.getValue(), a.getMaxRate(), a.getStartingDateTime(), a.getDuration(), company);
+        AuctionRep auctionRep = new AuctionRep(a.getValue(), a.getMaxRate(), a.getStartingDateTime(), a.getDuration(), company, "N/A");
         String auctionJson = gson.toJson(auctionRep);
         postHttp("http://localhost:8080/activeAuctions", auctionJson);
     }
@@ -97,7 +97,7 @@ public class DirectoryManager {
      * @throws Exception
      */
     public void postEmission(Emission e, String company) throws Exception {
-        EmissionRep emissionRep = new EmissionRep(e.getValue(), e.getFixedRate(), e.getStartingDateTime(), e.getDuration(), company);
+        EmissionRep emissionRep = new EmissionRep(e.getValue(), e.getFixedRate(), e.getStartingDateTime(), e.getDuration(), company, "N/A");
         String emissionJson = gson.toJson(emissionRep);
         postHttp("http://localhost:8080/activeEmissions", emissionJson);
     }
@@ -109,8 +109,8 @@ public class DirectoryManager {
      * @param company       Empresa para a qual apagar leilão ativo.
      * @throws Exception
      */
-    public void deleteAuction(String company) throws Exception {
-        deleteHttp("activeAuctions", company);
+    public void deleteAuction(String company, String success) throws Exception {
+        deleteHttp("activeAuctions", company, success);
     }
 
 
@@ -120,8 +120,8 @@ public class DirectoryManager {
      * @param company       Empresa para a qual apagar emissão ativa.
      * @throws Exception
      */
-    public void deleteEmission(String company) throws Exception {
-        deleteHttp("activeEmissions", company);
+    public void deleteEmission(String company, String success) throws Exception {
+        deleteHttp("activeEmissions", company, success);
     }
 
 
@@ -135,14 +135,16 @@ public class DirectoryManager {
         public String startingDateTime;
         public long duration;
         public String company;
+        public String success;
 
-        public AuctionRep(long value, float maxRate, LocalDateTime startingDateTime, long duration, String company) {
+        public AuctionRep(long value, float maxRate, LocalDateTime startingDateTime, long duration, String company, String success) {
             this.value = value;
             this.maxRate = maxRate;
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             this.startingDateTime = startingDateTime.format(formatter);
             this.duration = duration;
             this.company = company;
+            this.success = success;
         }
     }
 
@@ -156,14 +158,16 @@ public class DirectoryManager {
         public String startingDateTime;
         public long duration;
         public String company;
+        public String success;
 
-        public EmissionRep(long value, float fixedRate, LocalDateTime startingDateTime, long duration, String company) {
+        public EmissionRep(long value, float fixedRate, LocalDateTime startingDateTime, long duration, String company, String success) {
             this.value = value;
             this.fixedRate = fixedRate;
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             this.startingDateTime = startingDateTime.format(formatter);
             this.duration = duration;
             this.company = company;
+            this.success = success;
         }
     }
 }
