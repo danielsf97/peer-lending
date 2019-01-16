@@ -17,8 +17,8 @@ public class ActiveEmission extends Emission {
      * @param company               Empresa que realizou a emissão.
      */
     @JsonCreator
-    public ActiveEmission(@JsonProperty("value") long value, @JsonProperty("fixedRate") float fixedRate, @JsonProperty("startingDateTime") String startingDateTime, @JsonProperty("duration") long duration, @JsonProperty("companyName") String company) {
-        super(value, fixedRate, startingDateTime, duration);
+    public ActiveEmission(@JsonProperty("value") long value, @JsonProperty("fixedRate") float fixedRate, @JsonProperty("startingDateTime") String startingDateTime, @JsonProperty("duration") long duration, @JsonProperty("companyName") String company, @JsonProperty("success") String success) {
+        super(value, fixedRate, startingDateTime, duration, success);
         this.company = company;
     }
 

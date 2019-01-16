@@ -54,7 +54,7 @@ public class History {
      * @param aa Leilão a adicionar ao histórico.
      */
     public void addAuction(ActiveAuction aa) {
-        Auction a = new Auction(aa.getValue(), aa.getMaxRate(), aa.getStartingDateTime(), aa.getDuration());
+        Auction a = new Auction(aa.getValue(), aa.getMaxRate(), aa.getStartingDateTime(), aa.getDuration(), aa.getSuccess());
         auctions.add(a);
     }
 
@@ -65,7 +65,7 @@ public class History {
      * @param ee Emissão a adicionar ao histórico.
      */
     public void addEmission(ActiveEmission ee) {
-        Emission e = new Emission(ee.getValue(), ee.getFixedRate(), ee.getStartingDateTime(), ee.getDuration());
+        Emission e = new Emission(ee.getValue(), ee.getFixedRate(), ee.getStartingDateTime(), ee.getDuration(), ee.getSuccess());
         emissions.add(e);
     }
 }
