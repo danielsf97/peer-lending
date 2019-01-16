@@ -50,7 +50,7 @@ public class CompaniesResource {
      * @return          Resposta REST ao pedido.
      */
     @GET
-    @Path("{name}/auctionHistory")
+    @Path("/{name}/auctionHistory")
     public Response getCompanyAuctionHistory(@PathParam("name") String name) {
         if(!companies.containsKey(name)) {
             final String msg = String.format("Empresa não existe!");
@@ -68,7 +68,7 @@ public class CompaniesResource {
      * @return          Resposta REST ao pedido.
      */
     @GET
-    @Path("{name}/emissionHistory")
+    @Path("/{name}/emissionHistory")
     public Response getCompanyEmissionHistory(@PathParam("name") String name) {
         if(!companies.containsKey(name))
             throw new RestException("A empresa não existe!", Response.Status.NOT_FOUND);
