@@ -1,8 +1,12 @@
-%%%-------------------------------------------------------------------
-%% @doc frontend public API
-%% @end
-%%%-------------------------------------------------------------------
-
+%%%-----------------------------------------------------------------------------
+%%% @copyright (C) 2018-2019, Paradigmas de Sistemas Distribuídos
+%%% @doc Modulo que possui a API necessária à inicialização do Frontend
+%%%
+%%% Responsável por iniciar a aplicação Frontend, aceitar conexões de clientes
+%%% e proceder à sua autenticação.
+%%% @author Grupo 3
+%%% @end
+%%%-----------------------------------------------------------------------------
 -module(frontend_app).
 
 -behaviour(application).
@@ -22,8 +26,14 @@ start(_StartType, _StartArgs) ->
 stop(_State) ->
     ok.
 
-%%--------------------------------------------------------------------
-
+%%------------------------------------------------------------------------------
+%% @doc Função que inicializa a aplicação FrontEnd.
+%%
+%% Cria um ator responsável por manter registo dos utilizadores e autenticações,
+%% como também os Senders e Receivers associados a cada Exchange. Invoca a
+%% função responsável por aceitar conexões dos clientes.
+%% @end
+%%------------------------------------------------------------------------------
 server(Port) -> 
 	login_manager:start(),
 	senders_manager:start(),
@@ -37,6 +47,13 @@ server(Port) ->
 %% Internal functions
 %%====================================================================
 
+%%------------------------------------------------------------------------------
+%% @doc Função que lida com o estabelecimento de conexões.
+%%
+%% Aguarda a conexão de um cliente, quando estabelecida encarrega-se de o
+%% autenticar e aceitar simultanemente novas conexões.
+%% @end
+%%------------------------------------------------------------------------------
 acceptor(LSock) ->
 	% Espero a conexão de um cliente
 	{ok, Sock} = gen_tcp:accept(LSock),
@@ -44,6 +61,14 @@ acceptor(LSock) ->
 	spawn(fun() -> acceptor(LSock) end),
 	authenticate(Sock).
 
+%%------------------------------------------------------------------------------
+%% @doc Função que autentica um cliente e cria um ator para a sua sessão.
+%%
+%% Enquanto o cliente não se encontra autentica aguarda por pedidos de login.
+%% Para cada pedido verifica as credenciais e autentica o cliente, mudando de
+%% contexto para servir o cliente, em caso de login efetuado.
+%% @end
+%%------------------------------------------------------------------------------
 authenticate(Sock) ->
 	receive
 		{tcp, Sock, Bin} ->

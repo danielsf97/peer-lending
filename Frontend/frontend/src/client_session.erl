@@ -1,7 +1,25 @@
+%%%-----------------------------------------------------------------------------
+%%% @copyright (C) 2018-2019, Paradigmas de Sistemas Distribuídos
+%%% @doc Modulo representativo da sessão de um cliente autenticado.
+%%%
+%%% Constitui um loop onde se vão processando mensagens vindas do cliente e 
+%%% se entrega à exchange correta, ou provindas do exchange sendo devolvidas ao 
+%%% cliente respetivo. 
+%%% @author Grupo 3
+%%% @end
+%%%-----------------------------------------------------------------------------
 -module(client_session).
 -export([client_loop/2]).
 -include("protos_pb.hrl").
 
+%%------------------------------------------------------------------------------
+%% @doc Função responsável por servir os pedidos de um cliente.
+%%
+%% Recebe as mensagens provindas do cliente e entrega-as ao Ator do tipo 
+%% "Sender" responsável por comunicar com a exchange respetiva. Retorna as 
+%% mensagens que chegam do Ator "Receiver" associado a uma exchange, ao cliente.
+%% @end
+%%------------------------------------------------------------------------------
 client_loop(Sock, User) ->
 	receive
 		{tcp, Sock, Bin} ->
@@ -28,10 +46,14 @@ client_loop(Sock, User) ->
 					{'EmissionFixedRateReq', Comp_B} = Body,
 					Comp = binary_to_list(Comp_B),
 					senders_manager ! {company, Comp, self()},
+					io:format("Company ~p quer criar emissão~n",[Comp]),
 
 					receive
-						{ok, Pid} -> Pid ! {msg, Bin, self()};
+						{ok, Pid} -> 
+							io:format("Empresa Existe!!"),
+							Pid ! {msg, Bin, self()};
 						non_existent_company -> 
+							io:format("Empresa não Existe!!"),
 							Erro = #'ErrorMsg'{error='Empresa não existe!!'},
 							Resp = protos_pb:encode_msg(#'MessageWrapper'{msgType = 'SYNC', inner_message = {errormsg, Erro}}),
 							gen_tcp:send(Sock, Resp)
@@ -73,6 +95,7 @@ client_loop(Sock, User) ->
 			end;
 
 		{receiver, Resp} ->
+			io:format("Recebeu msg do Receiver!!"),
 			gen_tcp:send(Sock, Resp),
 			client_loop(Sock, User);
 

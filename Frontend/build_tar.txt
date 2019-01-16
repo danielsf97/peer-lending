@@ -11,6 +11,8 @@
 
     {extended_start_script, true}]}.
 '''
+-> rebar3 clean
+-> eliminar _build/prod
 
 -> correr:
 	rebar3 release -d false
