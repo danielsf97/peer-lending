@@ -107,6 +107,8 @@ public class NetClient {
             sb.append(StringUtils.rightPad("| DURAÇÃO: " + o.get("duration"), w-1) + "|").append("\n");
             if(active)
                 sb.append(StringUtils.rightPad("| EMPRESA: " + o.get("companyName"), w-1) + "|").append("\n");
+            else
+                sb.append(StringUtils.rightPad("| SUCESSO: " + o.get("success"), w-1) + "|").append("\n");
             sb.append(StringUtils.rightPad("+", w - 1, "-") + "+").append("\n");
         }
 
@@ -139,6 +141,8 @@ public class NetClient {
             sb.append(StringUtils.rightPad("| DURAÇÃO: " + o.get("duration"), w-1) + "|").append("\n");
             if(active)
                 sb.append(StringUtils.rightPad("| EMPRESA: " + o.get("companyName"), w-1) + "|").append("\n");
+            else
+                sb.append(StringUtils.rightPad("| SUCESSO: " + o.get("success"), w-1) + "|").append("\n");
             sb.append(StringUtils.rightPad("+", w - 1, "-") + "+").append("\n");
         }
 
