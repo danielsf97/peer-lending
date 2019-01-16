@@ -14,7 +14,7 @@ public class Auction {
     private long value;
     private float maxRate;
     private LocalDateTime startingDateTime;
-    private static int duration = 10;
+    private static int duration = 1;
     private TreeSet<Bid> bids;
 
 
