@@ -204,14 +204,14 @@ public class ScheduledExecutor implements Runnable {
                 String status = "Nula";
                 msgEmpresa = createEmissionCompanyResultMsg(status, emission.getValue(), sum);
 
-                notification = this.company.getName() + ": Leilão Terminado, subscrição: Nula, requerido: " +
+                notification = this.company.getName() + ": Emissão Terminada, subscrição: Nula, requerido: " +
                         emission.getValue() + ", obtido: " + sum;
             }
             else {
                 String status = "Parcial";
                 msgEmpresa = createEmissionCompanyResultMsg(status, emission.getValue(), sum);
 
-                notification = this.company.getName() + ": Leilão Terminado, subscrição: Parcial, requerido: " +
+                notification = this.company.getName() + ": Emissão Terminada, subscrição: Parcial, requerido: " +
                         emission.getValue() + ", obtido: " + sum;
             }
             float nextEmissionRate = this.company.getEmissionRate() * (float) 1.1;

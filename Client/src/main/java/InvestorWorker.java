@@ -114,6 +114,13 @@ public class InvestorWorker extends Thread{
     private void readAsyncMessages() {
         String asyncMessages = investor.getAsyncMessages();
         System.out.println(asyncMessages);
+
+        try {
+            System.in.read();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -131,6 +138,13 @@ public class InvestorWorker extends Thread{
         sub.subscribe(comp);
 
         System.out.println("Notificações da empresa " + comp + " subscritas.\n");
+
+        try {
+            System.in.read();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -147,6 +161,13 @@ public class InvestorWorker extends Thread{
 
         sub.subscribe(comp);
         System.out.println("Remoção das notificações da empresa " + comp + " completa.\n");
+
+        try {
+            System.in.read();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -157,6 +178,12 @@ public class InvestorWorker extends Thread{
     private void readNotifications() {
         String notifications = investor.getNotifications();
         System.out.println(notifications);
+        try {
+            System.in.read();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -193,6 +220,12 @@ public class InvestorWorker extends Thread{
                     break;
             }
         }
+        try {
+            System.in.read();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -220,18 +253,24 @@ public class InvestorWorker extends Thread{
         if(investorResp != null) {
             switch (investorResp.getStatus()){
                 case CONFIRMED:
-                    System.out.println("Licitação Confirmada!!");
+                    System.out.println("Licitação confirmada!");
                     break;
                 case REPLACED:
-                    System.out.println("A sua licitação anterior foi substituida!!");
+                    System.out.println("A sua licitação anterior foi substituída!");
                     break;
                 case ENDED:
-                    System.out.println("Licitação Inválida. Leilão Terminado!!");
+                    System.out.println("Licitação Inválida. Leilão terminado!");
                     break;
                 case INVALID:
-                    System.out.println("Licitação Inválida!!");
+                    System.out.println("Licitação inválida!");
                     break;
             }
+        }
+        try {
+            System.in.read();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
         }
     }
 

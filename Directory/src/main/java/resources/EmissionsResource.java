@@ -89,7 +89,7 @@ public class EmissionsResource {
      * @return              Resposta REST ao pedido.
      */
     @DELETE
-    @Path("/{company}?success={success}")
+    @Path("/{company}/{success}")
     public Response delete(@PathParam("company") String company, @PathParam("success") String success) {
         if(!companies.containsKey(company))
             throw new RestException("A empresa não existe!", Response.Status.NOT_FOUND);
