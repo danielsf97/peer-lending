@@ -94,7 +94,10 @@ public class NetClient {
         StringBuilder sb = new StringBuilder();
 
         sb.append(StringUtils.rightPad("+", w - 1, "-") + "+").append("\n");
-        sb.append(StringUtils.center(StringUtils.center("Lista de Leilões Ativos", w - 2), w, "|")).append("\n");
+        if(active)
+            sb.append(StringUtils.center(StringUtils.center("Lista de Leilões Ativos", w - 2), w, "|")).append("\n");
+        else
+            sb.append(StringUtils.center(StringUtils.center("Histórico de leilões", w - 2), w, "|")).append("\n");
         sb.append(StringUtils.rightPad("+", w - 1, "-") + "+").append("\n");
         for(JsonElement e: jarray) {
             JsonObject o = e.getAsJsonObject();
@@ -122,7 +125,10 @@ public class NetClient {
         StringBuilder sb = new StringBuilder();
 
         sb.append(StringUtils.rightPad("+", w - 1, "-") + "+").append("\n");
-        sb.append(StringUtils.center(StringUtils.center("Lista de Emissões Ativas", w - 2), w, "|")).append("\n");
+        if(active)
+            sb.append(StringUtils.center(StringUtils.center("Lista de Emissões Ativas", w - 2), w, "|")).append("\n");
+        else
+            sb.append(StringUtils.center(StringUtils.center("Histórico de emissões", w - 2), w, "|")).append("\n");
         sb.append(StringUtils.rightPad("+", w - 1, "-") + "+").append("\n");
         for(JsonElement e: jarray) {
             JsonObject o = e.getAsJsonObject();

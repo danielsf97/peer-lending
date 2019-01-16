@@ -7,6 +7,7 @@ import java.util.ArrayDeque;
  */
 public class ClientType {
     private String name;
+    private String sessionToken;
     private boolean loggedIn;
     private ArrayDeque<String> asyncMessages;
     private int numAsyncMessages;
@@ -18,8 +19,9 @@ public class ClientType {
      *
      * @param name
      */
-    public ClientType(String name) {
+    public ClientType(String name, String token) {
         this.name = name;
+        this.sessionToken = token;
         this.loggedIn = true;
         this.asyncMessages = new ArrayDeque<>();
         this.numAsyncMessages = 0;
@@ -36,6 +38,10 @@ public class ClientType {
         return name;
     }
 
+
+    public String getSessionToken() {
+        return sessionToken;
+    }
 
     /**
      * Devolve se o cliente está autenticado ou não.

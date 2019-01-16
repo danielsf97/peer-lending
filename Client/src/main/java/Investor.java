@@ -14,8 +14,8 @@ public class Investor extends ClientType {
      *
      * @param name  Nome do investidor.
      */
-    public Investor(String name) {
-        super(name);
+    public Investor(String name, String token) {
+        super(name, token);
         this.notifications = new ArrayDeque<>();
         this.numNotifications = 0;
     }

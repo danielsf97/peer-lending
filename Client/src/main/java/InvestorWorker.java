@@ -391,6 +391,7 @@ public class InvestorWorker extends Thread{
                 .build();
         return Protos.MessageWrapper.newBuilder()
                 .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
+                .setClientSession(this.investor.getSessionToken())
                 .setInvestoractionreq(req).build();
     }
 
@@ -410,6 +411,7 @@ public class InvestorWorker extends Thread{
                 .build();
         return Protos.MessageWrapper.newBuilder()
                 .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
+                .setClientSession(this.investor.getSessionToken())
                 .setInvestoractionreq(req).build();
     }
 

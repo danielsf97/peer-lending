@@ -134,13 +134,15 @@ public class Exchange {
 
         Protos.EmissionFixedRateReq req = msg.getEmissionfixedratereq();
 
+        String clientSession = msg.getClientSession();
+
         Company c = companies.get(req.getClient()); // O cliente é a empresa
 
         float rate = c.getEmissionRate();
 
         if(c.hasActiveAction()) rate = -1;
 
-        Protos.MessageWrapper resp = createEmissionFixedRateResp(req.getClient(), rate);
+        Protos.MessageWrapper resp = createEmissionFixedRateResp(req.getClient(), rate, clientSession);
 
         this.push.send(resp.toByteArray());
 
@@ -155,6 +157,7 @@ public class Exchange {
      */
     private void processCompanyActionReq(Protos.MessageWrapper msg) {
         Protos.CompanyActionReq companyActionReq = msg.getCompanyactionreq();
+        String clientSession = msg.getClientSession();
         long value = companyActionReq.getValue();
         float rate = companyActionReq.getMaxRate();
         String notification = null;
@@ -181,12 +184,12 @@ public class Exchange {
                 notification = c.getName() + ": Criação de Emissão, Montante: " + value + ", Taxa: " + rate;
             }
 
-            Protos.MessageWrapper statusMsg = createCompanyActionResp(companyActionReq.getClient(), Protos.CompanyActionResp.Status.SUCCESS);
+            Protos.MessageWrapper statusMsg = createCompanyActionResp(companyActionReq.getClient(), Protos.CompanyActionResp.Status.SUCCESS, clientSession);
             push.send(statusMsg.toByteArray());
             pub.send(notification);
         }
         catch(Exception e) {
-            Protos.MessageWrapper statusMsg = createCompanyActionResp(companyActionReq.getClient(), Protos.CompanyActionResp.Status.INVALID);
+            Protos.MessageWrapper statusMsg = createCompanyActionResp(companyActionReq.getClient(), Protos.CompanyActionResp.Status.INVALID, clientSession);
             push.send(statusMsg.toByteArray());
         }
     }
@@ -200,7 +203,7 @@ public class Exchange {
      */
     private void processInvestorActionReq(Protos.MessageWrapper msg) {
         Protos.InvestorActionReq investorActionReq = msg.getInvestoractionreq();
-
+        String clientSession = msg.getClientSession();
         long value = investorActionReq.getValue();
         String cName = investorActionReq.getCompany();
         Company c = companies.get(cName);
@@ -210,18 +213,18 @@ public class Exchange {
             float rate = investorActionReq.getRate();
             Auction a = c.getActiveAuction();
             if(a == null) {
-                Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.INVALID);
+                Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.INVALID, clientSession);
                 push.send(resp.toByteArray());
                 return;
             }
-            int stat = a.addBid(client, value, rate);
+            int stat = a.addBid(client, clientSession, value, rate);
             if(stat == -1) {
-                Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.INVALID);
+                Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.INVALID, clientSession);
                 push.send(resp.toByteArray());
                 return;
             }
             else if(stat == 1) {
-                Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.REPLACED);
+                Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.REPLACED, clientSession);
                 push.send(resp.toByteArray());
                 return;
             }
@@ -230,14 +233,14 @@ public class Exchange {
             Emission e = c.getActiveEmission();
 
             if(e == null) {
-                Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.INVALID);
+                Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.INVALID, clientSession);
                 push.send(resp.toByteArray());
                 return;
             }
-            e.addSubscription(client, value);
+            e.addSubscription(client, clientSession,value);
         }
 
-        Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.CONFIRMED);
+        Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.CONFIRMED, clientSession);
         push.send(resp.toByteArray());
     }
 
@@ -249,7 +252,7 @@ public class Exchange {
      * @param rate      Taxa da próxima emissão.
      * @return          Resposta criada.
      */
-    private Protos.MessageWrapper createEmissionFixedRateResp(String client, float rate) {
+    private Protos.MessageWrapper createEmissionFixedRateResp(String client, float rate, String clientSession) {
         Protos.EmissionFixedRateResp emissionRateMsg = Protos.EmissionFixedRateResp.newBuilder()
                 .setClient(client)
                 .setRate(rate)
@@ -257,6 +260,7 @@ public class Exchange {
 
         return Protos.MessageWrapper.newBuilder()
                 .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
+                .setClientSession(clientSession)
                 .setEmissionfixedrateresp(emissionRateMsg)
                 .build();
     }
@@ -269,7 +273,7 @@ public class Exchange {
      * @param status    Estado indicativo do sucesso/insucesso da ação.
      * @return          Resposta criada.
      */
-    private Protos.MessageWrapper createCompanyActionResp(String client, Protos.CompanyActionResp.Status status) {
+    private Protos.MessageWrapper createCompanyActionResp(String client, Protos.CompanyActionResp.Status status, String clientSession) {
         Protos.CompanyActionResp companyActionResp = Protos.CompanyActionResp.newBuilder()
                 .setClient(client)
                 .setStatus(status)
@@ -277,6 +281,7 @@ public class Exchange {
 
         return Protos.MessageWrapper.newBuilder()
                 .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
+                .setClientSession(clientSession)
                 .setCompanyactionresp(companyActionResp)
                 .build();
     }
@@ -289,7 +294,7 @@ public class Exchange {
      * @param status    Estado indicativo do sucesso/insucesso da ação.
      * @return          Resposta criada.
      */
-    private Protos.MessageWrapper createInvestorActionResp(String client, Protos.InvestorActionResp.Status status) {
+    private Protos.MessageWrapper createInvestorActionResp(String client, Protos.InvestorActionResp.Status status, String clientSession) {
         Protos.InvestorActionResp investorActionResp = Protos.InvestorActionResp.newBuilder()
                 .setClient(client)
                 .setStatus(status)
@@ -297,6 +302,7 @@ public class Exchange {
 
         return Protos.MessageWrapper.newBuilder()
                 .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
+                .setClientSession(clientSession)
                 .setInvestoractionresp(investorActionResp)
                 .build();
     }

@@ -89,7 +89,7 @@ public class Auction {
      *          0 em caso de sucesso (nova licitação)
      *          1 em caso de sucesso (licitação alterada)
      */
-    public int addBid(String investor, long value, float rate) {
+    public int addBid(String investor, String clientSession,long value, float rate) {
         boolean found = false;
         Bid bid = null;
 
@@ -106,7 +106,7 @@ public class Auction {
             bids.remove(bid);
         }
 
-        this.bids.add(new Bid(investor, value, rate));
+        this.bids.add(new Bid(investor, clientSession, value, rate));
 
         if (found) return 1;
         else return 0;

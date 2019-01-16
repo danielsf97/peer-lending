@@ -1,6 +1,7 @@
 import org.zeromq.ZMQ;
 import utils.Menu;
 
+import java.io.IOException;
 import java.nio.channels.SocketChannel;
 
 
@@ -96,7 +97,7 @@ public class CompanyWorker extends Thread {
      * Efetua o logout de uma empresa.
      *
      */
-    private void logout() {
+    private void logout(){
         Protos.MessageWrapper req = createLogoutReq();
         Protos.MessageWrapper resp = Utils.sendAndRecv(req,socket,company);
 
@@ -104,12 +105,17 @@ public class CompanyWorker extends Thread {
         if(resp.hasLogoutresp())
             logoutResp = resp.getLogoutresp();
 
-        if(logoutResp != null){
-            if (logoutResp.getStatus() == Protos.LogoutResp.Status.SUCCESS)
-                company.logout();
-            else {
-                System.out.println("Erro ao fazer logout!");
+        try {
+            if (logoutResp != null) {
+                if (logoutResp.getStatus() == Protos.LogoutResp.Status.SUCCESS) {
+                    socket.close();
+                    company.logout();
+                } else {
+                    System.out.println("Erro ao fazer logout!");
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -219,6 +225,7 @@ public class CompanyWorker extends Thread {
 
         return Protos.MessageWrapper.newBuilder()
                 .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
+                .setClientSession(this.company.getSessionToken())
                 .setEmissionfixedratereq(emissionRateMsg).build();
     }
 
@@ -239,6 +246,7 @@ public class CompanyWorker extends Thread {
 
         return Protos.MessageWrapper.newBuilder()
                 .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
+                .setClientSession(this.company.getSessionToken())
                 .setCompanyactionreq(req).build();
     }
 
@@ -260,6 +268,7 @@ public class CompanyWorker extends Thread {
 
         return Protos.MessageWrapper.newBuilder()
                 .setMsgType(Protos.MessageWrapper.MessageType.SYNC)
+                .setClientSession(this.company.getSessionToken())
                 .setCompanyactionreq(req).build();
     }
 

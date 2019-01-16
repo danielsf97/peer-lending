@@ -35,17 +35,21 @@ public class Client {
         Protos.MessageWrapper resp = Protos.MessageWrapper.parseFrom(respB);
 
         Protos.LoginResp loginResp = null;
+        String sessionToken = null;
 
-        if(resp.hasLoginresp())
+        if(resp.hasLoginresp()){
             loginResp = resp.getLoginresp();
+            sessionToken = resp.getClientSession();
+        }
+
 
         if(loginResp != null) {
             if (loginResp.getStatus() == Protos.LoginResp.Status.SUCCESS) {
                 if (loginResp.getCType() == Protos.LoginResp.ClientType.COMPANY) {
-                    return new Company(user);
+                    return new Company(user, sessionToken);
                 }
                 else {
-                    return new Investor(user);
+                    return new Investor(user, sessionToken);
                 }
             }
             else {
@@ -54,25 +58,6 @@ public class Client {
             }
         }
         return login(socket);
-    }
-
-    /**
-     * Cria uma mensagem de resposta a um pedido de autenticação.
-     *
-     * @param resp     Bytes com mensagem de resposta.
-     * @return         Mensagem criada.
-     */
-    public static Protos.LoginResp getLoginResp(byte[] resp) {
-        try {
-            Protos.MessageWrapper msg = Protos.MessageWrapper.parseFrom(resp);
-            if(msg.hasLoginresp())
-                return msg.getLoginresp();
-        }
-        catch (InvalidProtocolBufferException e) {
-            System.out.println("Mensagem recebida inválida!");
-            e.printStackTrace();
-        }
-        return null;
     }
 
 

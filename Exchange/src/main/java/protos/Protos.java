@@ -26,158 +26,172 @@ public final class Protos {
     Protos.MessageWrapper.MessageType getMsgType();
 
     /**
-     * <code>optional .LoginReq loginreq = 2;</code>
+     * <code>optional string clientSession = 2;</code>
+     */
+    boolean hasClientSession();
+    /**
+     * <code>optional string clientSession = 2;</code>
+     */
+    java.lang.String getClientSession();
+    /**
+     * <code>optional string clientSession = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getClientSessionBytes();
+
+    /**
+     * <code>optional .LoginReq loginreq = 3;</code>
      */
     boolean hasLoginreq();
     /**
-     * <code>optional .LoginReq loginreq = 2;</code>
+     * <code>optional .LoginReq loginreq = 3;</code>
      */
     Protos.LoginReq getLoginreq();
     /**
-     * <code>optional .LoginReq loginreq = 2;</code>
+     * <code>optional .LoginReq loginreq = 3;</code>
      */
     Protos.LoginReqOrBuilder getLoginreqOrBuilder();
 
     /**
-     * <code>optional .LoginResp loginresp = 3;</code>
+     * <code>optional .LoginResp loginresp = 4;</code>
      */
     boolean hasLoginresp();
     /**
-     * <code>optional .LoginResp loginresp = 3;</code>
+     * <code>optional .LoginResp loginresp = 4;</code>
      */
     Protos.LoginResp getLoginresp();
     /**
-     * <code>optional .LoginResp loginresp = 3;</code>
+     * <code>optional .LoginResp loginresp = 4;</code>
      */
     Protos.LoginRespOrBuilder getLoginrespOrBuilder();
 
     /**
-     * <code>optional .LogoutReq logoutreq = 4;</code>
+     * <code>optional .LogoutReq logoutreq = 5;</code>
      */
     boolean hasLogoutreq();
     /**
-     * <code>optional .LogoutReq logoutreq = 4;</code>
+     * <code>optional .LogoutReq logoutreq = 5;</code>
      */
     Protos.LogoutReq getLogoutreq();
     /**
-     * <code>optional .LogoutReq logoutreq = 4;</code>
+     * <code>optional .LogoutReq logoutreq = 5;</code>
      */
     Protos.LogoutReqOrBuilder getLogoutreqOrBuilder();
 
     /**
-     * <code>optional .LogoutResp logoutresp = 5;</code>
+     * <code>optional .LogoutResp logoutresp = 6;</code>
      */
     boolean hasLogoutresp();
     /**
-     * <code>optional .LogoutResp logoutresp = 5;</code>
+     * <code>optional .LogoutResp logoutresp = 6;</code>
      */
     Protos.LogoutResp getLogoutresp();
     /**
-     * <code>optional .LogoutResp logoutresp = 5;</code>
+     * <code>optional .LogoutResp logoutresp = 6;</code>
      */
     Protos.LogoutRespOrBuilder getLogoutrespOrBuilder();
 
     /**
-     * <code>optional .CompanyActionReq companyactionreq = 6;</code>
+     * <code>optional .CompanyActionReq companyactionreq = 7;</code>
      */
     boolean hasCompanyactionreq();
     /**
-     * <code>optional .CompanyActionReq companyactionreq = 6;</code>
+     * <code>optional .CompanyActionReq companyactionreq = 7;</code>
      */
     Protos.CompanyActionReq getCompanyactionreq();
     /**
-     * <code>optional .CompanyActionReq companyactionreq = 6;</code>
+     * <code>optional .CompanyActionReq companyactionreq = 7;</code>
      */
     Protos.CompanyActionReqOrBuilder getCompanyactionreqOrBuilder();
 
     /**
-     * <code>optional .CompanyActionResp companyactionresp = 7;</code>
+     * <code>optional .CompanyActionResp companyactionresp = 8;</code>
      */
     boolean hasCompanyactionresp();
     /**
-     * <code>optional .CompanyActionResp companyactionresp = 7;</code>
+     * <code>optional .CompanyActionResp companyactionresp = 8;</code>
      */
     Protos.CompanyActionResp getCompanyactionresp();
     /**
-     * <code>optional .CompanyActionResp companyactionresp = 7;</code>
+     * <code>optional .CompanyActionResp companyactionresp = 8;</code>
      */
     Protos.CompanyActionRespOrBuilder getCompanyactionrespOrBuilder();
 
     /**
-     * <code>optional .InvestorActionReq investoractionreq = 8;</code>
+     * <code>optional .InvestorActionReq investoractionreq = 9;</code>
      */
     boolean hasInvestoractionreq();
     /**
-     * <code>optional .InvestorActionReq investoractionreq = 8;</code>
+     * <code>optional .InvestorActionReq investoractionreq = 9;</code>
      */
     Protos.InvestorActionReq getInvestoractionreq();
     /**
-     * <code>optional .InvestorActionReq investoractionreq = 8;</code>
+     * <code>optional .InvestorActionReq investoractionreq = 9;</code>
      */
     Protos.InvestorActionReqOrBuilder getInvestoractionreqOrBuilder();
 
     /**
-     * <code>optional .InvestorActionResp investoractionresp = 9;</code>
+     * <code>optional .InvestorActionResp investoractionresp = 10;</code>
      */
     boolean hasInvestoractionresp();
     /**
-     * <code>optional .InvestorActionResp investoractionresp = 9;</code>
+     * <code>optional .InvestorActionResp investoractionresp = 10;</code>
      */
     Protos.InvestorActionResp getInvestoractionresp();
     /**
-     * <code>optional .InvestorActionResp investoractionresp = 9;</code>
+     * <code>optional .InvestorActionResp investoractionresp = 10;</code>
      */
     Protos.InvestorActionRespOrBuilder getInvestoractionrespOrBuilder();
 
     /**
-     * <code>optional .ErrorMsg errormsg = 10;</code>
+     * <code>optional .ErrorMsg errormsg = 11;</code>
      */
     boolean hasErrormsg();
     /**
-     * <code>optional .ErrorMsg errormsg = 10;</code>
+     * <code>optional .ErrorMsg errormsg = 11;</code>
      */
     Protos.ErrorMsg getErrormsg();
     /**
-     * <code>optional .ErrorMsg errormsg = 10;</code>
+     * <code>optional .ErrorMsg errormsg = 11;</code>
      */
     Protos.ErrorMsgOrBuilder getErrormsgOrBuilder();
 
     /**
-     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 12;</code>
      */
     boolean hasEmissionfixedratereq();
     /**
-     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 12;</code>
      */
     Protos.EmissionFixedRateReq getEmissionfixedratereq();
     /**
-     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 12;</code>
      */
     Protos.EmissionFixedRateReqOrBuilder getEmissionfixedratereqOrBuilder();
 
     /**
-     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 13;</code>
      */
     boolean hasEmissionfixedrateresp();
     /**
-     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 13;</code>
      */
     Protos.EmissionFixedRateResp getEmissionfixedrateresp();
     /**
-     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 13;</code>
      */
     Protos.EmissionFixedRateRespOrBuilder getEmissionfixedraterespOrBuilder();
 
     /**
-     * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+     * <code>optional .AuctionEmissionResult auctionemissionresult = 14;</code>
      */
     boolean hasAuctionemissionresult();
     /**
-     * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+     * <code>optional .AuctionEmissionResult auctionemissionresult = 14;</code>
      */
     Protos.AuctionEmissionResult getAuctionemissionresult();
     /**
-     * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+     * <code>optional .AuctionEmissionResult auctionemissionresult = 14;</code>
      */
     Protos.AuctionEmissionResultOrBuilder getAuctionemissionresultOrBuilder();
 
@@ -196,6 +210,7 @@ public final class Protos {
     }
     private MessageWrapper() {
       msgType_ = 0;
+      clientSession_ = "";
     }
 
     @java.lang.Override
@@ -238,8 +253,14 @@ public final class Protos {
               break;
             }
             case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              clientSession_ = bs;
+              break;
+            }
+            case 26: {
               Protos.LoginReq.Builder subBuilder = null;
-              if (innerMessageCase_ == 2) {
+              if (innerMessageCase_ == 3) {
                 subBuilder = ((Protos.LoginReq) innerMessage_).toBuilder();
               }
               innerMessage_ =
@@ -248,12 +269,12 @@ public final class Protos {
                 subBuilder.mergeFrom((Protos.LoginReq) innerMessage_);
                 innerMessage_ = subBuilder.buildPartial();
               }
-              innerMessageCase_ = 2;
+              innerMessageCase_ = 3;
               break;
             }
-            case 26: {
+            case 34: {
               Protos.LoginResp.Builder subBuilder = null;
-              if (innerMessageCase_ == 3) {
+              if (innerMessageCase_ == 4) {
                 subBuilder = ((Protos.LoginResp) innerMessage_).toBuilder();
               }
               innerMessage_ =
@@ -262,12 +283,12 @@ public final class Protos {
                 subBuilder.mergeFrom((Protos.LoginResp) innerMessage_);
                 innerMessage_ = subBuilder.buildPartial();
               }
-              innerMessageCase_ = 3;
+              innerMessageCase_ = 4;
               break;
             }
-            case 34: {
+            case 42: {
               Protos.LogoutReq.Builder subBuilder = null;
-              if (innerMessageCase_ == 4) {
+              if (innerMessageCase_ == 5) {
                 subBuilder = ((Protos.LogoutReq) innerMessage_).toBuilder();
               }
               innerMessage_ =
@@ -276,12 +297,12 @@ public final class Protos {
                 subBuilder.mergeFrom((Protos.LogoutReq) innerMessage_);
                 innerMessage_ = subBuilder.buildPartial();
               }
-              innerMessageCase_ = 4;
+              innerMessageCase_ = 5;
               break;
             }
-            case 42: {
+            case 50: {
               Protos.LogoutResp.Builder subBuilder = null;
-              if (innerMessageCase_ == 5) {
+              if (innerMessageCase_ == 6) {
                 subBuilder = ((Protos.LogoutResp) innerMessage_).toBuilder();
               }
               innerMessage_ =
@@ -290,12 +311,12 @@ public final class Protos {
                 subBuilder.mergeFrom((Protos.LogoutResp) innerMessage_);
                 innerMessage_ = subBuilder.buildPartial();
               }
-              innerMessageCase_ = 5;
+              innerMessageCase_ = 6;
               break;
             }
-            case 50: {
+            case 58: {
               Protos.CompanyActionReq.Builder subBuilder = null;
-              if (innerMessageCase_ == 6) {
+              if (innerMessageCase_ == 7) {
                 subBuilder = ((Protos.CompanyActionReq) innerMessage_).toBuilder();
               }
               innerMessage_ =
@@ -304,12 +325,12 @@ public final class Protos {
                 subBuilder.mergeFrom((Protos.CompanyActionReq) innerMessage_);
                 innerMessage_ = subBuilder.buildPartial();
               }
-              innerMessageCase_ = 6;
+              innerMessageCase_ = 7;
               break;
             }
-            case 58: {
+            case 66: {
               Protos.CompanyActionResp.Builder subBuilder = null;
-              if (innerMessageCase_ == 7) {
+              if (innerMessageCase_ == 8) {
                 subBuilder = ((Protos.CompanyActionResp) innerMessage_).toBuilder();
               }
               innerMessage_ =
@@ -318,12 +339,12 @@ public final class Protos {
                 subBuilder.mergeFrom((Protos.CompanyActionResp) innerMessage_);
                 innerMessage_ = subBuilder.buildPartial();
               }
-              innerMessageCase_ = 7;
+              innerMessageCase_ = 8;
               break;
             }
-            case 66: {
+            case 74: {
               Protos.InvestorActionReq.Builder subBuilder = null;
-              if (innerMessageCase_ == 8) {
+              if (innerMessageCase_ == 9) {
                 subBuilder = ((Protos.InvestorActionReq) innerMessage_).toBuilder();
               }
               innerMessage_ =
@@ -332,12 +353,12 @@ public final class Protos {
                 subBuilder.mergeFrom((Protos.InvestorActionReq) innerMessage_);
                 innerMessage_ = subBuilder.buildPartial();
               }
-              innerMessageCase_ = 8;
+              innerMessageCase_ = 9;
               break;
             }
-            case 74: {
+            case 82: {
               Protos.InvestorActionResp.Builder subBuilder = null;
-              if (innerMessageCase_ == 9) {
+              if (innerMessageCase_ == 10) {
                 subBuilder = ((Protos.InvestorActionResp) innerMessage_).toBuilder();
               }
               innerMessage_ =
@@ -346,12 +367,12 @@ public final class Protos {
                 subBuilder.mergeFrom((Protos.InvestorActionResp) innerMessage_);
                 innerMessage_ = subBuilder.buildPartial();
               }
-              innerMessageCase_ = 9;
+              innerMessageCase_ = 10;
               break;
             }
-            case 82: {
+            case 90: {
               Protos.ErrorMsg.Builder subBuilder = null;
-              if (innerMessageCase_ == 10) {
+              if (innerMessageCase_ == 11) {
                 subBuilder = ((Protos.ErrorMsg) innerMessage_).toBuilder();
               }
               innerMessage_ =
@@ -360,12 +381,12 @@ public final class Protos {
                 subBuilder.mergeFrom((Protos.ErrorMsg) innerMessage_);
                 innerMessage_ = subBuilder.buildPartial();
               }
-              innerMessageCase_ = 10;
+              innerMessageCase_ = 11;
               break;
             }
-            case 90: {
+            case 98: {
               Protos.EmissionFixedRateReq.Builder subBuilder = null;
-              if (innerMessageCase_ == 11) {
+              if (innerMessageCase_ == 12) {
                 subBuilder = ((Protos.EmissionFixedRateReq) innerMessage_).toBuilder();
               }
               innerMessage_ =
@@ -374,12 +395,12 @@ public final class Protos {
                 subBuilder.mergeFrom((Protos.EmissionFixedRateReq) innerMessage_);
                 innerMessage_ = subBuilder.buildPartial();
               }
-              innerMessageCase_ = 11;
+              innerMessageCase_ = 12;
               break;
             }
-            case 98: {
+            case 106: {
               Protos.EmissionFixedRateResp.Builder subBuilder = null;
-              if (innerMessageCase_ == 12) {
+              if (innerMessageCase_ == 13) {
                 subBuilder = ((Protos.EmissionFixedRateResp) innerMessage_).toBuilder();
               }
               innerMessage_ =
@@ -388,12 +409,12 @@ public final class Protos {
                 subBuilder.mergeFrom((Protos.EmissionFixedRateResp) innerMessage_);
                 innerMessage_ = subBuilder.buildPartial();
               }
-              innerMessageCase_ = 12;
+              innerMessageCase_ = 13;
               break;
             }
-            case 106: {
+            case 114: {
               Protos.AuctionEmissionResult.Builder subBuilder = null;
-              if (innerMessageCase_ == 13) {
+              if (innerMessageCase_ == 14) {
                 subBuilder = ((Protos.AuctionEmissionResult) innerMessage_).toBuilder();
               }
               innerMessage_ =
@@ -402,7 +423,7 @@ public final class Protos {
                 subBuilder.mergeFrom((Protos.AuctionEmissionResult) innerMessage_);
                 innerMessage_ = subBuilder.buildPartial();
               }
-              innerMessageCase_ = 13;
+              innerMessageCase_ = 14;
               break;
             }
           }
@@ -524,18 +545,18 @@ public final class Protos {
     private java.lang.Object innerMessage_;
     public enum InnerMessageCase
         implements com.google.protobuf.Internal.EnumLite {
-      LOGINREQ(2),
-      LOGINRESP(3),
-      LOGOUTREQ(4),
-      LOGOUTRESP(5),
-      COMPANYACTIONREQ(6),
-      COMPANYACTIONRESP(7),
-      INVESTORACTIONREQ(8),
-      INVESTORACTIONRESP(9),
-      ERRORMSG(10),
-      EMISSIONFIXEDRATEREQ(11),
-      EMISSIONFIXEDRATERESP(12),
-      AUCTIONEMISSIONRESULT(13),
+      LOGINREQ(3),
+      LOGINRESP(4),
+      LOGOUTREQ(5),
+      LOGOUTRESP(6),
+      COMPANYACTIONREQ(7),
+      COMPANYACTIONRESP(8),
+      INVESTORACTIONREQ(9),
+      INVESTORACTIONRESP(10),
+      ERRORMSG(11),
+      EMISSIONFIXEDRATEREQ(12),
+      EMISSIONFIXEDRATERESP(13),
+      AUCTIONEMISSIONRESULT(14),
       INNERMESSAGE_NOT_SET(0);
       private final int value;
       private InnerMessageCase(int value) {
@@ -551,18 +572,18 @@ public final class Protos {
 
       public static InnerMessageCase forNumber(int value) {
         switch (value) {
-          case 2: return LOGINREQ;
-          case 3: return LOGINRESP;
-          case 4: return LOGOUTREQ;
-          case 5: return LOGOUTRESP;
-          case 6: return COMPANYACTIONREQ;
-          case 7: return COMPANYACTIONRESP;
-          case 8: return INVESTORACTIONREQ;
-          case 9: return INVESTORACTIONRESP;
-          case 10: return ERRORMSG;
-          case 11: return EMISSIONFIXEDRATEREQ;
-          case 12: return EMISSIONFIXEDRATERESP;
-          case 13: return AUCTIONEMISSIONRESULT;
+          case 3: return LOGINREQ;
+          case 4: return LOGINRESP;
+          case 5: return LOGOUTREQ;
+          case 6: return LOGOUTRESP;
+          case 7: return COMPANYACTIONREQ;
+          case 8: return COMPANYACTIONRESP;
+          case 9: return INVESTORACTIONREQ;
+          case 10: return INVESTORACTIONRESP;
+          case 11: return ERRORMSG;
+          case 12: return EMISSIONFIXEDRATEREQ;
+          case 13: return EMISSIONFIXEDRATERESP;
+          case 14: return AUCTIONEMISSIONRESULT;
           case 0: return INNERMESSAGE_NOT_SET;
           default: return null;
         }
@@ -594,313 +615,355 @@ public final class Protos {
       return result == null ? Protos.MessageWrapper.MessageType.SYNC : result;
     }
 
-    public static final int LOGINREQ_FIELD_NUMBER = 2;
+    public static final int CLIENTSESSION_FIELD_NUMBER = 2;
+    private volatile java.lang.Object clientSession_;
     /**
-     * <code>optional .LoginReq loginreq = 2;</code>
+     * <code>optional string clientSession = 2;</code>
      */
-    public boolean hasLoginreq() {
-      return innerMessageCase_ == 2;
+    public boolean hasClientSession() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional .LoginReq loginreq = 2;</code>
+     * <code>optional string clientSession = 2;</code>
      */
-    public Protos.LoginReq getLoginreq() {
-      if (innerMessageCase_ == 2) {
-         return (Protos.LoginReq) innerMessage_;
+    public java.lang.String getClientSession() {
+      java.lang.Object ref = clientSession_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          clientSession_ = s;
+        }
+        return s;
       }
-      return Protos.LoginReq.getDefaultInstance();
     }
     /**
-     * <code>optional .LoginReq loginreq = 2;</code>
+     * <code>optional string clientSession = 2;</code>
      */
-    public Protos.LoginReqOrBuilder getLoginreqOrBuilder() {
-      if (innerMessageCase_ == 2) {
-         return (Protos.LoginReq) innerMessage_;
+    public com.google.protobuf.ByteString
+        getClientSessionBytes() {
+      java.lang.Object ref = clientSession_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        clientSession_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
       }
-      return Protos.LoginReq.getDefaultInstance();
     }
 
-    public static final int LOGINRESP_FIELD_NUMBER = 3;
+    public static final int LOGINREQ_FIELD_NUMBER = 3;
     /**
-     * <code>optional .LoginResp loginresp = 3;</code>
+     * <code>optional .LoginReq loginreq = 3;</code>
      */
-    public boolean hasLoginresp() {
+    public boolean hasLoginreq() {
       return innerMessageCase_ == 3;
     }
     /**
-     * <code>optional .LoginResp loginresp = 3;</code>
+     * <code>optional .LoginReq loginreq = 3;</code>
      */
-    public Protos.LoginResp getLoginresp() {
+    public Protos.LoginReq getLoginreq() {
       if (innerMessageCase_ == 3) {
-         return (Protos.LoginResp) innerMessage_;
+         return (Protos.LoginReq) innerMessage_;
       }
-      return Protos.LoginResp.getDefaultInstance();
+      return Protos.LoginReq.getDefaultInstance();
     }
     /**
-     * <code>optional .LoginResp loginresp = 3;</code>
+     * <code>optional .LoginReq loginreq = 3;</code>
      */
-    public Protos.LoginRespOrBuilder getLoginrespOrBuilder() {
+    public Protos.LoginReqOrBuilder getLoginreqOrBuilder() {
       if (innerMessageCase_ == 3) {
-         return (Protos.LoginResp) innerMessage_;
+         return (Protos.LoginReq) innerMessage_;
       }
-      return Protos.LoginResp.getDefaultInstance();
+      return Protos.LoginReq.getDefaultInstance();
     }
 
-    public static final int LOGOUTREQ_FIELD_NUMBER = 4;
+    public static final int LOGINRESP_FIELD_NUMBER = 4;
     /**
-     * <code>optional .LogoutReq logoutreq = 4;</code>
+     * <code>optional .LoginResp loginresp = 4;</code>
      */
-    public boolean hasLogoutreq() {
+    public boolean hasLoginresp() {
       return innerMessageCase_ == 4;
     }
     /**
-     * <code>optional .LogoutReq logoutreq = 4;</code>
+     * <code>optional .LoginResp loginresp = 4;</code>
      */
-    public Protos.LogoutReq getLogoutreq() {
+    public Protos.LoginResp getLoginresp() {
       if (innerMessageCase_ == 4) {
-         return (Protos.LogoutReq) innerMessage_;
+         return (Protos.LoginResp) innerMessage_;
       }
-      return Protos.LogoutReq.getDefaultInstance();
+      return Protos.LoginResp.getDefaultInstance();
     }
     /**
-     * <code>optional .LogoutReq logoutreq = 4;</code>
+     * <code>optional .LoginResp loginresp = 4;</code>
      */
-    public Protos.LogoutReqOrBuilder getLogoutreqOrBuilder() {
+    public Protos.LoginRespOrBuilder getLoginrespOrBuilder() {
       if (innerMessageCase_ == 4) {
-         return (Protos.LogoutReq) innerMessage_;
+         return (Protos.LoginResp) innerMessage_;
       }
-      return Protos.LogoutReq.getDefaultInstance();
+      return Protos.LoginResp.getDefaultInstance();
     }
 
-    public static final int LOGOUTRESP_FIELD_NUMBER = 5;
+    public static final int LOGOUTREQ_FIELD_NUMBER = 5;
     /**
-     * <code>optional .LogoutResp logoutresp = 5;</code>
+     * <code>optional .LogoutReq logoutreq = 5;</code>
      */
-    public boolean hasLogoutresp() {
+    public boolean hasLogoutreq() {
       return innerMessageCase_ == 5;
     }
     /**
-     * <code>optional .LogoutResp logoutresp = 5;</code>
+     * <code>optional .LogoutReq logoutreq = 5;</code>
      */
-    public Protos.LogoutResp getLogoutresp() {
+    public Protos.LogoutReq getLogoutreq() {
       if (innerMessageCase_ == 5) {
-         return (Protos.LogoutResp) innerMessage_;
+         return (Protos.LogoutReq) innerMessage_;
       }
-      return Protos.LogoutResp.getDefaultInstance();
+      return Protos.LogoutReq.getDefaultInstance();
     }
     /**
-     * <code>optional .LogoutResp logoutresp = 5;</code>
+     * <code>optional .LogoutReq logoutreq = 5;</code>
      */
-    public Protos.LogoutRespOrBuilder getLogoutrespOrBuilder() {
+    public Protos.LogoutReqOrBuilder getLogoutreqOrBuilder() {
       if (innerMessageCase_ == 5) {
-         return (Protos.LogoutResp) innerMessage_;
+         return (Protos.LogoutReq) innerMessage_;
       }
-      return Protos.LogoutResp.getDefaultInstance();
+      return Protos.LogoutReq.getDefaultInstance();
     }
 
-    public static final int COMPANYACTIONREQ_FIELD_NUMBER = 6;
+    public static final int LOGOUTRESP_FIELD_NUMBER = 6;
     /**
-     * <code>optional .CompanyActionReq companyactionreq = 6;</code>
+     * <code>optional .LogoutResp logoutresp = 6;</code>
      */
-    public boolean hasCompanyactionreq() {
+    public boolean hasLogoutresp() {
       return innerMessageCase_ == 6;
     }
     /**
-     * <code>optional .CompanyActionReq companyactionreq = 6;</code>
+     * <code>optional .LogoutResp logoutresp = 6;</code>
      */
-    public Protos.CompanyActionReq getCompanyactionreq() {
+    public Protos.LogoutResp getLogoutresp() {
       if (innerMessageCase_ == 6) {
-         return (Protos.CompanyActionReq) innerMessage_;
+         return (Protos.LogoutResp) innerMessage_;
       }
-      return Protos.CompanyActionReq.getDefaultInstance();
+      return Protos.LogoutResp.getDefaultInstance();
     }
     /**
-     * <code>optional .CompanyActionReq companyactionreq = 6;</code>
+     * <code>optional .LogoutResp logoutresp = 6;</code>
      */
-    public Protos.CompanyActionReqOrBuilder getCompanyactionreqOrBuilder() {
+    public Protos.LogoutRespOrBuilder getLogoutrespOrBuilder() {
       if (innerMessageCase_ == 6) {
-         return (Protos.CompanyActionReq) innerMessage_;
+         return (Protos.LogoutResp) innerMessage_;
       }
-      return Protos.CompanyActionReq.getDefaultInstance();
+      return Protos.LogoutResp.getDefaultInstance();
     }
 
-    public static final int COMPANYACTIONRESP_FIELD_NUMBER = 7;
+    public static final int COMPANYACTIONREQ_FIELD_NUMBER = 7;
     /**
-     * <code>optional .CompanyActionResp companyactionresp = 7;</code>
+     * <code>optional .CompanyActionReq companyactionreq = 7;</code>
      */
-    public boolean hasCompanyactionresp() {
+    public boolean hasCompanyactionreq() {
       return innerMessageCase_ == 7;
     }
     /**
-     * <code>optional .CompanyActionResp companyactionresp = 7;</code>
+     * <code>optional .CompanyActionReq companyactionreq = 7;</code>
      */
-    public Protos.CompanyActionResp getCompanyactionresp() {
+    public Protos.CompanyActionReq getCompanyactionreq() {
       if (innerMessageCase_ == 7) {
-         return (Protos.CompanyActionResp) innerMessage_;
+         return (Protos.CompanyActionReq) innerMessage_;
       }
-      return Protos.CompanyActionResp.getDefaultInstance();
+      return Protos.CompanyActionReq.getDefaultInstance();
     }
     /**
-     * <code>optional .CompanyActionResp companyactionresp = 7;</code>
+     * <code>optional .CompanyActionReq companyactionreq = 7;</code>
      */
-    public Protos.CompanyActionRespOrBuilder getCompanyactionrespOrBuilder() {
+    public Protos.CompanyActionReqOrBuilder getCompanyactionreqOrBuilder() {
       if (innerMessageCase_ == 7) {
-         return (Protos.CompanyActionResp) innerMessage_;
+         return (Protos.CompanyActionReq) innerMessage_;
       }
-      return Protos.CompanyActionResp.getDefaultInstance();
+      return Protos.CompanyActionReq.getDefaultInstance();
     }
 
-    public static final int INVESTORACTIONREQ_FIELD_NUMBER = 8;
+    public static final int COMPANYACTIONRESP_FIELD_NUMBER = 8;
     /**
-     * <code>optional .InvestorActionReq investoractionreq = 8;</code>
+     * <code>optional .CompanyActionResp companyactionresp = 8;</code>
      */
-    public boolean hasInvestoractionreq() {
+    public boolean hasCompanyactionresp() {
       return innerMessageCase_ == 8;
     }
     /**
-     * <code>optional .InvestorActionReq investoractionreq = 8;</code>
+     * <code>optional .CompanyActionResp companyactionresp = 8;</code>
      */
-    public Protos.InvestorActionReq getInvestoractionreq() {
+    public Protos.CompanyActionResp getCompanyactionresp() {
       if (innerMessageCase_ == 8) {
-         return (Protos.InvestorActionReq) innerMessage_;
+         return (Protos.CompanyActionResp) innerMessage_;
       }
-      return Protos.InvestorActionReq.getDefaultInstance();
+      return Protos.CompanyActionResp.getDefaultInstance();
     }
     /**
-     * <code>optional .InvestorActionReq investoractionreq = 8;</code>
+     * <code>optional .CompanyActionResp companyactionresp = 8;</code>
      */
-    public Protos.InvestorActionReqOrBuilder getInvestoractionreqOrBuilder() {
+    public Protos.CompanyActionRespOrBuilder getCompanyactionrespOrBuilder() {
       if (innerMessageCase_ == 8) {
-         return (Protos.InvestorActionReq) innerMessage_;
+         return (Protos.CompanyActionResp) innerMessage_;
       }
-      return Protos.InvestorActionReq.getDefaultInstance();
+      return Protos.CompanyActionResp.getDefaultInstance();
     }
 
-    public static final int INVESTORACTIONRESP_FIELD_NUMBER = 9;
+    public static final int INVESTORACTIONREQ_FIELD_NUMBER = 9;
     /**
-     * <code>optional .InvestorActionResp investoractionresp = 9;</code>
+     * <code>optional .InvestorActionReq investoractionreq = 9;</code>
      */
-    public boolean hasInvestoractionresp() {
+    public boolean hasInvestoractionreq() {
       return innerMessageCase_ == 9;
     }
     /**
-     * <code>optional .InvestorActionResp investoractionresp = 9;</code>
+     * <code>optional .InvestorActionReq investoractionreq = 9;</code>
      */
-    public Protos.InvestorActionResp getInvestoractionresp() {
+    public Protos.InvestorActionReq getInvestoractionreq() {
       if (innerMessageCase_ == 9) {
-         return (Protos.InvestorActionResp) innerMessage_;
+         return (Protos.InvestorActionReq) innerMessage_;
       }
-      return Protos.InvestorActionResp.getDefaultInstance();
+      return Protos.InvestorActionReq.getDefaultInstance();
     }
     /**
-     * <code>optional .InvestorActionResp investoractionresp = 9;</code>
+     * <code>optional .InvestorActionReq investoractionreq = 9;</code>
      */
-    public Protos.InvestorActionRespOrBuilder getInvestoractionrespOrBuilder() {
+    public Protos.InvestorActionReqOrBuilder getInvestoractionreqOrBuilder() {
       if (innerMessageCase_ == 9) {
-         return (Protos.InvestorActionResp) innerMessage_;
+         return (Protos.InvestorActionReq) innerMessage_;
       }
-      return Protos.InvestorActionResp.getDefaultInstance();
+      return Protos.InvestorActionReq.getDefaultInstance();
     }
 
-    public static final int ERRORMSG_FIELD_NUMBER = 10;
+    public static final int INVESTORACTIONRESP_FIELD_NUMBER = 10;
     /**
-     * <code>optional .ErrorMsg errormsg = 10;</code>
+     * <code>optional .InvestorActionResp investoractionresp = 10;</code>
      */
-    public boolean hasErrormsg() {
+    public boolean hasInvestoractionresp() {
       return innerMessageCase_ == 10;
     }
     /**
-     * <code>optional .ErrorMsg errormsg = 10;</code>
+     * <code>optional .InvestorActionResp investoractionresp = 10;</code>
      */
-    public Protos.ErrorMsg getErrormsg() {
+    public Protos.InvestorActionResp getInvestoractionresp() {
       if (innerMessageCase_ == 10) {
-         return (Protos.ErrorMsg) innerMessage_;
+         return (Protos.InvestorActionResp) innerMessage_;
       }
-      return Protos.ErrorMsg.getDefaultInstance();
+      return Protos.InvestorActionResp.getDefaultInstance();
     }
     /**
-     * <code>optional .ErrorMsg errormsg = 10;</code>
+     * <code>optional .InvestorActionResp investoractionresp = 10;</code>
      */
-    public Protos.ErrorMsgOrBuilder getErrormsgOrBuilder() {
+    public Protos.InvestorActionRespOrBuilder getInvestoractionrespOrBuilder() {
       if (innerMessageCase_ == 10) {
-         return (Protos.ErrorMsg) innerMessage_;
+         return (Protos.InvestorActionResp) innerMessage_;
       }
-      return Protos.ErrorMsg.getDefaultInstance();
+      return Protos.InvestorActionResp.getDefaultInstance();
     }
 
-    public static final int EMISSIONFIXEDRATEREQ_FIELD_NUMBER = 11;
+    public static final int ERRORMSG_FIELD_NUMBER = 11;
     /**
-     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+     * <code>optional .ErrorMsg errormsg = 11;</code>
      */
-    public boolean hasEmissionfixedratereq() {
+    public boolean hasErrormsg() {
       return innerMessageCase_ == 11;
     }
     /**
-     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+     * <code>optional .ErrorMsg errormsg = 11;</code>
      */
-    public Protos.EmissionFixedRateReq getEmissionfixedratereq() {
+    public Protos.ErrorMsg getErrormsg() {
       if (innerMessageCase_ == 11) {
-         return (Protos.EmissionFixedRateReq) innerMessage_;
+         return (Protos.ErrorMsg) innerMessage_;
       }
-      return Protos.EmissionFixedRateReq.getDefaultInstance();
+      return Protos.ErrorMsg.getDefaultInstance();
     }
     /**
-     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+     * <code>optional .ErrorMsg errormsg = 11;</code>
      */
-    public Protos.EmissionFixedRateReqOrBuilder getEmissionfixedratereqOrBuilder() {
+    public Protos.ErrorMsgOrBuilder getErrormsgOrBuilder() {
       if (innerMessageCase_ == 11) {
-         return (Protos.EmissionFixedRateReq) innerMessage_;
+         return (Protos.ErrorMsg) innerMessage_;
       }
-      return Protos.EmissionFixedRateReq.getDefaultInstance();
+      return Protos.ErrorMsg.getDefaultInstance();
     }
 
-    public static final int EMISSIONFIXEDRATERESP_FIELD_NUMBER = 12;
+    public static final int EMISSIONFIXEDRATEREQ_FIELD_NUMBER = 12;
     /**
-     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 12;</code>
      */
-    public boolean hasEmissionfixedrateresp() {
+    public boolean hasEmissionfixedratereq() {
       return innerMessageCase_ == 12;
     }
     /**
-     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 12;</code>
+     */
+    public Protos.EmissionFixedRateReq getEmissionfixedratereq() {
+      if (innerMessageCase_ == 12) {
+         return (Protos.EmissionFixedRateReq) innerMessage_;
+      }
+      return Protos.EmissionFixedRateReq.getDefaultInstance();
+    }
+    /**
+     * <code>optional .EmissionFixedRateReq emissionfixedratereq = 12;</code>
+     */
+    public Protos.EmissionFixedRateReqOrBuilder getEmissionfixedratereqOrBuilder() {
+      if (innerMessageCase_ == 12) {
+         return (Protos.EmissionFixedRateReq) innerMessage_;
+      }
+      return Protos.EmissionFixedRateReq.getDefaultInstance();
+    }
+
+    public static final int EMISSIONFIXEDRATERESP_FIELD_NUMBER = 13;
+    /**
+     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 13;</code>
+     */
+    public boolean hasEmissionfixedrateresp() {
+      return innerMessageCase_ == 13;
+    }
+    /**
+     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 13;</code>
      */
     public Protos.EmissionFixedRateResp getEmissionfixedrateresp() {
-      if (innerMessageCase_ == 12) {
+      if (innerMessageCase_ == 13) {
          return (Protos.EmissionFixedRateResp) innerMessage_;
       }
       return Protos.EmissionFixedRateResp.getDefaultInstance();
     }
     /**
-     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+     * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 13;</code>
      */
     public Protos.EmissionFixedRateRespOrBuilder getEmissionfixedraterespOrBuilder() {
-      if (innerMessageCase_ == 12) {
+      if (innerMessageCase_ == 13) {
          return (Protos.EmissionFixedRateResp) innerMessage_;
       }
       return Protos.EmissionFixedRateResp.getDefaultInstance();
     }
 
-    public static final int AUCTIONEMISSIONRESULT_FIELD_NUMBER = 13;
+    public static final int AUCTIONEMISSIONRESULT_FIELD_NUMBER = 14;
     /**
-     * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+     * <code>optional .AuctionEmissionResult auctionemissionresult = 14;</code>
      */
     public boolean hasAuctionemissionresult() {
-      return innerMessageCase_ == 13;
+      return innerMessageCase_ == 14;
     }
     /**
-     * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+     * <code>optional .AuctionEmissionResult auctionemissionresult = 14;</code>
      */
     public Protos.AuctionEmissionResult getAuctionemissionresult() {
-      if (innerMessageCase_ == 13) {
+      if (innerMessageCase_ == 14) {
          return (Protos.AuctionEmissionResult) innerMessage_;
       }
       return Protos.AuctionEmissionResult.getDefaultInstance();
     }
     /**
-     * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+     * <code>optional .AuctionEmissionResult auctionemissionresult = 14;</code>
      */
     public Protos.AuctionEmissionResultOrBuilder getAuctionemissionresultOrBuilder() {
-      if (innerMessageCase_ == 13) {
+      if (innerMessageCase_ == 14) {
          return (Protos.AuctionEmissionResult) innerMessage_;
       }
       return Protos.AuctionEmissionResult.getDefaultInstance();
@@ -997,41 +1060,44 @@ public final class Protos {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeEnum(1, msgType_);
       }
-      if (innerMessageCase_ == 2) {
-        output.writeMessage(2, (Protos.LoginReq) innerMessage_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, clientSession_);
       }
       if (innerMessageCase_ == 3) {
-        output.writeMessage(3, (Protos.LoginResp) innerMessage_);
+        output.writeMessage(3, (Protos.LoginReq) innerMessage_);
       }
       if (innerMessageCase_ == 4) {
-        output.writeMessage(4, (Protos.LogoutReq) innerMessage_);
+        output.writeMessage(4, (Protos.LoginResp) innerMessage_);
       }
       if (innerMessageCase_ == 5) {
-        output.writeMessage(5, (Protos.LogoutResp) innerMessage_);
+        output.writeMessage(5, (Protos.LogoutReq) innerMessage_);
       }
       if (innerMessageCase_ == 6) {
-        output.writeMessage(6, (Protos.CompanyActionReq) innerMessage_);
+        output.writeMessage(6, (Protos.LogoutResp) innerMessage_);
       }
       if (innerMessageCase_ == 7) {
-        output.writeMessage(7, (Protos.CompanyActionResp) innerMessage_);
+        output.writeMessage(7, (Protos.CompanyActionReq) innerMessage_);
       }
       if (innerMessageCase_ == 8) {
-        output.writeMessage(8, (Protos.InvestorActionReq) innerMessage_);
+        output.writeMessage(8, (Protos.CompanyActionResp) innerMessage_);
       }
       if (innerMessageCase_ == 9) {
-        output.writeMessage(9, (Protos.InvestorActionResp) innerMessage_);
+        output.writeMessage(9, (Protos.InvestorActionReq) innerMessage_);
       }
       if (innerMessageCase_ == 10) {
-        output.writeMessage(10, (Protos.ErrorMsg) innerMessage_);
+        output.writeMessage(10, (Protos.InvestorActionResp) innerMessage_);
       }
       if (innerMessageCase_ == 11) {
-        output.writeMessage(11, (Protos.EmissionFixedRateReq) innerMessage_);
+        output.writeMessage(11, (Protos.ErrorMsg) innerMessage_);
       }
       if (innerMessageCase_ == 12) {
-        output.writeMessage(12, (Protos.EmissionFixedRateResp) innerMessage_);
+        output.writeMessage(12, (Protos.EmissionFixedRateReq) innerMessage_);
       }
       if (innerMessageCase_ == 13) {
-        output.writeMessage(13, (Protos.AuctionEmissionResult) innerMessage_);
+        output.writeMessage(13, (Protos.EmissionFixedRateResp) innerMessage_);
+      }
+      if (innerMessageCase_ == 14) {
+        output.writeMessage(14, (Protos.AuctionEmissionResult) innerMessage_);
       }
       unknownFields.writeTo(output);
     }
@@ -1045,53 +1111,56 @@ public final class Protos {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(1, msgType_);
       }
-      if (innerMessageCase_ == 2) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, (Protos.LoginReq) innerMessage_);
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, clientSession_);
       }
       if (innerMessageCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, (Protos.LoginResp) innerMessage_);
+          .computeMessageSize(3, (Protos.LoginReq) innerMessage_);
       }
       if (innerMessageCase_ == 4) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, (Protos.LogoutReq) innerMessage_);
+          .computeMessageSize(4, (Protos.LoginResp) innerMessage_);
       }
       if (innerMessageCase_ == 5) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, (Protos.LogoutResp) innerMessage_);
+          .computeMessageSize(5, (Protos.LogoutReq) innerMessage_);
       }
       if (innerMessageCase_ == 6) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, (Protos.CompanyActionReq) innerMessage_);
+          .computeMessageSize(6, (Protos.LogoutResp) innerMessage_);
       }
       if (innerMessageCase_ == 7) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, (Protos.CompanyActionResp) innerMessage_);
+          .computeMessageSize(7, (Protos.CompanyActionReq) innerMessage_);
       }
       if (innerMessageCase_ == 8) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, (Protos.InvestorActionReq) innerMessage_);
+          .computeMessageSize(8, (Protos.CompanyActionResp) innerMessage_);
       }
       if (innerMessageCase_ == 9) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(9, (Protos.InvestorActionResp) innerMessage_);
+          .computeMessageSize(9, (Protos.InvestorActionReq) innerMessage_);
       }
       if (innerMessageCase_ == 10) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(10, (Protos.ErrorMsg) innerMessage_);
+          .computeMessageSize(10, (Protos.InvestorActionResp) innerMessage_);
       }
       if (innerMessageCase_ == 11) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(11, (Protos.EmissionFixedRateReq) innerMessage_);
+          .computeMessageSize(11, (Protos.ErrorMsg) innerMessage_);
       }
       if (innerMessageCase_ == 12) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(12, (Protos.EmissionFixedRateResp) innerMessage_);
+          .computeMessageSize(12, (Protos.EmissionFixedRateReq) innerMessage_);
       }
       if (innerMessageCase_ == 13) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(13, (Protos.AuctionEmissionResult) innerMessage_);
+          .computeMessageSize(13, (Protos.EmissionFixedRateResp) innerMessage_);
+      }
+      if (innerMessageCase_ == 14) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(14, (Protos.AuctionEmissionResult) innerMessage_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1114,55 +1183,60 @@ public final class Protos {
       if (hasMsgType()) {
         result = result && msgType_ == other.msgType_;
       }
+      result = result && (hasClientSession() == other.hasClientSession());
+      if (hasClientSession()) {
+        result = result && getClientSession()
+            .equals(other.getClientSession());
+      }
       result = result && getInnerMessageCase().equals(
           other.getInnerMessageCase());
       if (!result) return false;
       switch (innerMessageCase_) {
-        case 2:
+        case 3:
           result = result && getLoginreq()
               .equals(other.getLoginreq());
           break;
-        case 3:
+        case 4:
           result = result && getLoginresp()
               .equals(other.getLoginresp());
           break;
-        case 4:
+        case 5:
           result = result && getLogoutreq()
               .equals(other.getLogoutreq());
           break;
-        case 5:
+        case 6:
           result = result && getLogoutresp()
               .equals(other.getLogoutresp());
           break;
-        case 6:
+        case 7:
           result = result && getCompanyactionreq()
               .equals(other.getCompanyactionreq());
           break;
-        case 7:
+        case 8:
           result = result && getCompanyactionresp()
               .equals(other.getCompanyactionresp());
           break;
-        case 8:
+        case 9:
           result = result && getInvestoractionreq()
               .equals(other.getInvestoractionreq());
           break;
-        case 9:
+        case 10:
           result = result && getInvestoractionresp()
               .equals(other.getInvestoractionresp());
           break;
-        case 10:
+        case 11:
           result = result && getErrormsg()
               .equals(other.getErrormsg());
           break;
-        case 11:
+        case 12:
           result = result && getEmissionfixedratereq()
               .equals(other.getEmissionfixedratereq());
           break;
-        case 12:
+        case 13:
           result = result && getEmissionfixedrateresp()
               .equals(other.getEmissionfixedrateresp());
           break;
-        case 13:
+        case 14:
           result = result && getAuctionemissionresult()
               .equals(other.getAuctionemissionresult());
           break;
@@ -1184,52 +1258,56 @@ public final class Protos {
         hash = (37 * hash) + MSGTYPE_FIELD_NUMBER;
         hash = (53 * hash) + msgType_;
       }
+      if (hasClientSession()) {
+        hash = (37 * hash) + CLIENTSESSION_FIELD_NUMBER;
+        hash = (53 * hash) + getClientSession().hashCode();
+      }
       switch (innerMessageCase_) {
-        case 2:
+        case 3:
           hash = (37 * hash) + LOGINREQ_FIELD_NUMBER;
           hash = (53 * hash) + getLoginreq().hashCode();
           break;
-        case 3:
+        case 4:
           hash = (37 * hash) + LOGINRESP_FIELD_NUMBER;
           hash = (53 * hash) + getLoginresp().hashCode();
           break;
-        case 4:
+        case 5:
           hash = (37 * hash) + LOGOUTREQ_FIELD_NUMBER;
           hash = (53 * hash) + getLogoutreq().hashCode();
           break;
-        case 5:
+        case 6:
           hash = (37 * hash) + LOGOUTRESP_FIELD_NUMBER;
           hash = (53 * hash) + getLogoutresp().hashCode();
           break;
-        case 6:
+        case 7:
           hash = (37 * hash) + COMPANYACTIONREQ_FIELD_NUMBER;
           hash = (53 * hash) + getCompanyactionreq().hashCode();
           break;
-        case 7:
+        case 8:
           hash = (37 * hash) + COMPANYACTIONRESP_FIELD_NUMBER;
           hash = (53 * hash) + getCompanyactionresp().hashCode();
           break;
-        case 8:
+        case 9:
           hash = (37 * hash) + INVESTORACTIONREQ_FIELD_NUMBER;
           hash = (53 * hash) + getInvestoractionreq().hashCode();
           break;
-        case 9:
+        case 10:
           hash = (37 * hash) + INVESTORACTIONRESP_FIELD_NUMBER;
           hash = (53 * hash) + getInvestoractionresp().hashCode();
           break;
-        case 10:
+        case 11:
           hash = (37 * hash) + ERRORMSG_FIELD_NUMBER;
           hash = (53 * hash) + getErrormsg().hashCode();
           break;
-        case 11:
+        case 12:
           hash = (37 * hash) + EMISSIONFIXEDRATEREQ_FIELD_NUMBER;
           hash = (53 * hash) + getEmissionfixedratereq().hashCode();
           break;
-        case 12:
+        case 13:
           hash = (37 * hash) + EMISSIONFIXEDRATERESP_FIELD_NUMBER;
           hash = (53 * hash) + getEmissionfixedrateresp().hashCode();
           break;
-        case 13:
+        case 14:
           hash = (37 * hash) + AUCTIONEMISSIONRESULT_FIELD_NUMBER;
           hash = (53 * hash) + getAuctionemissionresult().hashCode();
           break;
@@ -1356,6 +1434,8 @@ public final class Protos {
         super.clear();
         msgType_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
+        clientSession_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
         innerMessageCase_ = 0;
         innerMessage_ = null;
         return this;
@@ -1386,84 +1466,88 @@ public final class Protos {
           to_bitField0_ |= 0x00000001;
         }
         result.msgType_ = msgType_;
-        if (innerMessageCase_ == 2) {
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.clientSession_ = clientSession_;
+        if (innerMessageCase_ == 3) {
           if (loginreqBuilder_ == null) {
             result.innerMessage_ = innerMessage_;
           } else {
             result.innerMessage_ = loginreqBuilder_.build();
           }
         }
-        if (innerMessageCase_ == 3) {
+        if (innerMessageCase_ == 4) {
           if (loginrespBuilder_ == null) {
             result.innerMessage_ = innerMessage_;
           } else {
             result.innerMessage_ = loginrespBuilder_.build();
           }
         }
-        if (innerMessageCase_ == 4) {
+        if (innerMessageCase_ == 5) {
           if (logoutreqBuilder_ == null) {
             result.innerMessage_ = innerMessage_;
           } else {
             result.innerMessage_ = logoutreqBuilder_.build();
           }
         }
-        if (innerMessageCase_ == 5) {
+        if (innerMessageCase_ == 6) {
           if (logoutrespBuilder_ == null) {
             result.innerMessage_ = innerMessage_;
           } else {
             result.innerMessage_ = logoutrespBuilder_.build();
           }
         }
-        if (innerMessageCase_ == 6) {
+        if (innerMessageCase_ == 7) {
           if (companyactionreqBuilder_ == null) {
             result.innerMessage_ = innerMessage_;
           } else {
             result.innerMessage_ = companyactionreqBuilder_.build();
           }
         }
-        if (innerMessageCase_ == 7) {
+        if (innerMessageCase_ == 8) {
           if (companyactionrespBuilder_ == null) {
             result.innerMessage_ = innerMessage_;
           } else {
             result.innerMessage_ = companyactionrespBuilder_.build();
           }
         }
-        if (innerMessageCase_ == 8) {
+        if (innerMessageCase_ == 9) {
           if (investoractionreqBuilder_ == null) {
             result.innerMessage_ = innerMessage_;
           } else {
             result.innerMessage_ = investoractionreqBuilder_.build();
           }
         }
-        if (innerMessageCase_ == 9) {
+        if (innerMessageCase_ == 10) {
           if (investoractionrespBuilder_ == null) {
             result.innerMessage_ = innerMessage_;
           } else {
             result.innerMessage_ = investoractionrespBuilder_.build();
           }
         }
-        if (innerMessageCase_ == 10) {
+        if (innerMessageCase_ == 11) {
           if (errormsgBuilder_ == null) {
             result.innerMessage_ = innerMessage_;
           } else {
             result.innerMessage_ = errormsgBuilder_.build();
           }
         }
-        if (innerMessageCase_ == 11) {
+        if (innerMessageCase_ == 12) {
           if (emissionfixedratereqBuilder_ == null) {
             result.innerMessage_ = innerMessage_;
           } else {
             result.innerMessage_ = emissionfixedratereqBuilder_.build();
           }
         }
-        if (innerMessageCase_ == 12) {
+        if (innerMessageCase_ == 13) {
           if (emissionfixedraterespBuilder_ == null) {
             result.innerMessage_ = innerMessage_;
           } else {
             result.innerMessage_ = emissionfixedraterespBuilder_.build();
           }
         }
-        if (innerMessageCase_ == 13) {
+        if (innerMessageCase_ == 14) {
           if (auctionemissionresultBuilder_ == null) {
             result.innerMessage_ = innerMessage_;
           } else {
@@ -1515,6 +1599,11 @@ public final class Protos {
         if (other == Protos.MessageWrapper.getDefaultInstance()) return this;
         if (other.hasMsgType()) {
           setMsgType(other.getMsgType());
+        }
+        if (other.hasClientSession()) {
+          bitField0_ |= 0x00000002;
+          clientSession_ = other.clientSession_;
+          onChanged();
         }
         switch (other.getInnerMessageCase()) {
           case LOGINREQ: {
@@ -1711,32 +1800,108 @@ public final class Protos {
         return this;
       }
 
+      private java.lang.Object clientSession_ = "";
+      /**
+       * <code>optional string clientSession = 2;</code>
+       */
+      public boolean hasClientSession() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional string clientSession = 2;</code>
+       */
+      public java.lang.String getClientSession() {
+        java.lang.Object ref = clientSession_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            clientSession_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string clientSession = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getClientSessionBytes() {
+        java.lang.Object ref = clientSession_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          clientSession_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string clientSession = 2;</code>
+       */
+      public Builder setClientSession(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        clientSession_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string clientSession = 2;</code>
+       */
+      public Builder clearClientSession() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        clientSession_ = getDefaultInstance().getClientSession();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string clientSession = 2;</code>
+       */
+      public Builder setClientSessionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        clientSession_ = value;
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.LoginReq, Protos.LoginReq.Builder, Protos.LoginReqOrBuilder> loginreqBuilder_;
       /**
-       * <code>optional .LoginReq loginreq = 2;</code>
+       * <code>optional .LoginReq loginreq = 3;</code>
        */
       public boolean hasLoginreq() {
-        return innerMessageCase_ == 2;
+        return innerMessageCase_ == 3;
       }
       /**
-       * <code>optional .LoginReq loginreq = 2;</code>
+       * <code>optional .LoginReq loginreq = 3;</code>
        */
       public Protos.LoginReq getLoginreq() {
         if (loginreqBuilder_ == null) {
-          if (innerMessageCase_ == 2) {
+          if (innerMessageCase_ == 3) {
             return (Protos.LoginReq) innerMessage_;
           }
           return Protos.LoginReq.getDefaultInstance();
         } else {
-          if (innerMessageCase_ == 2) {
+          if (innerMessageCase_ == 3) {
             return loginreqBuilder_.getMessage();
           }
           return Protos.LoginReq.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .LoginReq loginreq = 2;</code>
+       * <code>optional .LoginReq loginreq = 3;</code>
        */
       public Builder setLoginreq(Protos.LoginReq value) {
         if (loginreqBuilder_ == null) {
@@ -1748,11 +1913,11 @@ public final class Protos {
         } else {
           loginreqBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 2;
+        innerMessageCase_ = 3;
         return this;
       }
       /**
-       * <code>optional .LoginReq loginreq = 2;</code>
+       * <code>optional .LoginReq loginreq = 3;</code>
        */
       public Builder setLoginreq(
           Protos.LoginReq.Builder builderForValue) {
@@ -1762,15 +1927,15 @@ public final class Protos {
         } else {
           loginreqBuilder_.setMessage(builderForValue.build());
         }
-        innerMessageCase_ = 2;
+        innerMessageCase_ = 3;
         return this;
       }
       /**
-       * <code>optional .LoginReq loginreq = 2;</code>
+       * <code>optional .LoginReq loginreq = 3;</code>
        */
       public Builder mergeLoginreq(Protos.LoginReq value) {
         if (loginreqBuilder_ == null) {
-          if (innerMessageCase_ == 2 &&
+          if (innerMessageCase_ == 3 &&
               innerMessage_ != Protos.LoginReq.getDefaultInstance()) {
             innerMessage_ = Protos.LoginReq.newBuilder((Protos.LoginReq) innerMessage_)
                 .mergeFrom(value).buildPartial();
@@ -1779,26 +1944,26 @@ public final class Protos {
           }
           onChanged();
         } else {
-          if (innerMessageCase_ == 2) {
+          if (innerMessageCase_ == 3) {
             loginreqBuilder_.mergeFrom(value);
           }
           loginreqBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 2;
+        innerMessageCase_ = 3;
         return this;
       }
       /**
-       * <code>optional .LoginReq loginreq = 2;</code>
+       * <code>optional .LoginReq loginreq = 3;</code>
        */
       public Builder clearLoginreq() {
         if (loginreqBuilder_ == null) {
-          if (innerMessageCase_ == 2) {
+          if (innerMessageCase_ == 3) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
             onChanged();
           }
         } else {
-          if (innerMessageCase_ == 2) {
+          if (innerMessageCase_ == 3) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
           }
@@ -1807,32 +1972,32 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>optional .LoginReq loginreq = 2;</code>
+       * <code>optional .LoginReq loginreq = 3;</code>
        */
       public Protos.LoginReq.Builder getLoginreqBuilder() {
         return getLoginreqFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .LoginReq loginreq = 2;</code>
+       * <code>optional .LoginReq loginreq = 3;</code>
        */
       public Protos.LoginReqOrBuilder getLoginreqOrBuilder() {
-        if ((innerMessageCase_ == 2) && (loginreqBuilder_ != null)) {
+        if ((innerMessageCase_ == 3) && (loginreqBuilder_ != null)) {
           return loginreqBuilder_.getMessageOrBuilder();
         } else {
-          if (innerMessageCase_ == 2) {
+          if (innerMessageCase_ == 3) {
             return (Protos.LoginReq) innerMessage_;
           }
           return Protos.LoginReq.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .LoginReq loginreq = 2;</code>
+       * <code>optional .LoginReq loginreq = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.LoginReq, Protos.LoginReq.Builder, Protos.LoginReqOrBuilder> 
           getLoginreqFieldBuilder() {
         if (loginreqBuilder_ == null) {
-          if (!(innerMessageCase_ == 2)) {
+          if (!(innerMessageCase_ == 3)) {
             innerMessage_ = Protos.LoginReq.getDefaultInstance();
           }
           loginreqBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -1842,7 +2007,7 @@ public final class Protos {
                   isClean());
           innerMessage_ = null;
         }
-        innerMessageCase_ = 2;
+        innerMessageCase_ = 3;
         onChanged();;
         return loginreqBuilder_;
       }
@@ -1850,29 +2015,29 @@ public final class Protos {
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.LoginResp, Protos.LoginResp.Builder, Protos.LoginRespOrBuilder> loginrespBuilder_;
       /**
-       * <code>optional .LoginResp loginresp = 3;</code>
+       * <code>optional .LoginResp loginresp = 4;</code>
        */
       public boolean hasLoginresp() {
-        return innerMessageCase_ == 3;
+        return innerMessageCase_ == 4;
       }
       /**
-       * <code>optional .LoginResp loginresp = 3;</code>
+       * <code>optional .LoginResp loginresp = 4;</code>
        */
       public Protos.LoginResp getLoginresp() {
         if (loginrespBuilder_ == null) {
-          if (innerMessageCase_ == 3) {
+          if (innerMessageCase_ == 4) {
             return (Protos.LoginResp) innerMessage_;
           }
           return Protos.LoginResp.getDefaultInstance();
         } else {
-          if (innerMessageCase_ == 3) {
+          if (innerMessageCase_ == 4) {
             return loginrespBuilder_.getMessage();
           }
           return Protos.LoginResp.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .LoginResp loginresp = 3;</code>
+       * <code>optional .LoginResp loginresp = 4;</code>
        */
       public Builder setLoginresp(Protos.LoginResp value) {
         if (loginrespBuilder_ == null) {
@@ -1884,11 +2049,11 @@ public final class Protos {
         } else {
           loginrespBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 3;
+        innerMessageCase_ = 4;
         return this;
       }
       /**
-       * <code>optional .LoginResp loginresp = 3;</code>
+       * <code>optional .LoginResp loginresp = 4;</code>
        */
       public Builder setLoginresp(
           Protos.LoginResp.Builder builderForValue) {
@@ -1898,15 +2063,15 @@ public final class Protos {
         } else {
           loginrespBuilder_.setMessage(builderForValue.build());
         }
-        innerMessageCase_ = 3;
+        innerMessageCase_ = 4;
         return this;
       }
       /**
-       * <code>optional .LoginResp loginresp = 3;</code>
+       * <code>optional .LoginResp loginresp = 4;</code>
        */
       public Builder mergeLoginresp(Protos.LoginResp value) {
         if (loginrespBuilder_ == null) {
-          if (innerMessageCase_ == 3 &&
+          if (innerMessageCase_ == 4 &&
               innerMessage_ != Protos.LoginResp.getDefaultInstance()) {
             innerMessage_ = Protos.LoginResp.newBuilder((Protos.LoginResp) innerMessage_)
                 .mergeFrom(value).buildPartial();
@@ -1915,26 +2080,26 @@ public final class Protos {
           }
           onChanged();
         } else {
-          if (innerMessageCase_ == 3) {
+          if (innerMessageCase_ == 4) {
             loginrespBuilder_.mergeFrom(value);
           }
           loginrespBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 3;
+        innerMessageCase_ = 4;
         return this;
       }
       /**
-       * <code>optional .LoginResp loginresp = 3;</code>
+       * <code>optional .LoginResp loginresp = 4;</code>
        */
       public Builder clearLoginresp() {
         if (loginrespBuilder_ == null) {
-          if (innerMessageCase_ == 3) {
+          if (innerMessageCase_ == 4) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
             onChanged();
           }
         } else {
-          if (innerMessageCase_ == 3) {
+          if (innerMessageCase_ == 4) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
           }
@@ -1943,32 +2108,32 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>optional .LoginResp loginresp = 3;</code>
+       * <code>optional .LoginResp loginresp = 4;</code>
        */
       public Protos.LoginResp.Builder getLoginrespBuilder() {
         return getLoginrespFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .LoginResp loginresp = 3;</code>
+       * <code>optional .LoginResp loginresp = 4;</code>
        */
       public Protos.LoginRespOrBuilder getLoginrespOrBuilder() {
-        if ((innerMessageCase_ == 3) && (loginrespBuilder_ != null)) {
+        if ((innerMessageCase_ == 4) && (loginrespBuilder_ != null)) {
           return loginrespBuilder_.getMessageOrBuilder();
         } else {
-          if (innerMessageCase_ == 3) {
+          if (innerMessageCase_ == 4) {
             return (Protos.LoginResp) innerMessage_;
           }
           return Protos.LoginResp.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .LoginResp loginresp = 3;</code>
+       * <code>optional .LoginResp loginresp = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.LoginResp, Protos.LoginResp.Builder, Protos.LoginRespOrBuilder> 
           getLoginrespFieldBuilder() {
         if (loginrespBuilder_ == null) {
-          if (!(innerMessageCase_ == 3)) {
+          if (!(innerMessageCase_ == 4)) {
             innerMessage_ = Protos.LoginResp.getDefaultInstance();
           }
           loginrespBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -1978,7 +2143,7 @@ public final class Protos {
                   isClean());
           innerMessage_ = null;
         }
-        innerMessageCase_ = 3;
+        innerMessageCase_ = 4;
         onChanged();;
         return loginrespBuilder_;
       }
@@ -1986,29 +2151,29 @@ public final class Protos {
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.LogoutReq, Protos.LogoutReq.Builder, Protos.LogoutReqOrBuilder> logoutreqBuilder_;
       /**
-       * <code>optional .LogoutReq logoutreq = 4;</code>
+       * <code>optional .LogoutReq logoutreq = 5;</code>
        */
       public boolean hasLogoutreq() {
-        return innerMessageCase_ == 4;
+        return innerMessageCase_ == 5;
       }
       /**
-       * <code>optional .LogoutReq logoutreq = 4;</code>
+       * <code>optional .LogoutReq logoutreq = 5;</code>
        */
       public Protos.LogoutReq getLogoutreq() {
         if (logoutreqBuilder_ == null) {
-          if (innerMessageCase_ == 4) {
+          if (innerMessageCase_ == 5) {
             return (Protos.LogoutReq) innerMessage_;
           }
           return Protos.LogoutReq.getDefaultInstance();
         } else {
-          if (innerMessageCase_ == 4) {
+          if (innerMessageCase_ == 5) {
             return logoutreqBuilder_.getMessage();
           }
           return Protos.LogoutReq.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .LogoutReq logoutreq = 4;</code>
+       * <code>optional .LogoutReq logoutreq = 5;</code>
        */
       public Builder setLogoutreq(Protos.LogoutReq value) {
         if (logoutreqBuilder_ == null) {
@@ -2020,11 +2185,11 @@ public final class Protos {
         } else {
           logoutreqBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 4;
+        innerMessageCase_ = 5;
         return this;
       }
       /**
-       * <code>optional .LogoutReq logoutreq = 4;</code>
+       * <code>optional .LogoutReq logoutreq = 5;</code>
        */
       public Builder setLogoutreq(
           Protos.LogoutReq.Builder builderForValue) {
@@ -2034,15 +2199,15 @@ public final class Protos {
         } else {
           logoutreqBuilder_.setMessage(builderForValue.build());
         }
-        innerMessageCase_ = 4;
+        innerMessageCase_ = 5;
         return this;
       }
       /**
-       * <code>optional .LogoutReq logoutreq = 4;</code>
+       * <code>optional .LogoutReq logoutreq = 5;</code>
        */
       public Builder mergeLogoutreq(Protos.LogoutReq value) {
         if (logoutreqBuilder_ == null) {
-          if (innerMessageCase_ == 4 &&
+          if (innerMessageCase_ == 5 &&
               innerMessage_ != Protos.LogoutReq.getDefaultInstance()) {
             innerMessage_ = Protos.LogoutReq.newBuilder((Protos.LogoutReq) innerMessage_)
                 .mergeFrom(value).buildPartial();
@@ -2051,26 +2216,26 @@ public final class Protos {
           }
           onChanged();
         } else {
-          if (innerMessageCase_ == 4) {
+          if (innerMessageCase_ == 5) {
             logoutreqBuilder_.mergeFrom(value);
           }
           logoutreqBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 4;
+        innerMessageCase_ = 5;
         return this;
       }
       /**
-       * <code>optional .LogoutReq logoutreq = 4;</code>
+       * <code>optional .LogoutReq logoutreq = 5;</code>
        */
       public Builder clearLogoutreq() {
         if (logoutreqBuilder_ == null) {
-          if (innerMessageCase_ == 4) {
+          if (innerMessageCase_ == 5) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
             onChanged();
           }
         } else {
-          if (innerMessageCase_ == 4) {
+          if (innerMessageCase_ == 5) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
           }
@@ -2079,32 +2244,32 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>optional .LogoutReq logoutreq = 4;</code>
+       * <code>optional .LogoutReq logoutreq = 5;</code>
        */
       public Protos.LogoutReq.Builder getLogoutreqBuilder() {
         return getLogoutreqFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .LogoutReq logoutreq = 4;</code>
+       * <code>optional .LogoutReq logoutreq = 5;</code>
        */
       public Protos.LogoutReqOrBuilder getLogoutreqOrBuilder() {
-        if ((innerMessageCase_ == 4) && (logoutreqBuilder_ != null)) {
+        if ((innerMessageCase_ == 5) && (logoutreqBuilder_ != null)) {
           return logoutreqBuilder_.getMessageOrBuilder();
         } else {
-          if (innerMessageCase_ == 4) {
+          if (innerMessageCase_ == 5) {
             return (Protos.LogoutReq) innerMessage_;
           }
           return Protos.LogoutReq.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .LogoutReq logoutreq = 4;</code>
+       * <code>optional .LogoutReq logoutreq = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.LogoutReq, Protos.LogoutReq.Builder, Protos.LogoutReqOrBuilder> 
           getLogoutreqFieldBuilder() {
         if (logoutreqBuilder_ == null) {
-          if (!(innerMessageCase_ == 4)) {
+          if (!(innerMessageCase_ == 5)) {
             innerMessage_ = Protos.LogoutReq.getDefaultInstance();
           }
           logoutreqBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -2114,7 +2279,7 @@ public final class Protos {
                   isClean());
           innerMessage_ = null;
         }
-        innerMessageCase_ = 4;
+        innerMessageCase_ = 5;
         onChanged();;
         return logoutreqBuilder_;
       }
@@ -2122,29 +2287,29 @@ public final class Protos {
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.LogoutResp, Protos.LogoutResp.Builder, Protos.LogoutRespOrBuilder> logoutrespBuilder_;
       /**
-       * <code>optional .LogoutResp logoutresp = 5;</code>
+       * <code>optional .LogoutResp logoutresp = 6;</code>
        */
       public boolean hasLogoutresp() {
-        return innerMessageCase_ == 5;
+        return innerMessageCase_ == 6;
       }
       /**
-       * <code>optional .LogoutResp logoutresp = 5;</code>
+       * <code>optional .LogoutResp logoutresp = 6;</code>
        */
       public Protos.LogoutResp getLogoutresp() {
         if (logoutrespBuilder_ == null) {
-          if (innerMessageCase_ == 5) {
+          if (innerMessageCase_ == 6) {
             return (Protos.LogoutResp) innerMessage_;
           }
           return Protos.LogoutResp.getDefaultInstance();
         } else {
-          if (innerMessageCase_ == 5) {
+          if (innerMessageCase_ == 6) {
             return logoutrespBuilder_.getMessage();
           }
           return Protos.LogoutResp.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .LogoutResp logoutresp = 5;</code>
+       * <code>optional .LogoutResp logoutresp = 6;</code>
        */
       public Builder setLogoutresp(Protos.LogoutResp value) {
         if (logoutrespBuilder_ == null) {
@@ -2156,11 +2321,11 @@ public final class Protos {
         } else {
           logoutrespBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 5;
+        innerMessageCase_ = 6;
         return this;
       }
       /**
-       * <code>optional .LogoutResp logoutresp = 5;</code>
+       * <code>optional .LogoutResp logoutresp = 6;</code>
        */
       public Builder setLogoutresp(
           Protos.LogoutResp.Builder builderForValue) {
@@ -2170,15 +2335,15 @@ public final class Protos {
         } else {
           logoutrespBuilder_.setMessage(builderForValue.build());
         }
-        innerMessageCase_ = 5;
+        innerMessageCase_ = 6;
         return this;
       }
       /**
-       * <code>optional .LogoutResp logoutresp = 5;</code>
+       * <code>optional .LogoutResp logoutresp = 6;</code>
        */
       public Builder mergeLogoutresp(Protos.LogoutResp value) {
         if (logoutrespBuilder_ == null) {
-          if (innerMessageCase_ == 5 &&
+          if (innerMessageCase_ == 6 &&
               innerMessage_ != Protos.LogoutResp.getDefaultInstance()) {
             innerMessage_ = Protos.LogoutResp.newBuilder((Protos.LogoutResp) innerMessage_)
                 .mergeFrom(value).buildPartial();
@@ -2187,26 +2352,26 @@ public final class Protos {
           }
           onChanged();
         } else {
-          if (innerMessageCase_ == 5) {
+          if (innerMessageCase_ == 6) {
             logoutrespBuilder_.mergeFrom(value);
           }
           logoutrespBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 5;
+        innerMessageCase_ = 6;
         return this;
       }
       /**
-       * <code>optional .LogoutResp logoutresp = 5;</code>
+       * <code>optional .LogoutResp logoutresp = 6;</code>
        */
       public Builder clearLogoutresp() {
         if (logoutrespBuilder_ == null) {
-          if (innerMessageCase_ == 5) {
+          if (innerMessageCase_ == 6) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
             onChanged();
           }
         } else {
-          if (innerMessageCase_ == 5) {
+          if (innerMessageCase_ == 6) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
           }
@@ -2215,32 +2380,32 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>optional .LogoutResp logoutresp = 5;</code>
+       * <code>optional .LogoutResp logoutresp = 6;</code>
        */
       public Protos.LogoutResp.Builder getLogoutrespBuilder() {
         return getLogoutrespFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .LogoutResp logoutresp = 5;</code>
+       * <code>optional .LogoutResp logoutresp = 6;</code>
        */
       public Protos.LogoutRespOrBuilder getLogoutrespOrBuilder() {
-        if ((innerMessageCase_ == 5) && (logoutrespBuilder_ != null)) {
+        if ((innerMessageCase_ == 6) && (logoutrespBuilder_ != null)) {
           return logoutrespBuilder_.getMessageOrBuilder();
         } else {
-          if (innerMessageCase_ == 5) {
+          if (innerMessageCase_ == 6) {
             return (Protos.LogoutResp) innerMessage_;
           }
           return Protos.LogoutResp.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .LogoutResp logoutresp = 5;</code>
+       * <code>optional .LogoutResp logoutresp = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.LogoutResp, Protos.LogoutResp.Builder, Protos.LogoutRespOrBuilder> 
           getLogoutrespFieldBuilder() {
         if (logoutrespBuilder_ == null) {
-          if (!(innerMessageCase_ == 5)) {
+          if (!(innerMessageCase_ == 6)) {
             innerMessage_ = Protos.LogoutResp.getDefaultInstance();
           }
           logoutrespBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -2250,7 +2415,7 @@ public final class Protos {
                   isClean());
           innerMessage_ = null;
         }
-        innerMessageCase_ = 5;
+        innerMessageCase_ = 6;
         onChanged();;
         return logoutrespBuilder_;
       }
@@ -2258,29 +2423,29 @@ public final class Protos {
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.CompanyActionReq, Protos.CompanyActionReq.Builder, Protos.CompanyActionReqOrBuilder> companyactionreqBuilder_;
       /**
-       * <code>optional .CompanyActionReq companyactionreq = 6;</code>
+       * <code>optional .CompanyActionReq companyactionreq = 7;</code>
        */
       public boolean hasCompanyactionreq() {
-        return innerMessageCase_ == 6;
+        return innerMessageCase_ == 7;
       }
       /**
-       * <code>optional .CompanyActionReq companyactionreq = 6;</code>
+       * <code>optional .CompanyActionReq companyactionreq = 7;</code>
        */
       public Protos.CompanyActionReq getCompanyactionreq() {
         if (companyactionreqBuilder_ == null) {
-          if (innerMessageCase_ == 6) {
+          if (innerMessageCase_ == 7) {
             return (Protos.CompanyActionReq) innerMessage_;
           }
           return Protos.CompanyActionReq.getDefaultInstance();
         } else {
-          if (innerMessageCase_ == 6) {
+          if (innerMessageCase_ == 7) {
             return companyactionreqBuilder_.getMessage();
           }
           return Protos.CompanyActionReq.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .CompanyActionReq companyactionreq = 6;</code>
+       * <code>optional .CompanyActionReq companyactionreq = 7;</code>
        */
       public Builder setCompanyactionreq(Protos.CompanyActionReq value) {
         if (companyactionreqBuilder_ == null) {
@@ -2292,11 +2457,11 @@ public final class Protos {
         } else {
           companyactionreqBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 6;
+        innerMessageCase_ = 7;
         return this;
       }
       /**
-       * <code>optional .CompanyActionReq companyactionreq = 6;</code>
+       * <code>optional .CompanyActionReq companyactionreq = 7;</code>
        */
       public Builder setCompanyactionreq(
           Protos.CompanyActionReq.Builder builderForValue) {
@@ -2306,15 +2471,15 @@ public final class Protos {
         } else {
           companyactionreqBuilder_.setMessage(builderForValue.build());
         }
-        innerMessageCase_ = 6;
+        innerMessageCase_ = 7;
         return this;
       }
       /**
-       * <code>optional .CompanyActionReq companyactionreq = 6;</code>
+       * <code>optional .CompanyActionReq companyactionreq = 7;</code>
        */
       public Builder mergeCompanyactionreq(Protos.CompanyActionReq value) {
         if (companyactionreqBuilder_ == null) {
-          if (innerMessageCase_ == 6 &&
+          if (innerMessageCase_ == 7 &&
               innerMessage_ != Protos.CompanyActionReq.getDefaultInstance()) {
             innerMessage_ = Protos.CompanyActionReq.newBuilder((Protos.CompanyActionReq) innerMessage_)
                 .mergeFrom(value).buildPartial();
@@ -2323,26 +2488,26 @@ public final class Protos {
           }
           onChanged();
         } else {
-          if (innerMessageCase_ == 6) {
+          if (innerMessageCase_ == 7) {
             companyactionreqBuilder_.mergeFrom(value);
           }
           companyactionreqBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 6;
+        innerMessageCase_ = 7;
         return this;
       }
       /**
-       * <code>optional .CompanyActionReq companyactionreq = 6;</code>
+       * <code>optional .CompanyActionReq companyactionreq = 7;</code>
        */
       public Builder clearCompanyactionreq() {
         if (companyactionreqBuilder_ == null) {
-          if (innerMessageCase_ == 6) {
+          if (innerMessageCase_ == 7) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
             onChanged();
           }
         } else {
-          if (innerMessageCase_ == 6) {
+          if (innerMessageCase_ == 7) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
           }
@@ -2351,32 +2516,32 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>optional .CompanyActionReq companyactionreq = 6;</code>
+       * <code>optional .CompanyActionReq companyactionreq = 7;</code>
        */
       public Protos.CompanyActionReq.Builder getCompanyactionreqBuilder() {
         return getCompanyactionreqFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .CompanyActionReq companyactionreq = 6;</code>
+       * <code>optional .CompanyActionReq companyactionreq = 7;</code>
        */
       public Protos.CompanyActionReqOrBuilder getCompanyactionreqOrBuilder() {
-        if ((innerMessageCase_ == 6) && (companyactionreqBuilder_ != null)) {
+        if ((innerMessageCase_ == 7) && (companyactionreqBuilder_ != null)) {
           return companyactionreqBuilder_.getMessageOrBuilder();
         } else {
-          if (innerMessageCase_ == 6) {
+          if (innerMessageCase_ == 7) {
             return (Protos.CompanyActionReq) innerMessage_;
           }
           return Protos.CompanyActionReq.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .CompanyActionReq companyactionreq = 6;</code>
+       * <code>optional .CompanyActionReq companyactionreq = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.CompanyActionReq, Protos.CompanyActionReq.Builder, Protos.CompanyActionReqOrBuilder> 
           getCompanyactionreqFieldBuilder() {
         if (companyactionreqBuilder_ == null) {
-          if (!(innerMessageCase_ == 6)) {
+          if (!(innerMessageCase_ == 7)) {
             innerMessage_ = Protos.CompanyActionReq.getDefaultInstance();
           }
           companyactionreqBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -2386,7 +2551,7 @@ public final class Protos {
                   isClean());
           innerMessage_ = null;
         }
-        innerMessageCase_ = 6;
+        innerMessageCase_ = 7;
         onChanged();;
         return companyactionreqBuilder_;
       }
@@ -2394,29 +2559,29 @@ public final class Protos {
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.CompanyActionResp, Protos.CompanyActionResp.Builder, Protos.CompanyActionRespOrBuilder> companyactionrespBuilder_;
       /**
-       * <code>optional .CompanyActionResp companyactionresp = 7;</code>
+       * <code>optional .CompanyActionResp companyactionresp = 8;</code>
        */
       public boolean hasCompanyactionresp() {
-        return innerMessageCase_ == 7;
+        return innerMessageCase_ == 8;
       }
       /**
-       * <code>optional .CompanyActionResp companyactionresp = 7;</code>
+       * <code>optional .CompanyActionResp companyactionresp = 8;</code>
        */
       public Protos.CompanyActionResp getCompanyactionresp() {
         if (companyactionrespBuilder_ == null) {
-          if (innerMessageCase_ == 7) {
+          if (innerMessageCase_ == 8) {
             return (Protos.CompanyActionResp) innerMessage_;
           }
           return Protos.CompanyActionResp.getDefaultInstance();
         } else {
-          if (innerMessageCase_ == 7) {
+          if (innerMessageCase_ == 8) {
             return companyactionrespBuilder_.getMessage();
           }
           return Protos.CompanyActionResp.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .CompanyActionResp companyactionresp = 7;</code>
+       * <code>optional .CompanyActionResp companyactionresp = 8;</code>
        */
       public Builder setCompanyactionresp(Protos.CompanyActionResp value) {
         if (companyactionrespBuilder_ == null) {
@@ -2428,11 +2593,11 @@ public final class Protos {
         } else {
           companyactionrespBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 7;
+        innerMessageCase_ = 8;
         return this;
       }
       /**
-       * <code>optional .CompanyActionResp companyactionresp = 7;</code>
+       * <code>optional .CompanyActionResp companyactionresp = 8;</code>
        */
       public Builder setCompanyactionresp(
           Protos.CompanyActionResp.Builder builderForValue) {
@@ -2442,15 +2607,15 @@ public final class Protos {
         } else {
           companyactionrespBuilder_.setMessage(builderForValue.build());
         }
-        innerMessageCase_ = 7;
+        innerMessageCase_ = 8;
         return this;
       }
       /**
-       * <code>optional .CompanyActionResp companyactionresp = 7;</code>
+       * <code>optional .CompanyActionResp companyactionresp = 8;</code>
        */
       public Builder mergeCompanyactionresp(Protos.CompanyActionResp value) {
         if (companyactionrespBuilder_ == null) {
-          if (innerMessageCase_ == 7 &&
+          if (innerMessageCase_ == 8 &&
               innerMessage_ != Protos.CompanyActionResp.getDefaultInstance()) {
             innerMessage_ = Protos.CompanyActionResp.newBuilder((Protos.CompanyActionResp) innerMessage_)
                 .mergeFrom(value).buildPartial();
@@ -2459,26 +2624,26 @@ public final class Protos {
           }
           onChanged();
         } else {
-          if (innerMessageCase_ == 7) {
+          if (innerMessageCase_ == 8) {
             companyactionrespBuilder_.mergeFrom(value);
           }
           companyactionrespBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 7;
+        innerMessageCase_ = 8;
         return this;
       }
       /**
-       * <code>optional .CompanyActionResp companyactionresp = 7;</code>
+       * <code>optional .CompanyActionResp companyactionresp = 8;</code>
        */
       public Builder clearCompanyactionresp() {
         if (companyactionrespBuilder_ == null) {
-          if (innerMessageCase_ == 7) {
+          if (innerMessageCase_ == 8) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
             onChanged();
           }
         } else {
-          if (innerMessageCase_ == 7) {
+          if (innerMessageCase_ == 8) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
           }
@@ -2487,32 +2652,32 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>optional .CompanyActionResp companyactionresp = 7;</code>
+       * <code>optional .CompanyActionResp companyactionresp = 8;</code>
        */
       public Protos.CompanyActionResp.Builder getCompanyactionrespBuilder() {
         return getCompanyactionrespFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .CompanyActionResp companyactionresp = 7;</code>
+       * <code>optional .CompanyActionResp companyactionresp = 8;</code>
        */
       public Protos.CompanyActionRespOrBuilder getCompanyactionrespOrBuilder() {
-        if ((innerMessageCase_ == 7) && (companyactionrespBuilder_ != null)) {
+        if ((innerMessageCase_ == 8) && (companyactionrespBuilder_ != null)) {
           return companyactionrespBuilder_.getMessageOrBuilder();
         } else {
-          if (innerMessageCase_ == 7) {
+          if (innerMessageCase_ == 8) {
             return (Protos.CompanyActionResp) innerMessage_;
           }
           return Protos.CompanyActionResp.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .CompanyActionResp companyactionresp = 7;</code>
+       * <code>optional .CompanyActionResp companyactionresp = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.CompanyActionResp, Protos.CompanyActionResp.Builder, Protos.CompanyActionRespOrBuilder> 
           getCompanyactionrespFieldBuilder() {
         if (companyactionrespBuilder_ == null) {
-          if (!(innerMessageCase_ == 7)) {
+          if (!(innerMessageCase_ == 8)) {
             innerMessage_ = Protos.CompanyActionResp.getDefaultInstance();
           }
           companyactionrespBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -2522,7 +2687,7 @@ public final class Protos {
                   isClean());
           innerMessage_ = null;
         }
-        innerMessageCase_ = 7;
+        innerMessageCase_ = 8;
         onChanged();;
         return companyactionrespBuilder_;
       }
@@ -2530,29 +2695,29 @@ public final class Protos {
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.InvestorActionReq, Protos.InvestorActionReq.Builder, Protos.InvestorActionReqOrBuilder> investoractionreqBuilder_;
       /**
-       * <code>optional .InvestorActionReq investoractionreq = 8;</code>
+       * <code>optional .InvestorActionReq investoractionreq = 9;</code>
        */
       public boolean hasInvestoractionreq() {
-        return innerMessageCase_ == 8;
+        return innerMessageCase_ == 9;
       }
       /**
-       * <code>optional .InvestorActionReq investoractionreq = 8;</code>
+       * <code>optional .InvestorActionReq investoractionreq = 9;</code>
        */
       public Protos.InvestorActionReq getInvestoractionreq() {
         if (investoractionreqBuilder_ == null) {
-          if (innerMessageCase_ == 8) {
+          if (innerMessageCase_ == 9) {
             return (Protos.InvestorActionReq) innerMessage_;
           }
           return Protos.InvestorActionReq.getDefaultInstance();
         } else {
-          if (innerMessageCase_ == 8) {
+          if (innerMessageCase_ == 9) {
             return investoractionreqBuilder_.getMessage();
           }
           return Protos.InvestorActionReq.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .InvestorActionReq investoractionreq = 8;</code>
+       * <code>optional .InvestorActionReq investoractionreq = 9;</code>
        */
       public Builder setInvestoractionreq(Protos.InvestorActionReq value) {
         if (investoractionreqBuilder_ == null) {
@@ -2564,11 +2729,11 @@ public final class Protos {
         } else {
           investoractionreqBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 8;
+        innerMessageCase_ = 9;
         return this;
       }
       /**
-       * <code>optional .InvestorActionReq investoractionreq = 8;</code>
+       * <code>optional .InvestorActionReq investoractionreq = 9;</code>
        */
       public Builder setInvestoractionreq(
           Protos.InvestorActionReq.Builder builderForValue) {
@@ -2578,15 +2743,15 @@ public final class Protos {
         } else {
           investoractionreqBuilder_.setMessage(builderForValue.build());
         }
-        innerMessageCase_ = 8;
+        innerMessageCase_ = 9;
         return this;
       }
       /**
-       * <code>optional .InvestorActionReq investoractionreq = 8;</code>
+       * <code>optional .InvestorActionReq investoractionreq = 9;</code>
        */
       public Builder mergeInvestoractionreq(Protos.InvestorActionReq value) {
         if (investoractionreqBuilder_ == null) {
-          if (innerMessageCase_ == 8 &&
+          if (innerMessageCase_ == 9 &&
               innerMessage_ != Protos.InvestorActionReq.getDefaultInstance()) {
             innerMessage_ = Protos.InvestorActionReq.newBuilder((Protos.InvestorActionReq) innerMessage_)
                 .mergeFrom(value).buildPartial();
@@ -2595,26 +2760,26 @@ public final class Protos {
           }
           onChanged();
         } else {
-          if (innerMessageCase_ == 8) {
+          if (innerMessageCase_ == 9) {
             investoractionreqBuilder_.mergeFrom(value);
           }
           investoractionreqBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 8;
+        innerMessageCase_ = 9;
         return this;
       }
       /**
-       * <code>optional .InvestorActionReq investoractionreq = 8;</code>
+       * <code>optional .InvestorActionReq investoractionreq = 9;</code>
        */
       public Builder clearInvestoractionreq() {
         if (investoractionreqBuilder_ == null) {
-          if (innerMessageCase_ == 8) {
+          if (innerMessageCase_ == 9) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
             onChanged();
           }
         } else {
-          if (innerMessageCase_ == 8) {
+          if (innerMessageCase_ == 9) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
           }
@@ -2623,32 +2788,32 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>optional .InvestorActionReq investoractionreq = 8;</code>
+       * <code>optional .InvestorActionReq investoractionreq = 9;</code>
        */
       public Protos.InvestorActionReq.Builder getInvestoractionreqBuilder() {
         return getInvestoractionreqFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .InvestorActionReq investoractionreq = 8;</code>
+       * <code>optional .InvestorActionReq investoractionreq = 9;</code>
        */
       public Protos.InvestorActionReqOrBuilder getInvestoractionreqOrBuilder() {
-        if ((innerMessageCase_ == 8) && (investoractionreqBuilder_ != null)) {
+        if ((innerMessageCase_ == 9) && (investoractionreqBuilder_ != null)) {
           return investoractionreqBuilder_.getMessageOrBuilder();
         } else {
-          if (innerMessageCase_ == 8) {
+          if (innerMessageCase_ == 9) {
             return (Protos.InvestorActionReq) innerMessage_;
           }
           return Protos.InvestorActionReq.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .InvestorActionReq investoractionreq = 8;</code>
+       * <code>optional .InvestorActionReq investoractionreq = 9;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.InvestorActionReq, Protos.InvestorActionReq.Builder, Protos.InvestorActionReqOrBuilder> 
           getInvestoractionreqFieldBuilder() {
         if (investoractionreqBuilder_ == null) {
-          if (!(innerMessageCase_ == 8)) {
+          if (!(innerMessageCase_ == 9)) {
             innerMessage_ = Protos.InvestorActionReq.getDefaultInstance();
           }
           investoractionreqBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -2658,7 +2823,7 @@ public final class Protos {
                   isClean());
           innerMessage_ = null;
         }
-        innerMessageCase_ = 8;
+        innerMessageCase_ = 9;
         onChanged();;
         return investoractionreqBuilder_;
       }
@@ -2666,29 +2831,29 @@ public final class Protos {
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.InvestorActionResp, Protos.InvestorActionResp.Builder, Protos.InvestorActionRespOrBuilder> investoractionrespBuilder_;
       /**
-       * <code>optional .InvestorActionResp investoractionresp = 9;</code>
+       * <code>optional .InvestorActionResp investoractionresp = 10;</code>
        */
       public boolean hasInvestoractionresp() {
-        return innerMessageCase_ == 9;
+        return innerMessageCase_ == 10;
       }
       /**
-       * <code>optional .InvestorActionResp investoractionresp = 9;</code>
+       * <code>optional .InvestorActionResp investoractionresp = 10;</code>
        */
       public Protos.InvestorActionResp getInvestoractionresp() {
         if (investoractionrespBuilder_ == null) {
-          if (innerMessageCase_ == 9) {
+          if (innerMessageCase_ == 10) {
             return (Protos.InvestorActionResp) innerMessage_;
           }
           return Protos.InvestorActionResp.getDefaultInstance();
         } else {
-          if (innerMessageCase_ == 9) {
+          if (innerMessageCase_ == 10) {
             return investoractionrespBuilder_.getMessage();
           }
           return Protos.InvestorActionResp.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .InvestorActionResp investoractionresp = 9;</code>
+       * <code>optional .InvestorActionResp investoractionresp = 10;</code>
        */
       public Builder setInvestoractionresp(Protos.InvestorActionResp value) {
         if (investoractionrespBuilder_ == null) {
@@ -2700,11 +2865,11 @@ public final class Protos {
         } else {
           investoractionrespBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 9;
+        innerMessageCase_ = 10;
         return this;
       }
       /**
-       * <code>optional .InvestorActionResp investoractionresp = 9;</code>
+       * <code>optional .InvestorActionResp investoractionresp = 10;</code>
        */
       public Builder setInvestoractionresp(
           Protos.InvestorActionResp.Builder builderForValue) {
@@ -2714,15 +2879,15 @@ public final class Protos {
         } else {
           investoractionrespBuilder_.setMessage(builderForValue.build());
         }
-        innerMessageCase_ = 9;
+        innerMessageCase_ = 10;
         return this;
       }
       /**
-       * <code>optional .InvestorActionResp investoractionresp = 9;</code>
+       * <code>optional .InvestorActionResp investoractionresp = 10;</code>
        */
       public Builder mergeInvestoractionresp(Protos.InvestorActionResp value) {
         if (investoractionrespBuilder_ == null) {
-          if (innerMessageCase_ == 9 &&
+          if (innerMessageCase_ == 10 &&
               innerMessage_ != Protos.InvestorActionResp.getDefaultInstance()) {
             innerMessage_ = Protos.InvestorActionResp.newBuilder((Protos.InvestorActionResp) innerMessage_)
                 .mergeFrom(value).buildPartial();
@@ -2731,26 +2896,26 @@ public final class Protos {
           }
           onChanged();
         } else {
-          if (innerMessageCase_ == 9) {
+          if (innerMessageCase_ == 10) {
             investoractionrespBuilder_.mergeFrom(value);
           }
           investoractionrespBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 9;
+        innerMessageCase_ = 10;
         return this;
       }
       /**
-       * <code>optional .InvestorActionResp investoractionresp = 9;</code>
+       * <code>optional .InvestorActionResp investoractionresp = 10;</code>
        */
       public Builder clearInvestoractionresp() {
         if (investoractionrespBuilder_ == null) {
-          if (innerMessageCase_ == 9) {
+          if (innerMessageCase_ == 10) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
             onChanged();
           }
         } else {
-          if (innerMessageCase_ == 9) {
+          if (innerMessageCase_ == 10) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
           }
@@ -2759,32 +2924,32 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>optional .InvestorActionResp investoractionresp = 9;</code>
+       * <code>optional .InvestorActionResp investoractionresp = 10;</code>
        */
       public Protos.InvestorActionResp.Builder getInvestoractionrespBuilder() {
         return getInvestoractionrespFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .InvestorActionResp investoractionresp = 9;</code>
+       * <code>optional .InvestorActionResp investoractionresp = 10;</code>
        */
       public Protos.InvestorActionRespOrBuilder getInvestoractionrespOrBuilder() {
-        if ((innerMessageCase_ == 9) && (investoractionrespBuilder_ != null)) {
+        if ((innerMessageCase_ == 10) && (investoractionrespBuilder_ != null)) {
           return investoractionrespBuilder_.getMessageOrBuilder();
         } else {
-          if (innerMessageCase_ == 9) {
+          if (innerMessageCase_ == 10) {
             return (Protos.InvestorActionResp) innerMessage_;
           }
           return Protos.InvestorActionResp.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .InvestorActionResp investoractionresp = 9;</code>
+       * <code>optional .InvestorActionResp investoractionresp = 10;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.InvestorActionResp, Protos.InvestorActionResp.Builder, Protos.InvestorActionRespOrBuilder> 
           getInvestoractionrespFieldBuilder() {
         if (investoractionrespBuilder_ == null) {
-          if (!(innerMessageCase_ == 9)) {
+          if (!(innerMessageCase_ == 10)) {
             innerMessage_ = Protos.InvestorActionResp.getDefaultInstance();
           }
           investoractionrespBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -2794,7 +2959,7 @@ public final class Protos {
                   isClean());
           innerMessage_ = null;
         }
-        innerMessageCase_ = 9;
+        innerMessageCase_ = 10;
         onChanged();;
         return investoractionrespBuilder_;
       }
@@ -2802,29 +2967,29 @@ public final class Protos {
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.ErrorMsg, Protos.ErrorMsg.Builder, Protos.ErrorMsgOrBuilder> errormsgBuilder_;
       /**
-       * <code>optional .ErrorMsg errormsg = 10;</code>
+       * <code>optional .ErrorMsg errormsg = 11;</code>
        */
       public boolean hasErrormsg() {
-        return innerMessageCase_ == 10;
+        return innerMessageCase_ == 11;
       }
       /**
-       * <code>optional .ErrorMsg errormsg = 10;</code>
+       * <code>optional .ErrorMsg errormsg = 11;</code>
        */
       public Protos.ErrorMsg getErrormsg() {
         if (errormsgBuilder_ == null) {
-          if (innerMessageCase_ == 10) {
+          if (innerMessageCase_ == 11) {
             return (Protos.ErrorMsg) innerMessage_;
           }
           return Protos.ErrorMsg.getDefaultInstance();
         } else {
-          if (innerMessageCase_ == 10) {
+          if (innerMessageCase_ == 11) {
             return errormsgBuilder_.getMessage();
           }
           return Protos.ErrorMsg.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .ErrorMsg errormsg = 10;</code>
+       * <code>optional .ErrorMsg errormsg = 11;</code>
        */
       public Builder setErrormsg(Protos.ErrorMsg value) {
         if (errormsgBuilder_ == null) {
@@ -2836,11 +3001,11 @@ public final class Protos {
         } else {
           errormsgBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 10;
+        innerMessageCase_ = 11;
         return this;
       }
       /**
-       * <code>optional .ErrorMsg errormsg = 10;</code>
+       * <code>optional .ErrorMsg errormsg = 11;</code>
        */
       public Builder setErrormsg(
           Protos.ErrorMsg.Builder builderForValue) {
@@ -2850,15 +3015,15 @@ public final class Protos {
         } else {
           errormsgBuilder_.setMessage(builderForValue.build());
         }
-        innerMessageCase_ = 10;
+        innerMessageCase_ = 11;
         return this;
       }
       /**
-       * <code>optional .ErrorMsg errormsg = 10;</code>
+       * <code>optional .ErrorMsg errormsg = 11;</code>
        */
       public Builder mergeErrormsg(Protos.ErrorMsg value) {
         if (errormsgBuilder_ == null) {
-          if (innerMessageCase_ == 10 &&
+          if (innerMessageCase_ == 11 &&
               innerMessage_ != Protos.ErrorMsg.getDefaultInstance()) {
             innerMessage_ = Protos.ErrorMsg.newBuilder((Protos.ErrorMsg) innerMessage_)
                 .mergeFrom(value).buildPartial();
@@ -2867,26 +3032,26 @@ public final class Protos {
           }
           onChanged();
         } else {
-          if (innerMessageCase_ == 10) {
+          if (innerMessageCase_ == 11) {
             errormsgBuilder_.mergeFrom(value);
           }
           errormsgBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 10;
+        innerMessageCase_ = 11;
         return this;
       }
       /**
-       * <code>optional .ErrorMsg errormsg = 10;</code>
+       * <code>optional .ErrorMsg errormsg = 11;</code>
        */
       public Builder clearErrormsg() {
         if (errormsgBuilder_ == null) {
-          if (innerMessageCase_ == 10) {
+          if (innerMessageCase_ == 11) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
             onChanged();
           }
         } else {
-          if (innerMessageCase_ == 10) {
+          if (innerMessageCase_ == 11) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
           }
@@ -2895,32 +3060,32 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>optional .ErrorMsg errormsg = 10;</code>
+       * <code>optional .ErrorMsg errormsg = 11;</code>
        */
       public Protos.ErrorMsg.Builder getErrormsgBuilder() {
         return getErrormsgFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .ErrorMsg errormsg = 10;</code>
+       * <code>optional .ErrorMsg errormsg = 11;</code>
        */
       public Protos.ErrorMsgOrBuilder getErrormsgOrBuilder() {
-        if ((innerMessageCase_ == 10) && (errormsgBuilder_ != null)) {
+        if ((innerMessageCase_ == 11) && (errormsgBuilder_ != null)) {
           return errormsgBuilder_.getMessageOrBuilder();
         } else {
-          if (innerMessageCase_ == 10) {
+          if (innerMessageCase_ == 11) {
             return (Protos.ErrorMsg) innerMessage_;
           }
           return Protos.ErrorMsg.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .ErrorMsg errormsg = 10;</code>
+       * <code>optional .ErrorMsg errormsg = 11;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.ErrorMsg, Protos.ErrorMsg.Builder, Protos.ErrorMsgOrBuilder> 
           getErrormsgFieldBuilder() {
         if (errormsgBuilder_ == null) {
-          if (!(innerMessageCase_ == 10)) {
+          if (!(innerMessageCase_ == 11)) {
             innerMessage_ = Protos.ErrorMsg.getDefaultInstance();
           }
           errormsgBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -2930,7 +3095,7 @@ public final class Protos {
                   isClean());
           innerMessage_ = null;
         }
-        innerMessageCase_ = 10;
+        innerMessageCase_ = 11;
         onChanged();;
         return errormsgBuilder_;
       }
@@ -2938,29 +3103,29 @@ public final class Protos {
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.EmissionFixedRateReq, Protos.EmissionFixedRateReq.Builder, Protos.EmissionFixedRateReqOrBuilder> emissionfixedratereqBuilder_;
       /**
-       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 12;</code>
        */
       public boolean hasEmissionfixedratereq() {
-        return innerMessageCase_ == 11;
+        return innerMessageCase_ == 12;
       }
       /**
-       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 12;</code>
        */
       public Protos.EmissionFixedRateReq getEmissionfixedratereq() {
         if (emissionfixedratereqBuilder_ == null) {
-          if (innerMessageCase_ == 11) {
+          if (innerMessageCase_ == 12) {
             return (Protos.EmissionFixedRateReq) innerMessage_;
           }
           return Protos.EmissionFixedRateReq.getDefaultInstance();
         } else {
-          if (innerMessageCase_ == 11) {
+          if (innerMessageCase_ == 12) {
             return emissionfixedratereqBuilder_.getMessage();
           }
           return Protos.EmissionFixedRateReq.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 12;</code>
        */
       public Builder setEmissionfixedratereq(Protos.EmissionFixedRateReq value) {
         if (emissionfixedratereqBuilder_ == null) {
@@ -2972,11 +3137,11 @@ public final class Protos {
         } else {
           emissionfixedratereqBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 11;
+        innerMessageCase_ = 12;
         return this;
       }
       /**
-       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 12;</code>
        */
       public Builder setEmissionfixedratereq(
           Protos.EmissionFixedRateReq.Builder builderForValue) {
@@ -2986,15 +3151,15 @@ public final class Protos {
         } else {
           emissionfixedratereqBuilder_.setMessage(builderForValue.build());
         }
-        innerMessageCase_ = 11;
+        innerMessageCase_ = 12;
         return this;
       }
       /**
-       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 12;</code>
        */
       public Builder mergeEmissionfixedratereq(Protos.EmissionFixedRateReq value) {
         if (emissionfixedratereqBuilder_ == null) {
-          if (innerMessageCase_ == 11 &&
+          if (innerMessageCase_ == 12 &&
               innerMessage_ != Protos.EmissionFixedRateReq.getDefaultInstance()) {
             innerMessage_ = Protos.EmissionFixedRateReq.newBuilder((Protos.EmissionFixedRateReq) innerMessage_)
                 .mergeFrom(value).buildPartial();
@@ -3003,26 +3168,26 @@ public final class Protos {
           }
           onChanged();
         } else {
-          if (innerMessageCase_ == 11) {
+          if (innerMessageCase_ == 12) {
             emissionfixedratereqBuilder_.mergeFrom(value);
           }
           emissionfixedratereqBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 11;
+        innerMessageCase_ = 12;
         return this;
       }
       /**
-       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 12;</code>
        */
       public Builder clearEmissionfixedratereq() {
         if (emissionfixedratereqBuilder_ == null) {
-          if (innerMessageCase_ == 11) {
+          if (innerMessageCase_ == 12) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
             onChanged();
           }
         } else {
-          if (innerMessageCase_ == 11) {
+          if (innerMessageCase_ == 12) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
           }
@@ -3031,32 +3196,32 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 12;</code>
        */
       public Protos.EmissionFixedRateReq.Builder getEmissionfixedratereqBuilder() {
         return getEmissionfixedratereqFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 12;</code>
        */
       public Protos.EmissionFixedRateReqOrBuilder getEmissionfixedratereqOrBuilder() {
-        if ((innerMessageCase_ == 11) && (emissionfixedratereqBuilder_ != null)) {
+        if ((innerMessageCase_ == 12) && (emissionfixedratereqBuilder_ != null)) {
           return emissionfixedratereqBuilder_.getMessageOrBuilder();
         } else {
-          if (innerMessageCase_ == 11) {
+          if (innerMessageCase_ == 12) {
             return (Protos.EmissionFixedRateReq) innerMessage_;
           }
           return Protos.EmissionFixedRateReq.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 11;</code>
+       * <code>optional .EmissionFixedRateReq emissionfixedratereq = 12;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.EmissionFixedRateReq, Protos.EmissionFixedRateReq.Builder, Protos.EmissionFixedRateReqOrBuilder> 
           getEmissionfixedratereqFieldBuilder() {
         if (emissionfixedratereqBuilder_ == null) {
-          if (!(innerMessageCase_ == 11)) {
+          if (!(innerMessageCase_ == 12)) {
             innerMessage_ = Protos.EmissionFixedRateReq.getDefaultInstance();
           }
           emissionfixedratereqBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3066,7 +3231,7 @@ public final class Protos {
                   isClean());
           innerMessage_ = null;
         }
-        innerMessageCase_ = 11;
+        innerMessageCase_ = 12;
         onChanged();;
         return emissionfixedratereqBuilder_;
       }
@@ -3074,29 +3239,29 @@ public final class Protos {
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.EmissionFixedRateResp, Protos.EmissionFixedRateResp.Builder, Protos.EmissionFixedRateRespOrBuilder> emissionfixedraterespBuilder_;
       /**
-       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 13;</code>
        */
       public boolean hasEmissionfixedrateresp() {
-        return innerMessageCase_ == 12;
+        return innerMessageCase_ == 13;
       }
       /**
-       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 13;</code>
        */
       public Protos.EmissionFixedRateResp getEmissionfixedrateresp() {
         if (emissionfixedraterespBuilder_ == null) {
-          if (innerMessageCase_ == 12) {
+          if (innerMessageCase_ == 13) {
             return (Protos.EmissionFixedRateResp) innerMessage_;
           }
           return Protos.EmissionFixedRateResp.getDefaultInstance();
         } else {
-          if (innerMessageCase_ == 12) {
+          if (innerMessageCase_ == 13) {
             return emissionfixedraterespBuilder_.getMessage();
           }
           return Protos.EmissionFixedRateResp.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 13;</code>
        */
       public Builder setEmissionfixedrateresp(Protos.EmissionFixedRateResp value) {
         if (emissionfixedraterespBuilder_ == null) {
@@ -3108,11 +3273,11 @@ public final class Protos {
         } else {
           emissionfixedraterespBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 12;
+        innerMessageCase_ = 13;
         return this;
       }
       /**
-       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 13;</code>
        */
       public Builder setEmissionfixedrateresp(
           Protos.EmissionFixedRateResp.Builder builderForValue) {
@@ -3122,15 +3287,15 @@ public final class Protos {
         } else {
           emissionfixedraterespBuilder_.setMessage(builderForValue.build());
         }
-        innerMessageCase_ = 12;
+        innerMessageCase_ = 13;
         return this;
       }
       /**
-       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 13;</code>
        */
       public Builder mergeEmissionfixedrateresp(Protos.EmissionFixedRateResp value) {
         if (emissionfixedraterespBuilder_ == null) {
-          if (innerMessageCase_ == 12 &&
+          if (innerMessageCase_ == 13 &&
               innerMessage_ != Protos.EmissionFixedRateResp.getDefaultInstance()) {
             innerMessage_ = Protos.EmissionFixedRateResp.newBuilder((Protos.EmissionFixedRateResp) innerMessage_)
                 .mergeFrom(value).buildPartial();
@@ -3139,26 +3304,26 @@ public final class Protos {
           }
           onChanged();
         } else {
-          if (innerMessageCase_ == 12) {
+          if (innerMessageCase_ == 13) {
             emissionfixedraterespBuilder_.mergeFrom(value);
           }
           emissionfixedraterespBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 12;
+        innerMessageCase_ = 13;
         return this;
       }
       /**
-       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 13;</code>
        */
       public Builder clearEmissionfixedrateresp() {
         if (emissionfixedraterespBuilder_ == null) {
-          if (innerMessageCase_ == 12) {
+          if (innerMessageCase_ == 13) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
             onChanged();
           }
         } else {
-          if (innerMessageCase_ == 12) {
+          if (innerMessageCase_ == 13) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
           }
@@ -3167,32 +3332,32 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 13;</code>
        */
       public Protos.EmissionFixedRateResp.Builder getEmissionfixedraterespBuilder() {
         return getEmissionfixedraterespFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 13;</code>
        */
       public Protos.EmissionFixedRateRespOrBuilder getEmissionfixedraterespOrBuilder() {
-        if ((innerMessageCase_ == 12) && (emissionfixedraterespBuilder_ != null)) {
+        if ((innerMessageCase_ == 13) && (emissionfixedraterespBuilder_ != null)) {
           return emissionfixedraterespBuilder_.getMessageOrBuilder();
         } else {
-          if (innerMessageCase_ == 12) {
+          if (innerMessageCase_ == 13) {
             return (Protos.EmissionFixedRateResp) innerMessage_;
           }
           return Protos.EmissionFixedRateResp.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 12;</code>
+       * <code>optional .EmissionFixedRateResp emissionfixedrateresp = 13;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.EmissionFixedRateResp, Protos.EmissionFixedRateResp.Builder, Protos.EmissionFixedRateRespOrBuilder> 
           getEmissionfixedraterespFieldBuilder() {
         if (emissionfixedraterespBuilder_ == null) {
-          if (!(innerMessageCase_ == 12)) {
+          if (!(innerMessageCase_ == 13)) {
             innerMessage_ = Protos.EmissionFixedRateResp.getDefaultInstance();
           }
           emissionfixedraterespBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3202,7 +3367,7 @@ public final class Protos {
                   isClean());
           innerMessage_ = null;
         }
-        innerMessageCase_ = 12;
+        innerMessageCase_ = 13;
         onChanged();;
         return emissionfixedraterespBuilder_;
       }
@@ -3210,29 +3375,29 @@ public final class Protos {
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.AuctionEmissionResult, Protos.AuctionEmissionResult.Builder, Protos.AuctionEmissionResultOrBuilder> auctionemissionresultBuilder_;
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 14;</code>
        */
       public boolean hasAuctionemissionresult() {
-        return innerMessageCase_ == 13;
+        return innerMessageCase_ == 14;
       }
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 14;</code>
        */
       public Protos.AuctionEmissionResult getAuctionemissionresult() {
         if (auctionemissionresultBuilder_ == null) {
-          if (innerMessageCase_ == 13) {
+          if (innerMessageCase_ == 14) {
             return (Protos.AuctionEmissionResult) innerMessage_;
           }
           return Protos.AuctionEmissionResult.getDefaultInstance();
         } else {
-          if (innerMessageCase_ == 13) {
+          if (innerMessageCase_ == 14) {
             return auctionemissionresultBuilder_.getMessage();
           }
           return Protos.AuctionEmissionResult.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 14;</code>
        */
       public Builder setAuctionemissionresult(Protos.AuctionEmissionResult value) {
         if (auctionemissionresultBuilder_ == null) {
@@ -3244,11 +3409,11 @@ public final class Protos {
         } else {
           auctionemissionresultBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 13;
+        innerMessageCase_ = 14;
         return this;
       }
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 14;</code>
        */
       public Builder setAuctionemissionresult(
           Protos.AuctionEmissionResult.Builder builderForValue) {
@@ -3258,15 +3423,15 @@ public final class Protos {
         } else {
           auctionemissionresultBuilder_.setMessage(builderForValue.build());
         }
-        innerMessageCase_ = 13;
+        innerMessageCase_ = 14;
         return this;
       }
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 14;</code>
        */
       public Builder mergeAuctionemissionresult(Protos.AuctionEmissionResult value) {
         if (auctionemissionresultBuilder_ == null) {
-          if (innerMessageCase_ == 13 &&
+          if (innerMessageCase_ == 14 &&
               innerMessage_ != Protos.AuctionEmissionResult.getDefaultInstance()) {
             innerMessage_ = Protos.AuctionEmissionResult.newBuilder((Protos.AuctionEmissionResult) innerMessage_)
                 .mergeFrom(value).buildPartial();
@@ -3275,26 +3440,26 @@ public final class Protos {
           }
           onChanged();
         } else {
-          if (innerMessageCase_ == 13) {
+          if (innerMessageCase_ == 14) {
             auctionemissionresultBuilder_.mergeFrom(value);
           }
           auctionemissionresultBuilder_.setMessage(value);
         }
-        innerMessageCase_ = 13;
+        innerMessageCase_ = 14;
         return this;
       }
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 14;</code>
        */
       public Builder clearAuctionemissionresult() {
         if (auctionemissionresultBuilder_ == null) {
-          if (innerMessageCase_ == 13) {
+          if (innerMessageCase_ == 14) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
             onChanged();
           }
         } else {
-          if (innerMessageCase_ == 13) {
+          if (innerMessageCase_ == 14) {
             innerMessageCase_ = 0;
             innerMessage_ = null;
           }
@@ -3303,32 +3468,32 @@ public final class Protos {
         return this;
       }
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 14;</code>
        */
       public Protos.AuctionEmissionResult.Builder getAuctionemissionresultBuilder() {
         return getAuctionemissionresultFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 14;</code>
        */
       public Protos.AuctionEmissionResultOrBuilder getAuctionemissionresultOrBuilder() {
-        if ((innerMessageCase_ == 13) && (auctionemissionresultBuilder_ != null)) {
+        if ((innerMessageCase_ == 14) && (auctionemissionresultBuilder_ != null)) {
           return auctionemissionresultBuilder_.getMessageOrBuilder();
         } else {
-          if (innerMessageCase_ == 13) {
+          if (innerMessageCase_ == 14) {
             return (Protos.AuctionEmissionResult) innerMessage_;
           }
           return Protos.AuctionEmissionResult.getDefaultInstance();
         }
       }
       /**
-       * <code>optional .AuctionEmissionResult auctionemissionresult = 13;</code>
+       * <code>optional .AuctionEmissionResult auctionemissionresult = 14;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           Protos.AuctionEmissionResult, Protos.AuctionEmissionResult.Builder, Protos.AuctionEmissionResultOrBuilder> 
           getAuctionemissionresultFieldBuilder() {
         if (auctionemissionresultBuilder_ == null) {
-          if (!(innerMessageCase_ == 13)) {
+          if (!(innerMessageCase_ == 14)) {
             innerMessage_ = Protos.AuctionEmissionResult.getDefaultInstance();
           }
           auctionemissionresultBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
@@ -3338,7 +3503,7 @@ public final class Protos {
                   isClean());
           innerMessage_ = null;
         }
-        innerMessageCase_ = 13;
+        innerMessageCase_ = 14;
         onChanged();;
         return auctionemissionresultBuilder_;
       }
@@ -12148,50 +12313,51 @@ public final class Protos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014protos.proto\"\203\005\n\016MessageWrapper\022,\n\007msg" +
+      "\n\014protos.proto\"\232\005\n\016MessageWrapper\022,\n\007msg" +
       "Type\030\001 \002(\0162\033.MessageWrapper.MessageType\022" +
-      "\035\n\010loginreq\030\002 \001(\0132\t.LoginReqH\000\022\037\n\tloginr" +
-      "esp\030\003 \001(\0132\n.LoginRespH\000\022\037\n\tlogoutreq\030\004 \001" +
-      "(\0132\n.LogoutReqH\000\022!\n\nlogoutresp\030\005 \001(\0132\013.L" +
-      "ogoutRespH\000\022-\n\020companyactionreq\030\006 \001(\0132\021." +
-      "CompanyActionReqH\000\022/\n\021companyactionresp\030" +
-      "\007 \001(\0132\022.CompanyActionRespH\000\022/\n\021investora" +
-      "ctionreq\030\010 \001(\0132\022.InvestorActionReqH\000\0221\n\022" +
-      "investoractionresp\030\t \001(\0132\023.InvestorActio",
-      "nRespH\000\022\035\n\010errormsg\030\n \001(\0132\t.ErrorMsgH\000\0225" +
-      "\n\024emissionfixedratereq\030\013 \001(\0132\025.EmissionF" +
-      "ixedRateReqH\000\0227\n\025emissionfixedrateresp\030\014" +
-      " \001(\0132\026.EmissionFixedRateRespH\000\0227\n\025auctio" +
-      "nemissionresult\030\r \001(\0132\026.AuctionEmissionR" +
-      "esultH\000\"\"\n\013MessageType\022\010\n\004SYNC\020\000\022\t\n\005ASYN" +
-      "C\020\001B\017\n\rinner_message\"&\n\024EmissionFixedRat" +
-      "eReq\022\016\n\006client\030\001 \002(\t\"5\n\025EmissionFixedRat" +
-      "eResp\022\016\n\006client\030\001 \002(\t\022\014\n\004rate\030\002 \002(\002\"4\n\025A" +
-      "uctionEmissionResult\022\016\n\006client\030\001 \002(\t\022\013\n\003",
-      "msg\030\002 \002(\t\"\031\n\010ErrorMsg\022\r\n\005error\030\001 \002(\t\"*\n\010" +
-      "LoginReq\022\014\n\004name\030\001 \002(\t\022\020\n\010password\030\002 \002(\t" +
-      "\"\241\001\n\tLoginResp\022$\n\005cType\030\001 \001(\0162\025.LoginRes" +
-      "p.ClientType\022!\n\006status\030\002 \002(\0162\021.LoginResp" +
-      ".Status\"\'\n\nClientType\022\013\n\007COMPANY\020\000\022\014\n\010IN" +
-      "VESTOR\020\001\"\"\n\006Status\022\013\n\007INVALID\020\000\022\013\n\007SUCCE" +
-      "SS\020\001\"\031\n\tLogoutReq\022\014\n\004name\030\001 \002(\t\"R\n\nLogou" +
-      "tResp\022\"\n\006status\030\001 \002(\0162\022.LogoutResp.Statu" +
-      "s\" \n\006Status\022\t\n\005ERROR\020\000\022\013\n\007SUCCESS\020\001\"\235\001\n\020" +
-      "CompanyActionReq\022\016\n\006client\030\001 \002(\t\022.\n\007reqT",
-      "ype\030\002 \002(\0162\035.CompanyActionReq.RequestType" +
-      "\022\r\n\005value\030\003 \002(\003\022\020\n\010max_rate\030\004 \002(\002\"(\n\013Req" +
-      "uestType\022\013\n\007AUCTION\020\000\022\014\n\010EMISSION\020\001\"r\n\021C" +
-      "ompanyActionResp\022\016\n\006client\030\001 \002(\t\022)\n\006stat" +
-      "us\030\002 \002(\0162\031.CompanyActionResp.Status\"\"\n\006S" +
-      "tatus\022\013\n\007SUCCESS\020\000\022\013\n\007INVALID\020\001\"\255\001\n\021Inve" +
-      "storActionReq\022\016\n\006client\030\001 \002(\t\022\017\n\007company" +
-      "\030\002 \002(\t\0220\n\010req_type\030\003 \002(\0162\036.InvestorActio" +
-      "nReq.RequestType\022\r\n\005value\030\004 \002(\003\022\014\n\004rate\030" +
-      "\005 \001(\002\"(\n\013RequestType\022\013\n\007AUCTION\020\000\022\014\n\010EMI",
-      "SSION\020\001\"\217\001\n\022InvestorActionResp\022\016\n\006client" +
-      "\030\001 \002(\t\022*\n\006status\030\002 \002(\0162\032.InvestorActionR" +
-      "esp.Status\"=\n\006Status\022\r\n\tCONFIRMED\020\000\022\014\n\010R" +
-      "EPLACED\020\001\022\t\n\005ENDED\020\002\022\013\n\007INVALID\020\003"
+      "\025\n\rclientSession\030\002 \001(\t\022\035\n\010loginreq\030\003 \001(\013" +
+      "2\t.LoginReqH\000\022\037\n\tloginresp\030\004 \001(\0132\n.Login" +
+      "RespH\000\022\037\n\tlogoutreq\030\005 \001(\0132\n.LogoutReqH\000\022" +
+      "!\n\nlogoutresp\030\006 \001(\0132\013.LogoutRespH\000\022-\n\020co" +
+      "mpanyactionreq\030\007 \001(\0132\021.CompanyActionReqH" +
+      "\000\022/\n\021companyactionresp\030\010 \001(\0132\022.CompanyAc" +
+      "tionRespH\000\022/\n\021investoractionreq\030\t \001(\0132\022." +
+      "InvestorActionReqH\000\0221\n\022investoractionres",
+      "p\030\n \001(\0132\023.InvestorActionRespH\000\022\035\n\010errorm" +
+      "sg\030\013 \001(\0132\t.ErrorMsgH\000\0225\n\024emissionfixedra" +
+      "tereq\030\014 \001(\0132\025.EmissionFixedRateReqH\000\0227\n\025" +
+      "emissionfixedrateresp\030\r \001(\0132\026.EmissionFi" +
+      "xedRateRespH\000\0227\n\025auctionemissionresult\030\016" +
+      " \001(\0132\026.AuctionEmissionResultH\000\"\"\n\013Messag" +
+      "eType\022\010\n\004SYNC\020\000\022\t\n\005ASYNC\020\001B\017\n\rinner_mess" +
+      "age\"&\n\024EmissionFixedRateReq\022\016\n\006client\030\001 " +
+      "\002(\t\"5\n\025EmissionFixedRateResp\022\016\n\006client\030\001" +
+      " \002(\t\022\014\n\004rate\030\002 \002(\002\"4\n\025AuctionEmissionRes",
+      "ult\022\016\n\006client\030\001 \002(\t\022\013\n\003msg\030\002 \002(\t\"\031\n\010Erro" +
+      "rMsg\022\r\n\005error\030\001 \002(\t\"*\n\010LoginReq\022\014\n\004name\030" +
+      "\001 \002(\t\022\020\n\010password\030\002 \002(\t\"\241\001\n\tLoginResp\022$\n" +
+      "\005cType\030\001 \001(\0162\025.LoginResp.ClientType\022!\n\006s" +
+      "tatus\030\002 \002(\0162\021.LoginResp.Status\"\'\n\nClient" +
+      "Type\022\013\n\007COMPANY\020\000\022\014\n\010INVESTOR\020\001\"\"\n\006Statu" +
+      "s\022\013\n\007INVALID\020\000\022\013\n\007SUCCESS\020\001\"\031\n\tLogoutReq" +
+      "\022\014\n\004name\030\001 \002(\t\"R\n\nLogoutResp\022\"\n\006status\030\001" +
+      " \002(\0162\022.LogoutResp.Status\" \n\006Status\022\t\n\005ER" +
+      "ROR\020\000\022\013\n\007SUCCESS\020\001\"\235\001\n\020CompanyActionReq\022",
+      "\016\n\006client\030\001 \002(\t\022.\n\007reqType\030\002 \002(\0162\035.Compa" +
+      "nyActionReq.RequestType\022\r\n\005value\030\003 \002(\003\022\020" +
+      "\n\010max_rate\030\004 \002(\002\"(\n\013RequestType\022\013\n\007AUCTI" +
+      "ON\020\000\022\014\n\010EMISSION\020\001\"r\n\021CompanyActionResp\022" +
+      "\016\n\006client\030\001 \002(\t\022)\n\006status\030\002 \002(\0162\031.Compan" +
+      "yActionResp.Status\"\"\n\006Status\022\013\n\007SUCCESS\020" +
+      "\000\022\013\n\007INVALID\020\001\"\255\001\n\021InvestorActionReq\022\016\n\006" +
+      "client\030\001 \002(\t\022\017\n\007company\030\002 \002(\t\0220\n\010req_typ" +
+      "e\030\003 \002(\0162\036.InvestorActionReq.RequestType\022" +
+      "\r\n\005value\030\004 \002(\003\022\014\n\004rate\030\005 \001(\002\"(\n\013RequestT",
+      "ype\022\013\n\007AUCTION\020\000\022\014\n\010EMISSION\020\001\"\217\001\n\022Inves" +
+      "torActionResp\022\016\n\006client\030\001 \002(\t\022*\n\006status\030" +
+      "\002 \002(\0162\032.InvestorActionResp.Status\"=\n\006Sta" +
+      "tus\022\r\n\tCONFIRMED\020\000\022\014\n\010REPLACED\020\001\022\t\n\005ENDE" +
+      "D\020\002\022\013\n\007INVALID\020\003"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -12210,7 +12376,7 @@ public final class Protos {
     internal_static_MessageWrapper_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_MessageWrapper_descriptor,
-        new java.lang.String[] { "MsgType", "Loginreq", "Loginresp", "Logoutreq", "Logoutresp", "Companyactionreq", "Companyactionresp", "Investoractionreq", "Investoractionresp", "Errormsg", "Emissionfixedratereq", "Emissionfixedrateresp", "Auctionemissionresult", "InnerMessage", });
+        new java.lang.String[] { "MsgType", "ClientSession", "Loginreq", "Loginresp", "Logoutreq", "Logoutresp", "Companyactionreq", "Companyactionresp", "Investoractionreq", "Investoractionresp", "Errormsg", "Emissionfixedratereq", "Emissionfixedrateresp", "Auctionemissionresult", "InnerMessage", });
     internal_static_EmissionFixedRateReq_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_EmissionFixedRateReq_fieldAccessorTable = new

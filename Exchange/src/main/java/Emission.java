@@ -73,8 +73,8 @@ public class Emission {
      * @param investor      Investidor responsável pela subscrição.
      * @param value         Valor da subscrição.
      */
-    public void addSubscription(String investor, long value) {
-        this.subscriptions.add(new Subscription(investor, value));
+    public void addSubscription(String investor, String clientSession, long value) {
+        this.subscriptions.add(new Subscription(investor, clientSession, value));
     }
 
 

@@ -7,7 +7,7 @@ message MessageWrapper {
     }
 
     required MessageType msgType = 1;
-    optional string clientSession = 2;
+    optional string clientSession = 2; 
 
     oneof inner_message {
         LoginReq loginreq = 3;

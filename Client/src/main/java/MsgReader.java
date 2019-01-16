@@ -36,6 +36,7 @@ public class MsgReader extends Thread {
             while((msgB = Utils.recvMsg(sc)) != null) {
 
                 msg = Protos.MessageWrapper.parseFrom(msgB);
+
                 switch (msg.getMsgType()){
                     case SYNC:
                         client.setSyncMessage(msg);

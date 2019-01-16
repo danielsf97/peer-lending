@@ -9,7 +9,7 @@ public class Company extends ClientType {
      *
      * @param name  Nome da empresa.
      */
-    public Company(String name) {
-        super(name);
+    public Company(String name, String token) {
+        super(name, token);
     }
 }

@@ -7,20 +7,21 @@ message MessageWrapper {
     }
 
     required MessageType msgType = 1;
+    optional string clientSession = 2;
 
     oneof inner_message {
-        LoginReq loginreq = 2;
-        LoginResp loginresp = 3;
-        LogoutReq logoutreq = 4;
-        LogoutResp logoutresp = 5;
-        CompanyActionReq companyactionreq = 6;
-        CompanyActionResp companyactionresp = 7;
-        InvestorActionReq investoractionreq = 8;
-        InvestorActionResp investoractionresp = 9;
-        ErrorMsg errormsg = 10;
-        EmissionFixedRateReq emissionfixedratereq = 11;
-        EmissionFixedRateResp emissionfixedrateresp = 12;
-        AuctionEmissionResult auctionemissionresult = 13;
+        LoginReq loginreq = 3;
+        LoginResp loginresp = 4;
+        LogoutReq logoutreq = 5;
+        LogoutResp logoutresp = 6;
+        CompanyActionReq companyactionreq = 7;
+        CompanyActionResp companyactionresp = 8;
+        InvestorActionReq investoractionreq = 9;
+        InvestorActionResp investoractionresp = 10;
+        ErrorMsg errormsg = 11;
+        EmissionFixedRateReq emissionfixedratereq = 12;
+        EmissionFixedRateResp emissionfixedrateresp = 13;
+        AuctionEmissionResult auctionemissionresult = 14;
     }
 }
 

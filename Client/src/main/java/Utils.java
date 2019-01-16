@@ -71,9 +71,13 @@ public class Utils {
         ByteBuffer buffer = ByteBuffer.allocate(512);
 
         int len = socket.read(buffer);
-        buffer.flip();
-        byte[] resp = new byte[len];
-        buffer.get(resp, 0, len);
+        byte[] resp = null;
+
+        if(len > 0) {
+            buffer.flip();
+            resp = new byte[len];
+            buffer.get(resp, 0, len);
+        }
 
         return resp;
     }

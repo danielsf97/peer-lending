@@ -4,6 +4,7 @@
  */
 public class Subscription {
     private String investor;
+    private String clientSession;
     private long value;
 
 
@@ -12,10 +13,12 @@ public class Subscription {
      *
      * @param investor      Investidor responsável pela subscrição.
      * @param value         Valor da subscrição.
+     * @param clientSession Pid do Ator Sessão do cliente.
      */
-    public Subscription(String investor, long value) {
+    public Subscription(String investor, String clientSession, long value) {
         this.investor = investor;
         this.value = value;
+        this.clientSession = clientSession;
     }
 
 
@@ -28,6 +31,14 @@ public class Subscription {
         return investor;
     }
 
+    /**
+     * Devolve o pid do ator sessão do cliente.
+     *
+     * @return o pid do ator sessão do cliente.
+     */
+    public String getClientSession(){
+        return clientSession;
+    }
 
     /**
      * Devolve o valor de uma subscrição.
