@@ -64,7 +64,7 @@ public class DirectoryManager {
      * @throws Exception
      */
     public void deleteHttp(String partialUri, String company, String success) throws Exception {
-        URL url = new URL("http://localhost:8080/" + partialUri + "/" + company + "?success=" + success);
+        URL url = new URL("http://localhost:8080/" + partialUri + "/" + company + "/" + success);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("DELETE");
         conn.setDoOutput(true);

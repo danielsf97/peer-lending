@@ -90,10 +90,12 @@ public class AuctionsResource {
      * @return          Resposta REST ao pedido.
      */
     @DELETE
-    @Path("/{company}?success={success}")
+    @Path("/{company}/{success}")
     public Response delete(@PathParam("company") String company, @PathParam("success") String success) {
-        if(!companies.containsKey(company))
+
+        if(!companies.containsKey(company)) {
             throw new RestException("A empresa não existe!", Response.Status.NOT_FOUND);
+        }
 
         ActiveAuction save = null;
 
@@ -103,7 +105,7 @@ public class AuctionsResource {
         }
 
         if(save == null) {
-            throw new RestException("Não existe leilão ativo para essa empresa", Response.Status.NOT_FOUND);
+            throw new RestException("Não existe leilão ativo para essa empresa", Response.Status.CONFLICT);
         }
 
         activeAuctions.remove(save);
