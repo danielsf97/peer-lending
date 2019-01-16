@@ -156,7 +156,7 @@ public class CompanyWorker extends Thread {
         if(companyResp != null) {
             switch (companyResp.getStatus()) {
                 case SUCCESS:
-                    System.out.println("Emissão criada com sucesso!!");
+                    System.out.println("Emissão criada com sucesso!");
                     break;
                 case INVALID:
                     System.out.println("Criação de emissão inválida!");

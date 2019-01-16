@@ -159,7 +159,7 @@ public class InvestorWorker extends Thread{
 
         String comp = menu.readString("Empresa: ");
 
-        sub.subscribe(comp);
+        sub.unsubscribe(comp);
         System.out.println("Remoção das notificações da empresa " + comp + " completa.\n");
 
         try {
