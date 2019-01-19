@@ -93,7 +93,7 @@ public class Auction {
         boolean found = false;
         Bid bid = null;
 
-        if (rate > maxRate) return -1;
+        if (rate > maxRate || value > this.getValue()) return -1;
 
         Iterator it = bids.iterator();
 
@@ -120,7 +120,7 @@ public class Auction {
      */
     Pair<ArrayList<Pair<String, Long>>, ArrayList<String>> getWinnersLosers() {
         ArrayList<Pair<String, Long>> winners = new ArrayList<>();
-        ArrayList<String> losers = null;
+        ArrayList<String> losers = new ArrayList<>();
         Iterator it = bids.iterator();
         Bid bid;
         long sum = 0;
@@ -132,7 +132,6 @@ public class Auction {
         }
 
         if (sum >= value) {
-            losers = new ArrayList<>();
             while (it.hasNext()) {
                 bid = (Bid) it.next();
                 losers.add(bid.getInvestor());
@@ -150,8 +149,11 @@ public class Auction {
             pair.setSecond(update);
             return new Pair<>(winners, losers);
         }
-        else
+        else {
+            for(Pair p : winners)
+                losers.add((String) p.getFirst());
             return new Pair<>(null, losers);
+        }
     }
 
 

@@ -70,7 +70,7 @@ public class ScheduledExecutor implements Runnable {
         ArrayList<String> losers = winnersAndLosers.getSecond();
 
         // Enviar mensagem aos vencedores
-        if(winners != null) {
+        if(winners != null && !winners.isEmpty()) {
             for(Pair winnerVal : winners) {
                 Protos.MessageWrapper msg = createAuctionWinningResultMsg(winnerVal);
                 push.send(msg.toByteArray());
@@ -80,7 +80,7 @@ public class ScheduledExecutor implements Runnable {
         }
 
         // Enviar mensagem aos perdedores
-        if(losers != null) {
+        if(losers != null && !losers.isEmpty()) {
             for(String investor : losers) {
                 Protos.MessageWrapper msg = createAuctionLoserResultMsg(investor);
                 push.send(msg.toByteArray());
@@ -214,7 +214,7 @@ public class ScheduledExecutor implements Runnable {
                 notification = this.company.getName() + ": Emissão Terminada, subscrição: Parcial, requerido: " +
                         emission.getValue() + ", obtido: " + sum;
             }
-            float nextEmissionRate = this.company.getEmissionRate() * (float) 1.1;
+            float nextEmissionRate = ((int) (((this.company.getEmissionRate() * (float) 1.1) + 0.005f) * 100)) / 100f;
             this.company.setEmissionRate(nextEmissionRate);
         }
         push.send(msgEmpresa.toByteArray());

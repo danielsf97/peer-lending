@@ -19,9 +19,11 @@ public class Emission {
      * Construtor parametrizado.
      *
      * @param value     Valor da emissão.
+     * @param rate
      */
-    Emission(long value) {
+    Emission(long value, float rate) {
         this.value = value;
+        this.fixedRate = rate;
         this.startingDateTime = LocalDateTime.now();
         this.subscriptions = new ArrayList<>();
     }

@@ -175,7 +175,7 @@ public class Exchange {
 
             }
             else {
-                Emission e = new Emission(value);
+                Emission e = new Emission(value,rate);
                 c.setActiveEmission(e);
 
                 directoryManager.postEmission(e, c.getName());
@@ -232,7 +232,7 @@ public class Exchange {
         else if(investorActionReq.getReqType() == Protos.InvestorActionReq.RequestType.EMISSION) {
             Emission e = c.getActiveEmission();
 
-            if(e == null) {
+            if(e == null || value > e.getValue()) {
                 Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.INVALID, clientSession);
                 push.send(resp.toByteArray());
                 return;
