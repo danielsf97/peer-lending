@@ -21,6 +21,7 @@ public class DirectoryApp extends Application<Configuration> {
     private Map<String, History> companies;
     private List<ActiveAuction> activeAuctions;
     private List<ActiveEmission> activeEmissions;
+    private Map<String, List<String>> subscriptions;
 
 
     /**
@@ -34,6 +35,7 @@ public class DirectoryApp extends Application<Configuration> {
         this.companies.put("empC", new History());
         this.activeAuctions = new ArrayList<>();
         this.activeEmissions = new ArrayList<>();
+        this.subscriptions = new HashMap<>();
     }
 
 
@@ -67,6 +69,7 @@ public class DirectoryApp extends Application<Configuration> {
         environment.jersey().register(new CompaniesResource(companies));
         environment.jersey().register(new AuctionsResource(companies, activeAuctions, activeEmissions));
         environment.jersey().register(new EmissionsResource(companies, activeAuctions, activeEmissions));
+        environment.jersey().register(new SubscriptionsResource(subscriptions));
         environment.healthChecks().register("isRunning", new AppHealthCheck());
     }
 
