@@ -171,7 +171,7 @@ public class Exchange {
                 directoryManager.postAuction(a, c.getName());
                 scheduler.schedule(new ScheduledExecutor(c, push, pub, directoryManager), delayTime, TimeUnit.MINUTES);
 
-                notification = c.getName() + ": Criação de Leilão, Montante: " + value + ", Taxa Max.: " + rate;
+                notification = "Leilao_" + c.getName() + ": Criação de Leilão, Montante: " + value + ", Taxa Max.: " + rate;
 
             }
             else {
@@ -181,7 +181,7 @@ public class Exchange {
                 directoryManager.postEmission(e, c.getName());
                 scheduler.schedule(new ScheduledExecutor(c, push, pub, directoryManager), delayTime, TimeUnit.MINUTES);
 
-                notification = c.getName() + ": Criação de Emissão, Montante: " + value + ", Taxa: " + rate;
+                notification = "Emissao_" + c.getName() + ": Criação de Emissão, Montante: " + value + ", Taxa: " + rate;
             }
 
             Protos.MessageWrapper statusMsg = createCompanyActionResp(companyActionReq.getClient(), Protos.CompanyActionResp.Status.SUCCESS, clientSession);
@@ -204,6 +204,7 @@ public class Exchange {
     private void processInvestorActionReq(Protos.MessageWrapper msg) {
         Protos.InvestorActionReq investorActionReq = msg.getInvestoractionreq();
         String clientSession = msg.getClientSession();
+        String notification = null;
         long value = investorActionReq.getValue();
         String cName = investorActionReq.getCompany();
         Company c = companies.get(cName);
@@ -225,9 +226,11 @@ public class Exchange {
             }
             else if(stat == 1) {
                 Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.REPLACED, clientSession);
+                notification = "Leilao_" + c.getName() + ": Licitação Substituída, Montante: " + value + ", Taxa: " + rate;
                 push.send(resp.toByteArray());
                 return;
             }
+            notification = "Leilao_" + c.getName() + ": Nova licitação em Leilão, Montante: " + value + ", Taxa: " + rate;
         }
         else if(investorActionReq.getReqType() == Protos.InvestorActionReq.RequestType.EMISSION) {
             Emission e = c.getActiveEmission();
@@ -238,10 +241,13 @@ public class Exchange {
                 return;
             }
             e.addSubscription(client, clientSession,value);
+            notification = "Emissao_" + c.getName() + ": Nova Subscrição em Emissão, Montante: " + value;
+
         }
 
         Protos.MessageWrapper resp = createInvestorActionResp(client, Protos.InvestorActionResp.Status.CONFIRMED, clientSession);
         push.send(resp.toByteArray());
+        pub.send(notification);
     }
 
 

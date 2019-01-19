@@ -94,13 +94,13 @@ public class ScheduledExecutor implements Runnable {
             String status = "Sucesso";
             msgEmpresa = createAuctionCompanyResultMsg(status);
 
-            notification = this.company.getName() + ": Leilão Terminado, status: Sucesso, montante: " + auction.getValue();
+            notification = "Leilao_" + this.company.getName() + ": Leilão Terminado, status: Sucesso, montante: " + auction.getValue();
         }
         else {
             String status = "Insucesso";
             msgEmpresa = createAuctionCompanyResultMsg(status);
 
-            notification = this.company.getName() + ": Leilão Terminado, status: Insucesso, montante: " + auction.getValue();
+            notification = "Leilao_" + this.company.getName() + ": Leilão Terminado, status: Insucesso, montante: " + auction.getValue();
         }
 
         push.send(msgEmpresa.toByteArray());
@@ -195,7 +195,7 @@ public class ScheduledExecutor implements Runnable {
             String status = "Total";
             msgEmpresa = createEmissionCompanyResultMsg(status, emission.getValue(), sum);
 
-            notification = this.company.getName() + ": Emissão Terminada, subscrição: Total, requerido: " +
+            notification = "Emissao_" + this.company.getName() + ": Emissão Terminada, subscrição: Total, requerido: " +
                     emission.getValue() + ", obtido: " + sum;
 
         }
@@ -204,14 +204,14 @@ public class ScheduledExecutor implements Runnable {
                 String status = "Nula";
                 msgEmpresa = createEmissionCompanyResultMsg(status, emission.getValue(), sum);
 
-                notification = this.company.getName() + ": Emissão Terminada, subscrição: Nula, requerido: " +
+                notification = "Emissao_" + this.company.getName() + ": Emissão Terminada, subscrição: Nula, requerido: " +
                         emission.getValue() + ", obtido: " + sum;
             }
             else {
                 String status = "Parcial";
                 msgEmpresa = createEmissionCompanyResultMsg(status, emission.getValue(), sum);
 
-                notification = this.company.getName() + ": Emissão Terminada, subscrição: Parcial, requerido: " +
+                notification = "Emissao_" + this.company.getName() + ": Emissão Terminada, subscrição: Parcial, requerido: " +
                         emission.getValue() + ", obtido: " + sum;
             }
             float nextEmissionRate = ((int) (((this.company.getEmissionRate() * (float) 1.1) + 0.005f) * 100)) / 100f;
