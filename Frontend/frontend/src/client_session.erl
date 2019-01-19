@@ -46,15 +46,12 @@ client_loop(Sock, User) ->
 					{'EmissionFixedRateReq', Comp_B} = Body,
 					Comp = binary_to_list(Comp_B),
 					senders_manager ! {company, Comp, self()},
-					io:format("Company ~p quer criar emissão~n",[Comp]),
 
 					receive
 						{ok, Pid} -> 
-							io:format("Empresa Existe!!"),
 							Pid ! {msg, Bin, self()};
 						non_existent_company -> 
-							io:format("Empresa não Existe!!"),
-							Erro = #'ErrorMsg'{error='Empresa não existe!!'},
+							Erro = #'ErrorMsg'{error="Empresa não existe!!"},
 							Resp = protos_pb:encode_msg(#'MessageWrapper'{msgType = 'SYNC', inner_message = {errormsg, Erro}}),
 							gen_tcp:send(Sock, Resp)
 					end,
@@ -68,7 +65,7 @@ client_loop(Sock, User) ->
 					receive
 						{ok, Pid} -> Pid ! {msg, Bin, self()};
 						non_existent_company -> 
-							Erro = #'ErrorMsg'{error='Empresa não existe!!'},
+							Erro = #'ErrorMsg'{error="Empresa não existe!!"},
 							Resp = protos_pb:encode_msg(#'MessageWrapper'{msgType = 'SYNC', inner_message = {errormsg, Erro}}),
 							gen_tcp:send(Sock, Resp)
 					end,
@@ -84,9 +81,10 @@ client_loop(Sock, User) ->
 							senders_manager ! {company, Comp, self()}
 					end,
 					receive
-						{ok, Pid} -> Pid ! {msg, Bin, self()};
+						{ok, Pid} -> 
+							Pid ! {msg, Bin, self()};
 						non_existent_company -> 
-							Erro = #'ErrorMsg'{error='Empresa não existe!!'},
+							Erro = #'ErrorMsg'{error="Empresa não existe!!"},
 							Resp = protos_pb:encode_msg(#'MessageWrapper'{msgType = 'SYNC', inner_message = {errormsg, Erro}}),
 							gen_tcp:send(Sock, Resp)
 					end,
@@ -95,7 +93,6 @@ client_loop(Sock, User) ->
 			end;
 
 		{receiver, Resp} ->
-			io:format("Recebeu msg do Receiver!!"),
 			gen_tcp:send(Sock, Resp),
 			client_loop(Sock, User);
 
