@@ -35,7 +35,7 @@ public class Notifier extends Thread {
 
             byte[] msgB = sub.recv();
             msg = new String(msgB);
-            investor.addNotification(msg);
+            investor.addNotification(msg.split("_")[1]);
         }
     }
 }

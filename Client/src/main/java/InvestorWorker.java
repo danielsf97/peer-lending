@@ -33,7 +33,8 @@ public class InvestorWorker extends Thread{
         this.menu = new Menu("Menu Investidor");
         this.menu.add("Licitar em leilão");
         this.menu.add("Subscrever empréstimo a taxa fixa");
-        this.menu.add("Subscrever notificação");
+        this.menu.add("Subscrever notificação de leilão");
+        this.menu.add("Subscrever notificação de emissão");
         this.menu.add("Desativar notificação");
         this.menu.add("Ver lista de empresas");
         this.menu.add("Ver leilões ativos");
@@ -83,25 +84,27 @@ public class InvestorWorker extends Thread{
                 break;
             case 2: subscribeEmission();
                 break;
-            case 3: subscribeCompany();
+            case 3: subscribeCompanyAuction();
                 break;
-            case 4: unsubscribeCompany();
+            case 4: subscribeCompanyEmission();
                 break;
-            case 5: showCompanies();
+            case 5: unsubscribeCompany();
                 break;
-            case 6: showActiveAuctions();
+            case 6: showCompanies();
                 break;
-            case 7: showActiveEmissions();
+            case 7: showActiveAuctions();
                 break;
-            case 8: showCompanyAuctionHistory();
+            case 8: showActiveEmissions();
                 break;
-            case 9: showCompanyEmissionHistory();
+            case 9: showCompanyAuctionHistory();
                 break;
-            case 10: readNotifications();
+            case 10: showCompanyEmissionHistory();
                 break;
-            case 11: readAsyncMessages();
+            case 11: readNotifications();
                 break;
-            case 12:
+            case 12: readAsyncMessages();
+                break;
+            case 13:
                 break;
         }
     }
@@ -125,19 +128,19 @@ public class InvestorWorker extends Thread{
 
 
     /**
-     * Possibilita a um investidor subscrever as notificações de uma empresa.
+     * Possibilita a um investidor subscrever as notificações de Leilão de uma empresa.
      *
      */
-    private void subscribeCompany() {
-        Menu m = new Menu("Subscrever Empresa");
+    private void subscribeCompanyAuction() {
+        Menu m = new Menu("Subscrever leilões de Empresa");
 
         m.execute();
 
         String comp = menu.readString("Empresa: ");
 
-        sub.subscribe(comp);
+        sub.subscribe("Leilao_" + comp);
 
-        System.out.println("Notificações da empresa " + comp + " subscritas.\n");
+        System.out.println("Notificações de leilão da empresa " + comp + " subscritas.\n");
 
         try {
             System.in.read();
@@ -147,6 +150,28 @@ public class InvestorWorker extends Thread{
         }
     }
 
+    /**
+     * Possibilita a um investidor subscrever as notificações de Emissão de uma empresa.
+     *
+     */
+    private void subscribeCompanyEmission() {
+        Menu m = new Menu("Subscrever emissões a taxa fixa de Empresa");
+
+        m.execute();
+
+        String comp = menu.readString("Empresa: ");
+
+        sub.subscribe("Emissao_" + comp);
+
+        System.out.println("Notificações de emissões a taxa fixa da empresa " + comp + " subscritas.\n");
+
+        try {
+            System.in.read();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Possibilita a um investidor cancelar a subscrição de notificações de uma empresa.

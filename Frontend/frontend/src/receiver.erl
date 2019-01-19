@@ -36,13 +36,11 @@ msg_forwarding_loop(Socket) ->
 		{ok, Bin} ->
 			case protos_pb:decode_msg(Bin, 'MessageWrapper') of
 				{'MessageWrapper', _, undefined, Msg} ->
-					io:format("Recebeu Mensagem sem Token!"),
 					{auctionemissionresult, Body} = Msg,
 					{'AuctionEmissionResult', Client_B, _} = Body,
 					Client = binary_to_list(Client_B),
 					send_to_client_session(Client, Bin);
 				{'MessageWrapper', _, BinToken, _} ->
-					io:format("Recebeu Mensagem com Token!"),
 					Token = binary_to_list(BinToken),
 					ClientSessionPid = list_to_pid(Token),
 					ClientSessionPid ! {receiver, Bin}

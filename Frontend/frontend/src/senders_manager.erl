@@ -68,7 +68,7 @@ manage_senders(Senders, CompSendersMap) ->
 					Pid = maps:get(Sender, Senders),
 					From ! {ok, Pid};
 				error ->
-					non_existent_company
+					From ! non_existent_company
 			end,
 			manage_senders(Senders, CompSendersMap)
 	end.
