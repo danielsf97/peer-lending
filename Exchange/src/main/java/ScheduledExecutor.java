@@ -220,7 +220,7 @@ public class ScheduledExecutor implements Runnable {
         push.send(msgEmpresa.toByteArray());
         pub.send(notification);
 
-        if(winners != null)
+        if(!winners.isEmpty())
             dir.deleteEmission(this.company.getName(), "SUCCESSFUL");
         else
             dir.deleteEmission(this.company.getName(), "NON-SUCCESSFUL");
