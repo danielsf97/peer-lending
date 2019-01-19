@@ -71,7 +71,7 @@ public class SubscriptionsResource {
      * Apaga uma subscrição de um investidor. Caso este não exista, cria-o.
      *
      */
-    @POST
+    @DELETE
     @Path("/{investor}/{subscription}")
     public Response delete(@PathParam("investor") String investor, @PathParam("subscription") String subscription) {
         List<String> tmp = subscriptions.get(investor);
