@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -57,6 +58,50 @@ public class NetClient {
         JsonParser jp = new JsonParser();
 
         return jp.parse(json_str);
+    }
+
+    /**
+     * Publica para um determinado URI.
+     *
+     * @param uri           URI para o qual se pretende publicar.
+     * @throws Exception
+     */
+    public static void postHttp(String uri) throws Exception {
+        URL url = new URL(uri);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("POST");
+        conn.setDoOutput(true);
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setInstanceFollowRedirects(false);
+        conn.setUseCaches(false);
+
+        conn.connect();
+
+        if(conn.getResponseCode() != 200) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+            throw new RuntimeException(br.readLine());
+        }
+    }
+
+
+    /**
+     * Apaga de determinado URI.
+     *
+     * @param uri           URI para do qual se pretende apagar.
+     * @throws Exception
+     */
+    public static void deleteHttp(String uri) throws Exception {
+        URL url = new URL(uri);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("DELETE");
+        conn.setDoOutput(true);
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.connect();
+
+        if(conn.getResponseCode() != 200) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+            throw new RuntimeException(br.readLine());
+        }
     }
 
     // -------------------------------------------------------------------------------------------
@@ -161,10 +206,10 @@ public class NetClient {
      */
     public static String getCompanies() throws Exception {
         JsonElement tree = getJsonTree("http://localhost:8080/companies");
-        JsonArray companies_array = tree.getAsJsonArray();
-        if (companies_array.size() == 0)
+        JsonArray companiesArray = tree.getAsJsonArray();
+        if (companiesArray.size() == 0)
             throw new RuntimeException("Não existem empresas");
-        return companiesToString(companies_array);
+        return companiesToString(companiesArray);
 
     }
 
@@ -178,10 +223,10 @@ public class NetClient {
      */
     public static String getActiveAuctions() throws Exception {
         JsonElement tree = getJsonTree("http://localhost:8080/activeAuctions");
-        JsonArray aa_array = tree.getAsJsonArray();
-        if (aa_array.size() == 0)
+        JsonArray aaArray = tree.getAsJsonArray();
+        if (aaArray.size() == 0)
             throw new RuntimeException("Não existem leilões ativos!");
-        return auctionsToString(aa_array, true);
+        return auctionsToString(aaArray, true);
     }
 
 
@@ -194,10 +239,10 @@ public class NetClient {
      */
     public static String getActiveEmissions() throws Exception {
         JsonElement tree = getJsonTree("http://localhost:8080/activeEmissions");
-        JsonArray ae_array = tree.getAsJsonArray();
-        if (ae_array.size() == 0)
+        JsonArray aeArray = tree.getAsJsonArray();
+        if (aeArray.size() == 0)
             throw new RuntimeException("Não existem emissões ativas!");
-        return emissionsToString(ae_array, true);
+        return emissionsToString(aeArray, true);
     }
 
 
@@ -212,10 +257,10 @@ public class NetClient {
      */
     public static String getCompanyAuctionHistory(String company) throws Exception {
         JsonElement tree = getJsonTree("http://localhost:8080/companies/" + company + "/auctionHistory");
-        JsonArray cah_array = tree.getAsJsonArray();
-        if (cah_array.size() == 0)
+        JsonArray cahArray = tree.getAsJsonArray();
+        if (cahArray.size() == 0)
             throw new RuntimeException("O histórico de leilões da empresa encontra-se vazio!");
-        return auctionsToString(cah_array,false);
+        return auctionsToString(cahArray,false);
     }
 
 
@@ -230,9 +275,64 @@ public class NetClient {
      */
     public static String getCompanyEmissionHistory(String company) throws Exception {
         JsonElement tree = getJsonTree("http://localhost:8080/companies/" + company + "/emissionHistory");
-        JsonArray ceh_array = tree.getAsJsonArray();
-        if (ceh_array.size() == 0)
+        JsonArray cehArray = tree.getAsJsonArray();
+        if (cehArray.size() == 0)
             throw new RuntimeException("O histórico de emissões da empresa encontra-se vazio!");
-        return emissionsToString(ceh_array, false);
+        return emissionsToString(cehArray, false);
+    }
+
+
+    /**
+     * Envia pedido ao diretório para a lista de subscrições de um determinado investidor e retorna
+     * uma lista com essas subscrições.
+     *
+     * @param investor          Investidor para o qual se pretende conhecer lista de subscrições.
+     * @return                  Lista de subscrições de um subscritor.
+     * @throws Exception
+     */
+    public static ArrayList<String> getSubscriptions(String investor) throws Exception {
+        JsonElement tree = getJsonTree("http://localhost:8080/subscriptions/" + investor);
+        JsonArray subArray = tree.getAsJsonArray();
+        ArrayList<String> subs = new ArrayList<>();
+        for(JsonElement e : subArray) {
+            subs.add(e.toString());
+        }
+
+        return subs;
+    }
+
+
+    /**
+     * Publica uma subscrição de um investidor para o diretório.
+     *
+     * @param investor          Investidor para o qual publicar a subscrição.
+     * @param subscription      Subscrição a publicar.
+     * @return                  Se foi publicada com sucesso (não excede limite de subscrições).
+     * @throws Exception
+     */
+    public static boolean postSubscription(String investor, String subscription) throws Exception {
+        ArrayList<String> subs = getSubscriptions(investor);
+        if(subs.size() == 5) return false;
+
+        String uri = "http://localhost:8080/subscriptions/" + investor + "/" +  subscription;
+
+        postHttp(uri);
+
+        return true;
+    }
+
+
+    /**
+     * Apaga uma subscrição de um investidor do diretório.
+     *
+     * @param investor          Investidor para o qual se pretende apagar uma subscrição.
+     * @param subscription      Subscrição a apagar.
+     * @throws Exception
+     */
+    public static void deleteSubscription(String investor, String subscription) throws Exception {
+
+        String uri = "http://localhost:8080/subscriptions/" + investor + "/" +  subscription;
+
+        deleteHttp(uri);
     }
 }

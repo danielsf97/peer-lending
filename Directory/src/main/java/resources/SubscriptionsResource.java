@@ -40,10 +40,12 @@ public class SubscriptionsResource {
     @GET
     @Path("/{investor}")
     public Response get(@PathParam("investor") String investor) {
-        if(!subscriptions.containsKey(investor))
-            throw new RestException("O investidor não existe!", Response.Status.NOT_FOUND);
+        List<String> result = new ArrayList<>();
 
-        return Response.ok(subscriptions.get(investor)).build();
+        if(subscriptions.containsKey(investor))
+            result = subscriptions.get(investor);
+
+        return Response.ok(result).build();
     }
 
 
@@ -60,6 +62,21 @@ public class SubscriptionsResource {
 
         List<String> tmp = subscriptions.get(investor);
         tmp.add(subscription);
+        subscriptions.put(investor, tmp);
+
+        return Response.ok().build();
+    }
+
+    /**
+     * Apaga uma subscrição de um investidor. Caso este não exista, cria-o.
+     *
+     */
+    @POST
+    @Path("/{investor}/{subscription}")
+    public Response delete(@PathParam("investor") String investor, @PathParam("subscription") String subscription) {
+        List<String> tmp = subscriptions.get(investor);
+        tmp.remove(subscription);
+
         subscriptions.put(investor, tmp);
 
         return Response.ok().build();

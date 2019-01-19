@@ -43,7 +43,7 @@ public class DirectoryManager {
         conn.setDoOutput(true);
         conn.setRequestProperty("Content-Type", "application/json");
         conn.setInstanceFollowRedirects(false);
-        conn.setUseCaches( false );
+        conn.setUseCaches(false);
 
         conn.connect();
 

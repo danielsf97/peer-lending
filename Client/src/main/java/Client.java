@@ -2,9 +2,11 @@
 import com.google.protobuf.InvalidProtocolBufferException;
 import org.zeromq.ZMQ;
 import utils.Menu;
+import utils.NetClient;
 
 import java.net.InetSocketAddress;
 import java.nio.channels.SocketChannel;
+import java.util.ArrayList;
 
 
 /**
@@ -49,6 +51,7 @@ public class Client {
                     return new Company(user, sessionToken);
                 }
                 else {
+
                     return new Investor(user, sessionToken);
                 }
             }
@@ -108,6 +111,9 @@ public class Client {
             ZMQ.Socket sub = context.socket(ZMQ.SUB);
             sub.connect("tcp://localhost:" + notificationsPort);
 
+            ArrayList<String> subs = NetClient.getSubscriptions(investor.getName());
+            for(String subscription : subs)
+                sub.subscribe(subscription);
 
             Notifier notifier = new Notifier(investor, sub);
             InvestorWorker invWorker = new InvestorWorker(socket, investor, sub);

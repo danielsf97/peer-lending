@@ -4,13 +4,14 @@ import utils.Menu;
 import utils.NetClient;
 
 import java.nio.channels.SocketChannel;
+import java.util.ArrayList;
 
 
 /**
  * Classe responsável por lidar com as ações tomadas por um investidor.
  *
  */
-public class InvestorWorker extends Thread{
+public class InvestorWorker extends Thread {
     private SocketChannel socket;
     private ZMQ.Socket sub;
     private Investor investor;
@@ -138,9 +139,27 @@ public class InvestorWorker extends Thread{
 
         String comp = menu.readString("Empresa: ");
 
-        sub.subscribe("Leilao_" + comp);
+        String subscription = "Leilao_" + comp;
 
-        System.out.println("Notificações de leilão da empresa " + comp + " subscritas.\n");
+        try {
+
+            ArrayList<String> subs = NetClient.getSubscriptions(comp);
+
+            if(subs.contains(subscription))
+                throw new Exception("Já subscreveu os leilões dessa empresa!");
+
+            boolean valid = NetClient.postSubscription(name, subscription);
+
+            if(!valid)
+                throw new Exception("Esgotou o limite de subscrições! (Máx. 5)");
+
+            sub.subscribe(subscription);
+
+            System.out.println("Notificações de leilão da empresa " + comp + " subscritas.\n");
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         try {
             System.in.read();
@@ -161,9 +180,27 @@ public class InvestorWorker extends Thread{
 
         String comp = menu.readString("Empresa: ");
 
-        sub.subscribe("Emissao_" + comp);
+        String subscription = "Emissao_" + comp;
 
-        System.out.println("Notificações de emissões a taxa fixa da empresa " + comp + " subscritas.\n");
+        try {
+
+            ArrayList<String> subs = NetClient.getSubscriptions(comp);
+
+            if(subs.contains(subscription))
+                throw new Exception("Já subscreveu as emissões dessa empresa!");
+
+            boolean valid = NetClient.postSubscription(name, subscription);
+
+            if(!valid)
+                throw new Exception("Esgotou o limite de subscrições! (Máx. 5)");
+
+            sub.subscribe(subscription);
+
+            System.out.println("Notificações de emissões a taxa fixa da empresa " + comp + " subscritas.\n");
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         try {
             System.in.read();
