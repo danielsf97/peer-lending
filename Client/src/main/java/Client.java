@@ -112,8 +112,9 @@ public class Client {
             sub.connect("tcp://localhost:" + notificationsPort);
 
             ArrayList<String> subs = NetClient.getSubscriptions(investor.getName());
-            for(String subscription : subs)
-                sub.subscribe(subscription);
+            for(String subscription : subs) {
+                sub.subscribe(subscription.substring(1,subscription.length() - 1));
+            }
 
             Notifier notifier = new Notifier(investor, sub);
             InvestorWorker invWorker = new InvestorWorker(socket, investor, sub);

@@ -36,7 +36,8 @@ public class InvestorWorker extends Thread {
         this.menu.add("Subscrever empréstimo a taxa fixa");
         this.menu.add("Subscrever notificação de leilão");
         this.menu.add("Subscrever notificação de emissão");
-        this.menu.add("Desativar notificação");
+        this.menu.add("Desativar notificação de leilão");
+        this.menu.add("Desativar notificação de emissão");
         this.menu.add("Ver lista de empresas");
         this.menu.add("Ver leilões ativos");
         this.menu.add("Ver emissões ativas");
@@ -89,23 +90,25 @@ public class InvestorWorker extends Thread {
                 break;
             case 4: subscribeCompanyEmission();
                 break;
-            case 5: unsubscribeCompany();
+            case 5: unsubscribeCompanyAuction();
                 break;
-            case 6: showCompanies();
+            case 6: unsubscribeCompanyEmission();
                 break;
-            case 7: showActiveAuctions();
+            case 7: showCompanies();
                 break;
-            case 8: showActiveEmissions();
+            case 8: showActiveAuctions();
                 break;
-            case 9: showCompanyAuctionHistory();
+            case 9: showActiveEmissions();
                 break;
-            case 10: showCompanyEmissionHistory();
+            case 10: showCompanyAuctionHistory();
                 break;
-            case 11: readNotifications();
+            case 11: showCompanyEmissionHistory();
                 break;
-            case 12: readAsyncMessages();
+            case 12: readNotifications();
                 break;
-            case 13:
+            case 13: readAsyncMessages();
+                break;
+            case 14:
                 break;
         }
     }
@@ -140,6 +143,7 @@ public class InvestorWorker extends Thread {
         String comp = menu.readString("Empresa: ");
 
         String subscription = "Leilao_" + comp;
+        System.out.println(subscription);
 
         try {
 
@@ -211,18 +215,40 @@ public class InvestorWorker extends Thread {
     }
 
     /**
-     * Possibilita a um investidor cancelar a subscrição de notificações de uma empresa.
+     * Possibilita a um investidor cancelar a subscrição de notificações de leilões de uma empresa.
      *
      */
-    private void unsubscribeCompany() {
-        Menu m = new Menu("Remover Subscrição de Empresa");
+    private void unsubscribeCompanyAuction() {
+        Menu m = new Menu("Remover Subscrição de Leilões de Empresa");
 
         m.execute();
 
         String comp = menu.readString("Empresa: ");
 
-        sub.unsubscribe(comp);
-        System.out.println("Remoção das notificações da empresa " + comp + " completa.\n");
+        sub.unsubscribe("Leilao_" + comp);
+        System.out.println("Remoção das notificações de Leilões da empresa " + comp + " completa.\n");
+
+        try {
+            System.in.read();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Possibilita a um investidor cancelar a subscrição de notificações de emissões de uma empresa.
+     *
+     */
+    private void unsubscribeCompanyEmission() {
+        Menu m = new Menu("Remover Subscrição de Emissões a taxa fixa de Empresa");
+
+        m.execute();
+
+        String comp = menu.readString("Empresa: ");
+
+        sub.unsubscribe("Emissao_" + comp);
+        System.out.println("Remoção das notificações de Emissões a taxa fixa da empresa " + comp + " completa.\n");
 
         try {
             System.in.read();
