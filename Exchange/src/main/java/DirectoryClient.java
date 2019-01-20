@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
  * RESTful oferecida por este.
  *
  */
-public class DirectoryManager {
+public class DirectoryClient {
     private Gson gson;
 
 
@@ -21,7 +21,7 @@ public class DirectoryManager {
      * Construtor vazio.
      *
      */
-    DirectoryManager() {
+    DirectoryClient() {
         this.gson = new Gson();
     }
 

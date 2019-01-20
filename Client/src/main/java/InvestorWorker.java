@@ -1,7 +1,7 @@
 
 import org.zeromq.ZMQ;
 import utils.Menu;
-import utils.NetClient;
+import utils.DirectoryClient;
 
 import java.nio.channels.SocketChannel;
 import java.util.ArrayList;
@@ -147,12 +147,12 @@ public class InvestorWorker extends Thread {
 
         try {
 
-            ArrayList<String> subs = NetClient.getSubscriptions(comp);
+            ArrayList<String> subs = DirectoryClient.getSubscriptions(comp);
 
             if(subs.contains(subscription))
                 throw new Exception("Já subscreveu os leilões dessa empresa!");
 
-            boolean valid = NetClient.postSubscription(name, subscription);
+            boolean valid = DirectoryClient.postSubscription(name, subscription);
 
             if(!valid)
                 throw new Exception("Esgotou o limite de subscrições! (Máx. 5)");
@@ -188,12 +188,12 @@ public class InvestorWorker extends Thread {
 
         try {
 
-            ArrayList<String> subs = NetClient.getSubscriptions(comp);
+            ArrayList<String> subs = DirectoryClient.getSubscriptions(comp);
 
             if(subs.contains(subscription))
                 throw new Exception("Já subscreveu as emissões dessa empresa!");
 
-            boolean valid = NetClient.postSubscription(name, subscription);
+            boolean valid = DirectoryClient.postSubscription(name, subscription);
 
             if(!valid)
                 throw new Exception("Esgotou o limite de subscrições! (Máx. 5)");
@@ -228,7 +228,7 @@ public class InvestorWorker extends Thread {
 
         try {
 
-            NetClient.deleteSubscription(name, unsub);
+            DirectoryClient.deleteSubscription(name, unsub);
             sub.unsubscribe(unsub);
 
             System.out.println("Remoção das notificações de leilões da empresa " + comp + " completa.\n");
@@ -260,7 +260,7 @@ public class InvestorWorker extends Thread {
 
         try {
 
-            NetClient.deleteSubscription(name, unsub);
+            DirectoryClient.deleteSubscription(name, unsub);
             sub.unsubscribe(unsub);
 
             System.out.println("Remoção das notificações de emissões a taxa fixa da empresa " + comp + " completa.\n");
@@ -389,7 +389,7 @@ public class InvestorWorker extends Thread {
      */
     private void showCompanies() {
         try {
-            System.out.println(NetClient.getCompanies());
+            System.out.println(DirectoryClient.getCompanies());
         }
         catch(RuntimeException e) {
             System.out.println(e.getCause());
@@ -411,7 +411,7 @@ public class InvestorWorker extends Thread {
      */
     private void showActiveAuctions() {
         try {
-            System.out.println(NetClient.getActiveAuctions());
+            System.out.println(DirectoryClient.getActiveAuctions());
         }
         catch(RuntimeException e) {
             System.out.println(e.getMessage());
@@ -433,7 +433,7 @@ public class InvestorWorker extends Thread {
      */
     private void showActiveEmissions() {
         try {
-            System.out.println(NetClient.getActiveEmissions());
+            System.out.println(DirectoryClient.getActiveEmissions());
         }
         catch(RuntimeException e ) {
             System.out.println(e.getMessage());
@@ -457,7 +457,7 @@ public class InvestorWorker extends Thread {
     private void showCompanyAuctionHistory() {
         try {
             String emp = menu.readString("Nome da empresa: ");
-            System.out.println(NetClient.getCompanyAuctionHistory(emp));
+            System.out.println(DirectoryClient.getCompanyAuctionHistory(emp));
         }
         catch(RuntimeException e ) {
             System.out.println(e.getMessage());
@@ -482,7 +482,7 @@ public class InvestorWorker extends Thread {
     private void showCompanyEmissionHistory() {
         try {
             String emp = menu.readString("Nome da empresa: ");
-            System.out.println(NetClient.getCompanyEmissionHistory(emp));
+            System.out.println(DirectoryClient.getCompanyEmissionHistory(emp));
         }
         catch(RuntimeException e ) {
             System.out.println(e.getMessage());

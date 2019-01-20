@@ -1,8 +1,7 @@
 
-import com.google.protobuf.InvalidProtocolBufferException;
 import org.zeromq.ZMQ;
 import utils.Menu;
-import utils.NetClient;
+import utils.DirectoryClient;
 
 import java.net.InetSocketAddress;
 import java.nio.channels.SocketChannel;
@@ -111,9 +110,9 @@ public class Client {
             ZMQ.Socket sub = context.socket(ZMQ.SUB);
             sub.connect("tcp://localhost:" + notificationsPort);
 
-            ArrayList<String> subs = NetClient.getSubscriptions(investor.getName());
+            ArrayList<String> subs = DirectoryClient.getSubscriptions(investor.getName());
             for(String subscription : subs) {
-                sub.subscribe(subscription.substring(1,subscription.length() - 1));
+                sub.subscribe(subscription.substring(1, subscription.length() - 1));
             }
 
             Notifier notifier = new Notifier(investor, sub);

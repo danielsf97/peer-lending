@@ -11,7 +11,7 @@ public class ScheduledExecutor implements Runnable {
     private Company company;
     private ZMQ.Socket push;
     private ZMQ.Socket pub;
-    private DirectoryManager dir;
+    private DirectoryClient dir;
 
 
     /**
@@ -22,7 +22,7 @@ public class ScheduledExecutor implements Runnable {
      * @param pub       Socket pub.
      * @param dir       Gestor do diretório.
      */
-    ScheduledExecutor(Company company, ZMQ.Socket push, ZMQ.Socket pub, DirectoryManager dir) {
+    ScheduledExecutor(Company company, ZMQ.Socket push, ZMQ.Socket pub, DirectoryClient dir) {
         this.company = company;
         this.push = push;
         this.pub = pub;

@@ -68,7 +68,7 @@ public class Exchange {
     private ZMQ.Socket pull;
     private ZMQ.Socket pub;
     private Map<String, Company> companies;
-    private DirectoryManager directoryManager;
+    private DirectoryClient directoryManager;
 
 
     /**
@@ -86,7 +86,7 @@ public class Exchange {
         this.pull.bind("tcp://localhost:" + data.socketPullPort);
         this.pub.connect("tcp://localhost:" + socketPubPort);
         this.companies = data.companies;
-        this.directoryManager = new DirectoryManager();
+        this.directoryManager = new DirectoryClient();
         this.scheduler = Executors.newScheduledThreadPool(1);
     }
 
