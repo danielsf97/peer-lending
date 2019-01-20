@@ -224,9 +224,19 @@ public class InvestorWorker extends Thread {
         m.execute();
 
         String comp = menu.readString("Empresa: ");
+        String unsub = "Leilao_" + comp;
 
-        sub.unsubscribe("Leilao_" + comp);
-        System.out.println("Remoção das notificações de Leilões da empresa " + comp + " completa.\n");
+        try {
+
+            NetClient.deleteSubscription(name, unsub);
+            sub.unsubscribe(unsub);
+
+            System.out.println("Remoção das notificações de leilões da empresa " + comp + " completa.\n");
+
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         try {
             System.in.read();
@@ -246,9 +256,19 @@ public class InvestorWorker extends Thread {
         m.execute();
 
         String comp = menu.readString("Empresa: ");
+        String unsub = "Emissao_" + comp;
 
-        sub.unsubscribe("Emissao_" + comp);
-        System.out.println("Remoção das notificações de Emissões a taxa fixa da empresa " + comp + " completa.\n");
+        try {
+
+            NetClient.deleteSubscription(name, unsub);
+            sub.unsubscribe(unsub);
+
+            System.out.println("Remoção das notificações de emissões a taxa fixa da empresa " + comp + " completa.\n");
+
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
 
         try {
             System.in.read();
