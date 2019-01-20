@@ -38,7 +38,7 @@ public class DirectoryClient {
 
         int rc = conn.getResponseCode();
 
-        String json_str = null;
+        String jsonStr = null;
         StringBuilder sb = new StringBuilder();
 
         if(rc != 200) {
@@ -51,13 +51,13 @@ public class DirectoryClient {
                 sb.append(sc.nextLine());
             }
 
-            json_str = sb.toString();
+            jsonStr = sb.toString();
             sc.close();
         }
 
         JsonParser jp = new JsonParser();
 
-        return jp.parse(json_str);
+        return jp.parse(jsonStr);
     }
 
     /**
